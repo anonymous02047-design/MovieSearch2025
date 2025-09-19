@@ -1,0 +1,3017 @@
+[
+  {
+    "sessionId": "sess_1758299375507_uzmtigl93",
+    "timestamp": 1758299375508,
+    "landingPage": "/api/analytics/session",
+    "pagesVisited": [
+      "/api/analytics/session"
+    ],
+    "sessionDuration": 282761,
+    "events": [
+      {
+        "type": "page_view",
+        "timestamp": 1758299376270,
+        "data": {
+          "timestamp": 1758299376270
+        }
+      },
+      {
+        "type": "page_view",
+        "timestamp": 1758299378253,
+        "data": {
+          "timestamp": 1758299378253
+        }
+      },
+      {
+        "type": "session_update",
+        "timestamp": 1758299404975,
+        "data": {
+          "duration": 30176,
+          "lastActivity": 30176,
+          "maxScrollDepth": 0
+        }
+      },
+      {
+        "type": "session_update",
+        "timestamp": 1758299434975,
+        "data": {
+          "duration": 60176,
+          "lastActivity": 60176,
+          "maxScrollDepth": 0
+        }
+      },
+      {
+        "type": "session_update",
+        "timestamp": 1758299464969,
+        "data": {
+          "duration": 90170,
+          "lastActivity": 90170,
+          "maxScrollDepth": 0
+        }
+      },
+      {
+        "type": "session_update",
+        "timestamp": 1758299494966,
+        "data": {
+          "duration": 120167,
+          "lastActivity": 120167,
+          "maxScrollDepth": 0
+        }
+      },
+      {
+        "type": "session_update",
+        "timestamp": 1758299524967,
+        "data": {
+          "duration": 150168,
+          "lastActivity": 150168,
+          "maxScrollDepth": 0
+        }
+      },
+      {
+        "type": "session_update",
+        "timestamp": 1758299554961,
+        "data": {
+          "duration": 180162,
+          "lastActivity": 180162,
+          "maxScrollDepth": 0
+        }
+      },
+      {
+        "type": "page_visible",
+        "timestamp": 1758299562874,
+        "data": {
+          "duration": 188075
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299563309,
+        "data": {
+          "depth": 3,
+          "maxDepth": 3
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299576532,
+        "data": {
+          "element": "h6",
+          "className": "MuiTypography-root MuiTypography-h6 css-l6t397-MuiTypography-root",
+          "id": "",
+          "x": 1428,
+          "y": 163
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299581808,
+        "data": {
+          "element": "span",
+          "className": "MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-rizt0-MuiTypography-root",
+          "id": "",
+          "x": 119,
+          "y": 92
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299584155,
+        "data": {
+          "element": "div",
+          "className": "MuiBox-root css-0",
+          "id": "",
+          "x": 119,
+          "y": 92
+        }
+      },
+      {
+        "type": "session_update",
+        "timestamp": 1758299585864,
+        "data": {
+          "duration": 211065,
+          "lastActivity": 1708,
+          "maxScrollDepth": 3
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299587523,
+        "data": {
+          "depth": 4,
+          "maxDepth": 4
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299587553,
+        "data": {
+          "depth": 5,
+          "maxDepth": 5
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299587586,
+        "data": {
+          "depth": 6,
+          "maxDepth": 6
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299587740,
+        "data": {
+          "depth": 7,
+          "maxDepth": 7
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299587781,
+        "data": {
+          "depth": 10,
+          "maxDepth": 10
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299587795,
+        "data": {
+          "depth": 11,
+          "maxDepth": 11
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299587820,
+        "data": {
+          "depth": 14,
+          "maxDepth": 14
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299587987,
+        "data": {
+          "depth": 15,
+          "maxDepth": 15
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299588053,
+        "data": {
+          "depth": 18,
+          "maxDepth": 18
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299588069,
+        "data": {
+          "depth": 19,
+          "maxDepth": 19
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299588337,
+        "data": {
+          "depth": 20,
+          "maxDepth": 20
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299588498,
+        "data": {
+          "depth": 21,
+          "maxDepth": 21
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299588545,
+        "data": {
+          "depth": 23,
+          "maxDepth": 23
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299588748,
+        "data": {
+          "depth": 27,
+          "maxDepth": 27
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299588770,
+        "data": {
+          "depth": 28,
+          "maxDepth": 28
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299588789,
+        "data": {
+          "depth": 29,
+          "maxDepth": 29
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299588821,
+        "data": {
+          "depth": 33,
+          "maxDepth": 33
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299588986,
+        "data": {
+          "depth": 35,
+          "maxDepth": 35
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299589035,
+        "data": {
+          "depth": 36,
+          "maxDepth": 36
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299589106,
+        "data": {
+          "depth": 38,
+          "maxDepth": 38
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299589338,
+        "data": {
+          "depth": 40,
+          "maxDepth": 40
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299589352,
+        "data": {
+          "depth": 41,
+          "maxDepth": 41
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299589369,
+        "data": {
+          "depth": 42,
+          "maxDepth": 42
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299589386,
+        "data": {
+          "depth": 43,
+          "maxDepth": 43
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299589564,
+        "data": {
+          "depth": 45,
+          "maxDepth": 45
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299589604,
+        "data": {
+          "depth": 47,
+          "maxDepth": 47
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299589628,
+        "data": {
+          "depth": 49,
+          "maxDepth": 49
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299589644,
+        "data": {
+          "depth": 51,
+          "maxDepth": 51
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299589952,
+        "data": {
+          "depth": 55,
+          "maxDepth": 55
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299590003,
+        "data": {
+          "depth": 56,
+          "maxDepth": 56
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299590173,
+        "data": {
+          "depth": 57,
+          "maxDepth": 57
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299590401,
+        "data": {
+          "depth": 60,
+          "maxDepth": 60
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299590417,
+        "data": {
+          "depth": 61,
+          "maxDepth": 61
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299590453,
+        "data": {
+          "depth": 65,
+          "maxDepth": 65
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299590470,
+        "data": {
+          "depth": 66,
+          "maxDepth": 66
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299590487,
+        "data": {
+          "depth": 68,
+          "maxDepth": 68
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299590504,
+        "data": {
+          "depth": 69,
+          "maxDepth": 69
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299590737,
+        "data": {
+          "depth": 71,
+          "maxDepth": 71
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299590755,
+        "data": {
+          "depth": 72,
+          "maxDepth": 72
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299590795,
+        "data": {
+          "depth": 73,
+          "maxDepth": 73
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299590953,
+        "data": {
+          "depth": 74,
+          "maxDepth": 74
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299591213,
+        "data": {
+          "depth": 78,
+          "maxDepth": 78
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299591252,
+        "data": {
+          "depth": 80,
+          "maxDepth": 80
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299591269,
+        "data": {
+          "depth": 82,
+          "maxDepth": 82
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299591506,
+        "data": {
+          "depth": 87,
+          "maxDepth": 87
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299591525,
+        "data": {
+          "depth": 89,
+          "maxDepth": 89
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299591544,
+        "data": {
+          "depth": 90,
+          "maxDepth": 90
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299591980,
+        "data": {
+          "depth": 93,
+          "maxDepth": 93
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299592037,
+        "data": {
+          "depth": 96,
+          "maxDepth": 96
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299596719,
+        "data": {
+          "element": "path",
+          "className": {},
+          "id": "",
+          "x": 1384,
+          "y": 31
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299599290,
+        "data": {
+          "element": "path",
+          "className": {},
+          "id": "",
+          "x": 1384,
+          "y": 31
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299603091,
+        "data": {
+          "element": "button",
+          "className": "MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textInherit MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorInherit MuiButton-root MuiButton-text MuiButton-textInherit MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorInherit css-132g13m-MuiButtonBase-root-MuiButton-root",
+          "id": "",
+          "x": 1423,
+          "y": 32
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299609575,
+        "data": {
+          "element": "span",
+          "className": "MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-rizt0-MuiTypography-root",
+          "id": "",
+          "x": 121,
+          "y": 93
+        }
+      },
+      {
+        "type": "session_update",
+        "timestamp": 1758299614830,
+        "data": {
+          "duration": 240031,
+          "lastActivity": 5254,
+          "maxScrollDepth": 100
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299615509,
+        "data": {
+          "element": "img",
+          "className": "MuiAvatar-img css-1su80sj-MuiAvatar-img",
+          "id": "",
+          "x": 1864,
+          "y": 27
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299617061,
+        "data": {
+          "element": "span",
+          "className": "MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-rizt0-MuiTypography-root",
+          "id": "",
+          "x": 1775,
+          "y": 239
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299622727,
+        "data": {
+          "element": "input",
+          "className": "MuiInputBase-input MuiOutlinedInput-input css-j3jqhj-MuiInputBase-input-MuiOutlinedInput-input",
+          "id": "_r_jku_",
+          "x": 400,
+          "y": 412
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299625074,
+        "data": {
+          "element": "svg",
+          "className": {},
+          "id": "",
+          "x": 432,
+          "y": 151
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299634187,
+        "data": {
+          "element": "button",
+          "className": "MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary Mui-disabled MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-1rkpnu1-MuiButtonBase-root-MuiButton-root",
+          "id": "",
+          "x": 1361,
+          "y": 704
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299640799,
+        "data": {
+          "element": "input",
+          "className": "MuiInputBase-input MuiOutlinedInput-input css-j3jqhj-MuiInputBase-input-MuiOutlinedInput-input",
+          "id": "_r_jku_",
+          "x": 452,
+          "y": 597
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299640919,
+        "data": {
+          "element": "input",
+          "className": "MuiInputBase-input MuiOutlinedInput-input css-j3jqhj-MuiInputBase-input-MuiOutlinedInput-input",
+          "id": "_r_jku_",
+          "x": 452,
+          "y": 597
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299641064,
+        "data": {
+          "element": "input",
+          "className": "MuiInputBase-input MuiOutlinedInput-input css-j3jqhj-MuiInputBase-input-MuiOutlinedInput-input",
+          "id": "_r_jku_",
+          "x": 452,
+          "y": 597
+        }
+      },
+      {
+        "type": "session_update",
+        "timestamp": 1758299644840,
+        "data": {
+          "duration": 270041,
+          "lastActivity": 3776,
+          "maxScrollDepth": 100
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299646800,
+        "data": {
+          "element": "button",
+          "className": "MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary Mui-disabled MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-1rkpnu1-MuiButtonBase-root-MuiButton-root",
+          "id": "",
+          "x": 1422,
+          "y": 578
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299651012,
+        "data": {
+          "element": "img",
+          "className": "MuiAvatar-img css-1su80sj-MuiAvatar-img",
+          "id": "",
+          "x": 1883,
+          "y": 31
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299652573,
+        "data": {
+          "element": "span",
+          "className": "MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-rizt0-MuiTypography-root",
+          "id": "",
+          "x": 1814,
+          "y": 105
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299657903,
+        "data": {
+          "element": "div",
+          "className": "MuiGrid-root MuiGrid-container MuiGrid-direction-xs-row MuiGrid-spacing-xs-4 css-kqg16c-MuiGrid-root",
+          "id": "",
+          "x": 1138,
+          "y": 462
+        }
+      }
+    ],
+    "ipAddress": "::1",
+    "country": "Unknown",
+    "region": "Unknown",
+    "city": "Unknown",
+    "countryCode": "Unknown",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+    "language": "en-US",
+    "referrer": "http://localhost:3000/genres",
+    "deviceType": "desktop",
+    "browser": "Chrome",
+    "browserVersion": "140.0",
+    "browserEngine": "Blink",
+    "operatingSystem": "Windows",
+    "osVersion": "10/11",
+    "cookiesEnabled": true,
+    "localStorageSupport": true,
+    "javascriptEnabled": true,
+    "loginStatus": false,
+    "geoSource": "server",
+    "sessionSource": "direct",
+    "customField1": "0",
+    "customField2": "low",
+    "customField3": "good",
+    "screenWidth": 1920,
+    "screenHeight": 1080,
+    "viewportWidth": 1920,
+    "viewportHeight": 911,
+    "colorDepth": 24,
+    "browserPlugins": [
+      "PDF Viewer",
+      "Chrome PDF Viewer",
+      "Chromium PDF Viewer",
+      "Microsoft Edge PDF Viewer",
+      "WebKit built-in PDF"
+    ],
+    "networkType": "4g",
+    "connectionSpeed": "10Mbps",
+    "cpuCores": 12,
+    "memorySize": 8,
+    "batteryStatus": {},
+    "timezone": "Asia/Calcutta"
+  },
+  {
+    "sessionId": "sess_1758299662461_colk9sd1l",
+    "timestamp": 1758299662461,
+    "landingPage": "/api/analytics/session",
+    "pagesVisited": [
+      "/api/analytics/session"
+    ],
+    "sessionDuration": 715,
+    "events": [
+      {
+        "type": "page_view",
+        "timestamp": 1758299662581,
+        "data": {
+          "timestamp": 1758299662581
+        }
+      }
+    ],
+    "ipAddress": "::1",
+    "country": "Unknown",
+    "region": "Unknown",
+    "city": "Unknown",
+    "countryCode": "Unknown",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+    "language": "en-US",
+    "referrer": "http://localhost:3000/profile/manage",
+    "deviceType": "desktop",
+    "browser": "Chrome",
+    "browserVersion": "140.0",
+    "browserEngine": "Blink",
+    "operatingSystem": "Windows",
+    "osVersion": "10/11",
+    "cookiesEnabled": true,
+    "localStorageSupport": true,
+    "javascriptEnabled": true,
+    "loginStatus": false,
+    "geoSource": "server",
+    "sessionSource": "direct",
+    "customField1": "0",
+    "customField2": "low",
+    "customField3": "good",
+    "screenWidth": 1920,
+    "screenHeight": 1080,
+    "viewportWidth": 1920,
+    "viewportHeight": 911,
+    "colorDepth": 24,
+    "browserPlugins": [
+      "PDF Viewer",
+      "Chrome PDF Viewer",
+      "Chromium PDF Viewer",
+      "Microsoft Edge PDF Viewer",
+      "WebKit built-in PDF"
+    ],
+    "networkType": "4g",
+    "connectionSpeed": "10Mbps",
+    "cpuCores": 12,
+    "memorySize": 8,
+    "batteryStatus": {},
+    "timezone": "Asia/Calcutta"
+  },
+  {
+    "sessionId": "sess_1758299663130_yqw3tvtq4",
+    "userId": "user_32u8lqFfJbGfwYSqFinzpU4Nzen",
+    "timestamp": 1758299663131,
+    "landingPage": "/api/analytics/session",
+    "pagesVisited": [
+      "/api/analytics/session"
+    ],
+    "sessionDuration": 360079,
+    "events": [
+      {
+        "type": "page_view",
+        "timestamp": 1758299663256,
+        "data": {
+          "timestamp": 1758299663256
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299664258,
+        "data": {
+          "depth": 1,
+          "maxDepth": 1
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299664298,
+        "data": {
+          "depth": 4,
+          "maxDepth": 4
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299664346,
+        "data": {
+          "depth": 17,
+          "maxDepth": 17
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299664364,
+        "data": {
+          "depth": 21,
+          "maxDepth": 21
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758299664413,
+        "data": {
+          "depth": 27,
+          "maxDepth": 27
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299667735,
+        "data": {
+          "element": "div",
+          "className": "MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-1ygil4i-MuiToolbar-root",
+          "id": "",
+          "x": 104,
+          "y": 10
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299668153,
+        "data": {
+          "element": "div",
+          "className": "MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-1ygil4i-MuiToolbar-root",
+          "id": "",
+          "x": 102,
+          "y": 56
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299669383,
+        "data": {
+          "element": "div",
+          "className": "MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-1ygil4i-MuiToolbar-root",
+          "id": "",
+          "x": 101,
+          "y": 49
+        }
+      },
+      {
+        "type": "page_hidden",
+        "timestamp": 1758299680987,
+        "data": {
+          "duration": 18982
+        }
+      },
+      {
+        "type": "page_visible",
+        "timestamp": 1758299684937,
+        "data": {
+          "duration": 22932
+        }
+      },
+      {
+        "type": "page_hidden",
+        "timestamp": 1758299686688,
+        "data": {
+          "duration": 24683
+        }
+      },
+      {
+        "type": "page_visible",
+        "timestamp": 1758299692015,
+        "data": {
+          "duration": 30010
+        }
+      },
+      {
+        "type": "session_update",
+        "timestamp": 1758299692017,
+        "data": {
+          "duration": 30012,
+          "lastActivity": 22634,
+          "maxScrollDepth": 27
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299693077,
+        "data": {
+          "element": "img",
+          "className": "MuiAvatar-img css-1su80sj-MuiAvatar-img",
+          "id": "",
+          "x": 1869,
+          "y": 44
+        }
+      },
+      {
+        "type": "page_hidden",
+        "timestamp": 1758299695736,
+        "data": {
+          "duration": 33731
+        }
+      },
+      {
+        "type": "session_update",
+        "timestamp": 1758299722968,
+        "data": {
+          "duration": 60963,
+          "lastActivity": 29891,
+          "maxScrollDepth": 27
+        }
+      },
+      {
+        "type": "session_update",
+        "timestamp": 1758299752965,
+        "data": {
+          "duration": 90960,
+          "lastActivity": 59888,
+          "maxScrollDepth": 27
+        }
+      },
+      {
+        "type": "session_update",
+        "timestamp": 1758299782964,
+        "data": {
+          "duration": 120959,
+          "lastActivity": 89887,
+          "maxScrollDepth": 27
+        }
+      },
+      {
+        "type": "session_update",
+        "timestamp": 1758299812963,
+        "data": {
+          "duration": 150958,
+          "lastActivity": 119886,
+          "maxScrollDepth": 27
+        }
+      },
+      {
+        "type": "session_update",
+        "timestamp": 1758299842977,
+        "data": {
+          "duration": 180972,
+          "lastActivity": 149900,
+          "maxScrollDepth": 27
+        }
+      },
+      {
+        "type": "session_update",
+        "timestamp": 1758299902686,
+        "data": {
+          "duration": 240681,
+          "lastActivity": 209609,
+          "maxScrollDepth": 27
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299905088,
+        "data": {
+          "element": "div",
+          "className": "MuiBackdrop-root MuiBackdrop-invisible MuiModal-backdrop css-vl6bb4-MuiBackdrop-root-MuiModal-backdrop",
+          "id": "",
+          "x": 439,
+          "y": 350
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299906675,
+        "data": {
+          "element": "button",
+          "className": "MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorPrimary css-djbl0r-MuiButtonBase-root-MuiButton-root",
+          "id": "",
+          "x": 464,
+          "y": 355
+        }
+      },
+      {
+        "type": "session_update",
+        "timestamp": 1758299932017,
+        "data": {
+          "duration": 270012,
+          "lastActivity": 25342,
+          "maxScrollDepth": 27
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299958417,
+        "data": {
+          "element": "div",
+          "className": "MuiBox-root css-kunq1p",
+          "id": "",
+          "x": 968,
+          "y": 360
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299960113,
+        "data": {
+          "element": "span",
+          "className": "MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary css-1xcmt9q-MuiSlider-thumb",
+          "id": "",
+          "x": 849,
+          "y": 692
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299961346,
+        "data": {
+          "element": "span",
+          "className": "MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary css-1xcmt9q-MuiSlider-thumb",
+          "id": "",
+          "x": 799,
+          "y": 686
+        }
+      },
+      {
+        "type": "session_update",
+        "timestamp": 1758299962017,
+        "data": {
+          "duration": 300012,
+          "lastActivity": 671,
+          "maxScrollDepth": 27
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299962112,
+        "data": {
+          "element": "path",
+          "className": {},
+          "id": "",
+          "x": 990,
+          "y": 731
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299962518,
+        "data": {
+          "element": "path",
+          "className": {},
+          "id": "",
+          "x": 990,
+          "y": 731
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299963943,
+        "data": {
+          "element": "div",
+          "className": "MuiBox-root css-kunq1p",
+          "id": "",
+          "x": 946,
+          "y": 295
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299964967,
+        "data": {
+          "element": "div",
+          "className": "MuiBox-root css-kunq1p",
+          "id": "",
+          "x": 943,
+          "y": 312
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299966103,
+        "data": {
+          "element": "div",
+          "className": "MuiBox-root css-kunq1p",
+          "id": "",
+          "x": 935,
+          "y": 349
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299970482,
+        "data": {
+          "element": "span",
+          "className": "MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary css-1xcmt9q-MuiSlider-thumb",
+          "id": "",
+          "x": 833,
+          "y": 597
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299971745,
+        "data": {
+          "element": "div",
+          "className": "MuiStack-root css-11zvfn9-MuiStack-root",
+          "id": "",
+          "x": 582,
+          "y": 699
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299973089,
+        "data": {
+          "element": "span",
+          "className": "MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary css-1xcmt9q-MuiSlider-thumb",
+          "id": "",
+          "x": 608,
+          "y": 600
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299974138,
+        "data": {
+          "element": "span",
+          "className": "MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary css-1xcmt9q-MuiSlider-thumb",
+          "id": "",
+          "x": 845,
+          "y": 678
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299975568,
+        "data": {
+          "element": "span",
+          "className": "MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary css-1xcmt9q-MuiSlider-thumb",
+          "id": "",
+          "x": 684,
+          "y": 594
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299977050,
+        "data": {
+          "element": "span",
+          "className": "MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary css-1xcmt9q-MuiSlider-thumb",
+          "id": "",
+          "x": 929,
+          "y": 670
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299980545,
+        "data": {
+          "element": "div",
+          "className": "MuiDialog-container MuiDialog-scrollPaper css-19do60a-MuiDialog-container",
+          "id": "",
+          "x": 489,
+          "y": 602
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299982033,
+        "data": {
+          "element": "span",
+          "className": "MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary css-1xcmt9q-MuiSlider-thumb",
+          "id": "",
+          "x": 550,
+          "y": 686
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299983554,
+        "data": {
+          "element": "path",
+          "className": {},
+          "id": "",
+          "x": 938,
+          "y": 735
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299984483,
+        "data": {
+          "element": "path",
+          "className": {},
+          "id": "",
+          "x": 938,
+          "y": 735
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299985100,
+        "data": {
+          "element": "svg",
+          "className": {},
+          "id": "",
+          "x": 884,
+          "y": 743
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299985937,
+        "data": {
+          "element": "svg",
+          "className": {},
+          "id": "",
+          "x": 997,
+          "y": 739
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299986408,
+        "data": {
+          "element": "button",
+          "className": "MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-hjc5kd-MuiButtonBase-root-MuiIconButton-root",
+          "id": "",
+          "x": 1056,
+          "y": 742
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299989560,
+        "data": {
+          "element": "button",
+          "className": "MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary Mui-disabled MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-1rkpnu1-MuiButtonBase-root-MuiButton-root",
+          "id": "",
+          "x": 1367,
+          "y": 812
+        }
+      },
+      {
+        "type": "session_update",
+        "timestamp": 1758299992014,
+        "data": {
+          "duration": 330009,
+          "lastActivity": 2454,
+          "maxScrollDepth": 27
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758299999983,
+        "data": {
+          "element": "svg",
+          "className": {},
+          "id": "",
+          "x": 538,
+          "y": 352
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758300002234,
+        "data": {
+          "element": "input",
+          "className": "",
+          "id": "",
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758300002279,
+        "data": {
+          "element": "button",
+          "className": "MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorPrimary css-djbl0r-MuiButtonBase-root-MuiButton-root",
+          "id": "",
+          "x": 464,
+          "y": 366
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758300007515,
+        "data": {
+          "element": "button",
+          "className": "MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary Mui-disabled MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-1rkpnu1-MuiButtonBase-root-MuiButton-root",
+          "id": "",
+          "x": 1345,
+          "y": 806
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758300013690,
+        "data": {
+          "element": "img",
+          "className": "MuiAvatar-img css-1su80sj-MuiAvatar-img",
+          "id": "",
+          "x": 1861,
+          "y": 38
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758300014940,
+        "data": {
+          "element": "span",
+          "className": "MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-rizt0-MuiTypography-root",
+          "id": "",
+          "x": 1789,
+          "y": 99
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758300015905,
+        "data": {
+          "element": "img",
+          "className": "MuiAvatar-img css-1su80sj-MuiAvatar-img",
+          "id": "",
+          "x": 1867,
+          "y": 33
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758300019252,
+        "data": {
+          "element": "div",
+          "className": "MuiBackdrop-root MuiBackdrop-invisible MuiModal-backdrop css-vl6bb4-MuiBackdrop-root-MuiModal-backdrop",
+          "id": "",
+          "x": 1180,
+          "y": 452
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758300019586,
+        "data": {
+          "depth": 29,
+          "maxDepth": 29
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758300019603,
+        "data": {
+          "depth": 32,
+          "maxDepth": 32
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758300019752,
+        "data": {
+          "depth": 33,
+          "maxDepth": 33
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758300019770,
+        "data": {
+          "depth": 34,
+          "maxDepth": 34
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758300019804,
+        "data": {
+          "depth": 37,
+          "maxDepth": 37
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758300019819,
+        "data": {
+          "depth": 39,
+          "maxDepth": 39
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758300019836,
+        "data": {
+          "depth": 40,
+          "maxDepth": 40
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758300019886,
+        "data": {
+          "depth": 44,
+          "maxDepth": 44
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758300019903,
+        "data": {
+          "depth": 45,
+          "maxDepth": 45
+        }
+      },
+      {
+        "type": "session_update",
+        "timestamp": 1758300022015,
+        "data": {
+          "duration": 360010,
+          "lastActivity": 2095,
+          "maxScrollDepth": 45
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758300022274,
+        "data": {
+          "element": "button",
+          "className": "MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorPrimary css-57cytv-MuiButtonBase-root-MuiButton-root",
+          "id": "",
+          "x": 1401,
+          "y": 323
+        }
+      }
+    ],
+    "ipAddress": "::1",
+    "country": "Unknown",
+    "region": "Unknown",
+    "city": "Unknown",
+    "countryCode": "Unknown",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+    "language": "en-US",
+    "referrer": "http://localhost:3000/profile/manage",
+    "deviceType": "desktop",
+    "browser": "Chrome",
+    "browserVersion": "140.0",
+    "browserEngine": "Blink",
+    "operatingSystem": "Windows",
+    "osVersion": "10/11",
+    "cookiesEnabled": true,
+    "localStorageSupport": true,
+    "javascriptEnabled": true,
+    "loginStatus": true,
+    "geoSource": "server",
+    "sessionSource": "direct",
+    "customField1": "0",
+    "customField2": "low",
+    "customField3": "good",
+    "screenWidth": 1920,
+    "screenHeight": 1080,
+    "viewportWidth": 1920,
+    "viewportHeight": 911,
+    "colorDepth": 24,
+    "browserPlugins": [
+      "PDF Viewer",
+      "Chrome PDF Viewer",
+      "Chromium PDF Viewer",
+      "Microsoft Edge PDF Viewer",
+      "WebKit built-in PDF"
+    ],
+    "networkType": "4g",
+    "connectionSpeed": "10Mbps",
+    "cpuCores": 12,
+    "memorySize": 8,
+    "batteryStatus": {},
+    "timezone": "Asia/Calcutta"
+  },
+  {
+    "sessionId": "sess_1758300024096_0ykoewa4p",
+    "timestamp": 1758300024097,
+    "landingPage": "/api/analytics/session",
+    "pagesVisited": [
+      "/api/analytics/session"
+    ],
+    "sessionDuration": 300620,
+    "events": [
+      {
+        "type": "page_view",
+        "timestamp": 1758300024187,
+        "data": {
+          "timestamp": 1758300024187
+        }
+      },
+      {
+        "type": "page_view",
+        "timestamp": 1758300024703,
+        "data": {
+          "timestamp": 1758300024703
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758300027021,
+        "data": {
+          "element": "button",
+          "className": "MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-edgeEnd MuiIconButton-sizeLarge css-mfa1la-MuiButtonBase-root-MuiIconButton-root",
+          "id": "",
+          "x": 1886,
+          "y": 42
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758300027999,
+        "data": {
+          "element": "li",
+          "className": "MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-1cmc51i-MuiButtonBase-root-MuiMenuItem-root",
+          "id": "",
+          "x": 1824,
+          "y": 226
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758300031623,
+        "data": {
+          "element": "button",
+          "className": "MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-edgeEnd MuiIconButton-sizeLarge css-mfa1la-MuiButtonBase-root-MuiIconButton-root",
+          "id": "",
+          "x": 1890,
+          "y": 25
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758300032642,
+        "data": {
+          "element": "span",
+          "className": "MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-rizt0-MuiTypography-root",
+          "id": "",
+          "x": 1792,
+          "y": 250
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758300033768,
+        "data": {
+          "depth": 1,
+          "maxDepth": 1
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758300033786,
+        "data": {
+          "depth": 2,
+          "maxDepth": 2
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758300033852,
+        "data": {
+          "depth": 7,
+          "maxDepth": 7
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758300033868,
+        "data": {
+          "depth": 9,
+          "maxDepth": 9
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758300033886,
+        "data": {
+          "depth": 11,
+          "maxDepth": 11
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758300033918,
+        "data": {
+          "depth": 13,
+          "maxDepth": 13
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758300035324,
+        "data": {
+          "element": "img",
+          "className": "MuiAvatar-img css-1su80sj-MuiAvatar-img",
+          "id": "",
+          "x": 1881,
+          "y": 26
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758300036443,
+        "data": {
+          "element": "span",
+          "className": "MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-rizt0-MuiTypography-root",
+          "id": "",
+          "x": 1787,
+          "y": 237
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758300037303,
+        "data": {
+          "element": "img",
+          "className": "MuiAvatar-img css-1su80sj-MuiAvatar-img",
+          "id": "",
+          "x": 1867,
+          "y": 34
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758300038486,
+        "data": {
+          "element": "div",
+          "className": "MuiBackdrop-root MuiBackdrop-invisible MuiModal-backdrop css-vl6bb4-MuiBackdrop-root-MuiModal-backdrop",
+          "id": "",
+          "x": 1163,
+          "y": 284
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758300039594,
+        "data": {
+          "depth": 14,
+          "maxDepth": 14
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758300039654,
+        "data": {
+          "depth": 15,
+          "maxDepth": 15
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758300039717,
+        "data": {
+          "depth": 19,
+          "maxDepth": 19
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758300039751,
+        "data": {
+          "depth": 20,
+          "maxDepth": 20
+        }
+      },
+      {
+        "type": "page_hidden",
+        "timestamp": 1758300042731,
+        "data": {
+          "duration": 19131
+        }
+      },
+      {
+        "type": "session_update",
+        "timestamp": 1758300053962,
+        "data": {
+          "duration": 30362,
+          "lastActivity": 13062,
+          "maxScrollDepth": 20
+        }
+      },
+      {
+        "type": "session_update",
+        "timestamp": 1758300083976,
+        "data": {
+          "duration": 60376,
+          "lastActivity": 43076,
+          "maxScrollDepth": 20
+        }
+      },
+      {
+        "type": "session_update",
+        "timestamp": 1758300113971,
+        "data": {
+          "duration": 90371,
+          "lastActivity": 73071,
+          "maxScrollDepth": 20
+        }
+      },
+      {
+        "type": "page_visible",
+        "timestamp": 1758300130953,
+        "data": {
+          "duration": 107353
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758300131579,
+        "data": {
+          "depth": 22,
+          "maxDepth": 22
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758300131661,
+        "data": {
+          "depth": 26,
+          "maxDepth": 26
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758300132960,
+        "data": {
+          "element": "button",
+          "className": "MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-1iy2vwr-MuiButtonBase-root-MuiButton-root",
+          "id": "",
+          "x": 616,
+          "y": 196
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758300133611,
+        "data": {
+          "depth": 31,
+          "maxDepth": 31
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758300136335,
+        "data": {
+          "element": "body",
+          "className": "roboto_fbb8d07a-module__-8ErAW__className focus-indicator error-prevention keyboard-navigation large-targets",
+          "id": "",
+          "x": 1120,
+          "y": 325
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758300137613,
+        "data": {
+          "element": "div",
+          "className": "MuiBackdrop-root MuiBackdrop-invisible MuiModal-backdrop css-vl6bb4-MuiBackdrop-root-MuiModal-backdrop",
+          "id": "",
+          "x": 1120,
+          "y": 325
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758300139160,
+        "data": {
+          "element": "button",
+          "className": "MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-1iy2vwr-MuiButtonBase-root-MuiButton-root",
+          "id": "",
+          "x": 944,
+          "y": 186
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758300141647,
+        "data": {
+          "element": "button",
+          "className": "MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-1iy2vwr-MuiButtonBase-root-MuiButton-root",
+          "id": "",
+          "x": 1078,
+          "y": 193
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758300142400,
+        "data": {
+          "element": "button",
+          "className": "MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-1iy2vwr-MuiButtonBase-root-MuiButton-root",
+          "id": "",
+          "x": 1181,
+          "y": 180
+        }
+      },
+      {
+        "type": "session_update",
+        "timestamp": 1758300143611,
+        "data": {
+          "duration": 120011,
+          "lastActivity": 1210,
+          "maxScrollDepth": 31
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758300144376,
+        "data": {
+          "element": "nextjs-portal",
+          "className": "",
+          "id": "",
+          "x": 69,
+          "y": 863
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758300146148,
+        "data": {
+          "element": "nextjs-portal",
+          "className": "",
+          "id": "",
+          "x": 1333,
+          "y": 179
+        }
+      },
+      {
+        "type": "page_hidden",
+        "timestamp": 1758300148177,
+        "data": {
+          "duration": 124577
+        }
+      },
+      {
+        "type": "page_visible",
+        "timestamp": 1758300169795,
+        "data": {
+          "duration": 146195
+        }
+      },
+      {
+        "type": "page_hidden",
+        "timestamp": 1758300171715,
+        "data": {
+          "duration": 148115
+        }
+      },
+      {
+        "type": "session_update",
+        "timestamp": 1758300173962,
+        "data": {
+          "duration": 150361,
+          "lastActivity": 27813,
+          "maxScrollDepth": 31
+        }
+      },
+      {
+        "type": "session_update",
+        "timestamp": 1758300203961,
+        "data": {
+          "duration": 180361,
+          "lastActivity": 57813,
+          "maxScrollDepth": 31
+        }
+      },
+      {
+        "type": "session_update",
+        "timestamp": 1758300249305,
+        "data": {
+          "duration": 225705,
+          "lastActivity": 103157,
+          "maxScrollDepth": 31
+        }
+      },
+      {
+        "type": "page_hidden",
+        "timestamp": 1758300253723,
+        "data": {
+          "duration": 230123
+        }
+      },
+      {
+        "type": "page_visible",
+        "timestamp": 1758300259328,
+        "data": {
+          "duration": 235728
+        }
+      },
+      {
+        "type": "page_hidden",
+        "timestamp": 1758300261200,
+        "data": {
+          "duration": 237600
+        }
+      },
+      {
+        "type": "session_update",
+        "timestamp": 1758300263961,
+        "data": {
+          "duration": 240361,
+          "lastActivity": 117813,
+          "maxScrollDepth": 31
+        }
+      },
+      {
+        "type": "page_visible",
+        "timestamp": 1758300264123,
+        "data": {
+          "duration": 240523
+        }
+      },
+      {
+        "type": "page_hidden",
+        "timestamp": 1758300267765,
+        "data": {
+          "duration": 244165
+        }
+      },
+      {
+        "type": "session_update",
+        "timestamp": 1758300293974,
+        "data": {
+          "duration": 270374,
+          "lastActivity": 147826,
+          "maxScrollDepth": 31
+        }
+      },
+      {
+        "type": "session_update",
+        "timestamp": 1758300323964,
+        "data": {
+          "duration": 300364,
+          "lastActivity": 177816,
+          "maxScrollDepth": 31
+        }
+      }
+    ],
+    "ipAddress": "::1",
+    "country": "Unknown",
+    "region": "Unknown",
+    "city": "Unknown",
+    "countryCode": "Unknown",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+    "language": "en-US",
+    "referrer": "http://localhost:3000/profile/manage",
+    "deviceType": "desktop",
+    "browser": "Chrome",
+    "browserVersion": "140.0",
+    "browserEngine": "Blink",
+    "operatingSystem": "Windows",
+    "osVersion": "10/11",
+    "cookiesEnabled": true,
+    "localStorageSupport": true,
+    "javascriptEnabled": true,
+    "loginStatus": false,
+    "geoSource": "server",
+    "sessionSource": "direct",
+    "customField1": "0",
+    "customField2": "low",
+    "customField3": "good",
+    "screenWidth": 1920,
+    "screenHeight": 1080,
+    "viewportWidth": 1920,
+    "viewportHeight": 911,
+    "colorDepth": 24,
+    "browserPlugins": [
+      "PDF Viewer",
+      "Chrome PDF Viewer",
+      "Chromium PDF Viewer",
+      "Microsoft Edge PDF Viewer",
+      "WebKit built-in PDF"
+    ],
+    "networkType": "4g",
+    "connectionSpeed": "5.4Mbps",
+    "cpuCores": 12,
+    "memorySize": 8,
+    "batteryStatus": {},
+    "timezone": "Asia/Calcutta"
+  },
+  {
+    "sessionId": "sess_1758304229939_k3tawwlj1",
+    "userId": "admin",
+    "timestamp": 1758304229940,
+    "landingPage": "/api/analytics/session",
+    "currentPage": "/admin",
+    "pagesVisited": [
+      "/api/analytics/session"
+    ],
+    "sessionDuration": 14302,
+    "events": [
+      {
+        "type": "page_view",
+        "timestamp": 1758304230043,
+        "page": "/admin",
+        "data": {
+          "page": "/admin",
+          "timestamp": 1758304230043,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "page_view",
+        "timestamp": 1758304231552,
+        "page": "/admin/login",
+        "data": {
+          "page": "/admin/login",
+          "timestamp": 1758304231552,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758304233462,
+        "page": "/admin/login",
+        "data": {
+          "depth": 1,
+          "maxDepth": 1,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758304233476,
+        "page": "/admin/login",
+        "data": {
+          "depth": 4,
+          "maxDepth": 4,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758304233543,
+        "page": "/admin/login",
+        "data": {
+          "depth": 46,
+          "maxDepth": 46,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758304233560,
+        "page": "/admin/login",
+        "data": {
+          "depth": 61,
+          "maxDepth": 61,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758304233643,
+        "page": "/admin/login",
+        "data": {
+          "depth": 100,
+          "maxDepth": 100,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758304243705,
+        "page": "/admin/login",
+        "data": {
+          "element": "button",
+          "className": "MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButton-fullWidth MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButton-fullWidth css-1cabhrd-MuiButtonBase-root-MuiButton-root",
+          "id": "",
+          "x": 0,
+          "y": 0,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "form_submit",
+        "timestamp": 1758304243789,
+        "page": "/admin/login",
+        "data": {
+          "formId": "",
+          "formClass": "MuiBox-root css-0",
+          "formAction": "http://localhost:3000/admin/login",
+          "formFields": {
+            "username": "admin",
+            "password": "admin123"
+          },
+          "userType": "admin"
+        }
+      }
+    ],
+    "ipAddress": "::1",
+    "country": "Unknown",
+    "region": "Unknown",
+    "city": "Unknown",
+    "countryCode": "Unknown",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+    "language": "en-US",
+    "referrer": "http://localhost:3000/admin",
+    "deviceType": "desktop",
+    "browser": "Chrome",
+    "browserVersion": "140.0",
+    "browserEngine": "Blink",
+    "operatingSystem": "Windows",
+    "osVersion": "10/11",
+    "cookiesEnabled": true,
+    "localStorageSupport": true,
+    "javascriptEnabled": true,
+    "loginStatus": true,
+    "geoSource": "server",
+    "sessionSource": "direct",
+    "customField1": "0",
+    "customField2": "low",
+    "customField3": "good",
+    "screenWidth": 1920,
+    "screenHeight": 1080,
+    "viewportWidth": 1920,
+    "viewportHeight": 911,
+    "colorDepth": 24,
+    "browserPlugins": [
+      "PDF Viewer",
+      "Chrome PDF Viewer",
+      "Chromium PDF Viewer",
+      "Microsoft Edge PDF Viewer",
+      "WebKit built-in PDF"
+    ],
+    "networkType": "4g",
+    "connectionSpeed": "10Mbps",
+    "cpuCores": 12,
+    "memorySize": 8,
+    "batteryStatus": {},
+    "timezone": "Asia/Calcutta",
+    "userType": "admin"
+  },
+  {
+    "sessionId": "sess_1758304257323_carfgm36f",
+    "userId": "admin",
+    "timestamp": 1758304257323,
+    "landingPage": "/api/analytics/session",
+    "currentPage": "/admin/dashboard",
+    "pagesVisited": [
+      "/api/analytics/session"
+    ],
+    "sessionDuration": 4,
+    "events": [],
+    "ipAddress": "::1",
+    "country": "Unknown",
+    "region": "Unknown",
+    "city": "Unknown",
+    "countryCode": "Unknown",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+    "language": "en-US",
+    "referrer": "http://localhost:3000/admin/dashboard",
+    "deviceType": "desktop",
+    "browser": "Chrome",
+    "browserVersion": "140.0",
+    "browserEngine": "Blink",
+    "operatingSystem": "Windows",
+    "osVersion": "10/11",
+    "cookiesEnabled": true,
+    "localStorageSupport": true,
+    "javascriptEnabled": true,
+    "loginStatus": true,
+    "geoSource": "server",
+    "sessionSource": "direct",
+    "customField1": "0",
+    "customField2": "low",
+    "customField3": "good",
+    "screenWidth": 1920,
+    "screenHeight": 1080,
+    "viewportWidth": 1920,
+    "viewportHeight": 911,
+    "colorDepth": 24,
+    "browserPlugins": [
+      "PDF Viewer",
+      "Chrome PDF Viewer",
+      "Chromium PDF Viewer",
+      "Microsoft Edge PDF Viewer",
+      "WebKit built-in PDF"
+    ],
+    "networkType": "4g",
+    "connectionSpeed": "10Mbps",
+    "cpuCores": 12,
+    "memorySize": 8,
+    "batteryStatus": {},
+    "timezone": "Asia/Calcutta",
+    "userType": "admin"
+  },
+  {
+    "sessionId": "sess_1758304257339_jnjnwg00n",
+    "userId": "admin",
+    "timestamp": 1758304257339,
+    "landingPage": "/api/analytics/session",
+    "currentPage": "/admin/dashboard",
+    "pagesVisited": [
+      "/api/analytics/session"
+    ],
+    "sessionDuration": 117,
+    "events": [],
+    "ipAddress": "::1",
+    "country": "Unknown",
+    "region": "Unknown",
+    "city": "Unknown",
+    "countryCode": "Unknown",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+    "language": "en-US",
+    "referrer": "http://localhost:3000/admin/dashboard",
+    "deviceType": "desktop",
+    "browser": "Chrome",
+    "browserVersion": "140.0",
+    "browserEngine": "Blink",
+    "operatingSystem": "Windows",
+    "osVersion": "10/11",
+    "cookiesEnabled": true,
+    "localStorageSupport": true,
+    "javascriptEnabled": true,
+    "loginStatus": true,
+    "geoSource": "server",
+    "sessionSource": "direct",
+    "customField1": "0",
+    "customField2": "low",
+    "customField3": "good",
+    "screenWidth": 1920,
+    "screenHeight": 1080,
+    "viewportWidth": 1920,
+    "viewportHeight": 911,
+    "colorDepth": 24,
+    "browserPlugins": [
+      "PDF Viewer",
+      "Chrome PDF Viewer",
+      "Chromium PDF Viewer",
+      "Microsoft Edge PDF Viewer",
+      "WebKit built-in PDF"
+    ],
+    "networkType": "4g",
+    "connectionSpeed": "10Mbps",
+    "cpuCores": 12,
+    "memorySize": 8,
+    "batteryStatus": {},
+    "timezone": "Asia/Calcutta",
+    "userType": "admin"
+  },
+  {
+    "sessionId": "sess_1758304257360_g8qgw7awj",
+    "userId": "admin",
+    "timestamp": 1758304257360,
+    "landingPage": "/api/analytics/session",
+    "currentPage": "/api/analytics/session",
+    "pagesVisited": [
+      "/api/analytics/session"
+    ],
+    "sessionDuration": 980,
+    "events": [
+      {
+        "type": "page_view",
+        "timestamp": 1758304257487,
+        "page": "/admin/dashboard",
+        "data": {
+          "page": "/admin/dashboard",
+          "timestamp": 1758304257487,
+          "userType": "admin"
+        }
+      }
+    ],
+    "ipAddress": "::1",
+    "country": "Unknown",
+    "region": "Unknown",
+    "city": "Unknown",
+    "countryCode": "Unknown",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+    "language": "en-US",
+    "referrer": "http://localhost:3000/admin/dashboard",
+    "deviceType": "desktop",
+    "browser": "Chrome",
+    "browserVersion": "140.0",
+    "browserEngine": "Blink",
+    "operatingSystem": "Windows",
+    "osVersion": "10/11",
+    "cookiesEnabled": true,
+    "localStorageSupport": true,
+    "javascriptEnabled": true,
+    "loginStatus": false,
+    "geoSource": "server",
+    "sessionSource": "direct",
+    "customField1": "0",
+    "customField2": "low",
+    "customField3": "good"
+  },
+  {
+    "sessionId": "sess_1758304322086_e87n0oify",
+    "userId": "admin",
+    "timestamp": 1758304322086,
+    "landingPage": "/api/analytics/session",
+    "currentPage": "/admin/dashboard",
+    "pagesVisited": [
+      "/api/analytics/session"
+    ],
+    "sessionDuration": 39954,
+    "events": [
+      {
+        "type": "page_view",
+        "timestamp": 1758304322243,
+        "page": "/admin/dashboard",
+        "data": {
+          "page": "/admin/dashboard",
+          "timestamp": 1758304322243,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "page_hidden",
+        "timestamp": 1758304326882,
+        "page": "/admin/dashboard",
+        "data": {
+          "duration": 25351,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "session_update",
+        "timestamp": 1758304351667,
+        "page": "/admin/dashboard",
+        "data": {
+          "duration": 50136,
+          "lastActivity": 26132,
+          "maxScrollDepth": 100,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758304355537,
+        "page": "/admin/dashboard",
+        "data": {
+          "element": "nextjs-portal",
+          "className": "",
+          "id": "",
+          "x": 77,
+          "y": 879,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758304361220,
+        "page": "/admin/dashboard",
+        "data": {
+          "element": "nextjs-portal",
+          "className": "",
+          "id": "",
+          "x": 1344,
+          "y": 168,
+          "userType": "admin"
+        }
+      }
+    ],
+    "ipAddress": "::1",
+    "country": "Unknown",
+    "region": "Unknown",
+    "city": "Unknown",
+    "countryCode": "Unknown",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+    "language": "en-US",
+    "referrer": "http://localhost:3000/admin/dashboard",
+    "deviceType": "desktop",
+    "browser": "Chrome",
+    "browserVersion": "140.0",
+    "browserEngine": "Blink",
+    "operatingSystem": "Windows",
+    "osVersion": "10/11",
+    "cookiesEnabled": true,
+    "localStorageSupport": true,
+    "javascriptEnabled": true,
+    "loginStatus": true,
+    "geoSource": "server",
+    "sessionSource": "direct",
+    "customField1": "0",
+    "customField2": "low",
+    "customField3": "good",
+    "screenWidth": 1920,
+    "screenHeight": 1080,
+    "viewportWidth": 1920,
+    "viewportHeight": 911,
+    "colorDepth": 24,
+    "browserPlugins": [
+      "PDF Viewer",
+      "Chrome PDF Viewer",
+      "Chromium PDF Viewer",
+      "Microsoft Edge PDF Viewer",
+      "WebKit built-in PDF"
+    ],
+    "networkType": "4g",
+    "connectionSpeed": "10Mbps",
+    "cpuCores": 12,
+    "memorySize": 8,
+    "batteryStatus": {},
+    "timezone": "Asia/Calcutta",
+    "userType": "admin"
+  },
+  {
+    "sessionId": "sess_1758304364668_z71egxauq",
+    "userId": "admin",
+    "timestamp": 1758304364668,
+    "landingPage": "/api/analytics/session",
+    "currentPage": "/admin/dashboard",
+    "pagesVisited": [
+      "/api/analytics/session"
+    ],
+    "sessionDuration": 471,
+    "events": [
+      {
+        "type": "page_view",
+        "timestamp": 1758304364718,
+        "page": "/admin/dashboard",
+        "data": {
+          "page": "/admin/dashboard",
+          "timestamp": 1758304364718,
+          "userType": "admin"
+        }
+      }
+    ],
+    "ipAddress": "::1",
+    "country": "Unknown",
+    "region": "Unknown",
+    "city": "Unknown",
+    "countryCode": "Unknown",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+    "language": "en-US",
+    "referrer": "http://localhost:3000/admin/dashboard",
+    "deviceType": "desktop",
+    "browser": "Chrome",
+    "browserVersion": "140.0",
+    "browserEngine": "Blink",
+    "operatingSystem": "Windows",
+    "osVersion": "10/11",
+    "cookiesEnabled": true,
+    "localStorageSupport": true,
+    "javascriptEnabled": true,
+    "loginStatus": true,
+    "geoSource": "server",
+    "sessionSource": "direct",
+    "customField1": "0",
+    "customField2": "low",
+    "customField3": "good",
+    "screenWidth": 1920,
+    "screenHeight": 1080,
+    "viewportWidth": 1920,
+    "viewportHeight": 911,
+    "colorDepth": 24,
+    "browserPlugins": [
+      "PDF Viewer",
+      "Chrome PDF Viewer",
+      "Chromium PDF Viewer",
+      "Microsoft Edge PDF Viewer",
+      "WebKit built-in PDF"
+    ],
+    "networkType": "4g",
+    "connectionSpeed": "10Mbps",
+    "cpuCores": 12,
+    "memorySize": 8,
+    "batteryStatus": {},
+    "timezone": "Asia/Calcutta",
+    "userType": "admin"
+  },
+  {
+    "sessionId": "sess_1758304373836_3307svztd",
+    "userId": "admin",
+    "timestamp": 1758304373836,
+    "landingPage": "/api/analytics/session",
+    "currentPage": "/admin/dashboard",
+    "pagesVisited": [
+      "/api/analytics/session"
+    ],
+    "sessionDuration": 1572,
+    "events": [
+      {
+        "type": "page_view",
+        "timestamp": 1758304373928,
+        "page": "/admin/dashboard",
+        "data": {
+          "page": "/admin/dashboard",
+          "timestamp": 1758304373928,
+          "userType": "admin"
+        }
+      }
+    ],
+    "ipAddress": "::1",
+    "country": "Unknown",
+    "region": "Unknown",
+    "city": "Unknown",
+    "countryCode": "Unknown",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+    "language": "en-US",
+    "referrer": "http://localhost:3000/admin/dashboard",
+    "deviceType": "desktop",
+    "browser": "Chrome",
+    "browserVersion": "140.0",
+    "browserEngine": "Blink",
+    "operatingSystem": "Windows",
+    "osVersion": "10/11",
+    "cookiesEnabled": true,
+    "localStorageSupport": true,
+    "javascriptEnabled": true,
+    "loginStatus": true,
+    "geoSource": "server",
+    "sessionSource": "direct",
+    "customField1": "0",
+    "customField2": "low",
+    "customField3": "good",
+    "screenWidth": 1920,
+    "screenHeight": 1080,
+    "viewportWidth": 1920,
+    "viewportHeight": 911,
+    "colorDepth": 24,
+    "browserPlugins": [
+      "PDF Viewer",
+      "Chrome PDF Viewer",
+      "Chromium PDF Viewer",
+      "Microsoft Edge PDF Viewer",
+      "WebKit built-in PDF"
+    ],
+    "networkType": "4g",
+    "connectionSpeed": "10Mbps",
+    "cpuCores": 12,
+    "memorySize": 8,
+    "batteryStatus": {},
+    "timezone": "Asia/Calcutta",
+    "userType": "admin"
+  },
+  {
+    "sessionId": "sess_1758304373868_4b1lwxvn2",
+    "userId": "admin",
+    "timestamp": 1758304373869,
+    "landingPage": "/api/analytics/session",
+    "currentPage": "/admin/dashboard",
+    "pagesVisited": [
+      "/api/analytics/session"
+    ],
+    "sessionDuration": 24263,
+    "events": [
+      {
+        "type": "page_view",
+        "timestamp": 1758304373964,
+        "page": "/admin/dashboard",
+        "data": {
+          "page": "/admin/dashboard",
+          "timestamp": 1758304373964,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758304375898,
+        "page": "/admin/dashboard",
+        "data": {
+          "depth": 1,
+          "maxDepth": 1,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758304375917,
+        "page": "/admin/dashboard",
+        "data": {
+          "depth": 2,
+          "maxDepth": 2,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758304375932,
+        "page": "/admin/dashboard",
+        "data": {
+          "depth": 3,
+          "maxDepth": 3,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758304375984,
+        "page": "/admin/dashboard",
+        "data": {
+          "depth": 6,
+          "maxDepth": 6,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758304376016,
+        "page": "/admin/dashboard",
+        "data": {
+          "depth": 7,
+          "maxDepth": 7,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758304376724,
+        "page": "/admin/dashboard",
+        "data": {
+          "element": "nextjs-portal",
+          "className": "",
+          "id": "",
+          "x": 64,
+          "y": 860,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758304381521,
+        "page": "/admin/dashboard",
+        "data": {
+          "element": "nextjs-portal",
+          "className": "",
+          "id": "",
+          "x": 1326,
+          "y": 171,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758304382677,
+        "page": "/admin/dashboard",
+        "data": {
+          "depth": 100,
+          "maxDepth": 100,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "page_hidden",
+        "timestamp": 1758304382912,
+        "page": "/admin/dashboard",
+        "data": {
+          "duration": 10296,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "page_visible",
+        "timestamp": 1758304385371,
+        "page": "/admin/dashboard",
+        "data": {
+          "duration": 12755,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "page_hidden",
+        "timestamp": 1758304394194,
+        "page": "/admin/dashboard",
+        "data": {
+          "duration": 21578,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "page_visible",
+        "timestamp": 1758304397561,
+        "page": "/admin/dashboard",
+        "data": {
+          "duration": 24945,
+          "userType": "admin"
+        }
+      }
+    ],
+    "ipAddress": "::1",
+    "country": "Unknown",
+    "region": "Unknown",
+    "city": "Unknown",
+    "countryCode": "Unknown",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+    "language": "en-US",
+    "referrer": "http://localhost:3000/admin/dashboard",
+    "deviceType": "desktop",
+    "browser": "Chrome",
+    "browserVersion": "140.0",
+    "browserEngine": "Blink",
+    "operatingSystem": "Windows",
+    "osVersion": "10/11",
+    "cookiesEnabled": true,
+    "localStorageSupport": true,
+    "javascriptEnabled": true,
+    "loginStatus": true,
+    "geoSource": "server",
+    "sessionSource": "direct",
+    "customField1": "0",
+    "customField2": "low",
+    "customField3": "good",
+    "screenWidth": 1920,
+    "screenHeight": 1080,
+    "viewportWidth": 1920,
+    "viewportHeight": 911,
+    "colorDepth": 24,
+    "browserPlugins": [
+      "PDF Viewer",
+      "Chrome PDF Viewer",
+      "Chromium PDF Viewer",
+      "Microsoft Edge PDF Viewer",
+      "WebKit built-in PDF"
+    ],
+    "networkType": "4g",
+    "connectionSpeed": "10Mbps",
+    "cpuCores": 12,
+    "memorySize": 8,
+    "batteryStatus": {},
+    "timezone": "Asia/Calcutta",
+    "userType": "admin"
+  },
+  {
+    "sessionId": "sess_1758315261274_9e6jfwpe5",
+    "userId": "admin",
+    "timestamp": 1758315261274,
+    "landingPage": "/api/analytics/session",
+    "currentPage": "/admin",
+    "pagesVisited": [
+      "/api/analytics/session"
+    ],
+    "sessionDuration": 17956,
+    "events": [
+      {
+        "type": "page_view",
+        "timestamp": 1758315261315,
+        "page": "/admin",
+        "data": {
+          "page": "/admin",
+          "timestamp": 1758315261314,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "page_view",
+        "timestamp": 1758315262114,
+        "page": "/admin/login",
+        "data": {
+          "page": "/admin/login",
+          "timestamp": 1758315262114,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758315267201,
+        "page": "/admin/login",
+        "data": {
+          "element": "button",
+          "className": "MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButton-fullWidth MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButton-fullWidth css-1cabhrd-MuiButtonBase-root-MuiButton-root",
+          "id": "",
+          "x": 0,
+          "y": 0,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "form_submit",
+        "timestamp": 1758315267227,
+        "page": "/admin/login",
+        "data": {
+          "formId": "",
+          "formClass": "MuiBox-root css-0",
+          "formAction": "http://localhost:3000/admin/login",
+          "formFields": {
+            "username": "admin",
+            "password": "admin123"
+          },
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "page_view",
+        "timestamp": 1758315270204,
+        "page": "/admin/dashboard",
+        "data": {
+          "page": "/admin/dashboard",
+          "timestamp": 1758315270204,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758315273353,
+        "page": "/admin/dashboard",
+        "data": {
+          "depth": 2,
+          "maxDepth": 2,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758315273439,
+        "page": "/admin/dashboard",
+        "data": {
+          "depth": 30,
+          "maxDepth": 30,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758315273801,
+        "page": "/admin/dashboard",
+        "data": {
+          "depth": 46,
+          "maxDepth": 46,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758315273822,
+        "page": "/admin/dashboard",
+        "data": {
+          "depth": 49,
+          "maxDepth": 49,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758315273839,
+        "page": "/admin/dashboard",
+        "data": {
+          "depth": 52,
+          "maxDepth": 52,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758315273890,
+        "page": "/admin/dashboard",
+        "data": {
+          "depth": 66,
+          "maxDepth": 66,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758315273922,
+        "page": "/admin/dashboard",
+        "data": {
+          "depth": 74,
+          "maxDepth": 74,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758315273972,
+        "page": "/admin/dashboard",
+        "data": {
+          "depth": 80,
+          "maxDepth": 80,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758315274339,
+        "page": "/admin/dashboard",
+        "data": {
+          "depth": 83,
+          "maxDepth": 83,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758315274404,
+        "page": "/admin/dashboard",
+        "data": {
+          "depth": 87,
+          "maxDepth": 87,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758315276973,
+        "page": "/admin/dashboard",
+        "data": {
+          "element": "button",
+          "className": "MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorPrimary css-r1a7e8-MuiButtonBase-root-MuiButton-root",
+          "id": "",
+          "x": 1620,
+          "y": 51,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "page_view",
+        "timestamp": 1758315278366,
+        "page": "/admin/analytics",
+        "data": {
+          "page": "/admin/analytics",
+          "timestamp": 1758315278366,
+          "userType": "admin"
+        }
+      }
+    ],
+    "ipAddress": "::1",
+    "country": "Unknown",
+    "region": "Unknown",
+    "city": "Unknown",
+    "countryCode": "Unknown",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+    "language": "en-GB",
+    "referrer": "http://localhost:3000/admin",
+    "deviceType": "desktop",
+    "browser": "Chrome",
+    "browserVersion": "140.0",
+    "browserEngine": "Blink",
+    "operatingSystem": "Windows",
+    "osVersion": "10/11",
+    "cookiesEnabled": true,
+    "localStorageSupport": true,
+    "javascriptEnabled": true,
+    "loginStatus": true,
+    "geoSource": "server",
+    "sessionSource": "direct",
+    "customField1": "0",
+    "customField2": "low",
+    "customField3": "good",
+    "screenWidth": 1920,
+    "screenHeight": 1080,
+    "viewportWidth": 1920,
+    "viewportHeight": 945,
+    "colorDepth": 24,
+    "browserPlugins": [
+      "PDF Viewer",
+      "Chrome PDF Viewer",
+      "Chromium PDF Viewer",
+      "Microsoft Edge PDF Viewer",
+      "WebKit built-in PDF"
+    ],
+    "networkType": "4g",
+    "connectionSpeed": "5.4Mbps",
+    "cpuCores": 12,
+    "memorySize": 8,
+    "batteryStatus": {},
+    "timezone": "Asia/Calcutta",
+    "userType": "admin"
+  }
+]cutta",
+    "userType": "admin"
+  }
+]

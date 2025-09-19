@@ -1,0 +1,22 @@
+{
+  "maxSessionsPerFile": 1000,
+  "sessionRetentionDays": 30,
+  "cleanupInterval": 86400000,
+  "enableClientTracking": true,
+  "enableServerTracking": true,
+  "enableGeolocation": true,
+  "enableDeviceDetection": true,
+  "enablePerformanceTracking": true,
+  "enableCustomEvents": true,
+  "dataRetentionPolicy": {
+    "sessions": 30,
+    "events": 30,
+    "exports": 7
+  },
+  "privacySettings": {
+    "anonymizeIPs": false,
+    "trackUserAgents": true,
+    "trackReferrers": true,
+    "trackCookies": true
+  }
+}

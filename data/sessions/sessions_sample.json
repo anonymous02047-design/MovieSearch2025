@@ -1,0 +1,30 @@
+[
+  {
+    "sessionId": "sess_sample_1234567890_abcdefghi",
+    "userId": null,
+    "timestamp": 1758206824039,
+    "ipAddress": "127.0.0.1",
+    "country": "US",
+    "region": "CA",
+    "city": "San Francisco",
+    "deviceType": "desktop",
+    "browser": "Chrome",
+    "browserVersion": "120.0.0.0",
+    "operatingSystem": "Windows",
+    "screenWidth": 1920,
+    "screenHeight": 1080,
+    "language": "en-US",
+    "referrer": "",
+    "landingPage": "/",
+    "currentPage": "/",
+    "pagesVisited": [
+      "/"
+    ],
+    "sessionDuration": 0,
+    "loginStatus": false,
+    "events": [],
+    "customField1": "0",
+    "customField2": "low",
+    "customField3": "good"
+  }
+]

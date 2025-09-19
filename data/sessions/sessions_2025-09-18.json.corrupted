@@ -1,0 +1,621 @@
+[
+  {
+    "sessionId": "sess_1758220485938_gy6p00oj1",
+    "userId": "admin",
+    "timestamp": 1758220485938,
+    "landingPage": "/api/analytics/session",
+    "currentPage": "/admin/analytics",
+    "pagesVisited": [
+      "/api/analytics/session"
+    ],
+    "sessionDuration": 24611,
+    "events": [
+      {
+        "type": "page_view",
+        "timestamp": 1758220486098,
+        "page": "/admin/analytics",
+        "data": {
+          "page": "/admin/analytics",
+          "timestamp": 1758220486098,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758220507864,
+        "page": "/admin/analytics",
+        "data": {
+          "element": "button",
+          "className": "MuiButtonBase-root MuiTab-root MuiTab-labelIcon MuiTab-textColorPrimary Mui-selected css-r621ug-MuiButtonBase-root-MuiTab-root",
+          "id": "",
+          "x": 556,
+          "y": 329,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758220509251,
+        "page": "/admin/analytics",
+        "data": {
+          "element": "span",
+          "className": "MuiChip-label MuiChip-labelSmall css-19m61dl-MuiChip-label",
+          "id": "",
+          "x": 975,
+          "y": 746,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758220509811,
+        "page": "/admin/analytics",
+        "data": {
+          "element": "span",
+          "className": "MuiChip-label MuiChip-labelSmall css-19m61dl-MuiChip-label",
+          "id": "",
+          "x": 975,
+          "y": 746,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758220509963,
+        "page": "/admin/analytics",
+        "data": {
+          "element": "span",
+          "className": "MuiChip-label MuiChip-labelSmall css-19m61dl-MuiChip-label",
+          "id": "",
+          "x": 975,
+          "y": 746,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758220510075,
+        "page": "/admin/analytics",
+        "data": {
+          "element": "span",
+          "className": "MuiChip-label MuiChip-labelSmall css-19m61dl-MuiChip-label",
+          "id": "",
+          "x": 975,
+          "y": 746,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758220510218,
+        "page": "/admin/analytics",
+        "data": {
+          "element": "span",
+          "className": "MuiChip-label MuiChip-labelSmall css-19m61dl-MuiChip-label",
+          "id": "",
+          "x": 975,
+          "y": 746,
+          "userType": "admin"
+        }
+      }
+    ],
+    "ipAddress": "::1",
+    "country": "Unknown",
+    "region": "Unknown",
+    "city": "Unknown",
+    "countryCode": "Unknown",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0",
+    "language": "en-US",
+    "referrer": "http://localhost:3000/admin/analytics",
+    "deviceType": "desktop",
+    "browser": "Edge",
+    "browserVersion": "140.0",
+    "browserEngine": "Blink",
+    "operatingSystem": "Windows",
+    "osVersion": "10/11",
+    "cookiesEnabled": true,
+    "localStorageSupport": true,
+    "javascriptEnabled": true,
+    "loginStatus": true,
+    "geoSource": "server",
+    "sessionSource": "direct",
+    "customField1": "0",
+    "customField2": "low",
+    "customField3": "good",
+    "screenWidth": 1920,
+    "screenHeight": 1080,
+    "viewportWidth": 1912,
+    "viewportHeight": 954,
+    "colorDepth": 24,
+    "browserPlugins": [
+      "PDF Viewer",
+      "Chrome PDF Viewer",
+      "Chromium PDF Viewer",
+      "Microsoft Edge PDF Viewer",
+      "WebKit built-in PDF"
+    ],
+    "networkType": "4g",
+    "connectionSpeed": "10Mbps",
+    "cpuCores": 12,
+    "memorySize": 8,
+    "batteryStatus": {},
+    "timezone": "Asia/Calcutta",
+    "userType": "admin"
+  },
+  {
+    "sessionId": "sess_1758220512550_qvzzp07jc",
+    "userId": "admin",
+    "timestamp": 1758220512550,
+    "landingPage": "/api/analytics/session",
+    "currentPage": "/admin/analytics",
+    "pagesVisited": [
+      "/api/analytics/session"
+    ],
+    "sessionDuration": 80897,
+    "events": [
+      {
+        "type": "page_view",
+        "timestamp": 1758220512613,
+        "page": "/admin/analytics",
+        "data": {
+          "page": "/admin/analytics",
+          "timestamp": 1758220512613,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758220513953,
+        "page": "/admin/analytics",
+        "data": {
+          "element": "button",
+          "className": "MuiButtonBase-root MuiTab-root MuiTab-labelIcon MuiTab-textColorPrimary Mui-selected css-r621ug-MuiButtonBase-root-MuiTab-root",
+          "id": "",
+          "x": 555,
+          "y": 344,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "page_hidden",
+        "timestamp": 1758220527705,
+        "page": "/admin/analytics",
+        "data": {
+          "duration": 15800,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "page_visible",
+        "timestamp": 1758220531264,
+        "page": "/admin/analytics",
+        "data": {
+          "duration": 19359,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758220536899,
+        "page": "/admin/analytics",
+        "data": {
+          "element": "span",
+          "className": "MuiChip-label MuiChip-labelSmall css-19m61dl-MuiChip-label",
+          "id": "",
+          "x": 1012,
+          "y": 757,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758220536995,
+        "page": "/admin/analytics",
+        "data": {
+          "element": "span",
+          "className": "MuiChip-label MuiChip-labelSmall css-19m61dl-MuiChip-label",
+          "id": "",
+          "x": 1012,
+          "y": 757,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758220537036,
+        "page": "/admin/analytics",
+        "data": {
+          "element": "span",
+          "className": "MuiChip-label MuiChip-labelSmall css-19m61dl-MuiChip-label",
+          "id": "",
+          "x": 1012,
+          "y": 757,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758220537156,
+        "page": "/admin/analytics",
+        "data": {
+          "element": "span",
+          "className": "MuiChip-label MuiChip-labelSmall css-19m61dl-MuiChip-label",
+          "id": "",
+          "x": 1012,
+          "y": 757,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758220537331,
+        "page": "/admin/analytics",
+        "data": {
+          "element": "span",
+          "className": "MuiChip-label MuiChip-labelSmall css-19m61dl-MuiChip-label",
+          "id": "",
+          "x": 1012,
+          "y": 757,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "page_hidden",
+        "timestamp": 1758220539082,
+        "page": "/admin/analytics",
+        "data": {
+          "duration": 27177,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "session_update",
+        "timestamp": 1758220542175,
+        "page": "/admin/analytics",
+        "data": {
+          "duration": 30270,
+          "lastActivity": 4843,
+          "maxScrollDepth": 0,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "page_visible",
+        "timestamp": 1758220550720,
+        "page": "/admin/analytics",
+        "data": {
+          "duration": 38815,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "page_hidden",
+        "timestamp": 1758220551640,
+        "page": "/admin/analytics",
+        "data": {
+          "duration": 39735,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "session_update",
+        "timestamp": 1758220572185,
+        "page": "/admin/analytics",
+        "data": {
+          "duration": 60280,
+          "lastActivity": 34853,
+          "maxScrollDepth": 0,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "page_visible",
+        "timestamp": 1758220576791,
+        "page": "/admin/analytics",
+        "data": {
+          "duration": 64886,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758220581102,
+        "page": "/admin/analytics",
+        "data": {
+          "element": "button",
+          "className": "MuiButtonBase-root MuiTab-root MuiTab-labelIcon MuiTab-textColorPrimary Mui-selected css-r621ug-MuiButtonBase-root-MuiTab-root",
+          "id": "",
+          "x": 726,
+          "y": 322,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758220581967,
+        "page": "/admin/analytics",
+        "data": {
+          "element": "button",
+          "className": "MuiButtonBase-root MuiTab-root MuiTab-labelIcon MuiTab-textColorPrimary Mui-selected css-r621ug-MuiButtonBase-root-MuiTab-root",
+          "id": "",
+          "x": 655,
+          "y": 334,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758220582673,
+        "page": "/admin/analytics",
+        "data": {
+          "element": "svg",
+          "className": {},
+          "id": "",
+          "x": 533,
+          "y": 321,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758220583091,
+        "page": "/admin/analytics",
+        "data": {
+          "element": "button",
+          "className": "MuiButtonBase-root MuiTab-root MuiTab-labelIcon MuiTab-textColorPrimary Mui-selected css-r621ug-MuiButtonBase-root-MuiTab-root",
+          "id": "",
+          "x": 465,
+          "y": 323,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758220583502,
+        "page": "/admin/analytics",
+        "data": {
+          "element": "button",
+          "className": "MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-1rog7uw-MuiButtonBase-root-MuiButton-root",
+          "id": "",
+          "x": 427,
+          "y": 270,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758220584362,
+        "page": "/admin/analytics",
+        "data": {
+          "element": "button",
+          "className": "MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-1rpf9i3-MuiButtonBase-root-MuiButton-root",
+          "id": "",
+          "x": 159,
+          "y": 123,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "page_view",
+        "timestamp": 1758220584581,
+        "page": "/admin/dashboard",
+        "data": {
+          "page": "/admin/dashboard",
+          "timestamp": 1758220584581,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758220587285,
+        "page": "/admin/dashboard",
+        "data": {
+          "element": "path",
+          "className": {},
+          "id": "",
+          "x": 1539,
+          "y": 49,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758220589405,
+        "page": "/admin/dashboard",
+        "data": {
+          "depth": 1,
+          "maxDepth": 1,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758220589412,
+        "page": "/admin/dashboard",
+        "data": {
+          "depth": 2,
+          "maxDepth": 2,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758220589487,
+        "page": "/admin/dashboard",
+        "data": {
+          "depth": 7,
+          "maxDepth": 7,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758220589502,
+        "page": "/admin/dashboard",
+        "data": {
+          "depth": 9,
+          "maxDepth": 9,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758220589523,
+        "page": "/admin/dashboard",
+        "data": {
+          "depth": 10,
+          "maxDepth": 10,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758220589593,
+        "page": "/admin/dashboard",
+        "data": {
+          "depth": 15,
+          "maxDepth": 15,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758220589651,
+        "page": "/admin/dashboard",
+        "data": {
+          "depth": 16,
+          "maxDepth": 16,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758220589661,
+        "page": "/admin/dashboard",
+        "data": {
+          "depth": 17,
+          "maxDepth": 17,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758220589735,
+        "page": "/admin/dashboard",
+        "data": {
+          "depth": 27,
+          "maxDepth": 27,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758220589751,
+        "page": "/admin/dashboard",
+        "data": {
+          "depth": 30,
+          "maxDepth": 30,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758220589766,
+        "page": "/admin/dashboard",
+        "data": {
+          "depth": 33,
+          "maxDepth": 33,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758220589790,
+        "page": "/admin/dashboard",
+        "data": {
+          "depth": 35,
+          "maxDepth": 35,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "scroll",
+        "timestamp": 1758220589806,
+        "page": "/admin/dashboard",
+        "data": {
+          "depth": 36,
+          "maxDepth": 36,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "click",
+        "timestamp": 1758220592541,
+        "page": "/admin/dashboard",
+        "data": {
+          "element": "button",
+          "className": "MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorPrimary css-m8wfof-MuiButtonBase-root-MuiButton-root",
+          "id": "",
+          "x": 1612,
+          "y": 48,
+          "userType": "admin"
+        }
+      },
+      {
+        "type": "page_view",
+        "timestamp": 1758220592816,
+        "page": "/admin/analytics",
+        "data": {
+          "page": "/admin/analytics",
+          "timestamp": 1758220592816,
+          "userType": "admin"
+        }
+      }
+    ],
+    "ipAddress": "::1",
+    "country": "Unknown",
+    "region": "Unknown",
+    "city": "Unknown",
+    "countryCode": "Unknown",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0",
+    "language": "en-US",
+    "referrer": "http://localhost:3000/admin/analytics",
+    "deviceType": "desktop",
+    "browser": "Edge",
+    "browserVersion": "140.0",
+    "browserEngine": "Blink",
+    "operatingSystem": "Windows",
+    "osVersion": "10/11",
+    "cookiesEnabled": true,
+    "localStorageSupport": true,
+    "javascriptEnabled": true,
+    "loginStatus": true,
+    "geoSource": "server",
+    "sessionSource": "direct",
+    "customField1": "0",
+    "customField2": "low",
+    "customField3": "good",
+    "screenWidth": 1920,
+    "screenHeight": 1080,
+    "viewportWidth": 1912,
+    "viewportHeight": 954,
+    "colorDepth": 24,
+    "browserPlugins": [
+      "PDF Viewer",
+      "Chrome PDF Viewer",
+      "Chromium PDF Viewer",
+      "Microsoft Edge PDF Viewer",
+      "WebKit built-in PDF"
+    ],
+    "networkType": "4g",
+    "connectionSpeed": "10Mbps",
+    "cpuCores": 12,
+    "memorySize": 8,
+    "batteryStatus": {},
+    "timezone": "Asia/Calcutta",
+    "userType": "admin"
+  }
+] "Asia/Calcutta",
+    "userType": "admin"
+  }
+]

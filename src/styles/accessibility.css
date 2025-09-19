@@ -1,0 +1,284 @@
+/* Accessibility CSS Variables */
+:root {
+  --accessibility-font-size: 16px;
+  --accessibility-font-family: system-ui, -apple-system, sans-serif;
+  --accessibility-line-height: 1.5;
+  --accessibility-letter-spacing: 0px;
+}
+
+/* High contrast mode */
+.high-contrast {
+  filter: contrast(200%);
+}
+
+.high-contrast * {
+  background-color: #000 !important;
+  color: #fff !important;
+  border-color: #fff !important;
+}
+
+.high-contrast a {
+  color: #ffff00 !important;
+  text-decoration: underline !important;
+}
+
+.high-contrast button {
+  background-color: #ffff00 !important;
+  color: #000 !important;
+  border: 2px solid #000 !important;
+}
+
+/* Dark mode */
+.dark-mode {
+  background-color: #1a1a1a !important;
+  color: #ffffff !important;
+}
+
+.dark-mode * {
+  background-color: inherit !important;
+  color: inherit !important;
+}
+
+.dark-mode a {
+  color: #66b3ff !important;
+}
+
+.dark-mode button {
+  background-color: #0066cc !important;
+  color: #ffffff !important;
+}
+
+/* Invert colors */
+.invert-colors {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* Grayscale mode */
+.grayscale {
+  filter: grayscale(100%);
+}
+
+/* Large cursor */
+.large-cursor * {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="%23000" stroke="%23fff" stroke-width="2"/></svg>'), auto !important;
+}
+
+/* Highlight links */
+.highlight-links a {
+  background-color: #ffff00 !important;
+  color: #000 !important;
+  padding: 2px 4px !important;
+  border-radius: 3px !important;
+  text-decoration: none !important;
+}
+
+.highlight-links a:hover {
+  background-color: #ffcc00 !important;
+}
+
+/* Smooth scroll */
+.smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+/* Reduce motion */
+.reduce-motion * {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* Disable animations */
+.disable-animations * {
+  animation: none !important;
+  transition: none !important;
+  transform: none !important;
+}
+
+/* Apply accessibility settings */
+body {
+  font-size: var(--accessibility-font-size) !important;
+  font-family: var(--accessibility-font-family) !important;
+  line-height: var(--accessibility-line-height) !important;
+  letter-spacing: var(--accessibility-letter-spacing) !important;
+}
+
+/* Focus indicators */
+*:focus {
+  outline: 3px solid #0066cc !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.3) !important;
+}
+
+/* Skip to content link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 1000;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* Screen reader only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Enhanced Accessibility Features */
+
+/* Large Click Targets */
+.large-targets button,
+.large-targets a,
+.large-targets input,
+.large-targets select,
+.large-targets textarea,
+.large-targets .MuiButton-root,
+.large-targets .MuiIconButton-root {
+  min-height: 44px !important;
+  min-width: 44px !important;
+  padding: 12px 16px !important;
+}
+
+.large-targets .MuiIconButton-root {
+  padding: 12px !important;
+}
+
+/* Simplified Interface */
+.simplified-interface .complex-element {
+  display: none !important;
+}
+
+/* Only hide complex elements when explicitly enabled */
+.simplified-interface .MuiToolbar-root .MuiButton-root:not(.essential-button) {
+  display: none !important;
+}
+
+.simplified-interface .simple-element {
+  display: block !important;
+}
+
+.simplified-interface .MuiToolbar-root {
+  flex-wrap: wrap !important;
+}
+
+.simplified-interface .MuiAppBar-root {
+  height: auto !important;
+  min-height: 64px !important;
+}
+
+/* Color Blind Support */
+.colorblind-support {
+  filter: grayscale(100%) contrast(150%);
+}
+
+.colorblind-support .MuiChip-root {
+  border: 2px solid !important;
+}
+
+/* Reading Assistance */
+.reading-assistance {
+  font-family: 'OpenDyslexic', 'Arial', sans-serif !important;
+}
+
+.reading-assistance p {
+  margin-bottom: 1.5em !important;
+}
+
+/* Error Prevention */
+.error-prevention .MuiTextField-root .MuiInputBase-root {
+  border-color: #4CAF50 !important;
+}
+
+.error-prevention .MuiTextField-root.Mui-error .MuiInputBase-root {
+  border-color: #f44336 !important;
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Distraction Reduction - Only hide non-essential notifications */
+.distraction-reduction .MuiAlert-root:not(.essential-alert) {
+  display: none !important;
+}
+
+.distraction-reduction .MuiSnackbar-root:not(.essential-snackbar) {
+  display: none !important;
+}
+
+.distraction-reduction .MuiTooltip-root:not(.essential-tooltip) {
+  display: none !important;
+}
+
+/* Memory Aids */
+.memory-aids .MuiBreadcrumbs-root {
+  display: block !important;
+}
+
+.memory-aids .MuiStepper-root {
+  display: block !important;
+}
+
+/* Task Guidance */
+.task-guidance .MuiStepper-root {
+  display: block !important;
+}
+
+.task-guidance .MuiStepLabel-root {
+  cursor: pointer !important;
+}
+
+/* Keyboard Navigation */
+.keyboard-navigation *:focus {
+  outline: 2px solid #4A90E2 !important;
+  outline-offset: 2px !important;
+}
+
+/* Responsive Design for Accessibility */
+@media (max-width: 768px) {
+  .large-targets button,
+  .large-targets a,
+  .large-targets input,
+  .large-targets select,
+  .large-targets textarea {
+    min-height: 48px !important;
+    min-width: 48px !important;
+    padding: 16px 20px !important;
+  }
+}
+
+/* Print Styles for Accessibility */
+@media print {
+  .high-contrast {
+    filter: none !important;
+  }
+  
+  .reduce-motion * {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .large-targets * {
+    min-height: auto !important;
+    min-width: auto !important;
+  }
+}
