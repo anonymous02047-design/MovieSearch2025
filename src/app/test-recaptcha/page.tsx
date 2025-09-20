@@ -29,48 +29,51 @@ export default function TestRecaptchaPage() {
   const {
     execute,
     verify,
-    isLoading,
+    isLoaded,
     error,
     isConfigured,
-    lastToken,
-    lastResponse,
     reset,
-  } = useRecaptcha({
-    action: 'test_action',
-    threshold: 0.5,
-    onSuccess: (response) => {
-      console.log('reCAPTCHA Success:', response);
-      setTestResult(response);
-      setTestError(null);
-    },
-    onError: (error) => {
-      console.error('reCAPTCHA Error:', error);
-      setTestError(error.message);
-      setTestResult(null);
-    },
-  });
+  } = useRecaptcha();
 
   const handleTestExecute = async () => {
     try {
       setTestError(null);
       setTestResult(null);
-      const token = await execute();
+      const token = await execute('test_action');
       console.log('Token generated:', token);
+      setTestResult(token);
     } catch (error: any) {
       setTestError(error.message);
     }
   };
 
   const handleTestVerify = async () => {
-    if (!lastToken) {
+    if (!testResult || !testResult.token) {
       setTestError('No token available. Please execute reCAPTCHA first.');
       return;
     }
 
     try {
       setTestError(null);
-      const response = await verify(lastToken.token);
-      console.log('Verification result:', response);
+      const response = await fetch('/api/recaptcha/verify', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          token: testResult.token,
+          action: 'test_action'
+        }),
+      });
+
+      const verification = await response.json();
+      console.log('Verification result:', verification);
+      
+      if (response.ok) {
+        setTestResult({ ...testResult, verification });
+      } else {
+        setTestError(verification.error || 'Verification failed');
+      }
     } catch (error: any) {
       setTestError(error.message);
     }
@@ -131,9 +134,9 @@ export default function TestRecaptchaPage() {
         <Stack direction="row" spacing={2} sx={{ mb: 3 }}>
           <Button
             variant="contained"
-            startIcon={isLoading ? <CircularProgress size={16} /> : <SecurityIcon />}
+            startIcon={<SecurityIcon />}
             onClick={handleTestExecute}
-            disabled={!isConfigured || isLoading}
+            disabled={!isConfigured || !isLoaded}
           >
             Execute reCAPTCHA
           </Button>
@@ -142,7 +145,7 @@ export default function TestRecaptchaPage() {
             variant="outlined"
             startIcon={<CheckCircleIcon />}
             onClick={handleTestVerify}
-            disabled={!lastToken || isLoading}
+            disabled={!testResult || !testResult.token}
           >
             Verify Token
           </Button>
@@ -157,10 +160,10 @@ export default function TestRecaptchaPage() {
           </Button>
         </Stack>
 
-        {isLoading && (
+        {!isLoaded && (
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
             <CircularProgress size={16} />
-            <Typography variant="body2">Processing...</Typography>
+            <Typography variant="body2">Loading reCAPTCHA...</Typography>
           </Box>
         )}
 
@@ -182,19 +185,19 @@ export default function TestRecaptchaPage() {
           Last Token
         </Typography>
         
-        {lastToken ? (
+        {testResult && testResult.token ? (
           <Box>
             <Typography variant="body2" color="text.secondary" gutterBottom>
-              Token: {lastToken.token.substring(0, 50)}...
+              Token: {testResult.token.substring(0, 50)}...
             </Typography>
             <Typography variant="body2" color="text.secondary" gutterBottom>
-              Action: {lastToken.action}
+              Action: {testResult.action || 'test_action'}
             </Typography>
             <Typography variant="body2" color="text.secondary" gutterBottom>
-              Generated: {new Date(lastToken.timestamp).toLocaleString()}
+              Generated: {new Date(testResult.timestamp || Date.now()).toLocaleString()}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Expires: {new Date(lastToken.expiresAt).toLocaleString()}
+              Expires: {new Date(testResult.expiresAt || Date.now() + 120000).toLocaleString()}
             </Typography>
           </Box>
         ) : (
@@ -209,37 +212,37 @@ export default function TestRecaptchaPage() {
           Last Verification Result
         </Typography>
         
-        {lastResponse ? (
+        {testResult && testResult.verification ? (
           <Box>
             <Stack direction="row" spacing={2} alignItems="center" sx={{ mb: 2 }}>
               <Chip
-                label={lastResponse.success ? 'Success' : 'Failed'}
-                color={lastResponse.success ? 'success' : 'error'}
+                label={testResult.verification.success ? 'Success' : 'Failed'}
+                color={testResult.verification.success ? 'success' : 'error'}
                 variant="outlined"
               />
               <Chip
-                label={`Score: ${lastResponse.score.toFixed(2)}`}
-                color={lastResponse.score >= 0.5 ? 'success' : 'warning'}
+                label={`Score: ${testResult.verification.score?.toFixed(2) || 'N/A'}`}
+                color={testResult.verification.score >= 0.5 ? 'success' : 'warning'}
                 variant="outlined"
               />
             </Stack>
             
             <Typography variant="body2" color="text.secondary" gutterBottom>
-              Action: {lastResponse.action}
+              Action: {testResult.verification.action || 'N/A'}
             </Typography>
             <Typography variant="body2" color="text.secondary" gutterBottom>
-              Hostname: {lastResponse.hostname}
+              Hostname: {testResult.verification.hostname || 'N/A'}
             </Typography>
             <Typography variant="body2" color="text.secondary" gutterBottom>
-              Timestamp: {lastResponse.challenge_ts}
+              Timestamp: {testResult.verification.challenge_ts || 'N/A'}
             </Typography>
             
-            {lastResponse.error_codes && lastResponse.error_codes.length > 0 && (
+            {testResult.verification.error_codes && testResult.verification.error_codes.length > 0 && (
               <Box sx={{ mt: 2 }}>
                 <Typography variant="body2" color="error" gutterBottom>
                   Error Codes:
                 </Typography>
-                {lastResponse.error_codes.map((code, index) => (
+                {testResult.verification.error_codes.map((code, index) => (
                   <Chip key={index} label={code} size="small" color="error" sx={{ mr: 1, mb: 1 }} />
                 ))}
               </Box>

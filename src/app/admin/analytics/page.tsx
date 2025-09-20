@@ -246,6 +246,7 @@ export default function AdminAnalyticsPage() {
 
       if (response.ok) {
         const data = await response.json();
+        console.log('Fetched summary data:', data);
         setSummary(data);
       } else if (response.status === 401) {
         console.warn('Unauthorized access to analytics summary');
@@ -678,6 +679,22 @@ export default function AdminAnalyticsPage() {
             }}
           >
             Analytics
+          </Button>
+          
+          <Button
+            variant="outlined"
+            startIcon={<SettingsIcon />}
+            onClick={() => router.push('/admin/rate-limits')}
+            sx={{ 
+              borderColor: '#ff9800',
+              color: '#ff9800',
+              '&:hover': {
+                borderColor: '#f57c00',
+                backgroundColor: 'rgba(255, 152, 0, 0.04)',
+              }
+            }}
+          >
+            Rate Limits
           </Button>
           
           <Button

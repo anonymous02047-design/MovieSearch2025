@@ -62,6 +62,7 @@ import {
 } from '@mui/icons-material';
 import { useAdminTheme } from '@/contexts/AdminThemeContext';
 import { countries } from '@/data/countries';
+import RecaptchaStatus from '@/components/RecaptchaStatus';
 
 interface RateLimitStats {
   ipRateLimits: { [key: string]: { count: number; firstRequestTime: number } };
@@ -385,6 +386,40 @@ export default function AdminDashboard() {
               }}
             >
               Refresh
+            </Button>
+            
+            <Button
+              variant="outlined"
+              startIcon={<SettingsIcon />}
+              onClick={() => router.push('/admin/rate-limits')}
+              size="small"
+              sx={{ 
+                borderColor: '#ff9800',
+                color: '#ff9800',
+                '&:hover': {
+                  borderColor: '#f57c00',
+                  backgroundColor: 'rgba(255, 152, 0, 0.04)',
+                }
+              }}
+            >
+              Rate Limits
+            </Button>
+            
+            <Button
+              variant="outlined"
+              startIcon={<SecurityIcon />}
+              onClick={() => router.push('/test-recaptcha')}
+              size="small"
+              sx={{ 
+                borderColor: '#4caf50',
+                color: '#4caf50',
+                '&:hover': {
+                  borderColor: '#388e3c',
+                  backgroundColor: 'rgba(76, 175, 80, 0.04)',
+                }
+              }}
+            >
+              Test reCAPTCHA
             </Button>
             
             <Button
@@ -879,6 +914,9 @@ export default function AdminDashboard() {
               )}
             </Box>
           </Paper>
+
+          {/* reCAPTCHA Status */}
+          <RecaptchaStatus />
 
           {/* Rate Limit Statistics */}
           <Paper sx={{ 

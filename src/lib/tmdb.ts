@@ -255,30 +255,34 @@ export interface DiscoverParams {
 export const tmdbApi = {
   // Search movies
   searchMovies: async (params: SearchParams) => {
-    try {
-      const response = await tmdbClient.get('/search/movie', { params });
-      return response.data;
-    } catch (error) {
-      const appError = errorHandler.handleApiError(error, 'searchMovies');
-      if (error.response?.status === 404) {
-        return null;
+    return rateLimitedRequest(async () => {
+      try {
+        const response = await tmdbClient.get('/search/movie', { params });
+        return response.data;
+      } catch (error) {
+        const appError = errorHandler.handleApiError(error, 'searchMovies');
+        if (error.response?.status === 404) {
+          return null;
+        }
+        throw appError;
       }
-      throw appError;
-    }
+    });
   },
 
   // Get movie details
   getMovieDetails: async (movieId: number) => {
-    try {
-      const response = await tmdbClient.get(`/movie/${movieId}`);
-      return response.data as MovieDetails;
-    } catch (error) {
-      const appError = errorHandler.handleApiError(error, `getMovieDetails/${movieId}`);
-      if (error.response?.status === 404) {
-        return null;
+    return rateLimitedRequest(async () => {
+      try {
+        const response = await tmdbClient.get(`/movie/${movieId}`);
+        return response.data as MovieDetails;
+      } catch (error) {
+        const appError = errorHandler.handleApiError(error, `getMovieDetails/${movieId}`);
+        if (error.response?.status === 404) {
+          return null;
+        }
+        throw appError;
       }
-      throw appError;
-    }
+    });
   },
 
   // Get movie credits
@@ -411,10 +415,12 @@ export const tmdbApi = {
 
   // Get popular people
   getPopularPeople: async (page: number = 1) => {
-    const response = await tmdbClient.get('/person/popular', {
-      params: { page },
+    return rateLimitedRequest(async () => {
+      const response = await tmdbClient.get('/person/popular', {
+        params: { page },
+      });
+      return response.data;
     });
-    return response.data;
   },
 
   // Get person external IDs
@@ -505,26 +511,32 @@ export const tmdbApi = {
 
   // Get trending movies
   getTrendingMovies: async (timeWindow: 'day' | 'week' = 'week', page: number = 1) => {
-    const response = await tmdbClient.get(`/trending/movie/${timeWindow}`, {
-      params: { page },
+    return rateLimitedRequest(async () => {
+      const response = await tmdbClient.get(`/trending/movie/${timeWindow}`, {
+        params: { page },
+      });
+      return response.data;
     });
-    return response.data;
   },
 
   // Get trending people
   getTrendingPeople: async (timeWindow: 'day' | 'week' = 'week', page: number = 1) => {
-    const response = await tmdbClient.get(`/trending/person/${timeWindow}`, {
-      params: { page },
+    return rateLimitedRequest(async () => {
+      const response = await tmdbClient.get(`/trending/person/${timeWindow}`, {
+        params: { page },
+      });
+      return response.data;
     });
-    return response.data;
   },
 
   // Get trending TV shows
   getTrendingTV: async (timeWindow: 'day' | 'week' = 'week', page: number = 1) => {
-    const response = await tmdbClient.get(`/trending/tv/${timeWindow}`, {
-      params: { page },
+    return rateLimitedRequest(async () => {
+      const response = await tmdbClient.get(`/trending/tv/${timeWindow}`, {
+        params: { page },
+      });
+      return response.data;
     });
-    return response.data;
   },
 
   // Get trending all

@@ -128,9 +128,20 @@ export default function Header({ onSearch, showSearch = true }: HeaderProps) {
     { text: 'Account Settings', icon: <SettingsIcon />, path: '/profile/manage' },
   ];
 
-  const handleSignOut = () => {
-    signOut();
-    setAnchorEl(null);
+  const handleSignOut = async () => {
+    try {
+      setAnchorEl(null);
+      await signOut();
+      // Clear any local storage data
+      localStorage.removeItem('admin_token');
+      localStorage.removeItem('adminSession');
+      // Redirect to home page
+      router.push('/');
+    } catch (error) {
+      console.error('Error signing out:', error);
+      // Still close the menu even if sign out fails
+      setAnchorEl(null);
+    }
   };
 
   return (

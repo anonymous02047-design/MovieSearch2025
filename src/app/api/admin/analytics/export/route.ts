@@ -21,17 +21,20 @@ export async function GET(request: NextRequest) {
       browser: searchParams.get('browser') || undefined,
       userId: searchParams.get('userId') || undefined,
       ipAddress: searchParams.get('ipAddress') || undefined,
-      limit: parseInt(searchParams.get('limit') || '50'),
-      offset: parseInt(searchParams.get('offset') || '0'),
     };
 
-    const result = await analyticsService.getSessions(filters);
+    const csvContent = await analyticsService.exportSessionsToCSV(filters);
 
-    return NextResponse.json(result);
+    return new NextResponse(csvContent, {
+      headers: {
+        'Content-Type': 'text/csv',
+        'Content-Disposition': `attachment; filename="analytics-sessions-${new Date().toISOString().split('T')[0]}.csv"`,
+      },
+    });
   } catch (error) {
-    console.error('Failed to get analytics sessions:', error);
+    console.error('Failed to export analytics data:', error);
     return NextResponse.json(
-      { error: 'Failed to fetch sessions' },
+      { error: 'Failed to export data' },
       { status: 500 }
     );
   }

@@ -32,10 +32,13 @@ import {
   Settings as SettingsIcon,
 } from '@mui/icons-material';
 import { useUser } from '@clerk/nextjs';
+import { useRouter } from 'next/navigation';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import { getFavorites, getWatchlist, getSearchHistory } from '@/lib/storage';
 
 function ProfilePageContent() {
+  const router = useRouter();
+  
   // Graceful handling of Clerk hooks in case API keys are not configured
   let user, isLoaded;
   try {
@@ -196,7 +199,7 @@ function ProfilePageContent() {
                       <Button 
                         variant="outlined" 
                         size="small"
-                        onClick={() => window.location.href = '/favorites'}
+                        onClick={() => router.push('/favorites')}
                       >
                         View All
                       </Button>
@@ -219,7 +222,7 @@ function ProfilePageContent() {
                       <Button 
                         variant="outlined" 
                         size="small"
-                        onClick={() => window.location.href = '/watchlist'}
+                        onClick={() => router.push('/watchlist')}
                       >
                         View All
                       </Button>
@@ -242,7 +245,7 @@ function ProfilePageContent() {
                       <Button 
                         variant="outlined" 
                         size="small"
-                        onClick={() => window.location.href = '/history'}
+                        onClick={() => router.push('/history')}
                       >
                         View All
                       </Button>
@@ -265,7 +268,7 @@ function ProfilePageContent() {
                       <Button 
                         variant="outlined" 
                         size="small"
-                        onClick={() => window.location.href = '/profile/manage'}
+                        onClick={() => router.push('/profile/manage')}
                         sx={{ mr: 1 }}
                       >
                         Manage Profile
@@ -273,7 +276,7 @@ function ProfilePageContent() {
                       <Button 
                         variant="outlined" 
                         size="small"
-                        onClick={() => window.location.href = '/profile/manage'}
+                        onClick={() => router.push('/profile/manage')}
                       >
                         Account Settings
                       </Button>
