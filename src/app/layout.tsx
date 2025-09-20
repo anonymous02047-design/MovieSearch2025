@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import { Box, Typography } from "@mui/material";
 import { CustomThemeProvider } from "@/contexts/ThemeContext";
-import ErrorBoundary from "@/components/ErrorBoundary";
+import EnhancedErrorBoundary from "@/components/EnhancedErrorBoundary";
 import AdminLayoutWrapper from "@/components/AdminLayoutWrapper";
 import { TawkProvider } from "@/components/TawkProvider";
 import OfflineSupport from "@/components/OfflineSupport";
@@ -98,20 +98,7 @@ export default function RootLayout({
       <body className={roboto.className}>
         <CustomThemeProvider>
           <TawkProvider autoInitialize={true} autoShow={false}>
-              <ErrorBoundary 
-                fallback={
-                  <Box sx={{ 
-                    minHeight: '100vh', 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    justifyContent: 'center',
-                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
-                  }}>
-                    <Typography variant="h4" color="white" textAlign="center">
-                      Something went wrong. Please refresh the page.
-                    </Typography>
-                  </Box>
-                }
+              <EnhancedErrorBoundary 
                 showDetails={process.env.NODE_ENV === 'development'}
                 showRetry={true}
                 showHome={true}
@@ -123,7 +110,7 @@ export default function RootLayout({
                 <CookiesConsent />
                 <AccessibilityReset />
                 <GoogleAnalytics />
-              </ErrorBoundary>
+              </EnhancedErrorBoundary>
             </TawkProvider>
         </CustomThemeProvider>
       </body>
