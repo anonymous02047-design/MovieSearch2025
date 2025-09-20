@@ -19,7 +19,7 @@ import {
   Info as InfoIcon,
 } from '@mui/icons-material';
 import SEO from '@/components/SEO';
-import RecaptchaProtection from '@/components/RecaptchaProtection';
+
 import GradientHeading from '@/components/GradientHeading';
 
 export default function UserAgreementPage() {
@@ -53,8 +53,7 @@ export default function UserAgreementPage() {
         description="Read the MovieSearch 2025 user agreement and terms of service for using our platform."
         keywords={['user agreement', 'terms of service', 'user terms', 'service agreement', 'legal terms']}
       />
-      <RecaptchaProtection action="user-agreement" showStatus={false}>
-        <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Container maxWidth="lg" sx={{ py: 4 }}>
           {/* Header */}
           <Box sx={{ mb: 4, textAlign: 'center' }}>
             <GradientHeading
@@ -144,7 +143,6 @@ export default function UserAgreementPage() {
             </Box>
           </Paper>
         </Container>
-      </RecaptchaProtection>
-    </>
+      </>
   );
 }

@@ -14,7 +14,7 @@ import {
   Alert,
   Snackbar,
 } from '@mui/material';
-import RecaptchaProtection from '@/components/RecaptchaProtection';
+
 import RouteGuard from '@/components/RouteGuard';
 import {
   ArrowBack as ArrowBackIcon,
@@ -180,8 +180,7 @@ export default function SignInPage() {
           <Divider sx={{ mb: 4, borderColor: 'rgba(0,0,0,0.1)' }} />
 
           {/* reCAPTCHA Protection */}
-          <RecaptchaProtection action="signin" showStatus={true}>
-            {/* Clerk Sign In */}
+          {/* Clerk Sign In */}
             <Box sx={{ 
               display: 'flex',
               flexDirection: 'column',
@@ -297,8 +296,6 @@ export default function SignInPage() {
                 forceRedirectUrl="/"
               />
             </Box>
-          </RecaptchaProtection>
-
           <Box sx={{ textAlign: 'center', mt: 3 }}>
             <Typography variant="body2" color="text.secondary">
               Don't have an account?{' '}

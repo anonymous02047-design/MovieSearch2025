@@ -25,7 +25,7 @@ import {
   CheckCircle as CheckIcon,
 } from '@mui/icons-material';
 import SEO from '@/components/SEO';
-import RecaptchaProtection from '@/components/RecaptchaProtection';
+
 
 export default function AccessibilityStatementPage() {
   const accessibilityFeatures = [
@@ -94,8 +94,7 @@ export default function AccessibilityStatementPage() {
         description="MovieSearch 2025 is committed to providing an accessible and inclusive experience for all users. Learn about our accessibility features and compliance."
         keywords={['accessibility', 'inclusive design', 'WCAG compliance', 'disability support', 'assistive technology']}
       />
-      <RecaptchaProtection action="accessibility" showStatus={false}>
-        <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Container maxWidth="lg" sx={{ py: 4 }}>
           {/* Header */}
           <Box sx={{ mb: 4, textAlign: 'center' }}>
             <Typography variant="body1" component="p" gutterBottom sx={{
@@ -221,7 +220,6 @@ export default function AccessibilityStatementPage() {
             </Typography>
           </Paper>
         </Container>
-      </RecaptchaProtection>
-    </>
+      </>
   );
 }

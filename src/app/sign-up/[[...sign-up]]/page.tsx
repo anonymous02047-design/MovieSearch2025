@@ -14,7 +14,7 @@ import {
   Chip,
   Alert,
 } from '@mui/material';
-import RecaptchaProtection from '@/components/RecaptchaProtection';
+
 import RouteGuard from '@/components/RouteGuard';
 import {
   ArrowBack as ArrowBackIcon,
@@ -135,8 +135,7 @@ export default function SignUpPage() {
           <Divider sx={{ mb: 4, borderColor: 'rgba(0,0,0,0.1)' }} />
 
           {/* reCAPTCHA Protection */}
-          <RecaptchaProtection action="signup" showStatus={true}>
-            {/* Clerk Sign Up */}
+          {/* Clerk Sign Up */}
             <Box sx={{ 
               display: 'flex',
               flexDirection: 'column',
@@ -252,8 +251,6 @@ export default function SignUpPage() {
                 forceRedirectUrl="/"
               />
             </Box>
-          </RecaptchaProtection>
-
           {/* Footer */}
           <Box sx={{ textAlign: 'center', mt: 3 }}>
             <Typography variant="body2" color="text.secondary">

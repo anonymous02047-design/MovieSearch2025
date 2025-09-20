@@ -19,7 +19,7 @@ import {
   Visibility as VisibilityIcon,
 } from '@mui/icons-material';
 import SEO from '@/components/SEO';
-import RecaptchaProtection from '@/components/RecaptchaProtection';
+
 
 export default function DataProtectionPage() {
   const protectionMeasures = [
@@ -52,8 +52,7 @@ export default function DataProtectionPage() {
         description="Learn about MovieSearch 2025's comprehensive data protection measures and how we safeguard your personal information."
         keywords={['data protection', 'privacy', 'security', 'data security', 'personal information']}
       />
-      <RecaptchaProtection action="data-protection" showStatus={false}>
-        <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Container maxWidth="lg" sx={{ py: 4 }}>
           {/* Header */}
           <Box sx={{ mb: 4, textAlign: 'center' }}>
             <Typography variant="body1" component="p" gutterBottom sx={{
@@ -137,7 +136,6 @@ export default function DataProtectionPage() {
             </Box>
           </Paper>
         </Container>
-      </RecaptchaProtection>
-    </>
+      </>
   );
 }

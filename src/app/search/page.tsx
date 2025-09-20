@@ -30,7 +30,6 @@ import {
   Tv as TvIcon,
   Person as PersonIcon,
 } from '@mui/icons-material';
-import { useRouter } from 'next/navigation';
 
 // Prevent static generation for search page
 export const dynamic = 'force-dynamic';

@@ -19,7 +19,7 @@ import {
   Delete as DeleteIcon,
 } from '@mui/icons-material';
 import SEO from '@/components/SEO';
-import RecaptchaProtection from '@/components/RecaptchaProtection';
+
 
 export default function GDPRCompliancePage() {
   const rights = [
@@ -52,8 +52,7 @@ export default function GDPRCompliancePage() {
         description="Learn about MovieSearch 2025's compliance with the General Data Protection Regulation (GDPR) and your data protection rights."
         keywords={['GDPR', 'data protection', 'privacy rights', 'EU regulation', 'personal data']}
       />
-      <RecaptchaProtection action="gdpr" showStatus={false}>
-        <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Container maxWidth="lg" sx={{ py: 4 }}>
           {/* Header */}
           <Box sx={{ mb: 4, textAlign: 'center' }}>
             <Typography variant="body1" component="p" gutterBottom sx={{
@@ -135,7 +134,6 @@ export default function GDPRCompliancePage() {
             </Box>
           </Paper>
         </Container>
-      </RecaptchaProtection>
-    </>
+      </>
   );
 }

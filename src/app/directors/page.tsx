@@ -73,7 +73,7 @@ import { tmdbApi } from '@/lib/tmdb';
 import Link from 'next/link';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import SEO from '@/components/SEO';
-import RecaptchaProtection from '@/components/RecaptchaProtection';
+
 
 interface Director {
   id: number;
@@ -365,8 +365,7 @@ function DirectorsPageContent() {
         description="Discover talented movie directors and their filmography. Explore the work of acclaimed filmmakers and rising directors."
         keywords={['movie directors', 'filmmakers', 'directors', 'filmography', 'movie makers', 'cinema directors']}
       />
-      <RecaptchaProtection action="directors" showStatus={false}>
-        <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Container maxWidth="lg" sx={{ py: 4 }}>
       {/* Header */}
       <Box sx={{ mb: 4 }}>
         <Stack direction="row" alignItems="center" spacing={2} sx={{ mb: 2 }}>
@@ -1176,8 +1175,7 @@ function DirectorsPageContent() {
         </DialogActions>
       </Dialog>
         </Container>
-      </RecaptchaProtection>
-    </>
+      </>
   );
 }
 

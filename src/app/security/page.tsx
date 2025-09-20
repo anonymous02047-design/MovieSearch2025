@@ -19,7 +19,7 @@ import {
   Warning as WarningIcon,
 } from '@mui/icons-material';
 import SEO from '@/components/SEO';
-import RecaptchaProtection from '@/components/RecaptchaProtection';
+
 
 export default function SecurityPolicyPage() {
   const securityMeasures = [
@@ -52,8 +52,7 @@ export default function SecurityPolicyPage() {
         description="Learn about MovieSearch 2025's comprehensive security measures and how we protect your data and privacy."
         keywords={['security policy', 'data security', 'privacy protection', 'cybersecurity', 'secure platform']}
       />
-      <RecaptchaProtection action="security" showStatus={false}>
-        <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Container maxWidth="lg" sx={{ py: 4 }}>
           {/* Header */}
           <Box sx={{ mb: 4, textAlign: 'center' }}>
             <Typography variant="body1" component="p" gutterBottom sx={{
@@ -137,7 +136,6 @@ export default function SecurityPolicyPage() {
             </Box>
           </Paper>
         </Container>
-      </RecaptchaProtection>
-    </>
+      </>
   );
 }

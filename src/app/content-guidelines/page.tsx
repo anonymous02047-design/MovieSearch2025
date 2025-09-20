@@ -19,7 +19,7 @@ import {
   Cancel as CancelIcon,
 } from '@mui/icons-material';
 import SEO from '@/components/SEO';
-import RecaptchaProtection from '@/components/RecaptchaProtection';
+
 
 export default function ContentGuidelinesPage() {
   const guidelines = [
@@ -52,8 +52,7 @@ export default function ContentGuidelinesPage() {
         description="Learn about MovieSearch 2025's content guidelines and community standards for users."
         keywords={['content guidelines', 'community standards', 'user guidelines', 'content policy', 'rules']}
       />
-      <RecaptchaProtection action="content-guidelines" showStatus={false}>
-        <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Container maxWidth="lg" sx={{ py: 4 }}>
           {/* Header */}
           <Box sx={{ mb: 4, textAlign: 'center' }}>
             <Typography variant="body1" component="p" gutterBottom sx={{
@@ -135,7 +134,6 @@ export default function ContentGuidelinesPage() {
             </Box>
           </Paper>
         </Container>
-      </RecaptchaProtection>
-    </>
+      </>
   );
 }

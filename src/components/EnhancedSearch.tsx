@@ -40,7 +40,7 @@ import {
 import { tmdbEnhanced } from '@/lib/tmdbEnhanced';
 import { useRouter } from 'next/navigation';
 import { useUser } from '@clerk/nextjs';
-import { useRecaptcha } from '@/hooks/useRecaptcha';
+
 
 interface SearchResult {
   id: number;

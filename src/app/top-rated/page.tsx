@@ -20,7 +20,7 @@ import {
 import { tmdbApi, Movie } from '@/lib/tmdb';
 import MovieCard from '@/components/MovieCard';
 import ResponsiveGrid from '@/components/ResponsiveGrid';
-import RecaptchaProtection from '@/components/RecaptchaProtection';
+
 import { useApiErrorHandler } from '@/hooks/useErrorHandler';
 import { LoadingSkeleton } from '@/components/LoadingStates';
 import ErrorDisplay from '@/components/ErrorDisplay';
@@ -80,8 +80,7 @@ function TopRatedPageContent() {
         description="Discover the highest rated movies of all time. Find critically acclaimed films that have earned the highest ratings from audiences and critics."
         keywords={['movies', 'top rated', 'highest rated', 'critically acclaimed', 'best movies', 'cinema']}
       />
-      <RecaptchaProtection action="top-rated" showStatus={false}>
-        <Container maxWidth="xl" sx={{ py: 4 }}>
+      <Container maxWidth="xl" sx={{ py: 4 }}>
           <Box sx={{ mb: 4, textAlign: 'center' }}>
             <Typography variant="h3" component="h1" gutterBottom sx={{
               fontWeight: 'bold',
@@ -137,8 +136,7 @@ function TopRatedPageContent() {
             </Box>
           )}
         </Container>
-      </RecaptchaProtection>
-    </>
+      </>
   );
 }
 

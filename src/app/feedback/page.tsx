@@ -38,8 +38,8 @@ import {
 } from '@mui/icons-material';
 import Link from 'next/link';
 import SEO from '@/components/SEO';
-import RecaptchaProtection from '@/components/RecaptchaProtection';
-import { useRecaptcha } from '@/hooks/useRecaptcha';
+
+
 
 interface FeedbackForm {
   name: string;
@@ -205,8 +205,7 @@ reCAPTCHA Token: ${recaptchaToken || 'Not available'}
         description="Share your feedback about MovieSearch 2025. Help us improve the platform with your suggestions and comments."
         keywords={['feedback', 'suggestions', 'improvements', 'feature requests', 'movie search', 'user feedback']}
       />
-      <RecaptchaProtection action="feedback" showStatus={false}>
-        <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Container maxWidth="lg" sx={{ py: 4 }}>
           {/* Header */}
           <Box sx={{ mb: 4, textAlign: 'center' }}>
             <Stack direction="row" alignItems="center" justifyContent="center" spacing={2} sx={{ mb: 2 }}>
@@ -518,7 +517,6 @@ reCAPTCHA Token: ${recaptchaToken || 'Not available'}
             </Alert>
           </Snackbar>
         </Container>
-      </RecaptchaProtection>
-    </>
+      </>
   );
 }

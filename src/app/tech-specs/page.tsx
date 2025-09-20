@@ -43,7 +43,7 @@ import {
 } from '@mui/icons-material';
 import Link from 'next/link';
 import SEO from '@/components/SEO';
-import RecaptchaProtection from '@/components/RecaptchaProtection';
+
 
 const techStack = {
   frontend: [
@@ -172,8 +172,7 @@ export default function TechSpecsPage() {
         description="Learn about the technical architecture, tech stack, and implementation details of MovieSearch 2025."
         keywords={['tech specs', 'technical specifications', 'architecture', 'tech stack', 'API', 'development']}
       />
-      <RecaptchaProtection action="tech_specs" showStatus={false}>
-        <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Container maxWidth="lg" sx={{ py: 4 }}>
           {/* Header */}
           <Box sx={{ mb: 4, textAlign: 'center' }}>
             <Stack direction="row" alignItems="center" justifyContent="center" spacing={2} sx={{ mb: 2 }}>
@@ -548,7 +547,6 @@ export default function TechSpecsPage() {
             </Paper>
           </Box>
         </Container>
-      </RecaptchaProtection>
-    </>
+      </>
   );
 }

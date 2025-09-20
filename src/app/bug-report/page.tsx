@@ -35,8 +35,8 @@ import {
 } from '@mui/icons-material';
 import Link from 'next/link';
 import SEO from '@/components/SEO';
-import RecaptchaProtection from '@/components/RecaptchaProtection';
-import { useRecaptcha } from '@/hooks/useRecaptcha';
+
+
 
 interface BugReportForm {
   title: string;
@@ -218,8 +218,7 @@ reCAPTCHA Token: ${recaptchaToken || 'Not available'}
         description="Report bugs and issues with MovieSearch 2025. Help us improve the platform by submitting detailed bug reports."
         keywords={['bug report', 'support', 'issues', 'feedback', 'movie search', 'technical support']}
       />
-      <RecaptchaProtection action="bug_report" showStatus={false}>
-        <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Container maxWidth="lg" sx={{ py: 4 }}>
           {/* Header */}
           <Box sx={{ mb: 4, textAlign: 'center' }}>
             <Stack direction="row" alignItems="center" justifyContent="center" spacing={2} sx={{ mb: 2 }}>
@@ -555,7 +554,6 @@ reCAPTCHA Token: ${recaptchaToken || 'Not available'}
             </Alert>
           </Snackbar>
         </Container>
-      </RecaptchaProtection>
-    </>
+      </>
   );
 }

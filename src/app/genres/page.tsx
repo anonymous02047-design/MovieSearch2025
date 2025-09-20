@@ -25,7 +25,7 @@ import {
 import { tmdbApi, Movie, Genre } from '@/lib/tmdb';
 import MovieCard from '@/components/MovieCard';
 import ResponsiveGrid from '@/components/ResponsiveGrid';
-import RecaptchaProtection from '@/components/RecaptchaProtection';
+
 import { useApiErrorHandler } from '@/hooks/useErrorHandler';
 import { LoadingSpinner, LoadingSkeleton, RetryButton } from '@/components/LoadingStates';
 import ErrorDisplay from '@/components/ErrorDisplay';
@@ -116,8 +116,7 @@ function GenresPageContent() {
         description="Explore movies by genre. Discover action, comedy, drama, horror, romance, and many more movie categories to find your perfect film."
         keywords={['movies', 'genres', 'categories', 'action', 'comedy', 'drama', 'horror', 'romance', 'cinema']}
       />
-      <RecaptchaProtection action="genres" showStatus={false}>
-        <Container maxWidth="xl" sx={{ py: 4 }}>
+      <Container maxWidth="xl" sx={{ py: 4 }}>
           <Box sx={{ mb: 4, textAlign: 'center' }}>
             <Typography variant="h3" component="h1" gutterBottom sx={{
               fontWeight: 'bold',
@@ -231,8 +230,7 @@ function GenresPageContent() {
             </>
           )}
         </Container>
-      </RecaptchaProtection>
-    </>
+      </>
   );
 }
 

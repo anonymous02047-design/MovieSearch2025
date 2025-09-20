@@ -41,7 +41,7 @@ import { Movie } from '@/lib/tmdb';
 import Link from 'next/link';
 import SEO from '@/components/SEO';
 import ProtectedRoute from '@/components/ProtectedRoute';
-import RecaptchaProtection from '@/components/RecaptchaProtection';
+
 
 function PeoplePageContent() {
   const [people, setPeople] = useState<Movie[]>([]);
@@ -198,8 +198,7 @@ function PeoplePageContent() {
         description="Discover trending actors, actresses, and celebrities. Find the most popular people in entertainment right now."
         keywords={['actors', 'actresses', 'celebrities', 'people', 'trending', 'entertainment']}
       />
-      <RecaptchaProtection action="people" showStatus={false}>
-        <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Container maxWidth="lg" sx={{ py: 4 }}>
           {/* Header */}
           <Box sx={{ mb: 4 }}>
             <Stack direction="row" alignItems="center" spacing={2} sx={{ mb: 2 }}>
@@ -308,8 +307,7 @@ function PeoplePageContent() {
             </Stack>
           </Box>
         </Container>
-      </RecaptchaProtection>
-    </>
+      </>
   );
 }
 

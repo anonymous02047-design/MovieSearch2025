@@ -23,7 +23,7 @@ import {
 import { tmdbApi, Movie } from '@/lib/tmdb';
 import MovieCard from '@/components/MovieCard';
 import ResponsiveGrid from '@/components/ResponsiveGrid';
-import RecaptchaProtection from '@/components/RecaptchaProtection';
+
 import { useApiErrorHandler } from '@/hooks/useErrorHandler';
 import { LoadingSpinner, LoadingSkeleton, RetryButton } from '@/components/LoadingStates';
 import ErrorDisplay from '@/components/ErrorDisplay';
@@ -137,8 +137,7 @@ function PopularPageContent() {
         description="Discover the most popular, top-rated, and now playing movies. Find your next favorite film from our curated collection."
         keywords={['movies', 'popular', 'top rated', 'now playing', 'trending', 'cinema']}
       />
-      <RecaptchaProtection action="popular" showStatus={false}>
-        <Container maxWidth="xl" sx={{ py: 4 }}>
+      <Container maxWidth="xl" sx={{ py: 4 }}>
           <Box sx={{ mb: 4, textAlign: 'center' }}>
             <Typography variant="h3" component="h1" gutterBottom sx={{
               fontWeight: 'bold',
@@ -221,8 +220,7 @@ function PopularPageContent() {
             </Box>
           )}
         </Container>
-      </RecaptchaProtection>
-    </>
+      </>
   );
 }
 

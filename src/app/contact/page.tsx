@@ -22,8 +22,8 @@ import {
   DialogContent,
   DialogActions,
 } from '@mui/material';
-import { useRecaptcha } from '@/hooks/useRecaptcha';
-import RecaptchaProtection from '@/components/RecaptchaProtection';
+
+
 import SEO from '@/components/SEO';
 import GradientHeading from '@/components/GradientHeading';
 // PageLayout is already provided by AdminLayoutWrapper
@@ -85,7 +85,7 @@ export default function ContactPage() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          ...(recaptchaToken && { 'X-Recaptcha-Token': recaptchaToken }),
+          ...(recaptchaToken && { }),
         },
         body: JSON.stringify({
           name: formData.name,
@@ -360,8 +360,7 @@ export default function ContactPage() {
               Send us a Message
             </Typography>
             
-            <RecaptchaProtection action="contact" showStatus={true}>
-              <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' }, gap: 3 }}>
                 <Box>
                   <TextField
@@ -515,8 +514,7 @@ export default function ContactPage() {
                 </Box>
               </Box>
             </form>
-            </RecaptchaProtection>
-          </Paper>
+            </Paper>
 
           {/* FAQ Section */}
           <Paper sx={{ p: 4, mt: 3, background: 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)' }}>

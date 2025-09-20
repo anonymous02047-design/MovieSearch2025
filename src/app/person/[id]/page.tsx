@@ -35,7 +35,7 @@ import { tmdbApi } from '@/lib/tmdb';
 import Link from 'next/link';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import SEO from '@/components/SEO';
-import RecaptchaProtection from '@/components/RecaptchaProtection';
+
 
 interface Person {
   id: number;
@@ -133,8 +133,7 @@ function PersonPageContent() {
         description={`Learn more about ${person.name}, ${person.known_for_department}. View biography, filmography, and more.`}
         keywords={[person.name, 'actor', 'biography', 'filmography', 'movies']}
       />
-      <RecaptchaProtection action="person_view" showStatus={false}>
-        <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Container maxWidth="lg" sx={{ py: 4 }}>
           {/* Back Button */}
           <Box sx={{ mb: 3 }}>
             <Button
@@ -342,8 +341,7 @@ function PersonPageContent() {
             </Box>
           )}
         </Container>
-      </RecaptchaProtection>
-    </>
+      </>
   );
 }
 

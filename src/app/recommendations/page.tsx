@@ -29,7 +29,7 @@ import MovieCard from '@/components/MovieCard';
 import ResponsiveGrid from '@/components/ResponsiveGrid';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import SEO from '@/components/SEO';
-import RecaptchaProtection from '@/components/RecaptchaProtection';
+
 
 function RecommendationsPageContent() {
   const [recommendations, setRecommendations] = useState<Movie[]>([]);
@@ -128,8 +128,7 @@ function RecommendationsPageContent() {
         description="Get personalized movie recommendations based on your preferences. Discover new films tailored to your taste."
         keywords={['movie recommendations', 'personalized movies', 'movie suggestions', 'film recommendations', 'movie discovery']}
       />
-      <RecaptchaProtection action="recommendations" showStatus={false}>
-        <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Container maxWidth="lg" sx={{ py: 4 }}>
       {/* Header */}
       <Box sx={{ mb: 4, textAlign: 'center' }}>
         <Typography variant="h3" component="h1" gutterBottom sx={{ 
@@ -299,8 +298,7 @@ function RecommendationsPageContent() {
         </>
       )}
         </Container>
-      </RecaptchaProtection>
-    </>
+      </>
   );
 }
 

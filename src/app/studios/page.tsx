@@ -36,7 +36,7 @@ import {
 import Link from 'next/link';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import SEO from '@/components/SEO';
-import RecaptchaProtection from '@/components/RecaptchaProtection';
+
 
 interface Studio {
   id: number;
@@ -302,8 +302,7 @@ function StudiosPageContent() {
         description="Explore major movie studios and production companies. Discover films from Hollywood studios and independent producers."
         keywords={['movie studios', 'production companies', 'hollywood studios', 'film studios', 'movie producers']}
       />
-      <RecaptchaProtection action="studios" showStatus={false}>
-        <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Container maxWidth="lg" sx={{ py: 4 }}>
       {/* Header */}
       <Box sx={{ mb: 4 }}>
         <Stack direction="row" alignItems="center" spacing={2} sx={{ mb: 2 }}>
@@ -534,8 +533,7 @@ function StudiosPageContent() {
         </Stack>
       </Box>
         </Container>
-      </RecaptchaProtection>
-    </>
+      </>
   );
 }
 

@@ -44,7 +44,7 @@ import { tmdbApi } from '@/lib/tmdb';
 import Link from 'next/link';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import SEO from '@/components/SEO';
-import RecaptchaProtection from '@/components/RecaptchaProtection';
+
 
 interface TVShow {
   id: number;
@@ -197,8 +197,7 @@ function TVShowPageContent() {
         description={`Watch ${tvShow.name} - ${tvShow.overview?.substring(0, 160)}...`}
         keywords={[tvShow.name, 'tv show', 'series', 'episodes', 'seasons', ...tvShow.genres.map(g => g.name)]}
       />
-      <RecaptchaProtection action="tv_show_view" showStatus={false}>
-        <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Container maxWidth="lg" sx={{ py: 4 }}>
           {/* Back Button */}
           <Box sx={{ mb: 3 }}>
             <Button
@@ -448,8 +447,7 @@ function TVShowPageContent() {
             </Box>
           )}
         </Container>
-      </RecaptchaProtection>
-    </>
+      </>
   );
 }
 

@@ -23,7 +23,7 @@ import { tmdbApi, Movie } from '@/lib/tmdb';
 import MovieCard from '@/components/MovieCard';
 import ResponsiveGrid from '@/components/ResponsiveGrid';
 import PostAuthWelcome from '@/components/PostAuthWelcome';
-import RecaptchaProtection from '@/components/RecaptchaProtection';
+
 import { useApiErrorHandler } from '@/hooks/useErrorHandler';
 import { LoadingSpinner, LoadingSkeleton, RetryButton } from '@/components/LoadingStates';
 import ErrorDisplay from '@/components/ErrorDisplay';
@@ -212,8 +212,7 @@ function HomeContent() {
         keywords={['movie discovery', 'movie search', 'film recommendations', 'movie database', 'cinema']}
         type="website"
       />
-      <RecaptchaProtection action="home" showStatus={false}>
-        {showWelcome && (
+      {showWelcome && (
           <PostAuthWelcome onComplete={() => setShowWelcome(false)} />
         )}
         
@@ -322,8 +321,7 @@ function HomeContent() {
             </>
           )}
         </Container>
-      </RecaptchaProtection>
-    </>
+      </>
   );
 }
 

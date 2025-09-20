@@ -39,7 +39,7 @@ import {
 import Link from 'next/link';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import SEO from '@/components/SEO';
-import RecaptchaProtection from '@/components/RecaptchaProtection';
+
 
 interface BoxOfficeMovie {
   id: number;
@@ -436,8 +436,7 @@ function BoxOfficePageContent() {
         description="Discover the highest-grossing movies and box office hits. Explore top-earning films and blockbuster releases."
         keywords={['box office', 'highest grossing movies', 'blockbuster movies', 'movie revenue', 'top movies']}
       />
-      <RecaptchaProtection action="box-office" showStatus={false}>
-        <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Container maxWidth="lg" sx={{ py: 4 }}>
       {/* Header */}
       <Box sx={{ mb: 4 }}>
         <Stack direction="row" alignItems="center" spacing={2} sx={{ mb: 2 }}>
@@ -585,8 +584,7 @@ function BoxOfficePageContent() {
         </Stack>
       </Box>
         </Container>
-      </RecaptchaProtection>
-    </>
+      </>
   );
 }
 

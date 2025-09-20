@@ -19,7 +19,7 @@ import {
   Info as InfoIcon,
 } from '@mui/icons-material';
 import SEO from '@/components/SEO';
-import RecaptchaProtection from '@/components/RecaptchaProtection';
+
 
 export default function CookiePolicyPage() {
   const cookieTypes = [
@@ -56,8 +56,7 @@ export default function CookiePolicyPage() {
         description="Learn about how MovieSearch 2025 uses cookies to enhance your browsing experience and provide personalized content."
         keywords={['cookie policy', 'privacy', 'data protection', 'website cookies', 'user preferences']}
       />
-      <RecaptchaProtection action="cookies" showStatus={false}>
-        <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Container maxWidth="lg" sx={{ py: 4 }}>
           {/* Header */}
           <Box sx={{ mb: 4, textAlign: 'center' }}>
             <Typography variant="body1" component="p" gutterBottom sx={{
@@ -170,7 +169,6 @@ export default function CookiePolicyPage() {
             </Typography>
           </Paper>
         </Container>
-      </RecaptchaProtection>
-    </>
+      </>
   );
 }

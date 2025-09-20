@@ -40,7 +40,7 @@ import { Movie } from '@/lib/tmdb';
 import Link from 'next/link';
 import SEO from '@/components/SEO';
 import ProtectedRoute from '@/components/ProtectedRoute';
-import RecaptchaProtection from '@/components/RecaptchaProtection';
+
 
 function TVShowsPageContent() {
   const [tvShows, setTvShows] = useState<Movie[]>([]);
@@ -206,8 +206,7 @@ function TVShowsPageContent() {
         description="Discover trending TV shows and series. Find the most popular shows airing now and explore your next favorite series."
         keywords={['tv shows', 'series', 'trending tv', 'popular shows', 'television', 'streaming']}
       />
-      <RecaptchaProtection action="tv_shows" showStatus={false}>
-        <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Container maxWidth="lg" sx={{ py: 4 }}>
           {/* Header */}
           <Box sx={{ mb: 4 }}>
             <Stack direction="row" alignItems="center" spacing={2} sx={{ mb: 2 }}>
@@ -316,8 +315,7 @@ function TVShowsPageContent() {
             </Stack>
           </Box>
         </Container>
-      </RecaptchaProtection>
-    </>
+      </>
   );
 }
 

@@ -1,7 +1,6 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
 import { NextRequest, NextResponse } from 'next/server';
 import { enhancedRateLimitMiddleware } from './middleware/rateLimit';
-import { recaptchaMiddleware } from './middleware/recaptchaMiddleware';
 
 // Define public routes that don't require authentication
 const isPublicRoute = createRouteMatcher([
@@ -63,19 +62,6 @@ export default async function middleware(req: NextRequest) {
     }
   }
 
-  // Apply reCAPTCHA protection only for specific API routes that need it
-  const recaptchaProtectedRoutes = [
-    '/api/contact',
-    '/api/profile',
-    '/api/recaptcha/verify'
-  ];
-  
-  if (pathname.startsWith('/api/') && recaptchaProtectedRoutes.some(route => pathname.startsWith(route))) {
-    const recaptchaResponse = await recaptchaMiddleware(req);
-    if (recaptchaResponse.status !== 200) {
-      return recaptchaResponse;
-    }
-  }
 
   // Apply Clerk authentication with proper configuration
   return clerkMiddleware((auth, req) => {

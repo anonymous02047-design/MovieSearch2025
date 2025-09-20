@@ -57,7 +57,7 @@ import ProfileImageUpload from '@/components/ProfileImageUpload';
 import AccountDeletionHandler from '@/components/AccountDeletionHandler';
 import { getFavorites, getWatchlist } from '@/lib/storage';
 import PageLayout from '@/components/PageLayout';
-import { useRecaptcha } from '@/hooks/useRecaptcha';
+
 
 function ProfileManagePageContent() {
   const { user, isLoaded } = useUser();

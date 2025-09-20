@@ -17,7 +17,7 @@ import {
   Divider,
   IconButton,
 } from '@mui/material';
-import RecaptchaProtection from '@/components/RecaptchaProtection';
+
 import RouteGuard from '@/components/RouteGuard';
 import {
   Movie as MovieIcon,
@@ -118,8 +118,7 @@ export default function WelcomePage() {
 
   return (
     <RouteGuard requireAuth={false}>
-      <RecaptchaProtection action="welcome" showStatus={false}>
-        <Box sx={{ minHeight: '100vh' }}>
+      <Box sx={{ minHeight: '100vh' }}>
       {/* Hero Section */}
       <Box
         sx={{
@@ -392,7 +391,6 @@ export default function WelcomePage() {
       </Box>
 
         </Box>
-      </RecaptchaProtection>
-    </RouteGuard>
+      </RouteGuard>
   );
 }

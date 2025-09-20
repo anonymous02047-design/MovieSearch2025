@@ -29,7 +29,7 @@ import {
   Shield as ShieldIcon,
   Favorite as FavoriteIcon,
 } from '@mui/icons-material';
-import RecaptchaProtection from '@/components/RecaptchaProtection';
+
 import SEO from '@/components/SEO';
 import GradientHeading from '@/components/GradientHeading';
 // PageLayout is already provided by AdminLayoutWrapper
@@ -102,8 +102,7 @@ export default function AboutPage() {
         description="Learn about MovieSearch 2025 - the ultimate movie discovery platform. Built with modern technology and designed for movie lovers worldwide."
         keywords={['about', 'moviesearch', 'movie database', 'movie discovery', 'cinema', 'movies']}
       />
-      <RecaptchaProtection action="about" showStatus={false}>
-        <Container maxWidth="lg" sx={{ py: 8 }}>
+      <Container maxWidth="lg" sx={{ py: 8 }}>
           {/* Hero Section */}
           <Box sx={{ textAlign: 'center', mb: 8 }}>
             <Typography variant="body1" component="p" gutterBottom sx={{
@@ -246,7 +245,6 @@ export default function AboutPage() {
             </Stack>
           </Box>
         </Container>
-      </RecaptchaProtection>
-    </>
+      </>
   );
 }

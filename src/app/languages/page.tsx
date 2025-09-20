@@ -36,7 +36,7 @@ import {
 import Link from 'next/link';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import SEO from '@/components/SEO';
-import RecaptchaProtection from '@/components/RecaptchaProtection';
+
 
 interface Language {
   id: string;
@@ -322,8 +322,7 @@ function LanguagesPageContent() {
         description="Discover movies organized by language. Explore films from different countries and cultures around the world."
         keywords={['movies by language', 'foreign films', 'international movies', 'multilingual films', 'world cinema']}
       />
-      <RecaptchaProtection action="languages" showStatus={false}>
-        <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Container maxWidth="lg" sx={{ py: 4 }}>
       {/* Header */}
       <Box sx={{ mb: 4 }}>
         <Stack direction="row" alignItems="center" spacing={2} sx={{ mb: 2 }}>
@@ -532,8 +531,7 @@ function LanguagesPageContent() {
         </Stack>
       </Box>
         </Container>
-      </RecaptchaProtection>
-    </>
+      </>
   );
 }
 

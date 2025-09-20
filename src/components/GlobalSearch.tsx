@@ -31,7 +31,7 @@ import { useUser } from '@clerk/nextjs';
 import { useSearchErrorHandler } from '@/hooks/useErrorHandler';
 import ErrorDisplay from './ErrorDisplay';
 import { LoadingSpinner } from './LoadingStates';
-import { useRecaptcha } from '@/hooks/useRecaptcha';
+
 
 interface GlobalSearchProps {
   placeholder?: string;
