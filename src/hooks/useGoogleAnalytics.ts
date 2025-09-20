@@ -16,7 +16,11 @@ export function useGoogleAnalytics() {
         event_category: event.category,
         event_label: event.label,
         value: event.value,
+        custom_parameter_1: 'ladlihub_in',
+        custom_parameter_2: 'movie_search_app',
       });
+    } else {
+      console.warn('Google Analytics not loaded. Event not tracked:', event);
     }
   }, []);
 
@@ -54,11 +58,47 @@ export function useGoogleAnalytics() {
     });
   }, [trackEvent]);
 
+  const trackError = useCallback((error: string, errorType: string) => {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'exception', {
+        description: error,
+        fatal: false,
+        event_category: 'error',
+        event_label: errorType,
+        custom_parameter_1: 'ladlihub_in',
+        custom_parameter_2: 'movie_search_app',
+      });
+    }
+  }, []);
+
+  const trackAuthentication = useCallback((method: string, action: string) => {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'login', {
+        method: method,
+        event_category: 'authentication',
+        event_label: action,
+        custom_parameter_1: 'ladlihub_in',
+        custom_parameter_2: 'movie_search_app',
+      });
+    }
+  }, []);
+
+  const trackButtonClick = useCallback((buttonName: string, location: string) => {
+    trackEvent({
+      action: 'click',
+      category: 'engagement',
+      label: `${buttonName}_${location}`,
+    });
+  }, [trackEvent]);
+
   return {
     trackEvent,
     trackPageView,
     trackSearch,
     trackMovieView,
     trackUserAction,
+    trackError,
+    trackAuthentication,
+    trackButtonClick,
   };
 }
