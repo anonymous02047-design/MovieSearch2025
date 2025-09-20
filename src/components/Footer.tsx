@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   Container,
@@ -29,8 +29,61 @@ import {
 export default function Footer() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const [currentIP, setCurrentIP] = useState<string>('Loading...');
+  const [buildVersion, setBuildVersion] = useState<string>('1.0.0');
+  const [buildTime, setBuildTime] = useState<string>('');
 
   const currentYear = new Date().getFullYear();
+
+  useEffect(() => {
+    // Get build version from environment variables
+    const version = process.env.NEXT_PUBLIC_APP_VERSION || '1.0.0';
+    setBuildVersion(version);
+    
+    // Set build time (this will be the current time when the component loads)
+    setBuildTime(new Date().toLocaleString());
+
+    // Get current IP address with fallback
+    const fetchIP = async () => {
+      try {
+        // Try multiple IP services for better reliability
+        const ipServices = [
+          'https://api.ipify.org?format=json',
+          'https://ipapi.co/json/',
+          'https://api.myip.com',
+        ];
+
+        for (const service of ipServices) {
+          try {
+            const response = await fetch(service, { 
+              timeout: 5000,
+              headers: { 'Accept': 'application/json' }
+            });
+            
+            if (response.ok) {
+              const data = await response.json();
+              const ip = data.ip || data.query || data.ip_address;
+              if (ip) {
+                setCurrentIP(ip);
+                return;
+              }
+            }
+          } catch (serviceError) {
+            console.warn(`IP service ${service} failed:`, serviceError);
+            continue;
+          }
+        }
+        
+        // If all services fail, show a fallback
+        setCurrentIP('Unable to detect');
+      } catch (error) {
+        console.error('Failed to fetch IP:', error);
+        setCurrentIP('Unknown');
+      }
+    };
+
+    fetchIP();
+  }, []);
 
   const footerLinks = {
     'Movies': [
@@ -225,7 +278,7 @@ export default function Footer() {
               color: 'rgba(255, 255, 255, 0.5)',
               fontSize: '0.75rem'
             }}>
-              Build v1.0.0 | IP: localhost
+              Build v{buildVersion} | IP: {currentIP} | Built: {buildTime}
             </Typography>
           </Box>
 
