@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LadliHub.in Deployment Checklist</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .step {
+            margin: 20px 0;
+            padding: 20px;
+            border-left: 4px solid #0078d4;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        .step h3 {
+            margin-top: 0;
+            color: #0078d4;
+        }
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+        .checklist li {
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+        }
+        .checklist input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+        .checklist label {
+            flex: 1;
+            cursor: pointer;
+        }
+        .completed {
+            background-color: #d4edda !important;
+            border-color: #28a745 !important;
+        }
+        .progress {
+            background: #e9ecef;
+            border-radius: 10px;
+            height: 20px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        .progress-bar {
+            background: linear-gradient(90deg, #28a745, #20c997);
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        .progress-text {
+            text-align: center;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .links {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .links a {
+            color: #1976d2;
+            text-decoration: none;
+            margin-right: 15px;
+        }
+        .links a:hover {
+            text-decoration: underline;
+        }
+        .status {
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .pending { background: #ffc107; color: #000; }
+        .completed { background: #28a745; color: #fff; }
+        .in-progress { background: #17a2b8; color: #fff; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 LadliHub.in Deployment Checklist</h1>
+        <p>Track your progress as you deploy your website to ladlihub.in</p>
+
+        <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <div class="progress-text" id="progressText">0% Complete</div>
+
+        <div class="step">
+            <h3>🌐 Step 1: Cloudflare Setup</h3>
+            <div class="links">
+                <a href="https://dash.cloudflare.com/" target="_blank">Cloudflare Dashboard</a>
+            </div>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox" id="cf1" onchange="updateProgress()">
+                    <label for="cf1">Add ladlihub.in to Cloudflare</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="cf2" onchange="updateProgress()">
+                    <label for="cf2">Update nameservers at domain registrar</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="cf3" onchange="updateProgress()">
+                    <label for="cf3">Configure DNS records (A and CNAME)</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="cf4" onchange="updateProgress()">
+                    <label for="cf4">Enable SSL/TLS (Full strict)</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="cf5" onchange="updateProgress()">
+                    <label for="cf5">Enable "Always Use HTTPS"</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3>📊 Step 2: Google Analytics Setup</h3>
+            <div class="links">
+                <a href="https://analytics.google.com/" target="_blank">Google Analytics</a>
+            </div>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox" id="ga1" onchange="updateProgress()">
+                    <label for="ga1">Create GA4 property for ladlihub.in</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="ga2" onchange="updateProgress()">
+                    <label for="ga2">Configure data stream (Web)</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="ga3" onchange="updateProgress()">
+                    <label for="ga3">Copy Measurement ID (G-XXXXXXXXXX)</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="ga4" onchange="updateProgress()">
+                    <label for="ga4">Enable Enhanced Ecommerce</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3>🚀 Step 3: Netlify Configuration</h3>
+            <div class="links">
+                <a href="https://app.netlify.com/" target="_blank">Netlify Dashboard</a>
+            </div>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox" id="net1" onchange="updateProgress()">
+                    <label for="net1">Add custom domain: ladlihub.in</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="net2" onchange="updateProgress()">
+                    <label for="net2">Add www subdomain: www.ladlihub.in</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="net3" onchange="updateProgress()">
+                    <label for="net3">Set environment variables</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="net4" onchange="updateProgress()">
+                    <label for="net4">Configure build settings</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="net5" onchange="updateProgress()">
+                    <label for="net5">Deploy site</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3>🧪 Step 4: Testing & Verification</h3>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox" id="test1" onchange="updateProgress()">
+                    <label for="test1">Test main domain: https://ladlihub.in</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="test2" onchange="updateProgress()">
+                    <label for="test2">Test www subdomain: https://www.ladlihub.in</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="test3" onchange="updateProgress()">
+                    <label for="test3">Verify SSL certificate</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="test4" onchange="updateProgress()">
+                    <label for="test4">Test admin login: /admin/login/</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="test5" onchange="updateProgress()">
+                    <label for="test5">Test admin dashboard: /admin/dashboard/</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="test6" onchange="updateProgress()">
+                    <label for="test6">Test analytics dashboard: /admin/analytics/</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="test7" onchange="updateProgress()">
+                    <label for="test7">Verify Google Analytics tracking</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="test8" onchange="updateProgress()">
+                    <label for="test8">Test rate limiting (India unlimited)</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3>🎯 Step 5: Final Verification</h3>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox" id="final1" onchange="updateProgress()">
+                    <label for="final1">All pages load without errors</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="final2" onchange="updateProgress()">
+                    <label for="final2">Movie search functionality works</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="final3" onchange="updateProgress()">
+                    <label for="final3">User authentication works</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="final4" onchange="updateProgress()">
+                    <label for="final4">Admin features fully functional</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="final5" onchange="updateProgress()">
+                    <label for="final5">Google Analytics tracking active</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="final6" onchange="updateProgress()">
+                    <label for="final6">Rate limiting working correctly</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3>📋 Environment Variables Checklist</h3>
+            <p>Make sure these are set in Netlify:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox" id="env1" onchange="updateProgress()">
+                    <label for="env1">NEXT_PUBLIC_APP_URL = https://ladlihub.in</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="env2" onchange="updateProgress()">
+                    <label for="env2">NEXT_PUBLIC_GA_MEASUREMENT_ID = G-XXXXXXXXXX</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="env3" onchange="updateProgress()">
+                    <label for="env3">ADMIN_JWT_SECRET = your-secure-secret</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="env4" onchange="updateProgress()">
+                    <label for="env4">NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY = your-key</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="env5" onchange="updateProgress()">
+                    <label for="env5">CLERK_SECRET_KEY = your-secret</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="env6" onchange="updateProgress()">
+                    <label for="env6">TMDB_API_KEY = your-tmdb-key</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3>🎉 Success!</h3>
+            <p>Once all items are checked, your LadliHub.in website will be fully deployed and functional!</p>
+            <div class="links">
+                <a href="https://ladlihub.in" target="_blank">Visit LadliHub.in</a>
+                <a href="https://ladlihub.in/admin/dashboard/" target="_blank">Admin Dashboard</a>
+                <a href="https://ladlihub.in/admin/analytics/" target="_blank">Analytics Dashboard</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const checked = document.querySelectorAll('input[type="checkbox"]:checked');
+            const progress = (checked.length / checkboxes.length) * 100;
+            
+            document.getElementById('progressBar').style.width = progress + '%';
+            document.getElementById('progressText').textContent = Math.round(progress) + '% Complete';
+            
+            // Save progress to localStorage
+            localStorage.setItem('deploymentProgress', JSON.stringify({
+                checked: Array.from(checked).map(cb => cb.id),
+                progress: progress
+            }));
+        }
+
+        // Load saved progress
+        function loadProgress() {
+            const saved = localStorage.getItem('deploymentProgress');
+            if (saved) {
+                const data = JSON.parse(saved);
+                data.checked.forEach(id => {
+                    const checkbox = document.getElementById(id);
+                    if (checkbox) checkbox.checked = true;
+                });
+                updateProgress();
+            }
+        }
+
+        // Load progress on page load
+        window.onload = loadProgress;
+    </script>
+</body>
+</html>
