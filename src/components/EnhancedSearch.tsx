@@ -40,6 +40,7 @@ import {
 import { tmdbEnhanced } from '@/lib/tmdbEnhanced';
 import { useRouter } from 'next/navigation';
 import { useUser } from '@clerk/nextjs';
+import { useRecaptcha } from '@/hooks/useRecaptcha';
 
 interface SearchResult {
   id: number;
@@ -103,6 +104,7 @@ export default function EnhancedSearch() {
   const [showResults, setShowResults] = useState(false);
   const router = useRouter();
   const { user } = useUser();
+  const { executeRecaptcha, isLoaded: recaptchaLoaded } = useRecaptcha();
 
   const searchTypes = [
     { label: 'All', value: 'all', icon: <SearchIcon /> },
@@ -131,6 +133,18 @@ export default function EnhancedSearch() {
       return;
     }
 
+    // Execute reCAPTCHA if available
+    let recaptchaToken = null;
+    if (recaptchaLoaded) {
+      try {
+        const recaptchaResult = await executeRecaptcha('enhanced_search');
+        recaptchaToken = recaptchaResult.token;
+      } catch (error) {
+        console.warn('reCAPTCHA failed for enhanced search:', error);
+        // Continue without reCAPTCHA if it fails
+      }
+    }
+
     setLoading(true);
     setError(null);
 
@@ -156,7 +170,7 @@ export default function EnhancedSearch() {
     } finally {
       setLoading(false);
     }
-  }, [user]);
+  }, [user, recaptchaLoaded, executeRecaptcha]);
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {

@@ -57,11 +57,13 @@ import ProfileImageUpload from '@/components/ProfileImageUpload';
 import AccountDeletionHandler from '@/components/AccountDeletionHandler';
 import { getFavorites, getWatchlist } from '@/lib/storage';
 import PageLayout from '@/components/PageLayout';
+import { useRecaptcha } from '@/hooks/useRecaptcha';
 
 function ProfileManagePageContent() {
   const { user, isLoaded } = useUser();
   const { getToken } = useAuth();
   const router = useRouter();
+  const { executeRecaptcha, isLoaded: recaptchaLoaded } = useRecaptcha();
   
   // State management
   const [profile, setProfile] = useState<ProfileData | null>(null);

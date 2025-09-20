@@ -15,6 +15,7 @@ import {
   CardContent,
 } from '@mui/material';
 import { Lock as LockIcon, AdminPanelSettings as AdminIcon } from '@mui/icons-material';
+import { useRecaptcha } from '@/hooks/useRecaptcha';
 
 export default function AdminLoginPage() {
   const [credentials, setCredentials] = useState({
@@ -24,6 +25,7 @@ export default function AdminLoginPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const router = useRouter();
+  const { executeRecaptcha, isLoaded } = useRecaptcha();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,12 +40,25 @@ export default function AdminLoginPage() {
     }
 
     try {
+      // Execute reCAPTCHA if available
+      let recaptchaToken = null;
+      if (isLoaded) {
+        try {
+          const recaptchaResult = await executeRecaptcha('admin_login');
+          recaptchaToken = recaptchaResult.token;
+        } catch (error) {
+          console.warn('reCAPTCHA failed:', error);
+          // Continue without reCAPTCHA if it fails
+        }
+      }
+
       console.log('Attempting admin login with credentials:', { username: credentials.username });
       
       const response = await fetch('/api/admin/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          ...(recaptchaToken && { 'X-Recaptcha-Token': recaptchaToken }),
         },
         body: JSON.stringify(credentials),
       });

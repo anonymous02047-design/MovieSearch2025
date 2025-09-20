@@ -31,6 +31,7 @@ import { useUser } from '@clerk/nextjs';
 import { useSearchErrorHandler } from '@/hooks/useErrorHandler';
 import ErrorDisplay from './ErrorDisplay';
 import { LoadingSpinner } from './LoadingStates';
+import { useRecaptcha } from '@/hooks/useRecaptcha';
 
 interface GlobalSearchProps {
   placeholder?: string;
@@ -45,6 +46,7 @@ export default function GlobalSearch({ placeholder = "Search movies...", onClose
   const router = useRouter();
   const { user, isLoaded } = useUser();
   const { error, loading, handleAsyncError, clearError } = useSearchErrorHandler();
+  const { executeRecaptcha, isLoaded: recaptchaLoaded } = useRecaptcha();
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -88,6 +90,18 @@ export default function GlobalSearch({ placeholder = "Search movies...", onClose
         router.push('/sign-in');
       }, 100);
       return;
+    }
+
+    // Execute reCAPTCHA if available
+    let recaptchaToken = null;
+    if (recaptchaLoaded) {
+      try {
+        const recaptchaResult = await executeRecaptcha('search');
+        recaptchaToken = recaptchaResult.token;
+      } catch (error) {
+        console.warn('reCAPTCHA failed for search:', error);
+        // Continue without reCAPTCHA if it fails
+      }
     }
 
     const result = await handleAsyncError(

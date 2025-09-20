@@ -39,6 +39,7 @@ import {
 import Link from 'next/link';
 import SEO from '@/components/SEO';
 import RecaptchaProtection from '@/components/RecaptchaProtection';
+import { useRecaptcha } from '@/hooks/useRecaptcha';
 
 interface FeedbackForm {
   name: string;
@@ -90,6 +91,7 @@ export default function FeedbackPage() {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState('');
   const [snackbarSeverity, setSnackbarSeverity] = useState<'success' | 'error'>('success');
+  const { executeRecaptcha, isLoaded } = useRecaptcha();
 
   const handleChange = (field: keyof FeedbackForm) => (event: any) => {
     setFormData(prev => ({
@@ -119,6 +121,18 @@ export default function FeedbackPage() {
     setLoading(true);
 
     try {
+      // Execute reCAPTCHA if available
+      let recaptchaToken = null;
+      if (isLoaded) {
+        try {
+          const recaptchaResult = await executeRecaptcha('feedback');
+          recaptchaToken = recaptchaResult.token;
+        } catch (error) {
+          console.warn('reCAPTCHA failed:', error);
+          // Continue without reCAPTCHA if it fails
+        }
+      }
+
       // Create email content
       const emailSubject = `Feedback: ${formData.subject}`;
       const emailBody = `
@@ -140,6 +154,8 @@ Improvement Suggestions:
 ${formData.improvements}
 
 Allow Contact: ${formData.allowContact ? 'Yes' : 'No'}
+
+reCAPTCHA Token: ${recaptchaToken || 'Not available'}
       `.trim();
 
       // Create mailto link
