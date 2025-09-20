@@ -6,7 +6,7 @@
 
 [build.environment]
   # Node.js version (Netlify supported version)
-  NODE_VERSION = "16"
+  NODE_VERSION = "18"
   # Next.js environment
   NEXT_TELEMETRY_DISABLED = "1"
 
