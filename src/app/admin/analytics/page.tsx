@@ -58,6 +58,7 @@ import {
   Logout as LogoutIcon,
   Block as BlockIcon,
   CheckCircle as UnblockIcon,
+  Settings as SettingsIcon,
 } from '@mui/icons-material';
 import { trackAdminViewAnalytics, trackAdminExportData, trackAdminCleanup } from '@/components/AdminAnalyticsBeacon';
 import { useAdminTheme } from '@/contexts/AdminThemeContext';

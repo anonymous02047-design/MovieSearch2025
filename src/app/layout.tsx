@@ -4,7 +4,6 @@ import { Box, Typography } from "@mui/material";
 import { CustomThemeProvider } from "@/contexts/ThemeContext";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import AdminLayoutWrapper from "@/components/AdminLayoutWrapper";
-import { RecaptchaProvider } from "@/components/RecaptchaProvider";
 import { TawkProvider } from "@/components/TawkProvider";
 import OfflineSupport from "@/components/OfflineSupport";
 import CookiesConsent from "@/components/CookiesConsent";
@@ -98,8 +97,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={roboto.className}>
         <CustomThemeProvider>
-          <RecaptchaProvider autoLoad={true} hideBadge={false}>
-            <TawkProvider autoInitialize={true} autoShow={false}>
+          <TawkProvider autoInitialize={true} autoShow={false}>
               <ErrorBoundary 
                 fallback={
                   <Box sx={{ 
@@ -127,7 +125,6 @@ export default function RootLayout({
                 <GoogleAnalytics />
               </ErrorBoundary>
             </TawkProvider>
-          </RecaptchaProvider>
         </CustomThemeProvider>
       </body>
     </html>

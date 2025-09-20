@@ -2,48 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
   try {
-    // Extract reCAPTCHA token from headers
-    const recaptchaToken = request.headers.get('x-recaptcha-token');
-    
-    // Verify reCAPTCHA token if provided
-    let recaptchaScore = 0.5; // Default score
-    if (recaptchaToken) {
-      try {
-        const verificationResponse = await fetch('https://www.google.com/recaptcha/api/siteverify', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-          },
-          body: new URLSearchParams({
-            secret: process.env.RECAPTCHA_SECRET_KEY || '',
-            response: recaptchaToken,
-            remoteip: request.ip || request.headers.get('x-forwarded-for') || '',
-          }),
-        });
-
-        const verification = await verificationResponse.json();
-        
-        if (!verification.success) {
-          return NextResponse.json(
-            { error: 'reCAPTCHA verification failed' },
-            { status: 400 }
-          );
-        }
-
-        recaptchaScore = verification.score || 0.5;
-        
-        // Check if score is acceptable
-        if (recaptchaScore < 0.5) {
-          return NextResponse.json(
-            { error: 'reCAPTCHA score too low' },
-            { status: 400 }
-          );
-        }
-      } catch (error) {
-        console.error('reCAPTCHA verification error:', error);
-        // Continue without reCAPTCHA verification in case of error
-      }
-    }
 
     // Parse the request body
     const body = await request.json();
@@ -90,7 +48,6 @@ export async function POST(request: NextRequest) {
       message,
       inquiryType: inquiryType || 'general',
       timestamp: new Date().toISOString(),
-      recaptchaScore: recaptchaScore,
       ip: request.ip || request.headers.get('x-forwarded-for') || 'unknown',
       userAgent: request.headers.get('user-agent') || 'unknown',
     };

@@ -17,7 +17,6 @@ import {
   Email as EmailIcon,
   Message as MessageIcon,
 } from '@mui/icons-material';
-import RecaptchaForm from './RecaptchaForm';
 
 interface ContactFormData {
   name: string;
@@ -46,18 +45,17 @@ export default function ContactForm() {
     }));
   };
 
-  const handleSubmit = async (recaptchaToken: string) => {
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
     setIsSubmitting(true);
     setSubmitError(null);
     setSubmitResult(null);
 
     try {
-      // Simulate API call with reCAPTCHA token
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-recaptcha-token': recaptchaToken,
         },
         body: JSON.stringify(formData),
       });
@@ -83,13 +81,6 @@ export default function ContactForm() {
     }
   };
 
-  const handleSuccess = (result: any) => {
-    console.log('Contact form submitted successfully:', result);
-  };
-
-  const handleError = (error: Error) => {
-    console.error('Contact form error:', error);
-  };
 
   return (
     <Box sx={{ maxWidth: 600, mx: 'auto', p: 2 }}>
@@ -101,17 +92,7 @@ export default function ContactForm() {
         Send us a message and we'll get back to you as soon as possible.
       </Typography>
 
-      <RecaptchaForm
-        onSubmit={handleSubmit}
-        action="contact_form"
-        threshold={0.5}
-        loading={isSubmitting}
-        onSuccess={handleSuccess}
-        onError={handleError}
-        submitButtonText="Send Message"
-        showScore={true}
-        showStatus={true}
-      >
+      <form onSubmit={handleSubmit}>
         <Stack spacing={3}>
           <TextField
             fullWidth
@@ -160,8 +141,24 @@ export default function ContactForm() {
             }}
             disabled={isSubmitting}
           />
+
+          <Button
+            type="submit"
+            variant="contained"
+            size="large"
+            disabled={isSubmitting}
+            startIcon={isSubmitting ? <CircularProgress size={20} /> : <SendIcon />}
+            sx={{
+              background: 'linear-gradient(45deg, #2196F3, #21CBF3)',
+              '&:hover': {
+                background: 'linear-gradient(45deg, #1976D2, #1CB5E0)',
+              }
+            }}
+          >
+            {isSubmitting ? 'Sending...' : 'Send Message'}
+          </Button>
         </Stack>
-      </RecaptchaForm>
+      </form>
 
       {/* Success Message */}
       {submitResult && (
