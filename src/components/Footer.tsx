@@ -12,6 +12,8 @@ import {
   Divider,
   useTheme,
   useMediaQuery,
+  Collapse,
+  Button,
 } from '@mui/material';
 import {
   Movie as MovieIcon,
@@ -23,7 +25,9 @@ import {
   LinkedIn as LinkedInIcon,
   GitHub as GitHubIcon,
   Favorite as FavoriteIcon,
+  Sitemap as SitemapIcon,
 } from '@mui/icons-material';
+import SitemapSection from './SitemapSection';
 
 export default function Footer() {
   const theme = useTheme();
@@ -31,6 +35,7 @@ export default function Footer() {
   const [currentIP, setCurrentIP] = useState<string>('Loading...');
   const [buildVersion, setBuildVersion] = useState<string>('1.0.0');
   const [buildTime, setBuildTime] = useState<string>('');
+  const [showSitemap, setShowSitemap] = useState<boolean>(false);
 
   const currentYear = new Date().getFullYear();
 
@@ -123,6 +128,7 @@ export default function Footer() {
           { text: 'Feedback', href: '/feedback' },
           { text: 'Tech Specs', href: '/tech-specs' },
           { text: 'Help Center', href: '/help' },
+          { text: 'Site Map', href: '/sitemap' },
           { text: 'Privacy Policy', href: '/privacy' },
           { text: 'Terms of Service', href: '/terms' },
           { text: 'API Documentation', href: '/api-docs' },
@@ -249,6 +255,31 @@ export default function Footer() {
             </Grid>
           </Grid>
         </Grid>
+
+        {/* Sitemap Section */}
+        <Box sx={{ mt: 4 }}>
+          <Box sx={{ textAlign: 'center', mb: 3 }}>
+            <Button
+              variant="outlined"
+              startIcon={<SitemapIcon />}
+              onClick={() => setShowSitemap(!showSitemap)}
+              sx={{
+                color: 'white',
+                borderColor: 'rgba(255, 255, 255, 0.5)',
+                '&:hover': {
+                  borderColor: 'white',
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                },
+              }}
+            >
+              {showSitemap ? 'Hide' : 'Show'} Complete Site Map
+            </Button>
+          </Box>
+          
+          <Collapse in={showSitemap}>
+            <SitemapSection />
+          </Collapse>
+        </Box>
 
         <Divider sx={{ 
           borderColor: 'rgba(255, 255, 255, 0.2)',
