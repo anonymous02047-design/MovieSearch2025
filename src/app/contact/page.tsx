@@ -54,7 +54,6 @@ export default function ContactPage() {
   const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' as 'success' | 'error' });
   const [mapDialogOpen, setMapDialogOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { executeRecaptcha, isLoaded } = useRecaptcha();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -69,23 +68,12 @@ export default function ContactPage() {
     setIsSubmitting(true);
     
     try {
-      // Execute reCAPTCHA if available
-      let recaptchaToken = null;
-      if (isLoaded) {
-        try {
-          const recaptchaResult = await executeRecaptcha('contact');
-          recaptchaToken = recaptchaResult.token;
-        } catch (error) {
-          console.warn('reCAPTCHA failed:', error);
-        }
-      }
       
       // Send form data to API
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          ...(recaptchaToken && { }),
         },
         body: JSON.stringify({
           name: formData.name,

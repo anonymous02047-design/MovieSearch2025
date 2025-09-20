@@ -1,16 +1,14 @@
 [build]
-  # Build command for Next.js with Netlify plugin
+  # Build command for Next.js
   command = "npm run build"
-  # Functions directory for serverless functions
-  functions = "netlify/functions"
+  # Publish directory for Next.js
+  publish = ".next"
 
 [build.environment]
   # Node.js version (Netlify supported version)
   NODE_VERSION = "18"
   # Next.js environment
   NEXT_TELEMETRY_DISABLED = "1"
-
-# Redirect rules handled by Next.js
 
 # Headers for security and performance
 [[headers]]
@@ -35,16 +33,11 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# API routes redirect to Netlify Functions
-[[redirects]]
-  from = "/api/contact"
-  to = "/.netlify/functions/contact"
-  status = 200
-
-[[redirects]]
-  from = "/api/admin/auth/login"
-  to = "/.netlify/functions/admin-auth"
-  status = 200
+# Cache Next.js static files
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
 
 # Form processing
 [build.processing]
@@ -60,11 +53,3 @@
 
 [build.processing.html]
   pretty_urls = true
-
-# Edge functions (if needed)
-[functions]
-  directory = "netlify/functions"
-
-# Netlify plugins
-[[plugins]]
-  package = "@netlify/plugin-functions-install-core"
