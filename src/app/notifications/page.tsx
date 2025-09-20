@@ -1,115 +1,133 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { useUser } from '@clerk/nextjs';
+import { useRouter } from 'next/navigation';
 import {
-  Box,
-  Typography,
   Container,
+  Typography,
+  Box,
   Card,
   CardContent,
   List,
   ListItem,
   ListItemText,
   ListItemIcon,
-  Chip,
-  Button,
+  ListItemSecondaryAction,
   IconButton,
+  Chip,
+  Switch,
+  FormControlLabel,
   Divider,
-  Alert,
-  Tabs,
-  Tab,
   Badge,
 } from '@mui/material';
 import {
   Notifications as NotificationsIcon,
+  NotificationsOff as NotificationsOffIcon,
   Movie as MovieIcon,
-  Tv as TvIcon,
+  Star as StarIcon,
   Person as PersonIcon,
-  MarkEmailRead as MarkReadIcon,
-  Delete as DeleteIcon,
   Settings as SettingsIcon,
+  Delete as DeleteIcon,
+  MarkEmailRead as MarkReadIcon,
 } from '@mui/icons-material';
-import { useUser } from '@clerk/nextjs';
+import EnhancedLoading from '@/components/EnhancedLoading';
+import SEO from '@/components/SEO';
 
-// Prevent static generation
 export const dynamic = 'force-dynamic';
 
 interface Notification {
   id: string;
-  type: 'movie' | 'tv' | 'person' | 'system' | 'recommendation';
   title: string;
   message: string;
-  timestamp: Date;
+  type: 'movie' | 'rating' | 'follow' | 'system';
+  timestamp: string;
   read: boolean;
   actionUrl?: string;
-  imageUrl?: string;
 }
-
-const mockNotifications: Notification[] = [
-  {
-    id: '1',
-    type: 'movie',
-    title: 'New Movie Release',
-    message: 'The new movie "Avatar: The Way of Water" is now available to watch!',
-    timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000), // 2 hours ago
-    read: false,
-    actionUrl: '/movie/76600',
-    imageUrl: '/placeholder-movie.jpg',
-  },
-  {
-    id: '2',
-    type: 'tv',
-    title: 'New Episode Available',
-    message: 'New episode of "Stranger Things" season 4 is now streaming.',
-    timestamp: new Date(Date.now() - 5 * 60 * 60 * 1000), // 5 hours ago
-    read: false,
-    actionUrl: '/tv/66732',
-    imageUrl: '/placeholder-movie.jpg',
-  },
-  {
-    id: '3',
-    type: 'recommendation',
-    title: 'Recommended for You',
-    message: 'Based on your watchlist, you might like "The Mandalorian".',
-    timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000), // 1 day ago
-    read: true,
-    actionUrl: '/tv/82856',
-    imageUrl: '/placeholder-movie.jpg',
-  },
-  {
-    id: '4',
-    type: 'system',
-    title: 'Welcome to MovieSearch!',
-    message: 'Thank you for joining MovieSearch 2025. Start exploring movies and TV shows!',
-    timestamp: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000), // 3 days ago
-    read: true,
-  },
-];
 
 export default function NotificationsPage() {
   const { user, isLoaded } = useUser();
-  const [notifications, setNotifications] = useState<Notification[]>(mockNotifications);
-  const [tabValue, setTabValue] = useState(0);
+  const router = useRouter();
+  const [notifications, setNotifications] = useState<Notification[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [emailNotifications, setEmailNotifications] = useState(true);
+  const [pushNotifications, setPushNotifications] = useState(true);
 
-  const unreadCount = notifications.filter(n => !n.read).length;
+  // Mock data for demonstration
+  const mockNotifications: Notification[] = [
+    {
+      id: '1',
+      title: 'New Movie Recommendation',
+      message: 'Check out "The Matrix Resurrections" - it matches your preferences!',
+      type: 'movie',
+      timestamp: new Date().toISOString(),
+      read: false,
+      actionUrl: '/movie/624860',
+    },
+    {
+      id: '2',
+      title: 'Rating Update',
+      message: 'Your rating for "Inception" has been updated to 5 stars.',
+      type: 'rating',
+      timestamp: new Date(Date.now() - 3600000).toISOString(),
+      read: false,
+    },
+    {
+      id: '3',
+      title: 'New Follower',
+      message: 'John Doe started following you.',
+      type: 'follow',
+      timestamp: new Date(Date.now() - 7200000).toISOString(),
+      read: true,
+    },
+    {
+      id: '4',
+      title: 'System Update',
+      message: 'New features have been added to MovieSearch. Check them out!',
+      type: 'system',
+      timestamp: new Date(Date.now() - 86400000).toISOString(),
+      read: true,
+    },
+  ];
 
-  const handleMarkAsRead = (id: string) => {
-    setNotifications(prev => 
-      prev.map(notification => 
-        notification.id === id 
+  useEffect(() => {
+    if (!isLoaded) return;
+    
+    if (!user) {
+      router.push('/sign-in');
+      return;
+    }
+
+    loadNotifications();
+  }, [isLoaded, user, router]);
+
+  const loadNotifications = async () => {
+    setLoading(true);
+    // Simulate API call
+    setTimeout(() => {
+      setNotifications(mockNotifications);
+      setLoading(false);
+    }, 1000);
+  };
+
+  const markAsRead = (id: string) => {
+    setNotifications(prev =>
+      prev.map(notification =>
+        notification.id === id
           ? { ...notification, read: true }
           : notification
       )
     );
   };
 
-  const handleMarkAllAsRead = () => {
-    setNotifications(prev => 
+  const markAllAsRead = () => {
+    setNotifications(prev =>
       prev.map(notification => ({ ...notification, read: true }))
     );
   };
 
-  const handleDeleteNotification = (id: string) => {
+  const deleteNotification = (id: string) => {
     setNotifications(prev => prev.filter(notification => notification.id !== id));
   };
 
@@ -117,10 +135,12 @@ export default function NotificationsPage() {
     switch (type) {
       case 'movie':
         return <MovieIcon />;
-      case 'tv':
-        return <TvIcon />;
-      case 'person':
+      case 'rating':
+        return <StarIcon />;
+      case 'follow':
         return <PersonIcon />;
+      case 'system':
+        return <SettingsIcon />;
       default:
         return <NotificationsIcon />;
     }
@@ -130,200 +150,192 @@ export default function NotificationsPage() {
     switch (type) {
       case 'movie':
         return 'primary';
-      case 'tv':
-        return 'secondary';
-      case 'person':
-        return 'success';
-      case 'recommendation':
+      case 'rating':
         return 'warning';
+      case 'follow':
+        return 'success';
+      case 'system':
+        return 'info';
       default:
         return 'default';
     }
   };
 
-  const formatTimestamp = (timestamp: Date) => {
+  const formatTimestamp = (timestamp: string) => {
+    const date = new Date(timestamp);
     const now = new Date();
-    const diff = now.getTime() - timestamp.getTime();
-    const hours = Math.floor(diff / (1000 * 60 * 60));
-    const days = Math.floor(hours / 24);
+    const diffInHours = Math.floor((now.getTime() - date.getTime()) / (1000 * 60 * 60));
 
-    if (days > 0) {
-      return `${days} day${days > 1 ? 's' : ''} ago`;
-    } else if (hours > 0) {
-      return `${hours} hour${hours > 1 ? 's' : ''} ago`;
-    } else {
+    if (diffInHours < 1) {
       return 'Just now';
+    } else if (diffInHours < 24) {
+      return `${diffInHours} hour${diffInHours > 1 ? 's' : ''} ago`;
+    } else {
+      const diffInDays = Math.floor(diffInHours / 24);
+      return `${diffInDays} day${diffInDays > 1 ? 's' : ''} ago`;
     }
   };
 
-  const filteredNotifications = notifications.filter(notification => {
-    switch (tabValue) {
-      case 0: // All
-        return true;
-      case 1: // Unread
-        return !notification.read;
-      case 2: // Movies
-        return notification.type === 'movie';
-      case 3: // TV Shows
-        return notification.type === 'tv';
-      default:
-        return true;
-    }
-  });
+  const unreadCount = notifications.filter(n => !n.read).length;
 
   if (!isLoaded) {
-    return (
-      <Container maxWidth="lg" sx={{ py: 4 }}>
-        <Typography>Loading...</Typography>
-      </Container>
-    );
+    return <EnhancedLoading message="Loading..." fullScreen />;
   }
 
   if (!user) {
-    return (
-      <Container maxWidth="lg" sx={{ py: 4 }}>
-        <Alert severity="warning">
-          Please sign in to view your notifications.
-        </Alert>
-      </Container>
-    );
+    return null; // Will redirect to sign-in
   }
 
   return (
-    <Container maxWidth="lg" sx={{ py: 4 }}>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 4 }}>
-        <Box>
-          <Typography variant="h3" component="h1" gutterBottom>
+    <>
+      <SEO
+        title="Notifications - MovieSearch 2025"
+        description="Manage your notifications and stay updated with the latest movie recommendations and updates."
+        keywords={['notifications', 'alerts', 'movie updates', 'recommendations']}
+      />
+
+      <Container maxWidth="md" sx={{ py: 4 }}>
+        <Box sx={{ mb: 4, textAlign: 'center' }}>
+          <Typography variant="h3" component="h1" gutterBottom className="fade-in">
             Notifications
           </Typography>
-          <Typography variant="body1" color="text.secondary">
-            Stay updated with your favorite movies and TV shows
+          <Typography variant="h6" color="text.secondary" className="fade-in stagger-1">
+            Stay updated with your movie recommendations and account activity
           </Typography>
         </Box>
-        
-        <Box sx={{ display: 'flex', gap: 2 }}>
-          {unreadCount > 0 && (
-            <Button
-              variant="outlined"
-              startIcon={<MarkReadIcon />}
-              onClick={handleMarkAllAsRead}
-            >
-              Mark All Read
-            </Button>
-          )}
-          <Button
-            variant="outlined"
-            startIcon={<SettingsIcon />}
-            href="/settings"
-          >
-            Settings
-          </Button>
-        </Box>
-      </Box>
 
-      <Card>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <Tabs value={tabValue} onChange={(_, newValue) => setTabValue(newValue)}>
-            <Tab 
-              label={
-                <Badge badgeContent={unreadCount} color="error">
-                  All
-                </Badge>
-              } 
-            />
-            <Tab label="Unread" />
-            <Tab label="Movies" />
-            <Tab label="TV Shows" />
-          </Tabs>
-        </Box>
-
-        {filteredNotifications.length === 0 ? (
-          <Box sx={{ p: 4, textAlign: 'center' }}>
-            <NotificationsIcon sx={{ fontSize: 64, color: 'text.secondary', mb: 2 }} />
+        {/* Notification Settings */}
+        <Card sx={{ mb: 4 }} className="fade-in stagger-2">
+          <CardContent>
             <Typography variant="h6" gutterBottom>
-              No notifications
+              Notification Settings
             </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {tabValue === 1 
-                ? "You're all caught up! No unread notifications."
-                : "You don't have any notifications yet."
-              }
-            </Typography>
-          </Box>
-        ) : (
-          <List>
-            {filteredNotifications.map((notification, index) => (
-              <React.Fragment key={notification.id}>
-                <ListItem
-                  sx={{
-                    bgcolor: notification.read ? 'transparent' : 'action.hover',
-                    '&:hover': {
-                      bgcolor: 'action.selected',
-                    },
-                  }}
-                >
-                  <ListItemIcon>
-                    {getNotificationIcon(notification.type)}
-                  </ListItemIcon>
-                  
-                  <ListItemText
-                    primary={
-                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 0.5 }}>
-                        <Typography 
-                          variant="subtitle1" 
-                          sx={{ fontWeight: notification.read ? 'normal' : 'bold' }}
-                        >
-                          {notification.title}
-                        </Typography>
-                        <Chip 
-                          label={notification.type.toUpperCase()} 
-                          size="small" 
-                          color={getNotificationColor(notification.type) as any}
-                          variant="outlined"
-                        />
-                        {!notification.read && (
-                          <Chip label="NEW" size="small" color="error" />
-                        )}
-                      </Box>
-                    }
-                    secondary={
-                      <Box>
-                        <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
-                          {notification.message}
-                        </Typography>
-                        <Typography variant="caption" color="text.secondary">
-                          {formatTimestamp(notification.timestamp)}
-                        </Typography>
-                      </Box>
-                    }
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+              <FormControlLabel
+                control={
+                  <Switch
+                    checked={emailNotifications}
+                    onChange={(e) => setEmailNotifications(e.target.checked)}
                   />
-                  
-                  <Box sx={{ display: 'flex', gap: 1 }}>
-                    {!notification.read && (
-                      <IconButton
-                        size="small"
-                        onClick={() => handleMarkAsRead(notification.id)}
-                        title="Mark as read"
-                      >
-                        <MarkReadIcon />
-                      </IconButton>
-                    )}
-                    <IconButton
-                      size="small"
-                      onClick={() => handleDeleteNotification(notification.id)}
-                      title="Delete notification"
-                      color="error"
+                }
+                label="Email Notifications"
+              />
+              <FormControlLabel
+                control={
+                  <Switch
+                    checked={pushNotifications}
+                    onChange={(e) => setPushNotifications(e.target.checked)}
+                  />
+                }
+                label="Push Notifications"
+              />
+            </Box>
+          </CardContent>
+        </Card>
+
+        {/* Notifications List */}
+        <Card className="fade-in stagger-3">
+          <CardContent>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+              <Typography variant="h6">
+                Recent Notifications
+                {unreadCount > 0 && (
+                  <Badge badgeContent={unreadCount} color="primary" sx={{ ml: 2 }}>
+                    <NotificationsIcon />
+                  </Badge>
+                )}
+              </Typography>
+              {unreadCount > 0 && (
+                <IconButton onClick={markAllAsRead} color="primary">
+                  <MarkReadIcon />
+                </IconButton>
+              )}
+            </Box>
+
+            {loading ? (
+              <EnhancedLoading type="default" message="Loading notifications..." />
+            ) : notifications.length === 0 ? (
+              <Box sx={{ textAlign: 'center', py: 4 }}>
+                <NotificationsOffIcon sx={{ fontSize: 64, color: 'text.secondary', mb: 2 }} />
+                <Typography variant="h6" color="text.secondary">
+                  No notifications yet
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  You'll receive notifications about movie recommendations and account activity here.
+                </Typography>
+              </Box>
+            ) : (
+              <List>
+                {notifications.map((notification, index) => (
+                  <React.Fragment key={notification.id}>
+                    <ListItem
+                      className="fade-in"
+                      style={{ animationDelay: `${index * 0.1}s` }}
+                      sx={{
+                        bgcolor: notification.read ? 'transparent' : 'action.hover',
+                        borderRadius: 1,
+                        mb: 1,
+                      }}
                     >
-                      <DeleteIcon />
-                    </IconButton>
-                  </Box>
-                </ListItem>
-                {index < filteredNotifications.length - 1 && <Divider />}
-              </React.Fragment>
-            ))}
-          </List>
-        )}
-      </Card>
-    </Container>
+                      <ListItemIcon>
+                        {getNotificationIcon(notification.type)}
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={
+                          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                            <Typography variant="subtitle1">
+                              {notification.title}
+                            </Typography>
+                            <Chip
+                              label={notification.type}
+                              size="small"
+                              color={getNotificationColor(notification.type) as any}
+                            />
+                            {!notification.read && (
+                              <Chip label="New" size="small" color="primary" variant="outlined" />
+                            )}
+                          </Box>
+                        }
+                        secondary={
+                          <Box>
+                            <Typography variant="body2" color="text.secondary">
+                              {notification.message}
+                            </Typography>
+                            <Typography variant="caption" color="text.secondary">
+                              {formatTimestamp(notification.timestamp)}
+                            </Typography>
+                          </Box>
+                        }
+                      />
+                      <ListItemSecondaryAction>
+                        <Box sx={{ display: 'flex', gap: 1 }}>
+                          {!notification.read && (
+                            <IconButton
+                              size="small"
+                              onClick={() => markAsRead(notification.id)}
+                              color="primary"
+                            >
+                              <MarkReadIcon />
+                            </IconButton>
+                          )}
+                          <IconButton
+                            size="small"
+                            onClick={() => deleteNotification(notification.id)}
+                            color="error"
+                          >
+                            <DeleteIcon />
+                          </IconButton>
+                        </Box>
+                      </ListItemSecondaryAction>
+                    </ListItem>
+                    {index < notifications.length - 1 && <Divider />}
+                  </React.Fragment>
+                ))}
+              </List>
+            )}
+          </CardContent>
+        </Card>
+      </Container>
+    </>
   );
 }

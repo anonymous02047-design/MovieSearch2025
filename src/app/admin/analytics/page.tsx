@@ -434,6 +434,62 @@ export default function EnhancedAdminAnalyticsPage() {
     ]);
   };
 
+  const handleExportCSV = async () => {
+    try {
+      const token = localStorage.getItem('admin_token');
+      if (!token) return;
+
+      const queryParams = new URLSearchParams(
+        Object.fromEntries(Object.entries(filters).filter(([_, value]) => value))
+      );
+
+      const response = await fetch(`/api/admin/analytics/export?${queryParams}`, {
+        headers: { 'Authorization': `Bearer ${token}` },
+      });
+
+      if (response.ok) {
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `analytics-sessions-${new Date().toISOString().split('T')[0]}.csv`;
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+        
+        showSnackbar('Data exported successfully!', 'success');
+      } else {
+        throw new Error('Failed to export data');
+      }
+    } catch (error: any) {
+      showSnackbar(`Export failed: ${error.message}`, 'error');
+    }
+  };
+
+  const handleCleanup = async () => {
+    try {
+      const token = localStorage.getItem('admin_token');
+      if (!token) return;
+
+      const response = await fetch('/api/admin/analytics/cleanup', {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${token}` },
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        showSnackbar('Old session files cleaned up successfully!', 'success');
+        fetchSessions();
+        fetchSummary();
+      } else {
+        throw new Error('Failed to cleanup data');
+      }
+    } catch (error: any) {
+      showSnackbar(`Cleanup failed: ${error.message}`, 'error');
+    }
+  };
+
   const showSnackbar = (message: string, severity: 'success' | 'error' | 'warning' | 'info') => {
     setSnackbarMessage(message);
     setSnackbarSeverity(severity);
@@ -586,6 +642,7 @@ export default function EnhancedAdminAnalyticsPage() {
             variant="outlined"
             startIcon={<DownloadIcon />}
             disabled={loading || sessions.length === 0}
+            onClick={handleExportCSV}
             className="hover-lift"
           >
             Export CSV
@@ -596,6 +653,7 @@ export default function EnhancedAdminAnalyticsPage() {
             color="warning"
             startIcon={<DeleteIcon />}
             disabled={loading}
+            onClick={handleCleanup}
             className="hover-lift"
           >
             Cleanup

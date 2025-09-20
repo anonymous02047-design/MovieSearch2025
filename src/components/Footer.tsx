@@ -259,21 +259,40 @@ export default function Footer() {
         {/* Sitemap Section */}
         <Box sx={{ mt: 4 }}>
           <Box sx={{ textAlign: 'center', mb: 3 }}>
-            <Button
-              variant="outlined"
-              startIcon={<SitemapIcon />}
-              onClick={() => setShowSitemap(!showSitemap)}
-              sx={{
-                color: 'white',
-                borderColor: 'rgba(255, 255, 255, 0.5)',
-                '&:hover': {
-                  borderColor: 'white',
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                },
-              }}
-            >
-              {showSitemap ? 'Hide' : 'Show'} Complete Site Map
-            </Button>
+            <Stack direction="row" spacing={2} justifyContent="center" flexWrap="wrap">
+              <Button
+                variant="outlined"
+                startIcon={<SitemapIcon />}
+                onClick={() => setShowSitemap(!showSitemap)}
+                sx={{
+                  color: 'white',
+                  borderColor: 'rgba(255, 255, 255, 0.5)',
+                  '&:hover': {
+                    borderColor: 'white',
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                  },
+                }}
+              >
+                {showSitemap ? 'Hide' : 'Show'} Complete Site Map
+              </Button>
+              <Button
+                variant="outlined"
+                startIcon={<SitemapIcon />}
+                href="/sitemap.xml"
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{
+                  color: 'white',
+                  borderColor: 'rgba(255, 255, 255, 0.5)',
+                  '&:hover': {
+                    borderColor: 'white',
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                  },
+                }}
+              >
+                XML Sitemap
+              </Button>
+            </Stack>
           </Box>
           
           <Collapse in={showSitemap}>
