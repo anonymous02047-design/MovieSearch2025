@@ -1,229 +1,302 @@
-# 🚀 Netlify Deployment Guide - MovieSearch 2025
+# 🚀 Netlify Deployment Guide for MovieSearch 2025
 
-## ✅ **Ready for Netlify Deployment!**
+This guide will help you deploy your MovieSearch 2025 application to Netlify with all functionality intact.
 
-Your MovieSearch 2025 app is perfectly configured for Netlify deployment with:
-- ✅ **63 pages generated successfully**
-- ✅ **All features working** (Authentication, Search, UI/UX)
-- ✅ **Netlify configuration** (`netlify.toml`) created
-- ✅ **Optimized build settings** for Netlify
+## 📋 Prerequisites
 
-## 🎯 **Step-by-Step Netlify Deployment**
+- GitHub repository with your code
+- Netlify account (free tier available)
+- All environment variables ready
 
-### **Step 1: Push to GitHub First**
+## 🔧 Step 1: Prepare Your Repository
 
-Run these commands in your terminal:
+### 1.1 Verify Configuration Files
+
+Ensure these files are in your repository root:
+- ✅ `netlify.toml` - Netlify configuration
+- ✅ `next.config.ts` - Next.js configuration (set to `output: 'export'`)
+- ✅ `package.json` - Dependencies and scripts
+- ✅ `env.example` - Environment variables template
+
+### 1.2 Test Local Build
 
 ```bash
-# Initialize git (if not already done)
-git init
+# Install dependencies
+npm install
 
-# Add all files
-git add .
+# Test the build locally
+npm run build
 
-# Commit changes
-git commit -m "Deploy MovieSearch 2025 to Netlify - Production ready"
-
-# Add your GitHub repository (replace with your actual repo URL)
-git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
-
-# Push to GitHub
-git push -u origin main
+# Verify the output directory
+ls -la out/
 ```
 
-### **Step 2: Deploy to Netlify**
+## 🌐 Step 2: Deploy to Netlify
 
-1. **Go to Netlify:**
-   - Visit [netlify.com](https://netlify.com)
-   - Sign up/Login (preferably with GitHub)
+### 2.1 Connect to Netlify
 
-2. **Create New Site:**
-   - Click "New site from Git"
-   - Choose "GitHub" as your Git provider
-   - Authorize Netlify to access your GitHub repositories
+1. **Go to [Netlify](https://netlify.com)**
+2. **Sign in** with your GitHub account
+3. **Click "New site from Git"**
+4. **Choose GitHub** as your Git provider
+5. **Select your repository** (MovieSearch2025)
 
-3. **Select Your Repository:**
-   - Find and select your MovieSearch 2025 repository
-   - Click "Deploy site"
+### 2.2 Configure Build Settings
 
-4. **Build Settings (Auto-configured):**
-   - ✅ **Build command:** `npm run build` (auto-detected)
-   - ✅ **Publish directory:** `.next` (auto-detected)
-   - ✅ **Node version:** 18 (configured in netlify.toml)
+Netlify should auto-detect these settings from `netlify.toml`:
 
-### **Step 3: Configure Environment Variables**
+```
+Build command: npm run build
+Publish directory: out
+Functions directory: netlify/functions
+```
 
-In your Netlify dashboard:
+If not auto-detected, manually set:
+- **Build command**: `npm run build`
+- **Publish directory**: `out`
+- **Functions directory**: `netlify/functions`
 
-1. Go to **Site settings** > **Environment variables**
-2. Add these variables:
+### 2.3 Set Environment Variables
 
-```bash
+In Netlify dashboard, go to **Site settings > Environment variables** and add:
+
+#### Required Variables:
+```env
 # Clerk Authentication
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_your_clerk_publishable_key
-CLERK_SECRET_KEY=sk_test_your_clerk_secret_key
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_live_your_actual_key_here
+CLERK_SECRET_KEY=sk_live_your_actual_secret_here
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/
 
 # TMDB API
-NEXT_PUBLIC_TMDB_API_KEY=your_tmdb_api_key
+NEXT_PUBLIC_TMDB_API_KEY=your_actual_tmdb_key_here
+NEXT_PUBLIC_TMDB_BASE_URL=https://api.themoviedb.org/3
+NEXT_PUBLIC_TMDB_IMAGE_BASE_URL=https://image.tmdb.org/t/p
 
 # Google reCAPTCHA
-NEXT_PUBLIC_RECAPTCHA_SITE_KEY=your_recaptcha_site_key
-RECAPTCHA_SECRET_KEY=your_recaptcha_secret_key
+NEXT_PUBLIC_RECAPTCHA_SITE_KEY=your_actual_recaptcha_site_key_here
+RECAPTCHA_SECRET_KEY=your_actual_recaptcha_secret_here
+RECAPTCHA_THRESHOLD=0.5
+RECAPTCHA_ACTION=movie_search
+RECAPTCHA_TIMEOUT=5000
 
-# Tawk.to (Optional)
-NEXT_PUBLIC_TAWK_PROPERTY_ID=your_tawk_property_id
-NEXT_PUBLIC_TAWK_WIDGET_ID=your_tawk_widget_id
+# Tawk.to Chat
+NEXT_PUBLIC_TAWK_PROPERTY_ID=your_actual_tawk_property_id_here
+NEXT_PUBLIC_TAWK_WIDGET_ID=your_actual_tawk_widget_id_here
+NEXT_PUBLIC_TAWK_ENABLED=true
+NEXT_PUBLIC_TAWK_POSITION=bottom-right
+NEXT_PUBLIC_TAWK_THEME=auto
+NEXT_PUBLIC_TAWK_SHOW_MOBILE=true
+NEXT_PUBLIC_TAWK_SHOW_DESKTOP=true
+NEXT_PUBLIC_TAWK_AUTO_START=false
+NEXT_PUBLIC_TAWK_GREETING_MESSAGE=Hello! How can we help you today?
+NEXT_PUBLIC_TAWK_OFFLINE_MESSAGE=We are currently offline. Please leave a message and we will get back to you soon.
 
-# Next.js
-NEXT_TELEMETRY_DISABLED=1
+# Analytics
+NEXT_PUBLIC_ANALYTICS_ENABLED=true
+NEXT_PUBLIC_ANALYTICS_API_URL=/api/analytics
+
+# Rate Limiting
+RATE_LIMIT_WINDOW_MS=900000
+RATE_LIMIT_MAX_REQUESTS=100
+
+# App Configuration
+NEXT_PUBLIC_APP_NAME=MovieSearch 2025
+NEXT_PUBLIC_APP_VERSION=1.0.0
+NEXT_PUBLIC_APP_URL=https://your-site-name.netlify.app
+
+# Admin Authentication
+ADMIN_USERNAME=admin
+ADMIN_PASSWORD=your_secure_admin_password_here
+ADMIN_JWT_SECRET=your_very_secure_jwt_secret_here
+
+# Contact Information
+NEXT_PUBLIC_CONTACT_EMAIL=your_contact_email_here
+NEXT_PUBLIC_CONTACT_PHONE=your_contact_phone_here
 ```
 
-### **Step 4: Redeploy**
+## 🚀 Step 3: Deploy
 
-After adding environment variables:
-1. Go to **Deploys** tab
-2. Click **Trigger deploy** > **Deploy site**
-3. Wait for deployment to complete
+### 3.1 Initial Deployment
 
-## 🎉 **Your App Features on Netlify**
+1. **Click "Deploy site"** in Netlify
+2. **Wait for build** to complete (usually 2-5 minutes)
+3. **Check build logs** for any errors
 
-### **✅ Fully Working:**
-- 🎬 **Movie Search & Discovery** - Complete TMDB integration
-- 👤 **User Authentication** - Clerk-powered auth system
-- 🎨 **Responsive UI/UX** - Mobile-first design
-- 🔍 **Advanced Search** - Multiple search types
-- 🛡️ **reCAPTCHA Protection** - Site-wide security
-- ♿ **Accessibility** - 27+ accessibility options
-- 🌙 **Dark/Light Theme** - Theme switching
-- 📊 **Analytics** - User behavior tracking
-- 💬 **Chat Support** - Tawk.to integration
-- 📱 **Mobile Optimized** - Perfect mobile experience
+### 3.2 Verify Deployment
 
-## 🔧 **Netlify Configuration Details**
+After successful deployment:
 
-### **Build Settings:**
-- **Build Command:** `npm run build`
-- **Publish Directory:** `.next`
-- **Node Version:** 18
-- **Build Timeout:** 15 minutes (default)
+1. **Visit your site** at `https://your-site-name.netlify.app`
+2. **Test all functionality**:
+   - ✅ Home page loads
+   - ✅ Search functionality works
+   - ✅ Movie/TV/Person pages load
+   - ✅ User authentication (sign up/sign in)
+   - ✅ Profile management
+   - ✅ Contact form
+   - ✅ Feedback form
+   - ✅ Bug report form
+   - ✅ Admin login
+   - ✅ reCAPTCHA protection
 
-### **Performance Optimizations:**
-- ✅ **Static asset caching** (1 year)
-- ✅ **Image optimization** (Next.js Image component)
-- ✅ **CSS/JS minification** (automatic)
-- ✅ **Gzip compression** (automatic)
-- ✅ **CDN distribution** (global)
+## 🔧 Step 4: Configure Custom Domain (Optional)
 
-### **Security Headers:**
-- ✅ **X-Frame-Options:** DENY
-- ✅ **X-Content-Type-Options:** nosniff
-- ✅ **X-XSS-Protection:** 1; mode=block
-- ✅ **Referrer-Policy:** origin-when-cross-origin
+### 4.1 Add Custom Domain
 
-## 📊 **Deployment Status**
+1. **Go to Site settings > Domain management**
+2. **Click "Add custom domain"**
+3. **Enter your domain** (e.g., `ladlihub.in`)
+4. **Follow DNS configuration** instructions
 
-### **Build Statistics:**
-- **63 Pages Generated** ✅
-- **Build Time:** ~23 seconds
-- **Bundle Size:** Optimized for production
-- **Static Pages:** 60+ pages
-- **Dynamic Pages:** 3 pages (auth, movie details, TV details)
+### 4.2 SSL Certificate
 
-## 🔍 **Post-Deployment Testing**
+Netlify automatically provides SSL certificates for all domains.
 
-### **Test These Features:**
-- [ ] Visit your Netlify URL
-- [ ] Test user registration/login
-- [ ] Search for movies
-- [ ] Check mobile responsiveness
-- [ ] Test all navigation links
-- [ ] Verify reCAPTCHA protection
-- [ ] Check contact forms
-- [ ] Test theme switching
-- [ ] Verify accessibility features
+## 🛠️ Step 5: Post-Deployment Configuration
 
-## 🚀 **Custom Domain (Optional)**
+### 5.1 Update Clerk Configuration
 
-### **Add Custom Domain:**
-1. Go to **Domain settings** in Netlify
-2. Click **Add custom domain**
-3. Enter your domain name
-4. Follow DNS configuration instructions
-5. Enable HTTPS (automatic with Netlify)
+1. **Go to [Clerk Dashboard](https://dashboard.clerk.com)**
+2. **Update allowed origins**:
+   - Add: `https://your-site-name.netlify.app`
+   - Add: `https://your-custom-domain.com` (if applicable)
 
-## 📈 **Analytics & Monitoring**
+### 5.2 Update reCAPTCHA Configuration
 
-### **Netlify Analytics:**
-- **Page views** and **unique visitors**
-- **Top pages** and **referrers**
-- **Performance metrics**
-- **Form submissions**
+1. **Go to [Google reCAPTCHA Console](https://www.google.com/recaptcha/admin)**
+2. **Add domains**:
+   - `your-site-name.netlify.app`
+   - `your-custom-domain.com` (if applicable)
 
-### **Custom Analytics:**
-- **Google Analytics** (if configured)
-- **Tawk.to chat** analytics
-- **User behavior** tracking
+### 5.3 Update Tawk.to Configuration
 
-## 🔄 **Automatic Deployments**
+1. **Go to [Tawk.to Dashboard](https://dashboard.tawk.to)**
+2. **Update domain settings** for your new domain
 
-### **GitHub Integration:**
-- ✅ **Automatic deploys** on every push to main branch
-- ✅ **Preview deploys** for pull requests
-- ✅ **Branch deploys** for feature branches
-- ✅ **Deploy notifications** via email/Slack
+## 🔍 Step 6: Testing & Verification
 
-## 🛠️ **Troubleshooting**
+### 6.1 Functionality Tests
 
-### **Common Issues:**
+Test these features on your deployed site:
 
-1. **Build Fails:**
-   - Check environment variables
-   - Verify Node.js version (18)
-   - Check build logs in Netlify dashboard
+#### Core Features:
+- [ ] Home page loads correctly
+- [ ] Search functionality works
+- [ ] Movie detail pages load
+- [ ] TV show detail pages load
+- [ ] Person detail pages load
+- [ ] Navigation works properly
 
-2. **Authentication Issues:**
-   - Verify Clerk keys are correct
-   - Check domain configuration in Clerk dashboard
+#### User Features:
+- [ ] User registration works
+- [ ] User login works
+- [ ] Profile management works
+- [ ] Watchlist functionality
+- [ ] Favorites functionality
 
-3. **API Issues:**
-   - Verify TMDB API key
-   - Check reCAPTCHA configuration
+#### Forms & Security:
+- [ ] Contact form submits successfully
+- [ ] Feedback form works
+- [ ] Bug report form works
+- [ ] reCAPTCHA protection active
+- [ ] Admin login works
 
-4. **Performance Issues:**
-   - Enable Netlify Analytics
-   - Check bundle size
-   - Optimize images
+#### Performance:
+- [ ] Pages load quickly
+- [ ] Images load properly
+- [ ] Mobile responsiveness
+- [ ] SEO meta tags present
 
-## 📞 **Support**
+### 6.2 Performance Optimization
 
-**For deployment issues:**
-- 📧 **Email:** naushadalamprivate@gmail.com
-- 📱 **WhatsApp:** +91 7209752686
+1. **Check Lighthouse scores** in browser dev tools
+2. **Optimize images** if needed
+3. **Enable Netlify's CDN** (automatic)
+4. **Configure caching** (already set in netlify.toml)
 
-## 🏆 **Success Metrics**
+## 🚨 Troubleshooting
 
-Your app on Netlify will have:
-- ✅ **Fast Loading** - CDN + optimizations
-- ✅ **High Availability** - 99.9% uptime
-- ✅ **Global Performance** - Edge locations worldwide
-- ✅ **Automatic HTTPS** - SSL certificates
-- ✅ **Form Handling** - Built-in form processing
-- ✅ **Branch Previews** - Test before production
+### Common Issues:
+
+#### Build Failures:
+```bash
+# Check build logs in Netlify dashboard
+# Common fixes:
+npm install --legacy-peer-deps
+# or
+npm ci
+```
+
+#### Environment Variables Not Working:
+- Verify all variables are set in Netlify dashboard
+- Check variable names match exactly
+- Redeploy after adding new variables
+
+#### API Routes Not Working:
+- Check Netlify Functions are deployed
+- Verify function names match redirects in netlify.toml
+- Check function logs in Netlify dashboard
+
+#### Authentication Issues:
+- Verify Clerk domain configuration
+- Check environment variables
+- Ensure HTTPS is enabled
+
+### Getting Help:
+
+1. **Check Netlify build logs**
+2. **Check browser console** for errors
+3. **Verify environment variables**
+4. **Test locally** with same environment
+
+## 📊 Step 7: Monitoring & Analytics
+
+### 7.1 Netlify Analytics
+
+1. **Enable Netlify Analytics** in site settings
+2. **Monitor traffic** and performance
+3. **Set up form notifications**
+
+### 7.2 Custom Analytics
+
+Your app includes built-in analytics tracking that will work automatically.
+
+## 🎉 Success!
+
+Your MovieSearch 2025 application should now be live on Netlify with:
+
+- ✅ All pages and functionality working
+- ✅ User authentication via Clerk
+- ✅ Movie/TV/Person data from TMDB
+- ✅ reCAPTCHA protection on all forms
+- ✅ Admin panel functionality
+- ✅ Contact and feedback forms
+- ✅ Mobile-responsive design
+- ✅ SEO optimization
+- ✅ Performance optimization
+- ✅ Security headers
+
+## 🔄 Future Updates
+
+To update your site:
+
+1. **Push changes** to your GitHub repository
+2. **Netlify automatically rebuilds** and deploys
+3. **Check deployment status** in Netlify dashboard
+
+## 📞 Support
+
+If you encounter any issues:
+
+1. Check this guide first
+2. Review Netlify documentation
+3. Check your build logs
+4. Verify environment variables
+5. Test functionality systematically
 
 ---
 
-## 🎉 **Ready to Deploy!**
-
-1. **Push your code to GitHub** using the commands above
-2. **Create Netlify account** and connect GitHub
-3. **Deploy your repository** to Netlify
-4. **Add environment variables** in Netlify dashboard
-5. **Test your deployed app** and enjoy!
-
-**Your MovieSearch 2025 app will be live on Netlify! 🚀**
-
-### **Expected Netlify URL:**
-`https://your-app-name.netlify.app`
-
-### **Custom Domain (if added):**
-`https://your-domain.com`
+**Your MovieSearch 2025 app is now live! 🎬✨**

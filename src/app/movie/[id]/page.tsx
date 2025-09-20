@@ -4,6 +4,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 
 // Dynamic route configuration
+export const dynamic = 'force-static';
+export const revalidate = false;
 import SEO from '@/components/SEO';
 import {
   Box,

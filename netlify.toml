@@ -1,22 +1,16 @@
 [build]
-  # Build command for Next.js
+  # Build command for Next.js with Netlify plugin
   command = "npm run build"
-  
-  # Directory to publish (Next.js output)
-  publish = ".next"
+  # Functions directory for serverless functions
+  functions = "netlify/functions"
 
 [build.environment]
   # Node.js version
   NODE_VERSION = "18"
-  
   # Next.js environment
   NEXT_TELEMETRY_DISABLED = "1"
 
-# Redirect rules for Next.js routing
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# Redirect rules handled by Next.js
 
 # Headers for security and performance
 [[headers]]
@@ -24,9 +18,10 @@
   [headers.values]
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
-    X-XSS-Protection = "1; mode=block"
     Referrer-Policy = "origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    X-DNS-Prefetch-Control = "on"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
 
 # Cache static assets
 [[headers]]
@@ -40,13 +35,18 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Cache API routes (if any)
-[[headers]]
-  for = "/api/*"
-  [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
+# API routes redirect to Netlify Functions
+[[redirects]]
+  from = "/api/contact"
+  to = "/.netlify/functions/contact"
+  status = 200
 
-# Form handling
+[[redirects]]
+  from = "/api/admin/auth/login"
+  to = "/.netlify/functions/admin-auth"
+  status = 200
+
+# Form processing
 [build.processing]
   skip_processing = false
 
@@ -61,19 +61,6 @@
 [build.processing.html]
   pretty_urls = true
 
-# Functions (if needed for serverless functions)
+# Edge functions (if needed)
 [functions]
   directory = "netlify/functions"
-
-# Plugin configuration
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
-
-# Environment variables (these will be set in Netlify dashboard)
-# NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
-# CLERK_SECRET_KEY
-# NEXT_PUBLIC_TMDB_API_KEY
-# NEXT_PUBLIC_RECAPTCHA_SITE_KEY
-# RECAPTCHA_SECRET_KEY
-# NEXT_PUBLIC_TAWK_PROPERTY_ID
-# NEXT_PUBLIC_TAWK_WIDGET_ID

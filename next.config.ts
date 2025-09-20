@@ -1,9 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Production deployment configuration
+  // Production deployment configuration for Netlify
   trailingSlash: true,
-  output: 'standalone', // Optimized for Netlify/Vercel
+  // Remove output: 'export' to use Netlify's Next.js plugin
   
   // Build optimizations
   eslint: {
