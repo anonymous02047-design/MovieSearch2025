@@ -11,6 +11,13 @@
 import axios from 'axios';
 import { errorHandler } from './errorHandler';
 
+// Rate limiting configuration
+const RATE_LIMIT_DELAY = 200; // 200ms delay between requests
+const MAX_REQUESTS_PER_SECOND = 4; // TMDB allows 4 requests per second
+let lastRequestTime = 0;
+let requestQueue: Array<() => Promise<any>> = [];
+let isProcessingQueue = false;
+
 // Environment configuration
 const TMDB_API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 const TMDB_BASE_URL = process.env.NEXT_PUBLIC_TMDB_BASE_URL || 'https://api.themoviedb.org/3';
@@ -29,6 +36,52 @@ const tmdbClient = axios.create({
   },
   timeout: 10000, // 10 second timeout
 });
+
+// Rate limiting function
+const rateLimitedRequest = async <T>(requestFn: () => Promise<T>): Promise<T> => {
+  return new Promise((resolve, reject) => {
+    requestQueue.push(async () => {
+      try {
+        const result = await requestFn();
+        resolve(result);
+      } catch (error) {
+        reject(error);
+      }
+    });
+
+    if (!isProcessingQueue) {
+      processRequestQueue();
+    }
+  });
+};
+
+// Process request queue with rate limiting
+const processRequestQueue = async () => {
+  if (isProcessingQueue || requestQueue.length === 0) return;
+  
+  isProcessingQueue = true;
+  
+  while (requestQueue.length > 0) {
+    const now = Date.now();
+    const timeSinceLastRequest = now - lastRequestTime;
+    
+    if (timeSinceLastRequest < RATE_LIMIT_DELAY) {
+      await new Promise(resolve => setTimeout(resolve, RATE_LIMIT_DELAY - timeSinceLastRequest));
+    }
+    
+    const request = requestQueue.shift();
+    if (request) {
+      lastRequestTime = Date.now();
+      try {
+        await request();
+      } catch (error) {
+        console.error('Request failed:', error);
+      }
+    }
+  }
+  
+  isProcessingQueue = false;
+};
 
 // Types
 export interface Movie {
