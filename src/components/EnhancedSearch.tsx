@@ -104,7 +104,7 @@ export default function EnhancedSearch() {
   const [showResults, setShowResults] = useState(false);
   const router = useRouter();
   const { user } = useUser();
-  const { executeRecaptcha, isLoaded: recaptchaLoaded } = useRecaptcha();
+  
 
   const searchTypes = [
     { label: 'All', value: 'all', icon: <SearchIcon /> },

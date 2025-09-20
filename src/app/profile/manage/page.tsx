@@ -63,7 +63,7 @@ function ProfileManagePageContent() {
   const { user, isLoaded } = useUser();
   const { getToken } = useAuth();
   const router = useRouter();
-  const { executeRecaptcha, isLoaded: recaptchaLoaded } = useRecaptcha();
+  
   
   // State management
   const [profile, setProfile] = useState<ProfileData | null>(null);

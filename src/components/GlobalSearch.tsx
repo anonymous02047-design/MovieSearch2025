@@ -46,7 +46,7 @@ export default function GlobalSearch({ placeholder = "Search movies...", onClose
   const router = useRouter();
   const { user, isLoaded } = useUser();
   const { error, loading, handleAsyncError, clearError } = useSearchErrorHandler();
-  const { executeRecaptcha, isLoaded: recaptchaLoaded } = useRecaptcha();
+  
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {

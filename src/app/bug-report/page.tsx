@@ -99,7 +99,6 @@ export default function BugReportPage() {
   });
 
   const [loading, setLoading] = useState(false);
-  const { executeRecaptcha, isLoaded } = useRecaptcha();
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState('');
   const [snackbarSeverity, setSnackbarSeverity] = useState<'success' | 'error'>('success');
@@ -123,17 +122,6 @@ export default function BugReportPage() {
     setLoading(true);
 
     try {
-      // Execute reCAPTCHA if available
-      let recaptchaToken = null;
-      if (isLoaded) {
-        try {
-          const recaptchaResult = await executeRecaptcha('bug_report');
-          recaptchaToken = recaptchaResult.token;
-        } catch (error) {
-          console.warn('reCAPTCHA failed:', error);
-          // Continue without reCAPTCHA if it fails
-        }
-      }
 
       // Create email content
       const emailSubject = `Bug Report: ${formData.title}`;
@@ -161,7 +149,6 @@ ${formData.actual}
 
 Reporter Email: ${formData.email || 'Not provided'}
 
-reCAPTCHA Token: ${recaptchaToken || 'Not available'}
       `.trim();
 
       // Create mailto link
