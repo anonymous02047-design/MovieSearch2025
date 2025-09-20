@@ -26,7 +26,7 @@ export default function PrivacyPolicyPage() {
             <ListItem>
               <ListItemText 
                 primary="Account Information" 
-                secondary="Name, email address, and profile information when you sign up using social login providers (Google, Microsoft)"
+                secondary="Name, email address, and profile information when you sign up using social login providers (Google)"
               />
             </ListItem>
             <ListItem>
@@ -156,7 +156,7 @@ export default function PrivacyPolicyPage() {
               <ListItemText primary="The Movie Database (TMDB) API" />
             </ListItem>
             <ListItem>
-              <ListItemText primary="Social login providers (Google, Microsoft)" />
+              <ListItemText primary="Social login providers (Google)" />
             </ListItem>
           </List>
           <Typography variant="body1" paragraph>

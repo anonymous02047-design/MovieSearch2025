@@ -1,4 +1,4 @@
-# 🔧 Social Login Fix Guide - Google, Microsoft OAuth
+# 🔧 Social Login Fix Guide - Google OAuth
 
 ## 🚨 **Issue Identified**
 
@@ -54,42 +54,9 @@ This occurs because Clerk's social login providers are not properly configured f
 
 ---
 
-## 🔧 **Step 2: Fix Microsoft OAuth**
+## 🔧 **Step 2: Configure Environment Variables**
 
-### **2.1 Microsoft Azure Portal Setup:**
-
-1. **Go to [Azure Portal](https://portal.azure.com/)**
-2. **Go to "Azure Active Directory" > "App registrations"**
-3. **Click "New registration":**
-   - Name: "MovieSearch 2025"
-   - Supported account types: "Accounts in any organizational directory and personal Microsoft accounts"
-   - Redirect URI: Web - `https://your-netlify-domain.netlify.app/api/auth/callback/microsoft`
-
-4. **Configure Authentication:**
-   - Go to "Authentication"
-   - Add redirect URI: `https://your-netlify-domain.netlify.app/api/auth/callback/microsoft`
-   - Enable "ID tokens" and "Access tokens"
-
-5. **Get Client ID and Secret:**
-   - Go to "Overview" and copy "Application (client) ID"
-   - Go to "Certificates & secrets" > "New client secret"
-   - Copy the secret value
-
-### **2.2 Clerk Dashboard Configuration:**
-
-1. **In Clerk Dashboard:**
-2. **Go to "User & Authentication" > "Social Connections"**
-3. **Enable Microsoft:**
-   - Toggle "Microsoft" to ON
-   - Enter your Microsoft Client ID
-   - Enter your Microsoft Client Secret
-   - Save changes
-
----
-
-## 🔧 **Step 3: Configure Environment Variables**
-
-### **3.1 Update Netlify Environment Variables:**
+### **2.1 Update Netlify Environment Variables:**
 
 1. **Go to your Netlify dashboard**
 2. **Site settings > Environment variables**
@@ -98,7 +65,7 @@ This occurs because Clerk's social login providers are not properly configured f
    NEXT_PUBLIC_APP_URL=https://your-netlify-domain.netlify.app
    ```
 
-### **3.2 Update Clerk Dashboard:**
+### **2.2 Update Clerk Dashboard:**
 
 1. **Go to Clerk Dashboard**
 2. **Go to "Domains"**
@@ -108,19 +75,12 @@ This occurs because Clerk's social login providers are not properly configured f
 
 ---
 
-## 🔧 **Step 4: Test the Configuration**
+## 🔧 **Step 3: Test the Configuration**
 
-### **4.1 Test Google Login:**
+### **3.1 Test Google Login:**
 1. Visit your app
 2. Click "Sign In"
 3. Click "Continue with Google"
-4. Complete OAuth flow
-5. Verify successful login
-
-### **4.2 Test Microsoft Login:**
-1. Visit your app
-2. Click "Sign In"
-3. Click "Continue with Microsoft"
 4. Complete OAuth flow
 5. Verify successful login
 
@@ -149,12 +109,11 @@ This occurs because Clerk's social login providers are not properly configured f
 ## ✅ **Verification Checklist**
 
 - [ ] Google OAuth credentials created and configured
-- [ ] Microsoft OAuth credentials created and configured
-- [ ] Clerk Dashboard has correct Client IDs and Secrets
+- [ ] Clerk Dashboard has correct Client ID and Secret
 - [ ] Redirect URIs match your production domain
 - [ ] Environment variables set in Netlify
 - [ ] App is live and accessible
-- [ ] Both Google and Microsoft login work
+- [ ] Google login works
 - [ ] Users can sign in and access the app
 
 ---

@@ -1,7 +1,7 @@
 # 🔐 Clerk Authentication Setup Guide
 
 ## 🚨 **Current Issues:**
-- ❌ Google/Microsoft login not working
+- ❌ Google login not working
 - ❌ Email/password signup not working
 - ❌ Email verification not working
 
@@ -24,13 +24,6 @@
 - Set redirect URLs: `https://your-domain.netlify.app/api/auth/callback/google`
 
 
-**Microsoft:**
-- Click **"Microsoft"**
-- Toggle **"Enable Microsoft"** to ON
-- Add your Microsoft App credentials:
-  - Client ID
-  - Client Secret
-- Set redirect URLs: `https://your-domain.netlify.app/api/auth/callback/microsoft`
 
 #### **1.2 Configure Email Authentication**
 1. Go to **"User & Authentication"** → **"Email, Phone, Username"**
@@ -70,14 +63,6 @@
    - `http://localhost:3000/api/auth/callback/facebook`
 6. Copy App ID and App Secret
 
-#### **2.3 Microsoft App Setup**
-1. Go to [Azure Portal](https://portal.azure.com)
-2. Go to **"Azure Active Directory"** → **"App registrations"**
-3. Click **"New registration"**
-4. Set redirect URI to:
-   - `https://your-domain.netlify.app/api/auth/callback/microsoft`
-   - `http://localhost:3000/api/auth/callback/microsoft`
-5. Copy Application (client) ID and create a client secret
 
 ### **Step 3: Update Environment Variables**
 
@@ -99,8 +84,6 @@ GOOGLE_CLIENT_ID=your_google_client_id
 GOOGLE_CLIENT_SECRET=your_google_client_secret
 FACEBOOK_APP_ID=your_facebook_app_id
 FACEBOOK_APP_SECRET=your_facebook_app_secret
-MICROSOFT_CLIENT_ID=your_microsoft_client_id
-MICROSOFT_CLIENT_SECRET=your_microsoft_client_secret
 ```
 
 ### **Step 4: Update Clerk Configuration**
@@ -150,7 +133,6 @@ After configuration, test these features:
 #### **✅ Social Authentication:**
 - [ ] Google login works
 - [ ] Facebook login works
-- [ ] Microsoft login works
 - [ ] Social login redirects correctly
 
 #### **✅ General Authentication:**
@@ -225,7 +207,7 @@ If you're still having issues:
 
 ## 🎯 **Expected Results After Fix:**
 
-- ✅ **Google/Facebook/Microsoft login** working
+- ✅ **Google/Facebook login** working
 - ✅ **Email/password signup** working
 - ✅ **Email verification** working
 - ✅ **All authentication flows** working correctly

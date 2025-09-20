@@ -25,7 +25,7 @@ import {
   LinkedIn as LinkedInIcon,
   GitHub as GitHubIcon,
   Favorite as FavoriteIcon,
-  Sitemap as SitemapIcon,
+  Map as SitemapIcon,
 } from '@mui/icons-material';
 import SitemapSection from './SitemapSection';
 

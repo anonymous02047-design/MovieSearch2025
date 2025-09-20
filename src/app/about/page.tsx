@@ -1,6 +1,9 @@
 'use client';
 
 import React from 'react';
+
+// Prevent static generation
+export const dynamic = 'force-dynamic';
 import {
   Box,
   Container,

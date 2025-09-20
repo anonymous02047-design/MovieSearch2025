@@ -11,7 +11,7 @@ import {
 } from '@mui/material';
 import {
   Home as HomeIcon,
-  Sitemap as SitemapIcon,
+  Map as SitemapIcon,
   Movie as MovieIcon,
   Person as PersonIcon,
   Category as CategoryIcon,

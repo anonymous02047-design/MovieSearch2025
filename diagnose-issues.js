@@ -3,7 +3,7 @@
 /**
  * LadliHub.in Issues Diagnostic Script
  * 
- * This script diagnoses Google Analytics and Microsoft OAuth issues.
+ * This script diagnoses Google Analytics issues.
  * Run with: node diagnose-issues.js
  */
 
@@ -65,25 +65,6 @@ async function testGoogleAnalytics() {
   }
 }
 
-async function testMicrosoftOAuth() {
-  console.log('\n🔐 Testing Microsoft OAuth...');
-  
-  try {
-    // Test the callback endpoint
-    const response = await makeRequest(`${BASE_URL}/api/auth/callback/microsoft`);
-    
-    if (response.status === 200 || response.status === 302) {
-      console.log('✅ Microsoft OAuth callback endpoint accessible');
-      console.log(`   Status: ${response.status}`);
-    } else {
-      console.log('❌ Microsoft OAuth callback endpoint not accessible');
-      console.log(`   Status: ${response.status}`);
-      console.log('   Issue: Redirect URI mismatch in Azure Portal');
-    }
-  } catch (error) {
-    console.log('❌ Microsoft OAuth test error:', error.message);
-  }
-}
 
 async function testAdminSystem() {
   console.log('\n🛡️ Testing Admin System...');
@@ -153,7 +134,6 @@ async function runDiagnostics() {
 
   await testEnvironmentVariables();
   await testGoogleAnalytics();
-  await testMicrosoftOAuth();
   await testAdminSystem();
 
   console.log('\n📋 Summary & Solutions:');
@@ -168,8 +148,6 @@ async function runDiagnostics() {
   console.log('   - Add: ADMIN_PASSWORD=admin123');
   console.log('   - Add: ADMIN_JWT_SECRET=5be0c6c031217dd0a06965b0905f7a7fa350410ccbbc7f8ff1606581f65ab0ac');
   console.log('');
-  console.log('2. Fix Microsoft OAuth in Azure Portal:');
-  console.log('   - Update redirect URI to: https://ladlihub.in/api/auth/callback/microsoft');
   console.log('   - Regenerate client secret if expired');
   console.log('   - Update Clerk Dashboard with new credentials');
   console.log('');
@@ -181,7 +159,6 @@ async function runDiagnostics() {
   console.log('4. Test Everything:');
   console.log('   - Visit https://ladlihub.in');
   console.log('   - Check Google Analytics detection');
-  console.log('   - Test Microsoft OAuth login');
   console.log('   - Test admin dashboard access');
   console.log('');
   console.log('📖 For detailed instructions, see: IMMEDIATE_FIXES.md');

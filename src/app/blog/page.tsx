@@ -1,6 +1,9 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+
+// Prevent static generation
+export const dynamic = 'force-dynamic';
 import {
   Container,
   Typography,
