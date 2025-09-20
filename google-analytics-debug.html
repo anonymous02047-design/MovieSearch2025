@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Analytics Debug Tool - LadliHub.in</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .step {
+            margin: 20px 0;
+            padding: 15px;
+            border-left: 4px solid #0078d4;
+            background-color: #f8f9fa;
+        }
+        .error {
+            border-left-color: #dc3545;
+            background-color: #f8d7da;
+        }
+        .success {
+            border-left-color: #28a745;
+            background-color: #d4edda;
+        }
+        .warning {
+            border-left-color: #ffc107;
+            background-color: #fff3cd;
+        }
+        button {
+            background: #0078d4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #106ebe;
+        }
+        .result {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+        .good { background-color: #d4edda; color: #155724; }
+        .bad { background-color: #f8d7da; color: #721c24; }
+        .info { background-color: #d1ecf1; color: #0c5460; }
+        .code {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            border: 1px solid #dee2e6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Google Analytics Debug Tool - LadliHub.in</h1>
+        <p>This tool helps diagnose Google Analytics tracking issues on your website.</p>
+
+        <div class="step">
+            <h3>Step 1: Check Current Environment</h3>
+            <p>Current domain: <strong id="currentDomain"></strong></p>
+            <button onclick="checkEnvironment()">Check Environment</button>
+            <div id="envResult" class="result"></div>
+        </div>
+
+        <div class="step">
+            <h3>Step 2: Test Google Analytics Detection</h3>
+            <button onclick="testGoogleAnalytics()">Test Google Analytics</button>
+            <div id="gaResult" class="result"></div>
+        </div>
+
+        <div class="step">
+            <h3>Step 3: Check Environment Variables</h3>
+            <button onclick="checkEnvironmentVariables()">Check Environment Variables</button>
+            <div id="envVarResult" class="result"></div>
+        </div>
+
+        <div class="step">
+            <h3>Step 4: Manual Google Analytics Test</h3>
+            <p>Enter your Google Analytics Measurement ID to test:</p>
+            <input type="text" id="gaId" placeholder="G-XXXXXXXXXX" style="width: 200px; padding: 5px; margin: 5px;">
+            <button onclick="testManualGA()">Test Manual GA</button>
+            <div id="manualGAResult" class="result"></div>
+        </div>
+
+        <div class="step">
+            <h3>Step 5: Netlify Environment Variable Setup</h3>
+            <div class="code">
+                <strong>In Netlify Dashboard:</strong><br>
+                1. Go to Site settings > Environment variables<br>
+                2. Add new variable:<br>
+                &nbsp;&nbsp;Key: NEXT_PUBLIC_GA_MEASUREMENT_ID<br>
+                &nbsp;&nbsp;Value: G-XXXXXXXXXX (your GA4 Measurement ID)<br>
+                3. Redeploy your site<br>
+            </div>
+        </div>
+
+        <div class="step">
+            <h3>Step 6: Google Analytics Setup Verification</h3>
+            <div class="code">
+                <strong>In Google Analytics:</strong><br>
+                1. Go to Admin > Data Streams<br>
+                2. Click on your web stream<br>
+                3. Copy the Measurement ID (G-XXXXXXXXXX)<br>
+                4. Verify the website URL is: https://ladlihub.in<br>
+                5. Check that Enhanced measurement is enabled<br>
+            </div>
+        </div>
+
+        <div class="step warning">
+            <h3>⚠️ Common Issues & Solutions</h3>
+            <ul>
+                <li><strong>Environment variable not set:</strong> Add NEXT_PUBLIC_GA_MEASUREMENT_ID to Netlify</li>
+                <li><strong>Wrong Measurement ID:</strong> Verify the ID in Google Analytics</li>
+                <li><strong>Domain mismatch:</strong> Ensure GA property is configured for ladlihub.in</li>
+                <li><strong>Script not loading:</strong> Check browser console for errors</li>
+                <li><strong>Ad blockers:</strong> Disable ad blockers for testing</li>
+            </ul>
+        </div>
+
+        <div class="step success">
+            <h3>✅ Quick Fix Steps</h3>
+            <ol>
+                <li>Get your GA4 Measurement ID from Google Analytics</li>
+                <li>Add it to Netlify environment variables as NEXT_PUBLIC_GA_MEASUREMENT_ID</li>
+                <li>Redeploy your site</li>
+                <li>Test with this tool</li>
+                <li>Check Google Analytics Real-time reports</li>
+            </ol>
+        </div>
+
+        <div class="step">
+            <h3>🔗 Quick Links</h3>
+            <p>
+                <a href="https://analytics.google.com/" target="_blank">Google Analytics</a> |
+                <a href="https://app.netlify.com/" target="_blank">Netlify Dashboard</a> |
+                <a href="https://ladlihub.in" target="_blank">LadliHub.in</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function checkEnvironment() {
+            const domain = window.location.origin;
+            document.getElementById('currentDomain').textContent = domain;
+            
+            const result = document.getElementById('envResult');
+            if (domain.includes('ladlihub.in')) {
+                result.className = 'result good';
+                result.textContent = '✅ Correct domain detected: ' + domain;
+            } else {
+                result.className = 'result bad';
+                result.textContent = '❌ Wrong domain: ' + domain + ' (Expected: ladlihub.in)';
+            }
+        }
+
+        function testGoogleAnalytics() {
+            const result = document.getElementById('gaResult');
+            
+            // Check if gtag is available
+            if (typeof window.gtag !== 'undefined') {
+                result.className = 'result good';
+                result.textContent = '✅ Google Analytics (gtag) is loaded and available';
+            } else {
+                result.className = 'result bad';
+                result.textContent = '❌ Google Analytics (gtag) is not loaded';
+            }
+
+            // Check if dataLayer exists
+            if (typeof window.dataLayer !== 'undefined') {
+                result.textContent += '\n✅ DataLayer is available';
+            } else {
+                result.textContent += '\n❌ DataLayer is not available';
+            }
+
+            // Check for GA script
+            const gaScript = document.querySelector('script[src*="googletagmanager.com"]');
+            if (gaScript) {
+                result.textContent += '\n✅ Google Analytics script is loaded';
+            } else {
+                result.textContent += '\n❌ Google Analytics script is not found';
+            }
+        }
+
+        function checkEnvironmentVariables() {
+            const result = document.getElementById('envVarResult');
+            
+            // Note: Environment variables are not accessible in browser
+            result.className = 'result info';
+            result.textContent = 'ℹ️ Environment variables are not accessible in browser.\nCheck Netlify dashboard for NEXT_PUBLIC_GA_MEASUREMENT_ID variable.';
+        }
+
+        function testManualGA() {
+            const gaId = document.getElementById('gaId').value;
+            const result = document.getElementById('manualGAResult');
+            
+            if (!gaId) {
+                result.className = 'result bad';
+                result.textContent = '❌ Please enter a Google Analytics Measurement ID';
+                return;
+            }
+
+            if (!gaId.startsWith('G-')) {
+                result.className = 'result bad';
+                result.textContent = '❌ Invalid Measurement ID format. Should start with G-';
+                return;
+            }
+
+            // Test loading GA script
+            const script = document.createElement('script');
+            script.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`;
+            script.onload = function() {
+                result.className = 'result good';
+                result.textContent = `✅ Google Analytics script loaded successfully for ID: ${gaId}`;
+            };
+            script.onerror = function() {
+                result.className = 'result bad';
+                result.textContent = `❌ Failed to load Google Analytics script for ID: ${gaId}`;
+            };
+            document.head.appendChild(script);
+        }
+
+        // Auto-run environment check
+        checkEnvironment();
+    </script>
+</body>
+</html>
