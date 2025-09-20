@@ -5,8 +5,8 @@
   functions = "netlify/functions"
 
 [build.environment]
-  # Node.js version
-  NODE_VERSION = "18"
+  # Node.js version (Netlify supported version)
+  NODE_VERSION = "16"
   # Next.js environment
   NEXT_TELEMETRY_DISABLED = "1"
 
