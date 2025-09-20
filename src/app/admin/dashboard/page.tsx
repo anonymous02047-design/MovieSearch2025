@@ -59,6 +59,7 @@ import {
   Brightness7 as LightModeIcon,
   Dashboard as DashboardIcon,
   CheckCircle as UnblockIcon,
+  Settings as SettingsIcon,
 } from '@mui/icons-material';
 import { useAdminTheme } from '@/contexts/AdminThemeContext';
 import { countries } from '@/data/countries';

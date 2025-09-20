@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect } from 'react';
 import Script from 'next/script';
 
 interface GoogleAnalyticsProps {
@@ -8,46 +7,21 @@ interface GoogleAnalyticsProps {
 }
 
 export default function GoogleAnalytics({ measurementId }: GoogleAnalyticsProps) {
-  // Get measurement ID from environment variable if not provided
-  const gaId = measurementId || process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
-
-  useEffect(() => {
-    if (typeof window !== 'undefined' && gaId) {
-      // Initialize Google Analytics
-      window.gtag = window.gtag || function() {
-        (window.gtag.q = window.gtag.q || []).push(arguments);
-      };
-      
-      window.gtag('js', new Date());
-      window.gtag('config', gaId, {
-        page_title: document.title,
-        page_location: window.location.href,
-        send_page_view: true,
-      });
-
-      // Log for debugging
-      console.log('Google Analytics initialized with ID:', gaId);
-    } else if (typeof window !== 'undefined') {
-      console.warn('Google Analytics not initialized: No measurement ID provided');
-    }
-  }, [gaId]);
+  // Use the provided measurement ID or default to G-Z2QNY6M1QL
+  const gaId = measurementId || process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-Z2QNY6M1QL';
 
   if (!gaId) {
-    console.warn('Google Analytics: No measurement ID found. Please set NEXT_PUBLIC_GA_MEASUREMENT_ID environment variable.');
+    console.warn('Google Analytics: No measurement ID found.');
     return null;
   }
 
   return (
     <>
+      {/* Google tag (gtag.js) */}
       <Script
-        strategy="afterInteractive"
+        async
         src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-        onLoad={() => {
-          console.log('Google Analytics script loaded');
-        }}
-        onError={() => {
-          console.error('Failed to load Google Analytics script');
-        }}
+        strategy="afterInteractive"
       />
       <Script
         id="google-analytics"
@@ -57,12 +31,7 @@ export default function GoogleAnalytics({ measurementId }: GoogleAnalyticsProps)
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${gaId}', {
-              page_title: document.title,
-              page_location: window.location.href,
-              send_page_view: true,
-            });
-            console.log('Google Analytics configured with ID: ${gaId}');
+            gtag('config', '${gaId}');
           `,
         }}
       />
