@@ -45,7 +45,6 @@ import {
 } from '@mui/icons-material';
 import { tmdbApi, Movie, MovieDetails, Credits, Review, Video, Images, getImageUrl, getBackdropUrl, formatRuntime, formatCurrency, formatDate } from '@/lib/tmdb';
 import { getGenreNames } from '@/lib/genres';
-import Navigation from '@/components/Navigation';
 import CastMemberDialog from '@/components/CastMemberDialog';
 
 interface TabPanelProps {
@@ -283,18 +282,7 @@ export default function MovieDetailsPage() {
           }}
         />
       )}
-      <Box sx={{ display: 'flex', minHeight: '100vh' }}>
-        <Navigation />
-      
-      <Box
-        component="main"
-        sx={{
-          flexGrow: 1,
-          width: { md: `calc(100% - 240px)` },
-          ml: { md: '240px' },
-          mt: '64px',
-        }}
-      >
+      <Box>
         {/* Hero Section */}
         <Box
           sx={{
@@ -823,7 +811,6 @@ export default function MovieDetailsPage() {
           personName={selectedCastMember?.name || ''}
         />
       </Box>
-    </Box>
     </>
   );
 }

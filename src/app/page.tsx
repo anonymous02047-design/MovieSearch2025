@@ -331,6 +331,13 @@ function HomeContent() {
 export default function Home() {
   const { user, isLoaded } = useUser();
   
+  // Always call useEffect at the top level - no conditional hooks
+  React.useEffect(() => {
+    if (isLoaded && !user) {
+      window.location.href = '/welcome';
+    }
+  }, [isLoaded, user]);
+  
   // Show loading while checking authentication
   if (!isLoaded) {
     return (
@@ -346,13 +353,8 @@ export default function Home() {
     );
   }
   
-  // If user is not authenticated, redirect to welcome page
+  // If user is not authenticated, show redirecting message
   if (!user) {
-    // Use useEffect to redirect to avoid hydration issues
-    React.useEffect(() => {
-      window.location.href = '/welcome';
-    }, []);
-    
     return (
       <Box sx={{ 
         minHeight: '100vh', 

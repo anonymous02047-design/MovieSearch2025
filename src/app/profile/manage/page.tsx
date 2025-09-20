@@ -276,8 +276,7 @@ function ProfileManagePageContent() {
   ];
 
   return (
-    <PageLayout>
-      <Container maxWidth="lg" sx={{ py: 4 }}>
+    <Container maxWidth="lg" sx={{ py: 4 }}>
       {/* Header */}
       <Box sx={{ mb: 4 }}>
         <Typography variant="h4" component="h1" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
@@ -778,8 +777,7 @@ function ProfileManagePageContent() {
         onSuccess={handleDeleteSuccess}
         onError={handleDeleteError}
       />
-      </Container>
-    </PageLayout>
+    </Container>
   );
 }
 

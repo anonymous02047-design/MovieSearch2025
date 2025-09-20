@@ -33,7 +33,6 @@ import {
   TrendingUp as TrendingUpIcon,
 } from '@mui/icons-material';
 import ProtectedRoute from '@/components/ProtectedRoute';
-import PageLayout from '@/components/PageLayout';
 
 interface BlogPost {
   id: number;
@@ -481,8 +480,7 @@ function BlogPageContent() {
   }
 
   return (
-    <PageLayout>
-      <Container maxWidth="lg" sx={{ py: 4 }}>
+    <Container maxWidth="lg" sx={{ py: 4 }}>
       {/* Header */}
       <Box sx={{ mb: 4 }}>
         <Stack direction="row" alignItems="center" spacing={2} sx={{ mb: 2 }}>
@@ -598,8 +596,7 @@ function BlogPageContent() {
           </Box>
         </Stack>
       </Box>
-      </Container>
-    </PageLayout>
+    </Container>
   );
 }
 

@@ -34,7 +34,6 @@ import {
 import { useUser } from '@clerk/nextjs';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import { getFavorites, getWatchlist, getSearchHistory } from '@/lib/storage';
-import Navigation from '@/components/Navigation';
 
 function ProfilePageContent() {
   // Graceful handling of Clerk hooks in case API keys are not configured
@@ -94,19 +93,7 @@ function ProfilePageContent() {
   }
 
   return (
-    <Box sx={{ display: 'flex', minHeight: '100vh' }}>
-        <Navigation />
-        
-        <Box
-          component="main"
-        sx={{
-          flexGrow: 1,
-          width: { md: `calc(100% - 240px)` },
-          ml: { md: '240px' },
-          mt: '64px',
-        }}
-      >
-        <Container maxWidth="lg" sx={{ py: 4 }}>
+    <Container maxWidth="lg" sx={{ py: 4 }}>
           <Box sx={{ mb: 4 }}>
             <Typography variant="h3" component="h1" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
               <PersonIcon fontSize="large" color="primary" />
@@ -296,9 +283,7 @@ function ProfilePageContent() {
               </Grid>
             </Grid>
           </Grid>
-        </Container>
-        </Box>
-      </Box>
+    </Container>
   );
 }
 

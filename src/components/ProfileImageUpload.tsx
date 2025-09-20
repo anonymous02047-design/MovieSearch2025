@@ -158,31 +158,31 @@ export default function ProfileImageUpload({
     const image = imageRef.current;
     const { x, y, width, height } = cropData;
 
-    // Set canvas size to crop dimensions
-    canvas.width = width;
-    canvas.height = height;
+    // Ensure crop dimensions don't exceed image bounds
+    const maxX = Math.max(0, image.naturalWidth - width);
+    const maxY = Math.max(0, image.naturalHeight - height);
+    const clampedX = Math.min(Math.max(0, x), maxX);
+    const clampedY = Math.min(Math.max(0, y), maxY);
+
+    // Set canvas size to final output size (200x200 for profile)
+    const outputSize = 200;
+    canvas.width = outputSize;
+    canvas.height = outputSize;
 
     // Clear canvas
-    ctx.clearRect(0, 0, width, height);
+    ctx.clearRect(0, 0, outputSize, outputSize);
 
-    // Apply transformations
-    ctx.save();
-    ctx.translate(width / 2, height / 2);
-    ctx.rotate((rotation * Math.PI) / 180);
-    ctx.scale(zoom, zoom);
-    
-    // Draw the cropped portion of the image
+    // Draw the cropped portion of the image, scaled to output size
     ctx.drawImage(
       image,
-      x, y, width, height,  // Source rectangle
-      -width / 2, -height / 2, width, height  // Destination rectangle
+      clampedX, clampedY, width, height,  // Source rectangle
+      0, 0, outputSize, outputSize  // Destination rectangle
     );
-    ctx.restore();
 
     return new Promise((resolve) => {
       canvas.toBlob((blob) => resolve(blob), 'image/jpeg', 0.9);
     });
-  }, [cropData, rotation, zoom]);
+  }, [cropData]);
 
   const handleCancel = useCallback(() => {
     setShowCropDialog(false);
@@ -196,15 +196,16 @@ export default function ProfileImageUpload({
   const handleImageLoad = useCallback(() => {
     if (imageRef.current) {
       const { naturalWidth, naturalHeight } = imageRef.current;
-      const size = Math.min(naturalWidth, naturalHeight, 400); // Limit max crop size
-      const x = (naturalWidth - size) / 2;
-      const y = (naturalHeight - size) / 2;
+      const minDimension = Math.min(naturalWidth, naturalHeight);
+      const cropSize = Math.min(minDimension, 300); // Reasonable crop size
+      const x = (naturalWidth - cropSize) / 2;
+      const y = (naturalHeight - cropSize) / 2;
       
       setCropData({
         x: Math.max(0, x),
         y: Math.max(0, y),
-        width: size,
-        height: size,
+        width: cropSize,
+        height: cropSize,
       });
       
       // Reset rotation and zoom when new image loads
@@ -345,14 +346,15 @@ export default function ProfileImageUpload({
               <Box
                 sx={{
                   position: 'absolute',
-                  left: cropData.x - cropData.width / 2,
-                  top: cropData.y - cropData.height / 2,
+                  left: cropData.x,
+                  top: cropData.y,
                   width: cropData.width,
                   height: cropData.height,
                   border: '2px solid',
                   borderColor: 'primary.main',
                   bgcolor: 'rgba(0, 0, 0, 0.3)',
                   cursor: 'move',
+                  pointerEvents: 'none',
                 }}
               />
             </Paper>

@@ -8,12 +8,15 @@
     "build:production": "NODE_ENV=production next build",
     "start": "next start",
     "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
-    "lint:fix": "eslint . --ext .ts,.tsx,.js,.jsx --fix",
+    "lint:fix": "next lint --fix",
     "type-check": "tsc --noEmit",
     "export": "next build && next export",
     "deploy:vercel": "vercel --prod",
     "deploy:netlify": "netlify deploy --prod --dir=out",
-    "deploy:gh-pages": "npm run build && npx gh-pages -d out"
+    "deploy:gh-pages": "npm run build && npx gh-pages -d out",
+    "start:production": "NODE_ENV=production next start",
+    "analyze": "ANALYZE=true next build",
+    "optimize": "node scripts/optimize-production.js"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.32.0",
