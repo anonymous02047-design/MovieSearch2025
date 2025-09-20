@@ -1,4 +1,4 @@
-# 🔧 Social Login Fix Guide - Google, Facebook, Microsoft OAuth
+# 🔧 Social Login Fix Guide - Google, Microsoft OAuth
 
 ## 🚨 **Issue Identified**
 
@@ -54,48 +54,9 @@ This occurs because Clerk's social login providers are not properly configured f
 
 ---
 
-## 🔧 **Step 2: Fix Facebook OAuth**
+## 🔧 **Step 2: Fix Microsoft OAuth**
 
-### **2.1 Facebook Developer Console Setup:**
-
-1. **Go to [Facebook Developers](https://developers.facebook.com/)**
-2. **Create a new app:**
-   - Click "Create App"
-   - Choose "Consumer" or "Other"
-   - App name: "MovieSearch 2025"
-   - Contact email: your email
-
-3. **Add Facebook Login:**
-   - Go to "Products" > "Facebook Login" > "Set Up"
-   - Choose "Web" platform
-   - Site URL: `https://your-netlify-domain.netlify.app`
-
-4. **Configure OAuth Settings:**
-   - Go to "Facebook Login" > "Settings"
-   - Valid OAuth Redirect URIs:
-     ```
-     https://your-netlify-domain.netlify.app/api/auth/callback/facebook
-     ```
-
-5. **Get App ID and Secret:**
-   - Go to "Settings" > "Basic"
-   - Copy "App ID" and "App Secret"
-
-### **2.2 Clerk Dashboard Configuration:**
-
-1. **In Clerk Dashboard:**
-2. **Go to "User & Authentication" > "Social Connections"**
-3. **Enable Facebook:**
-   - Toggle "Facebook" to ON
-   - Enter your Facebook App ID
-   - Enter your Facebook App Secret
-   - Save changes
-
----
-
-## 🔧 **Step 3: Fix Microsoft OAuth**
-
-### **3.1 Microsoft Azure Portal Setup:**
+### **2.1 Microsoft Azure Portal Setup:**
 
 1. **Go to [Azure Portal](https://portal.azure.com/)**
 2. **Go to "Azure Active Directory" > "App registrations"**
@@ -110,10 +71,11 @@ This occurs because Clerk's social login providers are not properly configured f
    - Enable "ID tokens" and "Access tokens"
 
 5. **Get Client ID and Secret:**
-   - Go to "Overview" - copy "Application (client) ID"
-   - Go to "Certificates & secrets" - create new client secret
+   - Go to "Overview" and copy "Application (client) ID"
+   - Go to "Certificates & secrets" > "New client secret"
+   - Copy the secret value
 
-### **3.2 Clerk Dashboard Configuration:**
+### **2.2 Clerk Dashboard Configuration:**
 
 1. **In Clerk Dashboard:**
 2. **Go to "User & Authentication" > "Social Connections"**
@@ -125,159 +87,86 @@ This occurs because Clerk's social login providers are not properly configured f
 
 ---
 
-## 🔧 **Step 4: Update Environment Variables**
+## 🔧 **Step 3: Configure Environment Variables**
 
-### **4.1 Update your `.env.local` file:**
-
-```env
-# Clerk Authentication
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_live_your_clerk_publishable_key_here
-CLERK_SECRET_KEY=sk_live_your_clerk_secret_key_here
-NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
-NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
-NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/
-NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/
-
-# App Configuration
-NEXT_PUBLIC_APP_URL=https://your-netlify-domain.netlify.app
-```
-
-### **4.2 Update Netlify Environment Variables:**
+### **3.1 Update Netlify Environment Variables:**
 
 1. **Go to your Netlify dashboard**
 2. **Site settings > Environment variables**
-3. **Update these variables:**
-   - `NEXT_PUBLIC_APP_URL` = `https://your-netlify-domain.netlify.app`
-   - `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` = your live Clerk publishable key
-   - `CLERK_SECRET_KEY` = your live Clerk secret key
+3. **Add/Update:**
+   ```
+   NEXT_PUBLIC_APP_URL=https://your-netlify-domain.netlify.app
+   ```
 
----
+### **3.2 Update Clerk Dashboard:**
 
-## 🔧 **Step 5: Update Clerk Dashboard Settings**
-
-### **5.1 Domain Configuration:**
-
-1. **In Clerk Dashboard:**
+1. **Go to Clerk Dashboard**
 2. **Go to "Domains"**
 3. **Add your production domain:**
-   - Domain: `your-netlify-domain.netlify.app`
+   - `https://your-netlify-domain.netlify.app`
    - Set as primary domain
-
-### **5.2 Redirect URLs:**
-
-1. **Go to "Paths"**
-2. **Update these paths:**
-   - Sign-in URL: `/sign-in`
-   - Sign-up URL: `/sign-up`
-   - After sign-in URL: `/`
-   - After sign-up URL: `/`
 
 ---
 
-## 🔧 **Step 6: Test Social Logins**
+## 🔧 **Step 4: Test the Configuration**
 
-### **6.1 Test Each Provider:**
+### **4.1 Test Google Login:**
+1. Visit your app
+2. Click "Sign In"
+3. Click "Continue with Google"
+4. Complete OAuth flow
+5. Verify successful login
 
-1. **Google Login:**
-   - Click "Sign in with Google"
-   - Should redirect to Google OAuth
-   - Should redirect back to your app
-
-2. **Facebook Login:**
-   - Click "Sign in with Facebook"
-   - Should redirect to Facebook OAuth
-   - Should redirect back to your app
-
-3. **Microsoft Login:**
-   - Click "Sign in with Microsoft"
-   - Should redirect to Microsoft OAuth
-   - Should redirect back to your app
+### **4.2 Test Microsoft Login:**
+1. Visit your app
+2. Click "Sign In"
+3. Click "Continue with Microsoft"
+4. Complete OAuth flow
+5. Verify successful login
 
 ---
 
 ## 🚨 **Common Issues & Solutions**
 
-### **Issue 1: "Invalid redirect URI"**
-**Solution:** Make sure all redirect URIs in OAuth providers match exactly:
-```
-https://your-netlify-domain.netlify.app/api/auth/callback/google
-https://your-netlify-domain.netlify.app/api/auth/callback/facebook
-https://your-netlify-domain.netlify.app/api/auth/callback/microsoft
-```
+### **Issue 1: "Missing required parameter: client_id"**
+- **Solution:** Ensure OAuth credentials are properly configured in Clerk Dashboard
+- **Check:** Client ID and Secret are correct and saved
 
-### **Issue 2: "App not verified"**
-**Solution:** 
-- For Google: Go through app verification process
-- For Facebook: Add privacy policy and terms of service
-- For Microsoft: Usually works without verification for personal accounts
+### **Issue 2: "Redirect URI mismatch"**
+- **Solution:** Verify redirect URIs in OAuth provider settings match your domain
+- **Check:** All URLs use HTTPS and correct domain
 
-### **Issue 3: "Client ID not found"**
-**Solution:** 
-- Double-check client IDs in Clerk dashboard
-- Ensure you're using live keys, not test keys
-- Verify the keys are correctly copied
+### **Issue 3: "Invalid client"**
+- **Solution:** Regenerate OAuth credentials and update Clerk Dashboard
+- **Check:** No extra spaces or characters in credentials
 
-### **Issue 4: "Domain not authorized"**
-**Solution:**
-- Add your Netlify domain to all OAuth providers
-- Update Clerk dashboard with correct domain
-- Ensure HTTPS is used (not HTTP)
+### **Issue 4: "Access blocked"**
+- **Solution:** Ensure your app is live and accessible
+- **Check:** Domain is properly configured in Clerk
 
 ---
 
-## 🔧 **Step 7: Update Code (if needed)**
+## ✅ **Verification Checklist**
 
-### **7.1 Check ClerkProvider Configuration:**
-
-Make sure your `AdminLayoutWrapper.tsx` has the correct configuration:
-
-```typescript
-<ClerkProvider
-  appearance={{
-    // ... your appearance config
-  }}
-  signInUrl="/sign-in"
-  signUpUrl="/sign-up"
-  afterSignInUrl="/"
-  afterSignUpUrl="/"
->
-  {/* Your app content */}
-</ClerkProvider>
-```
+- [ ] Google OAuth credentials created and configured
+- [ ] Microsoft OAuth credentials created and configured
+- [ ] Clerk Dashboard has correct Client IDs and Secrets
+- [ ] Redirect URIs match your production domain
+- [ ] Environment variables set in Netlify
+- [ ] App is live and accessible
+- [ ] Both Google and Microsoft login work
+- [ ] Users can sign in and access the app
 
 ---
 
-## 📋 **Quick Checklist**
+## 📞 **Need Help?**
 
-- [ ] Google Cloud Console configured with correct redirect URIs
-- [ ] Facebook Developer Console configured with correct redirect URIs
-- [ ] Microsoft Azure Portal configured with correct redirect URIs
-- [ ] Clerk Dashboard has all social providers enabled
-- [ ] Clerk Dashboard has correct client IDs and secrets
-- [ ] Netlify environment variables updated
-- [ ] Clerk domain configuration updated
-- [ ] All redirect URIs use HTTPS
-- [ ] Test each social login provider
+If you're still experiencing issues:
 
----
+1. **Check Clerk Dashboard logs** for detailed error messages
+2. **Verify OAuth provider settings** match exactly
+3. **Test with a fresh browser session** (incognito mode)
+4. **Check browser console** for JavaScript errors
+5. **Ensure all URLs use HTTPS** in production
 
-## 🎯 **Expected Result**
-
-After completing these steps:
-- ✅ Google login should work without "client_id" error
-- ✅ Facebook login should work properly
-- ✅ Microsoft login should work properly
-- ✅ Users can sign in with any social provider
-- ✅ Proper redirects after authentication
-
----
-
-## 📞 **Support**
-
-If you still encounter issues:
-1. Check browser console for detailed error messages
-2. Verify all environment variables are set correctly
-3. Ensure all OAuth providers have the correct redirect URIs
-4. Test with a fresh browser session
-
-**Contact:** naushadalamprivate@gmail.com | +91 7209752686
+The most common issue is incorrect redirect URIs or missing environment variables. Double-check these first!

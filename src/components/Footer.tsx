@@ -18,7 +18,6 @@ import {
   Email as EmailIcon,
   Phone as PhoneIcon,
   LocationOn as LocationIcon,
-  Facebook as FacebookIcon,
   Twitter as TwitterIcon,
   Instagram as InstagramIcon,
   LinkedIn as LinkedInIcon,
@@ -141,7 +140,6 @@ export default function Footer() {
   };
 
   const socialLinks = [
-    { icon: <FacebookIcon />, href: '#', label: 'Facebook' },
     { icon: <TwitterIcon />, href: '#', label: 'Twitter' },
     { icon: <InstagramIcon />, href: '#', label: 'Instagram' },
     { icon: <LinkedInIcon />, href: '#', label: 'LinkedIn' },

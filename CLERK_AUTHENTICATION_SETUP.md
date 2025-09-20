@@ -1,7 +1,7 @@
 # 🔐 Clerk Authentication Setup Guide
 
 ## 🚨 **Current Issues:**
-- ❌ Google/Facebook/Microsoft login not working
+- ❌ Google/Microsoft login not working
 - ❌ Email/password signup not working
 - ❌ Email verification not working
 
@@ -23,13 +23,6 @@
   - Client Secret
 - Set redirect URLs: `https://your-domain.netlify.app/api/auth/callback/google`
 
-**Facebook:**
-- Click **"Facebook"**
-- Toggle **"Enable Facebook"** to ON
-- Add your Facebook App credentials:
-  - App ID
-  - App Secret
-- Set redirect URLs: `https://your-domain.netlify.app/api/auth/callback/facebook`
 
 **Microsoft:**
 - Click **"Microsoft"**
