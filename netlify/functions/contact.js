@@ -1,5 +1,3 @@
-const { Handler } = require('@netlify/functions');
-
 exports.handler = async (event, context) => {
   // Only allow POST requests
   if (event.httpMethod !== 'POST') {
