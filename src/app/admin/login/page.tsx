@@ -38,6 +38,8 @@ export default function AdminLoginPage() {
     }
 
     try {
+      console.log('Attempting admin login with credentials:', { username: credentials.username });
+      
       const response = await fetch('/api/admin/auth/login', {
         method: 'POST',
         headers: {
@@ -46,32 +48,60 @@ export default function AdminLoginPage() {
         body: JSON.stringify(credentials),
       });
 
-      const data = await response.json();
+      console.log('Admin login response status:', response.status);
+      console.log('Admin login response headers:', Object.fromEntries(response.headers.entries()));
 
-      if (response.ok) {
-        // Store admin session
-        localStorage.setItem('adminSession', JSON.stringify({
-          token: data.token,
-          username: credentials.username,
-          expiresAt: Date.now() + (24 * 60 * 60 * 1000), // 24 hours
-        }));
+      if (!response.ok) {
+        console.error('Admin login failed with status:', response.status);
+        const errorText = await response.text();
+        console.error('Admin login error response:', errorText);
         
-        // Store token for API calls
-        localStorage.setItem('admin_token', data.token);
+        let errorData;
+        try {
+          errorData = JSON.parse(errorText);
+        } catch {
+          errorData = { error: errorText || 'Unknown error' };
+        }
         
-        router.push('/admin/dashboard');
-      } else if (response.status === 401) {
-        setError('Invalid username or password');
-      } else if (response.status === 429) {
-        setError('Too many login attempts. Please try again later.');
-      } else if (response.status === 500) {
-        setError('Server error. Please try again later.');
-      } else {
-        setError(data.error || `Login failed (${response.status})`);
+        if (response.status === 401) {
+          setError('Invalid username or password');
+        } else if (response.status === 429) {
+          setError('Too many login attempts. Please try again later.');
+        } else if (response.status === 500) {
+          setError('Server error. Please try again later.');
+        } else {
+          setError(errorData.error || `Login failed (${response.status})`);
+        }
+        return;
       }
+
+      const data = await response.json();
+      console.log('Admin login successful:', data);
+
+      // Store admin session
+      localStorage.setItem('adminSession', JSON.stringify({
+        token: data.token,
+        username: credentials.username,
+        expiresAt: Date.now() + (24 * 60 * 60 * 1000), // 24 hours
+      }));
+      
+      // Store token for API calls
+      localStorage.setItem('admin_token', data.token);
+      
+      router.push('/admin/dashboard');
     } catch (err) {
       console.error('Login error:', err);
-      setError('Network error. Please check your connection and try again.');
+      console.error('Error type:', typeof err);
+      console.error('Error message:', err.message);
+      console.error('Error stack:', err.stack);
+      
+      if (err.name === 'TypeError' && err.message.includes('fetch')) {
+        setError('Network error. Please check your connection and try again.');
+      } else if (err.name === 'SyntaxError') {
+        setError('Server response error. Please try again.');
+      } else {
+        setError(`Login error: ${err.message || 'Unknown error'}`);
+      }
     } finally {
       setLoading(false);
     }
