@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
+import { useUser } from '@clerk/nextjs';
 import {
   Box,
   Typography,
@@ -56,6 +57,7 @@ interface SearchResponse {
 }
 
 export default function SearchPage() {
+  const { user, isLoaded } = useUser();
   const router = useRouter();
   const searchParams = useSearchParams();
   const [query, setQuery] = useState(searchParams.get('q') || '');
@@ -67,6 +69,15 @@ export default function SearchPage() {
   const [totalResults, setTotalResults] = useState(0);
   const [mediaType, setMediaType] = useState<'all' | 'movie' | 'tv' | 'person'>('all');
   const [tabValue, setTabValue] = useState(0);
+
+  useEffect(() => {
+    if (!isLoaded) return;
+    
+    if (!user) {
+      router.push('/sign-in');
+      return;
+    }
+  }, [isLoaded, user, router]);
 
   const search = async (searchQuery: string, page: number = 1) => {
     if (!searchQuery.trim()) {
@@ -168,6 +179,14 @@ export default function SearchPage() {
     const date = result.release_date || result.first_air_date;
     return date ? new Date(date).getFullYear().toString() : 'Unknown Year';
   };
+
+  if (!isLoaded) {
+    return <div>Loading...</div>;
+  }
+
+  if (!user) {
+    return null; // Will redirect to sign-in
+  }
 
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
