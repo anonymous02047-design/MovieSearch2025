@@ -7,12 +7,22 @@ module.exports = {
   
   // Configure sign-in and sign-up options
   signIn: {
-    allowedRedirectOrigins: ['http://localhost:3000', 'http://localhost:3001'],
+    allowedRedirectOrigins: [
+      'http://localhost:3000', 
+      'http://localhost:3001',
+      'https://ladlihub.in',
+      'https://www.ladlihub.in'
+    ],
     afterSignInUrl: '/',
   },
   
   signUp: {
-    allowedRedirectOrigins: ['http://localhost:3000', 'http://localhost:3001'],
+    allowedRedirectOrigins: [
+      'http://localhost:3000', 
+      'http://localhost:3001',
+      'https://ladlihub.in',
+      'https://www.ladlihub.in'
+    ],
     afterSignUpUrl: '/',
   },
   
