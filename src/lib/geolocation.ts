@@ -50,7 +50,7 @@ export const defaultRateLimitConfig: RateLimitConfig = {
     'AU': { maxRequests: 200, windowMs: 15 * 60 * 1000, isBlocked: false },
     'DE': { maxRequests: 200, windowMs: 15 * 60 * 1000, isBlocked: false },
     'FR': { maxRequests: 200, windowMs: 15 * 60 * 1000, isBlocked: false },
-    'IN': { maxRequests: 150, windowMs: 15 * 60 * 1000, isBlocked: false },
+    'IN': { maxRequests: 10000, windowMs: 15 * 60 * 1000, isBlocked: false }, // India has unlimited access
   },
   ipWhitelist: [
     '127.0.0.1', // localhost

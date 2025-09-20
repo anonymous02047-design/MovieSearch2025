@@ -9,6 +9,7 @@ import { TawkProvider } from "@/components/TawkProvider";
 import OfflineSupport from "@/components/OfflineSupport";
 import CookiesConsent from "@/components/CookiesConsent";
 import AccessibilityReset from "@/components/AccessibilityReset";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import "./globals.css";
 import "../styles/accessibility.css";
 
@@ -37,14 +38,14 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://moviesearch2025.com'),
+  metadataBase: new URL('https://ladlihub.in'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://moviesearch2025.com',
+    url: 'https://ladlihub.in',
     siteName: 'MovieSearch 2025',
     title: 'MovieSearch 2025 - Advanced Movie Discovery Platform',
     description: 'Discover, search, and explore movies with advanced filtering and recommendations. Find your next favorite movie with our comprehensive database powered by TMDB API.',
@@ -123,6 +124,7 @@ export default function RootLayout({
                 <OfflineSupport showStatus={true} showQueue={true} />
                 <CookiesConsent />
                 <AccessibilityReset />
+                <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''} />
               </ErrorBoundary>
             </TawkProvider>
           </RecaptchaProvider>
