@@ -21,7 +21,7 @@ export default function AdminAnalyticsBeacon({ sessionId, currentPage }: AdminAn
   const scrollDepthRef = useRef<number>(0);
   const maxScrollDepthRef = useRef<number>(0);
   const eventQueueRef = useRef<any[]>([]);
-  const isOnlineRef = useRef<boolean>(navigator.onLine);
+  const isOnlineRef = useRef<boolean>(typeof window !== 'undefined' ? navigator.onLine : true);
 
   // Initialize analytics session for admin
   useEffect(() => {
@@ -63,6 +63,14 @@ export default function AdminAnalyticsBeacon({ sessionId, currentPage }: AdminAn
 
   // Get comprehensive client information
   const getClientInfo = () => {
+    if (typeof window === 'undefined') {
+      return {
+        userType: 'admin',
+        language: 'en',
+        timezone: 'UTC',
+      };
+    }
+    
     const screen = window.screen;
     const navigator = window.navigator;
     
@@ -88,16 +96,19 @@ export default function AdminAnalyticsBeacon({ sessionId, currentPage }: AdminAn
   };
 
   const getNetworkType = () => {
+    if (typeof window === 'undefined') return 'unknown';
     const connection = (navigator as any).connection || (navigator as any).mozConnection || (navigator as any).webkitConnection;
     return connection?.effectiveType || 'unknown';
   };
 
   const getConnectionSpeed = () => {
+    if (typeof window === 'undefined') return 'unknown';
     const connection = (navigator as any).connection || (navigator as any).mozConnection || (navigator as any).webkitConnection;
     return connection?.downlink ? `${connection.downlink}Mbps` : 'unknown';
   };
 
   const getBatteryStatus = async () => {
+    if (typeof window === 'undefined') return null;
     try {
       const battery = await (navigator as any).getBattery();
       return {
@@ -277,7 +288,7 @@ export default function AdminAnalyticsBeacon({ sessionId, currentPage }: AdminAn
 
     // Track beforeunload
     const handleBeforeUnload = () => {
-      if (sessionIdRef.current) {
+      if (sessionIdRef.current && typeof window !== 'undefined') {
         // Send final session update
         navigator.sendBeacon('/api/analytics/session/end', JSON.stringify({
           sessionId: sessionIdRef.current,

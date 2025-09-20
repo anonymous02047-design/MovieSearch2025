@@ -1,6 +1,9 @@
 'use client';
 
 import { useEffect } from 'react';
+
+// Prevent static generation for admin pages
+export const dynamic = 'force-dynamic';
 import { useRouter } from 'next/navigation';
 import { Box, CircularProgress, Typography } from '@mui/material';
 
