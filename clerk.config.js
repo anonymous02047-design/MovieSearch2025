@@ -13,7 +13,7 @@ module.exports = {
       'https://ladlihub.in',
       'https://www.ladlihub.in'
     ],
-    afterSignInUrl: '/',
+    afterSignInUrl: 'https://ladlihub.in/',
   },
   
   signUp: {
@@ -23,7 +23,7 @@ module.exports = {
       'https://ladlihub.in',
       'https://www.ladlihub.in'
     ],
-    afterSignUpUrl: '/',
+    afterSignUpUrl: 'https://ladlihub.in/',
   },
   
   // Configure appearance
