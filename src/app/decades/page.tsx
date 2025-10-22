@@ -35,7 +35,7 @@ import {
   CalendarToday as CalendarIcon,
   TrendingUp as TrendingUpIcon,
 } from '@mui/icons-material';
-import { tmdb } from '@/lib/tmdb';
+import { tmdbApi } from '@/lib/tmdb';
 import Link from 'next/link';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import SEO from '@/components/SEO';
@@ -116,96 +116,94 @@ function DecadesPageContent() {
     { value: '1950s', label: '1950s', startYear: 1950, endYear: 1959 },
   ];
 
-  const mockDecadesData: DecadeData[] = [
-    {
-      decade: '2020s',
-      startYear: 2020,
-      endYear: 2029,
-      totalMovies: 150,
-      averageRating: 7.2,
-      description: 'The 2020s have brought us innovative storytelling, advanced visual effects, and diverse representation in cinema.',
-      topGenres: [
-        { id: 28, name: 'Action', count: 45 },
-        { id: 18, name: 'Drama', count: 38 },
-        { id: 35, name: 'Comedy', count: 32 },
-        { id: 878, name: 'Science Fiction', count: 28 },
-      ],
-      movies: [
-        { id: 1, title: 'Dune', release_date: '2021-10-22', poster_path: '/d5NXSklXo0qyIYkgV94XAgMIckC.jpg', vote_average: 8.0, overview: 'Paul Atreides, a brilliant and gifted young man...', genre_ids: [878, 18] },
-        { id: 2, title: 'Top Gun: Maverick', release_date: '2022-05-27', poster_path: '/62HCnUTziyWcpDaBO2i1DX17ljH.jpg', vote_average: 8.3, overview: 'After thirty years, Maverick is still pushing the envelope...', genre_ids: [28, 18] },
-        { id: 3, title: 'Everything Everywhere All at Once', release_date: '2022-03-25', poster_path: '/w3LxiVYdWWRvEVdn5RYq6jIqkb1.jpg', vote_average: 8.1, overview: 'An aging Chinese immigrant is swept up in an insane adventure...', genre_ids: [28, 12, 35] },
-      ]
-    },
-    {
-      decade: '2010s',
-      startYear: 2010,
-      endYear: 2019,
-      totalMovies: 200,
-      averageRating: 7.0,
-      description: 'The 2010s marked the rise of superhero films, streaming platforms, and global cinema reaching new heights.',
-      topGenres: [
-        { id: 28, name: 'Action', count: 65 },
-        { id: 878, name: 'Science Fiction', count: 52 },
-        { id: 18, name: 'Drama', count: 48 },
-        { id: 35, name: 'Comedy', count: 35 },
-      ],
-      movies: [
-        { id: 4, title: 'Inception', release_date: '2010-07-16', poster_path: '/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg', vote_average: 8.8, overview: 'A thief who steals corporate secrets through dream-sharing technology...', genre_ids: [28, 878, 53] },
-        { id: 5, title: 'The Dark Knight Rises', release_date: '2012-07-20', poster_path: '/85cWkCVftiVs0BVey6pxX8uNmLt.jpg', vote_average: 8.4, overview: 'Eight years after the Joker\'s reign of anarchy...', genre_ids: [28, 80, 18] },
-        { id: 6, title: 'Avengers: Endgame', release_date: '2019-04-26', poster_path: '/or06FN3Dka5tukK1e9sl16pB3iy.jpg', vote_average: 8.4, overview: 'After the devastating events of Avengers: Infinity War...', genre_ids: [28, 12, 878] },
-      ]
-    },
-    {
-      decade: '2000s',
-      startYear: 2000,
-      endYear: 2009,
-      totalMovies: 180,
-      averageRating: 6.8,
-      description: 'The 2000s brought us groundbreaking franchises, digital effects, and the beginning of the modern blockbuster era.',
-      topGenres: [
-        { id: 28, name: 'Action', count: 58 },
-        { id: 18, name: 'Drama', count: 45 },
-        { id: 35, name: 'Comedy', count: 42 },
-        { id: 878, name: 'Science Fiction', count: 35 },
-      ],
-      movies: [
-        { id: 7, title: 'The Lord of the Rings: The Fellowship of the Ring', release_date: '2001-12-19', poster_path: '/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg', vote_average: 8.4, overview: 'A meek Hobbit from the Shire and eight companions...', genre_ids: [12, 18, 14] },
-        { id: 8, title: 'The Dark Knight', release_date: '2008-07-18', poster_path: '/qJ2tW6WMUDux911r6m7haRef0WH.jpg', vote_average: 9.0, overview: 'When the menace known as the Joker wreaks havoc...', genre_ids: [28, 80, 18] },
-        { id: 9, title: 'Pirates of the Caribbean: The Curse of the Black Pearl', release_date: '2003-07-09', poster_path: '/z8onk7LV9Mmw6zKz4hT6pzzvmvl.jpg', vote_average: 7.8, overview: 'Blacksmith Will Turner teams up with eccentric pirate...', genre_ids: [12, 28, 35] },
-      ]
-    },
-    {
-      decade: '1990s',
-      startYear: 1990,
-      endYear: 1999,
-      totalMovies: 160,
-      averageRating: 7.1,
-      description: 'The 1990s were a golden age of cinema with innovative storytelling, breakthrough technology, and iconic films.',
-      topGenres: [
-        { id: 18, name: 'Drama', count: 52 },
-        { id: 35, name: 'Comedy', count: 48 },
-        { id: 28, name: 'Action', count: 35 },
-        { id: 10749, name: 'Romance', count: 25 },
-      ],
-      movies: [
-        { id: 10, title: 'The Shawshank Redemption', release_date: '1994-09-23', poster_path: '/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg', vote_average: 8.7, overview: 'Framed in the 1940s for the double murder of his wife...', genre_ids: [18, 80] },
-        { id: 11, title: 'Pulp Fiction', release_date: '1994-10-14', poster_path: '/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg', vote_average: 8.9, overview: 'The lives of two mob hitmen, a boxer, a gangster...', genre_ids: [80, 18] },
-        { id: 12, title: 'Forrest Gump', release_date: '1994-07-06', poster_path: '/arw2vcBveWOVZr6pxd9XTd1TdQa.jpg', vote_average: 8.8, overview: 'The presidencies of Kennedy and Johnson, the Vietnam War...', genre_ids: [35, 18, 10749] },
-      ]
-    },
-  ];
-
   const fetchDecadesData = async () => {
     try {
       setLoading(true);
       setError(null);
       
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      setDecadesData(mockDecadesData);
+      // Fetch real movie data for each decade from TMDB
+      const decadePromises = decades.map(async (decade) => {
+        try {
+          // Fetch movies from this decade
+          const moviesData = await tmdbApi.discoverMovies({
+            page: 1,
+            sort_by: 'popularity.desc',
+            primary_release_year: decade.startYear,
+            include_adult: false,
+          });
+
+          const movies = moviesData?.results?.slice(0, 10) || [];
+          
+          // Calculate stats
+          const totalMovies = moviesData?.total_results || 0;
+          const averageRating = movies.length > 0
+            ? movies.reduce((sum: number, m: any) => sum + (m.vote_average || 0), 0) / movies.length
+            : 0;
+
+          // Get genre distribution
+          const genreCounts: Record<number, number> = {};
+          movies.forEach((movie: any) => {
+            movie.genre_ids?.forEach((genreId: number) => {
+              genreCounts[genreId] = (genreCounts[genreId] || 0) + 1;
+            });
+          });
+
+          // Get genre names (we'll use predefined common genres)
+          const genreNames: Record<number, string> = {
+            28: 'Action', 12: 'Adventure', 16: 'Animation', 35: 'Comedy',
+            80: 'Crime', 99: 'Documentary', 18: 'Drama', 10751: 'Family',
+            14: 'Fantasy', 36: 'History', 27: 'Horror', 10402: 'Music',
+            9648: 'Mystery', 10749: 'Romance', 878: 'Science Fiction',
+            10770: 'TV Movie', 53: 'Thriller', 10752: 'War', 37: 'Western'
+          };
+
+          const topGenres = Object.entries(genreCounts)
+            .map(([id, count]) => ({
+              id: parseInt(id),
+              name: genreNames[parseInt(id)] || `Genre ${id}`,
+              count: count as number
+            }))
+            .sort((a, b) => b.count - a.count)
+            .slice(0, 4);
+
+          return {
+            decade: decade.label,
+            startYear: decade.startYear,
+            endYear: decade.endYear,
+            movies: movies.map((m: any) => ({
+              id: m.id,
+              title: m.title,
+              release_date: m.release_date,
+              poster_path: m.poster_path,
+              vote_average: m.vote_average,
+              overview: m.overview,
+              genre_ids: m.genre_ids
+            })),
+            totalMovies,
+            averageRating: parseFloat(averageRating.toFixed(1)),
+            topGenres,
+            description: `Explore the best movies from the ${decade.label}, featuring ${totalMovies.toLocaleString()} titles from ${decade.startYear} to ${decade.endYear}.`
+          };
+        } catch (error) {
+          console.error(`Error fetching data for ${decade.label}:`, error);
+          return {
+            decade: decade.label,
+            startYear: decade.startYear,
+            endYear: decade.endYear,
+            movies: [],
+            totalMovies: 0,
+            averageRating: 0,
+            topGenres: [],
+            description: `Movies from the ${decade.label}.`
+          };
+        }
+      });
+
+      const decadesResults = await Promise.all(decadePromises);
+      setDecadesData(decadesResults);
       setTotalPages(1);
     } catch (err) {
-      setError('Failed to fetch decades data');
+      setError('Failed to fetch decades data. Please try again.');
       console.error('Error fetching decades data:', err);
     } finally {
       setLoading(false);

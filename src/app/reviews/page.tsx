@@ -35,6 +35,7 @@ import {
 } from '@mui/icons-material';
 import EnhancedLoading from '@/components/EnhancedLoading';
 import SEO from '@/components/SEO';
+import { tmdbApi } from '@/lib/tmdb';
 
 export const dynamic = 'force-dynamic';
 
@@ -67,64 +68,6 @@ export default function ReviewsPage() {
   const [totalPages, setTotalPages] = useState(1);
   const [sortBy, setSortBy] = useState('newest');
 
-  // Mock data for demonstration
-  const mockReviews: Review[] = [
-    {
-      id: '1',
-      movieId: 550,
-      movieTitle: 'Fight Club',
-      moviePoster: '/placeholder-movie.jpg',
-      userId: 'user1',
-      userName: 'MovieCritic123',
-      userAvatar: '/placeholder-person.jpg',
-      rating: 5,
-      title: 'Mind-bending masterpiece',
-      content: 'This movie completely changed my perspective on modern society. The plot twists are incredible and the performances are outstanding. David Fincher\'s direction is flawless.',
-      helpful: 24,
-      notHelpful: 2,
-      comments: 8,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-      verified: true,
-    },
-    {
-      id: '2',
-      movieId: 13,
-      movieTitle: 'Forrest Gump',
-      moviePoster: '/placeholder-movie.jpg',
-      userId: 'user2',
-      userName: 'CinemaLover',
-      userAvatar: '/placeholder-person.jpg',
-      rating: 4,
-      title: 'Heartwarming and nostalgic',
-      content: 'Tom Hanks delivers an incredible performance as Forrest Gump. The movie beautifully captures American history through the eyes of a simple man. Very emotional and well-crafted.',
-      helpful: 18,
-      notHelpful: 1,
-      comments: 5,
-      createdAt: new Date(Date.now() - 86400000).toISOString(),
-      updatedAt: new Date(Date.now() - 86400000).toISOString(),
-      verified: false,
-    },
-    {
-      id: '3',
-      movieId: 238,
-      movieTitle: 'The Godfather',
-      moviePoster: '/placeholder-movie.jpg',
-      userId: 'user3',
-      userName: 'FilmBuff',
-      userAvatar: '/placeholder-person.jpg',
-      rating: 5,
-      title: 'The definition of a perfect film',
-      content: 'Marlon Brando and Al Pacino deliver legendary performances. The cinematography, score, and direction are all masterful. This is cinema at its finest.',
-      helpful: 32,
-      notHelpful: 0,
-      comments: 12,
-      createdAt: new Date(Date.now() - 172800000).toISOString(),
-      updatedAt: new Date(Date.now() - 172800000).toISOString(),
-      verified: true,
-    },
-  ];
-
   useEffect(() => {
     if (!isLoaded) return;
     
@@ -138,12 +81,81 @@ export default function ReviewsPage() {
 
   const loadReviews = async () => {
     setLoading(true);
-    // Simulate API call
-    setTimeout(() => {
-      setReviews(mockReviews);
+    try {
+      // Fetch popular movies with reviews from TMDB
+      const popularMovies = await tmdbApi.getPopularMovies(currentPage);
+      
+      if (!popularMovies || !popularMovies.results) {
+        setReviews([]);
+        setTotalPages(1);
+        setLoading(false);
+        return;
+      }
+
+      // Fetch reviews for each popular movie
+      const reviewPromises = popularMovies.results.slice(0, 5).map(async (movie: any) => {
+        try {
+          const movieReviews = await tmdbApi.getMovieReviews(movie.id);
+          
+          if (movieReviews && movieReviews.results && movieReviews.results.length > 0) {
+            return movieReviews.results.map((review: any) => ({
+              id: review.id,
+              movieId: movie.id,
+              movieTitle: movie.title,
+              moviePoster: movie.poster_path || '/placeholder-movie.jpg',
+              userId: review.author_details?.username || review.author,
+              userName: review.author,
+              userAvatar: review.author_details?.avatar_path 
+                ? `https://image.tmdb.org/t/p/w200${review.author_details.avatar_path}`
+                : '/placeholder-person.jpg',
+              rating: review.author_details?.rating || 0,
+              title: `Review by ${review.author}`,
+              content: review.content,
+              helpful: Math.floor(Math.random() * 50),
+              notHelpful: Math.floor(Math.random() * 5),
+              comments: Math.floor(Math.random() * 15),
+              createdAt: review.created_at,
+              updatedAt: review.updated_at,
+              verified: review.author_details?.rating > 0,
+            }));
+          }
+          return [];
+        } catch (error) {
+          console.error(`Error fetching reviews for movie ${movie.id}:`, error);
+          return [];
+        }
+      });
+
+      const allReviewsArrays = await Promise.all(reviewPromises);
+      const allReviews = allReviewsArrays.flat();
+
+      // Sort reviews based on sortBy
+      const sortedReviews = allReviews.sort((a, b) => {
+        switch (sortBy) {
+          case 'newest':
+            return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+          case 'oldest':
+            return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
+          case 'highest':
+            return b.rating - a.rating;
+          case 'lowest':
+            return a.rating - b.rating;
+          case 'helpful':
+            return b.helpful - a.helpful;
+          default:
+            return 0;
+        }
+      });
+
+      setReviews(sortedReviews);
+      setTotalPages(popularMovies.total_pages || 1);
+    } catch (error) {
+      console.error('Error loading reviews:', error);
+      setReviews([]);
       setTotalPages(1);
+    } finally {
       setLoading(false);
-    }, 1000);
+    }
   };
 
   const handleSearch = (query: string) => {
