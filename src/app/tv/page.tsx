@@ -14,7 +14,7 @@ import {
 import { Tv as TvIcon } from '@mui/icons-material';
 import SEO from '@/components/SEO';
 import TVShowCard, { TVShow } from '@/components/TVShowCard';
-import LoadingSkeleton from '@/components/LoadingSkeleton';
+import { LoadingSkeleton } from '@/components/LoadingStates';
 import { useApiErrorHandler } from '@/hooks/useErrorHandler';
 import ErrorDisplay from '@/components/ErrorDisplay';
 import tmdbApi from '@/lib/tmdb';

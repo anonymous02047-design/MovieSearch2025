@@ -322,30 +322,29 @@ function HomeContent() {
             onReset={resetFilters}
             availableGenres={availableGenres}
           />
-            
-            {searchQuery && (
-              <Stack direction="row" spacing={1} sx={{ mb: 2, justifyContent: 'center' }}>
-                <Chip
-                  label={`${searchResults.length} results`}
-                  color="primary"
-                  variant="outlined"
-                  sx={{ fontSize: '0.875rem', height: 32 }}
-                />
-                <Button
-                  variant="outlined"
-                  size="small"
-                  onClick={() => {
-                    setSearchQuery('');
-                    setSearchResults([]);
-                    loadContent();
-                  }}
-                  sx={{ height: 32 }}
-                >
-                  Clear Search
-                </Button>
-              </Stack>
-            )}
-          </Box>
+
+          {searchQuery && (
+            <Stack direction="row" spacing={1} sx={{ mb: 2, justifyContent: 'center' }}>
+              <Chip
+                label={`${searchResults.length} results`}
+                color="primary"
+                variant="outlined"
+                sx={{ fontSize: '0.875rem', height: 32 }}
+              />
+              <Button
+                variant="outlined"
+                size="small"
+                onClick={() => {
+                  setSearchQuery('');
+                  setSearchResults([]);
+                  loadContent();
+                }}
+                sx={{ height: 32 }}
+              >
+                Clear Search
+              </Button>
+            </Stack>
+          )}
 
           {error && (
             <Box sx={{ mb: 3 }}>
