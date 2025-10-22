@@ -41,6 +41,10 @@ import { useWatchlist } from '@/hooks/useWatchlist';
 import ShareDialog from '@/components/ShareDialog';
 import WatchProvidersSection from '@/components/WatchProvidersSection';
 import UserReviewsSection from '@/components/UserReviewsSection';
+import UniversalShareDialog from '@/components/UniversalShareDialog';
+import TMDBImage from '@/components/TMDBImage';
+import SeasonEpisodeTracker from '@/components/SeasonEpisodeTracker';
+import MovieTrailerPlayer from '@/components/MovieTrailerPlayer';
 
 interface TVShowDetails {
   id: number;
@@ -76,6 +80,9 @@ export default function TVShowDetailPage() {
   const [loading, setLoading] = useState(true);
   const [shareOpen, setShareOpen] = useState(false);
   const [watchProviders, setWatchProviders] = useState<any>(null);
+  const [universalShareOpen, setUniversalShareOpen] = useState(false);
+  const [trailerOpen, setTrailerOpen] = useState(false);
+  const [seasons, setSeasons] = useState<any[]>([]);
 
   const { addToWatchlist, removeFromWatchlist, isInWatchlist, addToFavorites, removeFromFavorites, isInFavorites } = useWatchlist();
 
@@ -314,7 +321,7 @@ export default function TVShowDetailPage() {
 
                   <Tooltip title="Share">
                     <IconButton
-                      onClick={() => setShareOpen(true)}
+                      onClick={() => setUniversalShareOpen(true)}
                       sx={{
                         backgroundColor: alpha('#fff', 0.2),
                         color: 'white',
@@ -422,6 +429,24 @@ export default function TVShowDetailPage() {
         title={show.name}
         description={show.overview}
       />
+
+      <UniversalShareDialog
+        open={universalShareOpen}
+        onClose={() => setUniversalShareOpen(false)}
+        url={typeof window !== 'undefined' ? window.location.href : ''}
+        title={show?.name || 'TV Show Details'}
+        description={show?.overview || ''}
+        imageUrl={show?.poster_path ? getImageUrl(show.poster_path, 'w500') : ''}
+      />
+
+      {trailerOpen && show && (
+        <MovieTrailerPlayer
+          movieId={show.id}
+          movieTitle={show.name}
+          open={trailerOpen}
+          onClose={() => setTrailerOpen(false)}
+        />
+      )}
     </>
   );
 }
