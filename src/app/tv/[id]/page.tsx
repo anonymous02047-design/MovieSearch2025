@@ -1,52 +1,48 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'next/navigation';
-
-// Dynamic route configuration
+import { useParams, useRouter } from 'next/navigation';
 import {
   Container,
-  Typography,
   Box,
+  Typography,
+  Chip,
+  Button,
   Grid,
   Card,
-  CardMedia,
   CardContent,
-  Button,
-  Chip,
-  Stack,
-  CircularProgress,
-  Alert,
+  Avatar,
   Divider,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemIcon,
-  Rating,
-  Paper,
   IconButton,
   Tooltip,
+  alpha,
+  useTheme,
+  CircularProgress
 } from '@mui/material';
 import {
-  Tv as TvIcon,
-  Star as StarIcon,
-  CalendarToday as CalendarIcon,
-  Schedule as ScheduleIcon,
-  Language as LanguageIcon,
-  ArrowBack as ArrowBackIcon,
   PlayArrow as PlayIcon,
+  Favorite as FavoriteIcon,
+  FavoriteBorder as FavoriteBorderIcon,
   Bookmark as BookmarkIcon,
   BookmarkBorder as BookmarkBorderIcon,
   Share as ShareIcon,
-  Info as InfoIcon,
+  Star as StarIcon,
+  ArrowBack as BackIcon,
+  Tv as TvIcon,
+  CalendarToday as CalendarIcon,
+  Language as LanguageIcon
 } from '@mui/icons-material';
 import { tmdbApi } from '@/lib/tmdb';
-import Link from 'next/link';
-import ProtectedRoute from '@/components/ProtectedRoute';
+import { getImageUrl, getBackdropUrl } from '@/lib/tmdb';
 import SEO from '@/components/SEO';
+import ResponsiveGrid from '@/components/ResponsiveGrid';
+import TVShowCard from '@/components/TVShowCard';
+import { useWatchlist } from '@/hooks/useWatchlist';
+import ShareDialog from '@/components/ShareDialog';
+import WatchProvidersSection from '@/components/WatchProvidersSection';
+import UserReviewsSection from '@/components/UserReviewsSection';
 
-
-interface TVShow {
+interface TVShowDetails {
   id: number;
   name: string;
   overview: string;
@@ -54,407 +50,378 @@ interface TVShow {
   backdrop_path: string | null;
   first_air_date: string;
   last_air_date: string;
-  number_of_episodes: number;
-  number_of_seasons: number;
   vote_average: number;
   vote_count: number;
-  popularity: number;
-  status: string;
-  type: string;
   genres: Array<{ id: number; name: string }>;
-  networks: Array<{ id: number; name: string; logo_path: string | null }>;
-  created_by: Array<{ id: number; name: string; profile_path: string | null }>;
-  production_companies: Array<{ id: number; name: string; logo_path: string | null }>;
+  number_of_seasons: number;
+  number_of_episodes: number;
+  episode_run_time: number[];
+  status: string;
+  networks: Array<{ id: number; name: string; logo_path: string }>;
+  created_by: Array<{ id: number; name: string; profile_path: string }>;
+  popularity: number;
+  original_language: string;
   origin_country: string[];
-  languages: string[];
-  homepage: string | null;
-  in_production: boolean;
-  last_episode_to_air: {
-    id: number;
-    name: string;
-    overview: string;
-    vote_average: number;
-    vote_count: number;
-    air_date: string;
-    episode_number: number;
-    production_code: string;
-    runtime: number;
-    season_number: number;
-    show_id: number;
-    still_path: string | null;
-  } | null;
-  next_episode_to_air: {
-    id: number;
-    name: string;
-    overview: string;
-    vote_average: number;
-    vote_count: number;
-    air_date: string;
-    episode_number: number;
-    production_code: string;
-    runtime: number;
-    season_number: number;
-    show_id: number;
-    still_path: string | null;
-  } | null;
 }
 
-interface Season {
-  id: number;
-  name: string;
-  overview: string;
-  poster_path: string | null;
-  season_number: number;
-  air_date: string;
-  episode_count: number;
-}
-
-function TVShowPageContent() {
+export default function TVShowDetailPage() {
   const params = useParams();
-  const tvShowId = params?.id as string;
-  
-  const [tvShow, setTvShow] = useState<TVShow | null>(null);
-  const [seasons, setSeasons] = useState<Season[]>([]);
+  const router = useRouter();
+  const theme = useTheme();
+  const tvId = parseInt(params.id as string);
+
+  const [show, setShow] = useState<TVShowDetails | null>(null);
+  const [credits, setCredits] = useState<any>(null);
+  const [similar, setSimilar] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [isBookmarked, setIsBookmarked] = useState(false);
+  const [shareOpen, setShareOpen] = useState(false);
+  const [watchProviders, setWatchProviders] = useState<any>(null);
+
+  const { addToWatchlist, removeFromWatchlist, isInWatchlist, addToFavorites, removeFromFavorites, isInFavorites } = useWatchlist();
 
   useEffect(() => {
-    if (tvShowId) {
-      fetchTVShowDetails();
-    }
-  }, [tvShowId]);
+    loadTVShowDetails();
+  }, [tvId]);
 
-  const fetchTVShowDetails = async () => {
+  const loadTVShowDetails = async () => {
     try {
       setLoading(true);
-      setError(null);
-
-      const [tvShowData, seasonsData] = await Promise.all([
-        tmdbApi.getTVShowDetails(parseInt(tvShowId)),
-        tmdbApi.getTVShowSeasons(parseInt(tvShowId))
+      const [showData, creditsData, similarData, providersData] = await Promise.all([
+        tmdbApi.getTVShowDetails(tvId),
+        tmdbApi.getTVCredits(tvId),
+        tmdbApi.getTVSimilar(tvId),
+        tmdbApi.getTVWatchProviders(tvId)
       ]);
 
-      setTvShow(tvShowData);
-      setSeasons(seasonsData.seasons);
-    } catch (err) {
-      setError('Failed to fetch TV show details');
-      console.error('Error fetching TV show details:', err);
+      setShow(showData);
+      setCredits(creditsData);
+      setSimilar(similarData.results?.slice(0, 8) || []);
+      setWatchProviders(providersData.results?.US || null);
+    } catch (error) {
+      console.error('Error loading TV show details:', error);
     } finally {
       setLoading(false);
     }
   };
 
-  const handleBookmark = () => {
-    setIsBookmarked(!isBookmarked);
-    // TODO: Implement bookmark functionality
+  const handleWatchlist = () => {
+    if (!show) return;
+    
+    const item = {
+      id: show.id,
+      title: show.name,
+      type: 'tv' as const,
+      poster_path: show.poster_path,
+      vote_average: show.vote_average,
+      first_air_date: show.first_air_date
+    };
+
+    if (isInWatchlist(show.id, 'tv')) {
+      removeFromWatchlist(show.id, 'tv');
+    } else {
+      addToWatchlist(item);
+    }
   };
 
-  const handleShare = () => {
-    if (navigator.share) {
-      navigator.share({
-        title: tvShow?.name,
-        text: tvShow?.overview,
-        url: window.location.href,
-      });
+  const handleFavorite = () => {
+    if (!show) return;
+    
+    const item = {
+      id: show.id,
+      title: show.name,
+      type: 'tv' as const,
+      poster_path: show.poster_path,
+      vote_average: show.vote_average,
+      first_air_date: show.first_air_date
+    };
+
+    if (isInFavorites(show.id, 'tv')) {
+      removeFromFavorites(show.id, 'tv');
     } else {
-      navigator.clipboard.writeText(window.location.href);
+      addToFavorites(item);
     }
   };
 
   if (loading) {
     return (
-      <Container maxWidth="lg" sx={{ py: 4 }}>
-        <Box display="flex" justifyContent="center" alignItems="center" minHeight="400px">
-          <CircularProgress />
-        </Box>
+      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
+        <CircularProgress size={60} />
+      </Box>
+    );
+  }
+
+  if (!show) {
+    return (
+      <Container sx={{ py: 8, textAlign: 'center' }}>
+        <Typography variant="h4">TV Show not found</Typography>
+        <Button onClick={() => router.push('/')} sx={{ mt: 2 }}>
+          Go Home
+        </Button>
       </Container>
     );
   }
 
-  if (error || !tvShow) {
-    return (
-      <Container maxWidth="lg" sx={{ py: 4 }}>
-        <Alert severity="error">{error || 'TV Show not found'}</Alert>
-        <Box sx={{ mt: 2 }}>
-          <Button
-            component={Link}
-            href="/trending"
-            startIcon={<ArrowBackIcon />}
-            variant="outlined"
-          >
-            Back to Trending
-          </Button>
-        </Box>
-      </Container>
-    );
-  }
+  const year = show.first_air_date ? new Date(show.first_air_date).getFullYear() : 'N/A';
+  const rating = show.vote_average ? show.vote_average.toFixed(1) : 'N/A';
+  const runtime = show.episode_run_time?.[0] || 'N/A';
 
   return (
     <>
       <SEO
-        title={`${tvShow.name} - TV Show Details`}
-        description={`Watch ${tvShow.name} - ${tvShow.overview?.substring(0, 160)}...`}
-        keywords={[tvShow.name, 'tv show', 'series', 'episodes', 'seasons', ...tvShow.genres.map(g => g.name)]}
+        title={`${show.name} (${year}) - TV Show Details`}
+        description={show.overview}
+        keywords={[show.name, 'tv show', ...show.genres.map(g => g.name)]}
+        image={getBackdropUrl(show.backdrop_path)}
       />
-      <Container maxWidth="lg" sx={{ py: 4 }}>
-          {/* Back Button */}
-          <Box sx={{ mb: 3 }}>
-            <Button
-              component={Link}
-              href="/trending"
-              startIcon={<ArrowBackIcon />}
-              variant="outlined"
-            >
-              Back to Trending
-            </Button>
-          </Box>
 
-          {/* Header */}
-          <Box sx={{ mb: 4, textAlign: 'center' }}>
-            <Typography variant="body1" component="p" gutterBottom sx={{
-              fontWeight: 'bold',
-              color: 'primary.main',
-              fontSize: '14px',
-            }}>
-              📺 {tvShow.name}
-            </Typography>
-            <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>
-              {tvShow.status} • {tvShow.number_of_seasons} Season{tvShow.number_of_seasons !== 1 ? 's' : ''} • {tvShow.number_of_episodes} Episode{tvShow.number_of_episodes !== 1 ? 's' : ''}
-            </Typography>
-          </Box>
+      {/* Hero Section */}
+      <Box
+        sx={{
+          position: 'relative',
+          minHeight: '70vh',
+          backgroundImage: `url(${getBackdropUrl(show.backdrop_path)})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.9) 100%)',
+          }
+        }}
+      >
+        <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1, py: 4 }}>
+          <Button
+            startIcon={<BackIcon />}
+            onClick={() => router.back()}
+            sx={{ color: 'white', mb: 2 }}
+          >
+            Back
+          </Button>
 
           <Grid container spacing={4}>
-            {/* Poster */}
-            <Grid size={{ xs: 12, md: 4 }}>
-              <Card sx={{ mb: 3 }}>
-                <CardMedia
-                  component="img"
-                  height="600"
-                  image={tvShow.poster_path ? `https://image.tmdb.org/t/p/w500${tvShow.poster_path}` : '/placeholder-movie.svg'}
-                  alt={tvShow.name}
-                  sx={{ objectFit: 'cover' }}
-                />
-                <CardContent>
-                  <Stack direction="row" spacing={1} justifyContent="center">
-                    <Tooltip title={isBookmarked ? "Remove from Watchlist" : "Add to Watchlist"}>
-                      <IconButton onClick={handleBookmark} color="primary">
-                        {isBookmarked ? <BookmarkIcon /> : <BookmarkBorderIcon />}
-                      </IconButton>
-                    </Tooltip>
-                    <Tooltip title="Share">
-                      <IconButton onClick={handleShare} color="primary">
-                        <ShareIcon />
-                      </IconButton>
-                    </Tooltip>
-                  </Stack>
-                </CardContent>
-              </Card>
+            <Grid item xs={12} md={4}>
+              <Card
+                sx={{
+                  aspectRatio: '2/3',
+                  background: `url(${getImageUrl(show.poster_path)})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
+                }}
+              />
             </Grid>
 
-            {/* TV Show Details */}
-            <Grid size={{ xs: 12, md: 8 }}>
-              <Card sx={{ p: 3, mb: 3 }}>
-                <Typography variant="h5" gutterBottom sx={{ fontWeight: 'bold', color: 'primary.main', mb: 3 }}>
-                  Show Information
+            <Grid item xs={12} md={8}>
+              <Box sx={{ color: 'white' }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
+                  <TvIcon sx={{ fontSize: 32 }} />
+                  <Chip label="TV Show" color="secondary" />
+                  <Chip label={show.status} variant="outlined" sx={{ color: 'white', borderColor: 'white' }} />
+                </Box>
+
+                <Typography variant="h2" component="h1" fontWeight={700} gutterBottom>
+                  {show.name}
                 </Typography>
-                <Stack spacing={3}>
-                  <Box>
-                    <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold' }}>
-                      Rating
+
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3, flexWrap: 'wrap' }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+                    <StarIcon sx={{ color: '#ffd700' }} />
+                    <Typography variant="h5" fontWeight={600}>
+                      {rating}
                     </Typography>
-                    <Stack direction="row" alignItems="center" spacing={1}>
-                      <Rating value={tvShow.vote_average / 2} precision={0.1} readOnly />
-                      <Typography variant="body1">
-                        {tvShow.vote_average.toFixed(1)}/10 ({tvShow.vote_count.toLocaleString()} votes)
-                      </Typography>
-                    </Stack>
                   </Box>
-
-                  {tvShow.first_air_date && (
-                    <Box>
-                      <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold' }}>
-                        Air Dates
-                      </Typography>
-                      <Stack direction="row" alignItems="center" spacing={1}>
-                        <CalendarIcon color="action" />
-                        <Typography variant="body1">
-                          {new Date(tvShow.first_air_date).toLocaleDateString()}
-                          {tvShow.last_air_date && (
-                            <Typography component="span" color="text.secondary" sx={{ ml: 1 }}>
-                              - {new Date(tvShow.last_air_date).toLocaleDateString()}
-                            </Typography>
-                          )}
-                        </Typography>
-                      </Stack>
-                    </Box>
+                  <Typography variant="h6">•</Typography>
+                  <Typography variant="h6">{year}</Typography>
+                  <Typography variant="h6">•</Typography>
+                  <Typography variant="h6">{show.number_of_seasons} Season{show.number_of_seasons > 1 ? 's' : ''}</Typography>
+                  <Typography variant="h6">•</Typography>
+                  <Typography variant="h6">{show.number_of_episodes} Episodes</Typography>
+                  {runtime !== 'N/A' && (
+                    <>
+                      <Typography variant="h6">•</Typography>
+                      <Typography variant="h6">{runtime} min/ep</Typography>
+                    </>
                   )}
+                </Box>
 
-                  <Box>
-                    <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold' }}>
-                      Genres
-                    </Typography>
-                    <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
-                      {tvShow.genres.map((genre) => (
-                        <Chip key={genre.id} label={genre.name} color="primary" size="small" />
-                      ))}
-                    </Stack>
-                  </Box>
+                <Box sx={{ display: 'flex', gap: 1, mb: 3, flexWrap: 'wrap' }}>
+                  {show.genres.map(genre => (
+                    <Chip
+                      key={genre.id}
+                      label={genre.name}
+                      sx={{
+                        backgroundColor: alpha('#fff', 0.2),
+                        color: 'white',
+                        '&:hover': {
+                          backgroundColor: alpha('#fff', 0.3),
+                        }
+                      }}
+                    />
+                  ))}
+                </Box>
 
-                  {tvShow.networks && tvShow.networks.length > 0 && (
-                    <Box>
-                      <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold' }}>
-                        Networks
-                      </Typography>
-                      <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
-                        {tvShow.networks.map((network) => (
-                          <Chip key={network.id} label={network.name} variant="outlined" size="small" />
-                        ))}
-                      </Stack>
-                    </Box>
-                  )}
+                <Typography variant="h6" paragraph sx={{ maxWidth: 800, lineHeight: 1.8 }}>
+                  {show.overview}
+                </Typography>
 
-                  {tvShow.created_by && tvShow.created_by.length > 0 && (
-                    <Box>
-                      <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold' }}>
-                        Created By
-                      </Typography>
-                      <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
-                        {tvShow.created_by.map((creator) => (
-                          <Chip key={creator.id} label={creator.name} variant="outlined" size="small" />
-                        ))}
-                      </Stack>
-                    </Box>
-                  )}
+                <Box sx={{ display: 'flex', gap: 2, mt: 4, flexWrap: 'wrap' }}>
+                  <Button
+                    variant="contained"
+                    size="large"
+                    startIcon={<PlayIcon />}
+                    sx={{
+                      background: 'linear-gradient(45deg, #2196F3, #21CBF3)',
+                      px: 4,
+                      py: 1.5,
+                    }}
+                  >
+                    Watch Now
+                  </Button>
 
-                  <Box>
-                    <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold' }}>
-                      Popularity Score
-                    </Typography>
-                    <Stack direction="row" alignItems="center" spacing={1}>
-                      <StarIcon color="warning" />
-                      <Typography variant="body1">{tvShow.popularity.toFixed(1)}</Typography>
-                    </Stack>
-                  </Box>
-                </Stack>
-              </Card>
+                  <Tooltip title={isInWatchlist(show.id, 'tv') ? 'Remove from Watchlist' : 'Add to Watchlist'}>
+                    <IconButton
+                      onClick={handleWatchlist}
+                      sx={{
+                        backgroundColor: alpha('#fff', 0.2),
+                        color: 'white',
+                        '&:hover': {
+                          backgroundColor: alpha('#fff', 0.3),
+                        }
+                      }}
+                    >
+                      {isInWatchlist(show.id, 'tv') ? <BookmarkIcon /> : <BookmarkBorderIcon />}
+                    </IconButton>
+                  </Tooltip>
 
-              {/* Overview */}
-              {tvShow.overview && (
-                <Card sx={{ p: 3, mb: 3 }}>
-                  <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold' }}>
-                    Overview
-                  </Typography>
-                  <Typography variant="body1" sx={{ lineHeight: 1.6 }}>
-                    {tvShow.overview}
-                  </Typography>
-                </Card>
-              )}
+                  <Tooltip title={isInFavorites(show.id, 'tv') ? 'Remove from Favorites' : 'Add to Favorites'}>
+                    <IconButton
+                      onClick={handleFavorite}
+                      sx={{
+                        backgroundColor: alpha('#fff', 0.2),
+                        color: 'white',
+                        '&:hover': {
+                          backgroundColor: alpha('#fff', 0.3),
+                        }
+                      }}
+                    >
+                      {isInFavorites(show.id, 'tv') ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+                    </IconButton>
+                  </Tooltip>
 
-              {/* Last Episode */}
-              {tvShow.last_episode_to_air && (
-                <Card sx={{ p: 3, mb: 3 }}>
-                  <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold' }}>
-                    Last Episode
-                  </Typography>
-                  <Typography variant="subtitle1" sx={{ fontWeight: 'bold' }}>
-                    {tvShow.last_episode_to_air.name}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
-                    Season {tvShow.last_episode_to_air.season_number}, Episode {tvShow.last_episode_to_air.episode_number}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
-                    Aired: {new Date(tvShow.last_episode_to_air.air_date).toLocaleDateString()}
-                  </Typography>
-                  {tvShow.last_episode_to_air.overview && (
-                    <Typography variant="body2">
-                      {tvShow.last_episode_to_air.overview}
-                    </Typography>
-                  )}
-                </Card>
-              )}
-
-              {/* Next Episode */}
-              {tvShow.next_episode_to_air && (
-                <Card sx={{ p: 3, mb: 3, bgcolor: 'primary.light', color: 'primary.contrastText' }}>
-                  <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold' }}>
-                    Next Episode
-                  </Typography>
-                  <Typography variant="subtitle1" sx={{ fontWeight: 'bold' }}>
-                    {tvShow.next_episode_to_air.name}
-                  </Typography>
-                  <Typography variant="body2" sx={{ mb: 1 }}>
-                    Season {tvShow.next_episode_to_air.season_number}, Episode {tvShow.next_episode_to_air.episode_number}
-                  </Typography>
-                  <Typography variant="body2" sx={{ mb: 1 }}>
-                    Airs: {new Date(tvShow.next_episode_to_air.air_date).toLocaleDateString()}
-                  </Typography>
-                  {tvShow.next_episode_to_air.overview && (
-                    <Typography variant="body2">
-                      {tvShow.next_episode_to_air.overview}
-                    </Typography>
-                  )}
-                </Card>
-              )}
+                  <Tooltip title="Share">
+                    <IconButton
+                      onClick={() => setShareOpen(true)}
+                      sx={{
+                        backgroundColor: alpha('#fff', 0.2),
+                        color: 'white',
+                        '&:hover': {
+                          backgroundColor: alpha('#fff', 0.3),
+                        }
+                      }}
+                    >
+                      <ShareIcon />
+                    </IconButton>
+                  </Tooltip>
+                </Box>
+              </Box>
             </Grid>
           </Grid>
-
-          {/* Seasons */}
-          {seasons.length > 0 && (
-            <Box sx={{ mt: 4 }}>
-              <Typography variant="h5" gutterBottom sx={{ fontWeight: 'bold', mb: 3, color: 'primary.main' }}>
-                📺 Seasons ({seasons.length})
-              </Typography>
-              <Grid container spacing={3}>
-                {seasons.map((season) => (
-                  <Grid size={{ xs: 6, sm: 4, md: 3 }} key={season.id}>
-                    <Card sx={{ 
-                      height: '100%', 
-                      display: 'flex', 
-                      flexDirection: 'column',
-                      transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                      '&:hover': {
-                        transform: 'translateY(-4px)',
-                        boxShadow: '0 8px 20px rgba(0,0,0,0.15)',
-                      }
-                    }}>
-                      <CardMedia
-                        component="img"
-                        height="250"
-                        image={season.poster_path ? `https://image.tmdb.org/t/p/w300${season.poster_path}` : '/placeholder-movie.svg'}
-                        alt={season.name}
-                        sx={{ objectFit: 'cover' }}
-                      />
-                      <CardContent sx={{ flexGrow: 1, p: 2 }}>
-                        <Typography variant="subtitle2" noWrap gutterBottom sx={{ fontWeight: 'bold' }}>
-                          {season.name}
-                        </Typography>
-                        <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 1 }}>
-                          <Typography variant="caption" color="text.secondary">
-                            {season.episode_count} episodes
-                          </Typography>
-                        </Stack>
-                        {season.air_date && (
-                          <Typography variant="caption" color="text.secondary">
-                            {new Date(season.air_date).getFullYear()}
-                          </Typography>
-                        )}
-                      </CardContent>
-                    </Card>
-                  </Grid>
-                ))}
-              </Grid>
-            </Box>
-          )}
         </Container>
-      </>
-  );
-}
+      </Box>
 
-export default function TVShowPage() {
-  return (
-    <ProtectedRoute>
-      <TVShowPageContent />
-    </ProtectedRoute>
+      <Container maxWidth="xl" sx={{ py: 6 }}>
+        {/* Watch Providers */}
+        {watchProviders && (
+          <WatchProvidersSection providers={watchProviders} country="US" />
+        )}
+
+        {/* Cast & Crew */}
+        {credits && credits.cast && credits.cast.length > 0 && (
+          <Box sx={{ mb: 6 }}>
+            <Typography variant="h4" gutterBottom fontWeight={700}>
+              Cast
+            </Typography>
+            <Box
+              sx={{
+                display: 'flex',
+                gap: 3,
+                overflowX: 'auto',
+                pb: 2,
+                '&::-webkit-scrollbar': {
+                  height: 8,
+                },
+                '&::-webkit-scrollbar-thumb': {
+                  backgroundColor: alpha(theme.palette.primary.main, 0.5),
+                  borderRadius: 4,
+                },
+              }}
+            >
+              {credits.cast.slice(0, 10).map((person: any) => (
+                <Card
+                  key={person.id}
+                  sx={{
+                    minWidth: 150,
+                    cursor: 'pointer',
+                    transition: 'transform 0.2s',
+                    '&:hover': {
+                      transform: 'translateY(-4px)',
+                    }
+                  }}
+                  onClick={() => router.push(`/person/${person.id}`)}
+                >
+                  <Avatar
+                    src={getImageUrl(person.profile_path, 'w200')}
+                    sx={{ width: 150, height: 150 }}
+                    variant="square"
+                  >
+                    {person.name[0]}
+                  </Avatar>
+                  <CardContent>
+                    <Typography variant="subtitle2" fontWeight={600} noWrap>
+                      {person.name}
+                    </Typography>
+                    <Typography variant="caption" color="text.secondary" noWrap>
+                      {person.character}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              ))}
+            </Box>
+          </Box>
+        )}
+
+        {/* User Reviews */}
+        <UserReviewsSection
+          contentId={show.id}
+          contentType="tv"
+          contentTitle={show.name}
+        />
+
+        {/* Similar TV Shows */}
+        {similar.length > 0 && (
+          <Box sx={{ mt: 6 }}>
+            <Typography variant="h4" gutterBottom fontWeight={700}>
+              Similar TV Shows
+            </Typography>
+            <ResponsiveGrid columns={{ xs: 1, sm: 2, md: 3, lg: 4 }} spacing={3}>
+              {similar.map((tvShow) => (
+                <TVShowCard key={tvShow.id} show={tvShow} />
+              ))}
+            </ResponsiveGrid>
+          </Box>
+        )}
+      </Container>
+
+      <ShareDialog
+        open={shareOpen}
+        onClose={() => setShareOpen(false)}
+        title={show.name}
+        description={show.overview}
+      />
+    </>
   );
 }

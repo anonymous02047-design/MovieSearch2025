@@ -47,6 +47,8 @@ import ThemeToggle from './ThemeToggle';
 import GlobalSearch from './GlobalSearch';
 import RateLimitStatus from './RateLimitStatus';
 import AccessibilityCenter from './AccessibilityCenter';
+import LanguageSelector from './LanguageSelector';
+import NotificationCenter from './NotificationCenter';
 
 interface HeaderProps {
   onSearch?: (query: string) => void;
@@ -111,21 +113,22 @@ export default function Header({ onSearch, showSearch = true }: HeaderProps) {
   // Essential navigation items - most important pages in header
   const navigationItems = [
     { text: 'Home', icon: <MovieIcon />, path: '/' },
-    { text: 'Popular', icon: <TrendingUpIcon />, path: '/popular' },
-    { text: 'Top Rated', icon: <StarIcon />, path: '/top-rated' },
-    { text: 'Now Playing', icon: <PlayIcon />, path: '/now-playing' },
+    { text: 'Discover', icon: <TrendingUpIcon />, path: '/discover' },
+    { text: 'Browse', icon: <MovieIcon />, path: '/browse' },
     { text: 'Trending', icon: <TrendingUpIcon />, path: '/trending' },
-    { text: 'Genres', icon: <MovieIcon />, path: '/genres' },
-    { text: 'Actors', icon: <AccountIcon />, path: '/actors' },
+    { text: 'Collections', icon: <MovieIcon />, path: '/collections' },
+    { text: 'TV Shows', icon: <MovieIcon />, path: '/tv' },
+    { text: 'Advanced Search', icon: <PlayIcon />, path: '/advanced-search' },
     { text: 'About', icon: <InfoIcon />, path: '/about' },
   ];
 
   const userMenuItems = [
     { text: 'My Profile', icon: <AccountIcon />, path: '/profile' },
+    { text: 'My Stats', icon: <TrendingUpIcon />, path: '/stats' },
     { text: 'Favorites', icon: <FavoriteIcon />, path: '/favorites' },
     { text: 'Watchlist', icon: <BookmarkIcon />, path: '/watchlist' },
-    { text: 'Search History', icon: <HistoryIcon />, path: '/history' },
-    { text: 'Account Settings', icon: <SettingsIcon />, path: '/profile/manage' },
+    { text: 'History', icon: <HistoryIcon />, path: '/history' },
+    { text: 'Settings', icon: <SettingsIcon />, path: '/settings' },
   ];
 
   const handleSignOut = async () => {
@@ -244,6 +247,12 @@ export default function Header({ onSearch, showSearch = true }: HeaderProps) {
               <AccessibilityIcon />
             </IconButton>
           </Tooltip>
+
+          {/* Notification Center */}
+          <NotificationCenter />
+
+          {/* Language Selector */}
+          <LanguageSelector />
 
           {/* Theme Toggle */}
           <ThemeToggle />

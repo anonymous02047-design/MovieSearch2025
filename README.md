@@ -1,4 +1,6 @@
-# MovieSearch 2025 - Advanced Movie Discovery App
+# 🎬 MovieSearch 2025 - Enhanced Edition
+
+> A comprehensive movie and TV show discovery platform with 16+ advanced features - Advanced Movie Discovery App
 
 A modern, responsive movie search and discovery web application built with Next.js, Material-UI, and powered by The Movie Database (TMDB) API.
 

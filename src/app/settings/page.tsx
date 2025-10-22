@@ -1,418 +1,255 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
+  Container,
   Box,
   Typography,
-  Container,
-  Card,
-  CardContent,
+  Paper,
   Switch,
   FormControlLabel,
-  Button,
   Divider,
-  Alert,
-  Grid,
-  TextField,
+  Button,
   Select,
   MenuItem,
   FormControl,
   InputLabel,
-  Slider,
-  Chip,
+  useTheme,
+  alpha,
+  Chip
 } from '@mui/material';
 import {
   Settings as SettingsIcon,
   Notifications as NotificationsIcon,
-  Security as SecurityIcon,
-  Palette as PaletteIcon,
   Language as LanguageIcon,
-  Save as SaveIcon,
-  Restore as RestoreIcon,
+  Palette as PaletteIcon,
+  Security as SecurityIcon,
+  Save as SaveIcon
 } from '@mui/icons-material';
-import { useUser } from '@clerk/nextjs';
-
-// Prevent static generation
-export const dynamic = 'force-dynamic';
-
-interface UserSettings {
-  notifications: {
-    email: boolean;
-    push: boolean;
-    marketing: boolean;
-  };
-  privacy: {
-    profileVisibility: 'public' | 'private' | 'friends';
-    showWatchlist: boolean;
-    showFavorites: boolean;
-  };
-  display: {
-    theme: 'light' | 'dark' | 'auto';
-    language: string;
-    itemsPerPage: number;
-    autoPlayTrailers: boolean;
-  };
-  content: {
-    adultContent: boolean;
-    explicitContent: boolean;
-    contentFilter: 'strict' | 'moderate' | 'lenient';
-  };
-}
-
-const defaultSettings: UserSettings = {
-  notifications: {
-    email: true,
-    push: true,
-    marketing: false,
-  },
-  privacy: {
-    profileVisibility: 'public',
-    showWatchlist: true,
-    showFavorites: true,
-  },
-  display: {
-    theme: 'auto',
-    language: 'en',
-    itemsPerPage: 20,
-    autoPlayTrailers: false,
-  },
-  content: {
-    adultContent: false,
-    explicitContent: false,
-    contentFilter: 'moderate',
-  },
-};
+import SEO from '@/components/SEO';
+import { getLanguage, setLanguage, Language, getAvailableLanguages } from '@/lib/i18n';
 
 export default function SettingsPage() {
-  const { user, isLoaded } = useUser();
-  const [settings, setSettings] = useState<UserSettings>(defaultSettings);
-  const [loading, setLoading] = useState(false);
-  const [saveStatus, setSaveStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const theme = useTheme();
+  const [notifications, setNotifications] = useState(true);
+  const [emailNotifications, setEmailNotifications] = useState(false);
+  const [autoplay, setAutoplay] = useState(true);
+  const [language, setLang] = useState<Language>(getLanguage());
+  const [region, setRegion] = useState('US');
 
-  useEffect(() => {
-    if (isLoaded && user) {
-      // Load user settings from localStorage or user metadata
-      const savedSettings = localStorage.getItem('userSettings');
-      if (savedSettings) {
-        try {
-          setSettings({ ...defaultSettings, ...JSON.parse(savedSettings) });
-        } catch (error) {
-          console.error('Failed to parse saved settings:', error);
-        }
-      }
-    }
-  }, [isLoaded, user]);
+  const languages = getAvailableLanguages();
 
-  const handleSettingChange = (category: keyof UserSettings, key: string, value: any) => {
-    setSettings(prev => ({
-      ...prev,
-      [category]: {
-        ...prev[category],
-        [key]: value,
-      },
+  const handleSave = () => {
+    setLanguage(language);
+    // Save other settings to localStorage
+    localStorage.setItem('user_settings', JSON.stringify({
+      notifications,
+      emailNotifications,
+      autoplay,
+      region
     }));
+    alert('Settings saved successfully!');
   };
-
-  const handleSaveSettings = async () => {
-    setLoading(true);
-    setSaveStatus('idle');
-
-    try {
-      // Save to localStorage
-      localStorage.setItem('userSettings', JSON.stringify(settings));
-      
-      // In a real app, you would save to your backend
-      // await saveUserSettings(settings);
-      
-      setSaveStatus('success');
-      setTimeout(() => setSaveStatus('idle'), 3000);
-    } catch (error) {
-      setSaveStatus('error');
-      setTimeout(() => setSaveStatus('idle'), 3000);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleResetSettings = () => {
-    setSettings(defaultSettings);
-    localStorage.removeItem('userSettings');
-  };
-
-  if (!isLoaded) {
-    return (
-      <Container maxWidth="lg" sx={{ py: 4 }}>
-        <Typography>Loading...</Typography>
-      </Container>
-    );
-  }
-
-  if (!user) {
-    return (
-      <Container maxWidth="lg" sx={{ py: 4 }}>
-        <Alert severity="warning">
-          Please sign in to access your settings.
-        </Alert>
-      </Container>
-    );
-  }
 
   return (
-    <Container maxWidth="lg" sx={{ py: 4 }}>
-      <Box sx={{ mb: 4 }}>
-        <Typography variant="h3" component="h1" gutterBottom>
-          Settings
-        </Typography>
-        <Typography variant="body1" color="text.secondary">
-          Customize your MovieSearch experience
-        </Typography>
-      </Box>
+    <>
+      <SEO
+        title="Settings - MovieSearch 2025"
+        description="Manage your account settings and preferences"
+        keywords={['settings', 'preferences', 'account']}
+      />
 
-      {saveStatus === 'success' && (
-        <Alert severity="success" sx={{ mb: 3 }}>
-          Settings saved successfully!
-        </Alert>
-      )}
+      <Box
+        sx={{
+          background: theme.palette.mode === 'dark'
+            ? 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)'
+            : 'linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%)',
+          minHeight: '100vh',
+          py: 4,
+        }}
+      >
+        <Container maxWidth="md">
+          <Box sx={{ mb: 4, textAlign: 'center' }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2, mb: 2 }}>
+              <SettingsIcon sx={{ fontSize: 48, color: 'primary.main' }} />
+              <Typography variant="h3" component="h1" fontWeight={700}>
+                Settings
+              </Typography>
+            </Box>
+            <Typography variant="h6" color="text.secondary">
+              Customize your experience
+            </Typography>
+          </Box>
 
-      {saveStatus === 'error' && (
-        <Alert severity="error" sx={{ mb: 3 }}>
-          Failed to save settings. Please try again.
-        </Alert>
-      )}
+          {/* Notifications Settings */}
+          <Paper elevation={3} sx={{ p: 3, mb: 3 }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
+              <NotificationsIcon color="primary" />
+              <Typography variant="h6" fontWeight={600}>
+                Notifications
+              </Typography>
+            </Box>
 
-      <Grid container spacing={3}>
-        {/* Notifications Settings */}
-        <Grid item xs={12} md={6}>
-          <Card>
-            <CardContent>
-              <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-                <NotificationsIcon sx={{ mr: 2, color: 'primary.main' }} />
-                <Typography variant="h5" component="h2">
-                  Notifications
-                </Typography>
-              </Box>
-              
-              <FormControlLabel
-                control={
-                  <Switch
-                    checked={settings.notifications.email}
-                    onChange={(e) => handleSettingChange('notifications', 'email', e.target.checked)}
-                  />
-                }
-                label="Email notifications"
-              />
-              
-              <FormControlLabel
-                control={
-                  <Switch
-                    checked={settings.notifications.push}
-                    onChange={(e) => handleSettingChange('notifications', 'push', e.target.checked)}
-                  />
-                }
-                label="Push notifications"
-              />
-              
-              <FormControlLabel
-                control={
-                  <Switch
-                    checked={settings.notifications.marketing}
-                    onChange={(e) => handleSettingChange('notifications', 'marketing', e.target.checked)}
-                  />
-                }
-                label="Marketing emails"
-              />
-            </CardContent>
-          </Card>
-        </Grid>
-
-        {/* Privacy Settings */}
-        <Grid item xs={12} md={6}>
-          <Card>
-            <CardContent>
-              <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-                <SecurityIcon sx={{ mr: 2, color: 'primary.main' }} />
-                <Typography variant="h5" component="h2">
-                  Privacy
-                </Typography>
-              </Box>
-              
-              <FormControl fullWidth sx={{ mb: 2 }}>
-                <InputLabel>Profile Visibility</InputLabel>
-                <Select
-                  value={settings.privacy.profileVisibility}
-                  label="Profile Visibility"
-                  onChange={(e) => handleSettingChange('privacy', 'profileVisibility', e.target.value)}
-                >
-                  <MenuItem value="public">Public</MenuItem>
-                  <MenuItem value="friends">Friends Only</MenuItem>
-                  <MenuItem value="private">Private</MenuItem>
-                </Select>
-              </FormControl>
-              
-              <FormControlLabel
-                control={
-                  <Switch
-                    checked={settings.privacy.showWatchlist}
-                    onChange={(e) => handleSettingChange('privacy', 'showWatchlist', e.target.checked)}
-                  />
-                }
-                label="Show watchlist publicly"
-              />
-              
-              <FormControlLabel
-                control={
-                  <Switch
-                    checked={settings.privacy.showFavorites}
-                    onChange={(e) => handleSettingChange('privacy', 'showFavorites', e.target.checked)}
-                  />
-                }
-                label="Show favorites publicly"
-              />
-            </CardContent>
-          </Card>
-        </Grid>
-
-        {/* Display Settings */}
-        <Grid item xs={12} md={6}>
-          <Card>
-            <CardContent>
-              <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-                <PaletteIcon sx={{ mr: 2, color: 'primary.main' }} />
-                <Typography variant="h5" component="h2">
-                  Display
-                </Typography>
-              </Box>
-              
-              <FormControl fullWidth sx={{ mb: 2 }}>
-                <InputLabel>Theme</InputLabel>
-                <Select
-                  value={settings.display.theme}
-                  label="Theme"
-                  onChange={(e) => handleSettingChange('display', 'theme', e.target.value)}
-                >
-                  <MenuItem value="light">Light</MenuItem>
-                  <MenuItem value="dark">Dark</MenuItem>
-                  <MenuItem value="auto">Auto</MenuItem>
-                </Select>
-              </FormControl>
-              
-              <FormControl fullWidth sx={{ mb: 2 }}>
-                <InputLabel>Language</InputLabel>
-                <Select
-                  value={settings.display.language}
-                  label="Language"
-                  onChange={(e) => handleSettingChange('display', 'language', e.target.value)}
-                >
-                  <MenuItem value="en">English</MenuItem>
-                  <MenuItem value="es">Spanish</MenuItem>
-                  <MenuItem value="fr">French</MenuItem>
-                  <MenuItem value="de">German</MenuItem>
-                  <MenuItem value="it">Italian</MenuItem>
-                  <MenuItem value="pt">Portuguese</MenuItem>
-                </Select>
-              </FormControl>
-              
-              <Box sx={{ mb: 2 }}>
-                <Typography gutterBottom>
-                  Items per page: {settings.display.itemsPerPage}
-                </Typography>
-                <Slider
-                  value={settings.display.itemsPerPage}
-                  onChange={(_, value) => handleSettingChange('display', 'itemsPerPage', value)}
-                  min={10}
-                  max={50}
-                  step={10}
-                  marks
-                  valueLabelDisplay="auto"
+            <FormControlLabel
+              control={
+                <Switch
+                  checked={notifications}
+                  onChange={(e) => setNotifications(e.target.checked)}
                 />
-              </Box>
-              
-              <FormControlLabel
-                control={
-                  <Switch
-                    checked={settings.display.autoPlayTrailers}
-                    onChange={(e) => handleSettingChange('display', 'autoPlayTrailers', e.target.checked)}
-                  />
-                }
-                label="Auto-play trailers"
-              />
-            </CardContent>
-          </Card>
-        </Grid>
+              }
+              label="Enable notifications"
+            />
+            <Typography variant="body2" color="text.secondary" sx={{ ml: 4, mb: 2 }}>
+              Get notified about new releases and recommendations
+            </Typography>
 
-        {/* Content Settings */}
-        <Grid item xs={12} md={6}>
-          <Card>
-            <CardContent>
-              <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-                <LanguageIcon sx={{ mr: 2, color: 'primary.main' }} />
-                <Typography variant="h5" component="h2">
-                  Content
-                </Typography>
-              </Box>
-              
-              <FormControl fullWidth sx={{ mb: 2 }}>
-                <InputLabel>Content Filter</InputLabel>
-                <Select
-                  value={settings.content.contentFilter}
-                  label="Content Filter"
-                  onChange={(e) => handleSettingChange('content', 'contentFilter', e.target.value)}
-                >
-                  <MenuItem value="strict">Strict</MenuItem>
-                  <MenuItem value="moderate">Moderate</MenuItem>
-                  <MenuItem value="lenient">Lenient</MenuItem>
-                </Select>
-              </FormControl>
-              
-              <FormControlLabel
-                control={
-                  <Switch
-                    checked={settings.content.adultContent}
-                    onChange={(e) => handleSettingChange('content', 'adultContent', e.target.checked)}
-                  />
-                }
-                label="Show adult content"
-              />
-              
-              <FormControlLabel
-                control={
-                  <Switch
-                    checked={settings.content.explicitContent}
-                    onChange={(e) => handleSettingChange('content', 'explicitContent', e.target.checked)}
-                  />
-                }
-                label="Show explicit content"
-              />
-            </CardContent>
-          </Card>
-        </Grid>
-      </Grid>
+            <FormControlLabel
+              control={
+                <Switch
+                  checked={emailNotifications}
+                  onChange={(e) => setEmailNotifications(e.target.checked)}
+                  disabled={!notifications}
+                />
+              }
+              label="Email notifications"
+            />
+            <Typography variant="body2" color="text.secondary" sx={{ ml: 4 }}>
+              Receive notifications via email
+            </Typography>
+          </Paper>
 
-      <Box sx={{ mt: 4, display: 'flex', gap: 2, justifyContent: 'center' }}>
-        <Button
-          variant="contained"
-          startIcon={<SaveIcon />}
-          onClick={handleSaveSettings}
-          disabled={loading}
-          sx={{
-            background: 'linear-gradient(45deg, #2196F3, #21CBF3)',
-            '&:hover': {
-              background: 'linear-gradient(45deg, #1976D2, #1CB5E0)',
-            }
-          }}
-        >
-          {loading ? 'Saving...' : 'Save Settings'}
-        </Button>
-        
-        <Button
-          variant="outlined"
-          startIcon={<RestoreIcon />}
-          onClick={handleResetSettings}
-          disabled={loading}
-        >
-          Reset to Default
-        </Button>
+          {/* Language & Region */}
+          <Paper elevation={3} sx={{ p: 3, mb: 3 }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
+              <LanguageIcon color="primary" />
+              <Typography variant="h6" fontWeight={600}>
+                Language & Region
+              </Typography>
+            </Box>
+
+            <FormControl fullWidth sx={{ mb: 3 }}>
+              <InputLabel>Language</InputLabel>
+              <Select
+                value={language}
+                label="Language"
+                onChange={(e) => setLang(e.target.value as Language)}
+              >
+                {languages.map(lang => (
+                  <MenuItem key={lang.code} value={lang.code}>
+                    {lang.flag} {lang.name}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+
+            <FormControl fullWidth>
+              <InputLabel>Content Region</InputLabel>
+              <Select
+                value={region}
+                label="Content Region"
+                onChange={(e) => setRegion(e.target.value)}
+              >
+                <MenuItem value="US">🇺🇸 United States</MenuItem>
+                <MenuItem value="GB">🇬🇧 United Kingdom</MenuItem>
+                <MenuItem value="CA">🇨🇦 Canada</MenuItem>
+                <MenuItem value="AU">🇦🇺 Australia</MenuItem>
+                <MenuItem value="IN">🇮🇳 India</MenuItem>
+                <MenuItem value="DE">🇩🇪 Germany</MenuItem>
+                <MenuItem value="FR">🇫🇷 France</MenuItem>
+                <MenuItem value="ES">🇪🇸 Spain</MenuItem>
+                <MenuItem value="IT">🇮🇹 Italy</MenuItem>
+                <MenuItem value="BR">🇧🇷 Brazil</MenuItem>
+                <MenuItem value="MX">🇲🇽 Mexico</MenuItem>
+                <MenuItem value="JP">🇯🇵 Japan</MenuItem>
+              </Select>
+            </FormControl>
+          </Paper>
+
+          {/* Playback Settings */}
+          <Paper elevation={3} sx={{ p: 3, mb: 3 }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
+              <PaletteIcon color="primary" />
+              <Typography variant="h6" fontWeight={600}>
+                Playback
+              </Typography>
+            </Box>
+
+            <FormControlLabel
+              control={
+                <Switch
+                  checked={autoplay}
+                  onChange={(e) => setAutoplay(e.target.checked)}
+                />
+              }
+              label="Autoplay trailers"
+            />
+            <Typography variant="body2" color="text.secondary" sx={{ ml: 4 }}>
+              Automatically play trailers when opening details
+            </Typography>
+          </Paper>
+
+          {/* Privacy & Security */}
+          <Paper elevation={3} sx={{ p: 3, mb: 3 }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
+              <SecurityIcon color="primary" />
+              <Typography variant="h6" fontWeight={600}>
+                Privacy & Security
+              </Typography>
+            </Box>
+
+            <Box sx={{ mb: 2 }}>
+              <Typography variant="body2" gutterBottom>
+                Data Storage
+              </Typography>
+              <Typography variant="caption" color="text.secondary">
+                Your watchlist, favorites, and viewing history are stored locally on your device.
+              </Typography>
+            </Box>
+
+            <Button
+              variant="outlined"
+              color="error"
+              onClick={() => {
+                if (confirm('Are you sure you want to clear all local data?')) {
+                  localStorage.clear();
+                  alert('All local data cleared!');
+                }
+              }}
+            >
+              Clear All Data
+            </Button>
+          </Paper>
+
+          {/* Save Button */}
+          <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
+            <Button
+              variant="contained"
+              size="large"
+              startIcon={<SaveIcon />}
+              onClick={handleSave}
+              sx={{ px: 4 }}
+            >
+              Save Settings
+            </Button>
+          </Box>
+
+          {/* Info */}
+          <Paper
+            elevation={2}
+            sx={{
+              mt: 4,
+              p: 3,
+              backgroundColor: alpha(theme.palette.info.main, 0.1),
+              border: `1px solid ${alpha(theme.palette.info.main, 0.2)}`,
+            }}
+          >
+            <Typography variant="body2" color="text.secondary">
+              💡 <strong>Tip:</strong> Changes to language and region will take effect immediately. 
+              Some settings require a page refresh to apply.
+            </Typography>
+          </Paper>
+        </Container>
       </Box>
-    </Container>
+    </>
   );
 }
