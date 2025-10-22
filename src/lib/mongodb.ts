@@ -5,11 +5,9 @@
 
 import mongoose from 'mongoose';
 
-if (!process.env.MONGODB_URI) {
-  throw new Error('Please add your MONGODB_URI to .env.local');
-}
-
-const MONGODB_URI: string = process.env.MONGODB_URI;
+// MongoDB is optional - only check at runtime when actually used
+const MONGODB_URI: string | undefined = process.env.MONGODB_URI;
+let hasWarnedAboutMissingURI = false;
 
 interface MongooseCache {
   conn: typeof mongoose | null;
@@ -30,8 +28,23 @@ if (!global.mongoose) {
 /**
  * Connect to MongoDB
  * Uses connection pooling for better performance
+ * MongoDB is optional - will throw error only if actually used without configuration
  */
 export async function connectDB(): Promise<typeof mongoose> {
+  // Check if MongoDB URI is configured
+  if (!MONGODB_URI) {
+    if (!hasWarnedAboutMissingURI) {
+      console.warn('⚠️  MongoDB URI not configured');
+      console.warn('   User profile features require MongoDB to be set up');
+      console.warn('   Add MONGODB_URI to .env.local to enable these features');
+      console.warn('   See MONGODB_INTEGRATION_GUIDE.md for setup instructions');
+      hasWarnedAboutMissingURI = true;
+    }
+    throw new Error(
+      'MongoDB not configured. Add MONGODB_URI to .env.local or see MONGODB_INTEGRATION_GUIDE.md'
+    );
+  }
+
   if (cached.conn) {
     return cached.conn;
   }
