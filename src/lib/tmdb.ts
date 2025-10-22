@@ -401,6 +401,12 @@ export const tmdbApi = {
     return response.data;
   },
 
+  // Get person combined credits
+  getPersonCredits: async (personId: number) => {
+    const response = await tmdbClient.get(`/person/${personId}/combined_credits`);
+    return response.data;
+  },
+
   // Get person images
   getPersonImages: async (personId: number) => {
     const response = await tmdbClient.get(`/person/${personId}/images`);

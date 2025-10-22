@@ -2,17 +2,14 @@
 
 import React, { useState, useEffect } from 'react';
 import {
-  Container,
   Box,
-  Typography,
   Tabs,
   Tab,
-  useTheme,
-  Grid,
-  alpha
 } from '@mui/material';
 import { Tv as TvIcon } from '@mui/icons-material';
 import SEO from '@/components/SEO';
+import PageHeader from '@/components/PageHeader';
+import PageContainer from '@/components/PageContainer';
 import TVShowCard, { TVShow } from '@/components/TVShowCard';
 import { LoadingSkeleton } from '@/components/LoadingStates';
 import { useApiErrorHandler } from '@/hooks/useErrorHandler';
@@ -21,7 +18,6 @@ import tmdbApi from '@/lib/tmdb';
 import ResponsiveGrid from '@/components/ResponsiveGrid';
 
 export default function TVShowsPage() {
-  const theme = useTheme();
   const [activeTab, setActiveTab] = useState(0);
   const [tvShows, setTvShows] = useState<TVShow[]>([]);
   const { error, loading, handleAsyncError } = useApiErrorHandler();
@@ -68,27 +64,13 @@ export default function TVShowsPage() {
         keywords={['tv shows', 'web series', 'television', 'streaming']}
       />
 
-      <Box
-        sx={{
-          background: theme.palette.mode === 'dark'
-            ? 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)'
-            : 'linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%)',
-          minHeight: '100vh',
-          py: 4,
-        }}
-      >
-        <Container maxWidth="xl">
-          <Box sx={{ mb: 4, textAlign: 'center' }}>
-            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2, mb: 2 }}>
-              <TvIcon sx={{ fontSize: 48, color: 'primary.main' }} />
-              <Typography variant="h3" component="h1" fontWeight={700}>
-                TV Shows & Series
-              </Typography>
-            </Box>
-            <Typography variant="h6" color="text.secondary">
-              Discover your next binge-worthy series
-            </Typography>
-          </Box>
+      <PageHeader
+        icon={<TvIcon />}
+        title="TV Shows & Series"
+        subtitle="Discover your next binge-worthy series"
+      />
+
+      <PageContainer>
 
           <Tabs
             value={activeTab}
@@ -135,8 +117,7 @@ export default function TVShowsPage() {
               </Typography>
             </Box>
           )}
-        </Container>
-      </Box>
+      </PageContainer>
     </>
   );
 }
