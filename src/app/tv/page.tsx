@@ -5,6 +5,7 @@ import {
   Box,
   Tabs,
   Tab,
+  Typography,
 } from '@mui/material';
 import { Tv as TvIcon } from '@mui/icons-material';
 import SEO from '@/components/SEO';
