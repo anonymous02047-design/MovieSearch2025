@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
-import { ThemeProvider } from "@/contexts/ThemeContext";
+import { CustomThemeProvider } from "@/contexts/ThemeContext";
 import ClientLayout from "@/components/ClientLayout";
 import SkipToContent from "@/components/SkipToContent";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
@@ -88,11 +88,11 @@ export default function RootLayout({
           {/* Skip to main content link for accessibility */}
           <SkipToContent />
           
-          <ThemeProvider>
+          <CustomThemeProvider>
             <ClientLayout>
               {children}
             </ClientLayout>
-          </ThemeProvider>
+          </CustomThemeProvider>
         </body>
       </html>
     </ClerkProvider>
