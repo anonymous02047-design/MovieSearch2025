@@ -1,0 +1,24 @@
+{
+  "scripts": {
+    "// Performance Scripts": "",
+    "lighthouse": "lighthouse http://localhost:3000 --output html --output-path ./lighthouse-report.html --view",
+    "lighthouse:ci": "lhci autorun",
+    "analyze": "ANALYZE=true next build",
+    "perf-audit": "node scripts/performance-audit.js",
+    "a11y-audit": "node scripts/accessibility-audit.js",
+    "wcag-check": "pa11y-ci --config .pa11y-ci.json",
+    
+    "// MongoDB Scripts": "",
+    "mongodb:init": "node scripts/mongodb-init.js",
+    "mongodb:health": "node scripts/mongodb-health-check.js",
+    "mongodb:seed": "node scripts/mongodb-seed.js"
+  },
+  "devDependencies": {
+    "@next/bundle-analyzer": "^15.1.4",
+    "lighthouse": "^12.2.1",
+    "@lhci/cli": "^0.14.0",
+    "pa11y-ci": "^3.1.0",
+    "axe-core": "^4.10.2"
+  }
+}
+

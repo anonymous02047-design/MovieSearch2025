@@ -1,70 +1,28 @@
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
-import { Box, Typography } from "@mui/material";
-import { CustomThemeProvider } from "@/contexts/ThemeContext";
-import EnhancedErrorBoundary from "@/components/EnhancedErrorBoundary";
-import AdminLayoutWrapper from "@/components/AdminLayoutWrapper";
-import { TawkProvider } from "@/components/TawkProvider";
-import OfflineSupport from "@/components/OfflineSupport";
-import CookiesConsent from "@/components/CookiesConsent";
-import AccessibilityReset from "@/components/AccessibilityReset";
-import GoogleAnalytics from "@/components/GoogleAnalytics";
+import { Inter } from "next/font/google";
 import "./globals.css";
-import "../styles/accessibility.css";
+import { ClerkProvider } from "@clerk/nextjs";
+import { ThemeProvider } from "@/contexts/ThemeContext";
+import ClientLayout from "@/components/ClientLayout";
+import SkipToContent from "@/components/SkipToContent";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
-const roboto = Roboto({
-  weight: ['300', '400', '500', '700'],
+const inter = Inter({
   subsets: ["latin"],
-  display: 'swap',
+  display: "swap", // Performance: swap text display
+  preload: true,
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "MovieSearch 2025 - Advanced Movie Discovery Platform",
-    template: "%s | MovieSearch 2025"
+    default: "MovieSearch 2025 - Discover Your Next Favorite Movie",
+    template: "%s | MovieSearch 2025",
   },
-  description: "Discover, search, and explore movies with advanced filtering and recommendations. Find your next favorite movie with our comprehensive database powered by TMDB API.",
-  keywords: [
-    "movies", "movie search", "movie discovery", "film database", "movie recommendations",
-    "movie ratings", "movie reviews", "cinema", "films", "movie finder", "TMDB",
-    "movie search engine", "movie database", "film search", "movie explorer"
-  ],
-  authors: [{ name: "MovieSearch Team" }],
-  creator: "MovieSearch Team",
+  description: "Discover, explore, and track your favorite movies and TV shows with MovieSearch 2025. Get personalized recommendations, read reviews, and find what to watch next.",
+  keywords: ["movies", "tv shows", "movie database", "film reviews", "streaming", "cinema", "entertainment"],
+  authors: [{ name: "MovieSearch 2025" }],
+  creator: "MovieSearch 2025",
   publisher: "MovieSearch 2025",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-  metadataBase: new URL('https://ladlihub.in'),
-  alternates: {
-    canonical: '/',
-  },
-  openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: 'https://ladlihub.in',
-    siteName: 'MovieSearch 2025',
-    title: 'MovieSearch 2025 - Advanced Movie Discovery Platform',
-    description: 'Discover, search, and explore movies with advanced filtering and recommendations. Find your next favorite movie with our comprehensive database powered by TMDB API.',
-    images: [
-      {
-        url: '/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'MovieSearch 2025 - Advanced Movie Discovery Platform',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    site: '@MovieSearch2025',
-    creator: '@MovieSearch2025',
-    title: 'MovieSearch 2025 - Advanced Movie Discovery Platform',
-    description: 'Discover, search, and explore movies with advanced filtering and recommendations. Find your next favorite movie with our comprehensive database powered by TMDB API.',
-    images: ['/og-image.jpg'],
-  },
   robots: {
     index: true,
     follow: true,
@@ -76,16 +34,37 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  verification: {
-    google: 'your-google-verification-code',
-    yandex: 'your-yandex-verification-code',
-    yahoo: 'your-yahoo-verification-code',
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: process.env.NEXT_PUBLIC_BASE_URL || "https://moviesearch2025.netlify.app",
+    siteName: "MovieSearch 2025",
+    title: "MovieSearch 2025 - Discover Your Next Favorite Movie",
+    description: "Discover, explore, and track your favorite movies and TV shows",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "MovieSearch 2025",
+      },
+    ],
   },
-};
-
-export const viewport = {
-  width: 'device-width',
-  initialScale: 1,
+  twitter: {
+    card: "summary_large_image",
+    title: "MovieSearch 2025 - Discover Your Next Favorite Movie",
+    description: "Discover, explore, and track your favorite movies and TV shows",
+    images: ["/og-image.jpg"],
+  },
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+  },
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+  ],
 };
 
 export default function RootLayout({
@@ -94,26 +73,28 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={roboto.className}>
-        <CustomThemeProvider>
-          <TawkProvider autoInitialize={true} autoShow={false}>
-              <EnhancedErrorBoundary 
-                showDetails={process.env.NODE_ENV === 'development'}
-                showRetry={true}
-                showHome={true}
-              >
-                <AdminLayoutWrapper>
-                  {children}
-                </AdminLayoutWrapper>
-                <OfflineSupport showStatus={true} showQueue={true} />
-                <CookiesConsent />
-                <AccessibilityReset />
-                <GoogleAnalytics />
-              </EnhancedErrorBoundary>
-            </TawkProvider>
-        </CustomThemeProvider>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en" suppressHydrationWarning>
+        <head>
+          {/* Preconnect to external domains for performance */}
+          <link rel="preconnect" href="https://api.themoviedb.org" />
+          <link rel="preconnect" href="https://image.tmdb.org" />
+          <link rel="preconnect" href="https://www.googletagmanager.com" />
+          <link rel="dns-prefetch" href="https://api.themoviedb.org" />
+          <link rel="dns-prefetch" href="https://image.tmdb.org" />
+          <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        </head>
+        <body className={inter.className}>
+          {/* Skip to main content link for accessibility */}
+          <SkipToContent />
+          
+          <ThemeProvider>
+            <ClientLayout>
+              {children}
+            </ClientLayout>
+          </ThemeProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
