@@ -58,7 +58,7 @@ function HomeContent() {
   const [showCountryBanner, setShowCountryBanner] = useState(true);
   const [availableGenres, setAvailableGenres] = useState<Array<{ id: number; name: string }>>([]);
   
-  const { countryData, loading: countryLoading, refreshCountry } = useCountryDetection();
+  const { country: countryData, loading: countryLoading, refresh: refreshCountry } = useCountryDetection();
   const { filters, updateFilter, updateFilters, resetFilters } = useContentFilter();
   
   // Always initialize error handler - no conditional hooks
@@ -108,8 +108,8 @@ function HomeContent() {
           if (filters.language) {
             discoverParams.with_original_language = filters.language;
           }
-          if (countryData?.countryCode) {
-            discoverParams.region = countryData.countryCode;
+          if (countryData?.code) {
+            discoverParams.region = countryData.code;
           }
           
           const movieResponse = await tmdbApi.discoverMovies(discoverParams);
