@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import AuthGuard from '@/components/AuthGuard';
 import {
   Container,
   Box,
@@ -28,7 +29,7 @@ import { useRouter } from 'next/navigation';
 import SEO from '@/components/SEO';
 import { getSearchHistory, clearSearchHistory } from '@/lib/storage';
 
-export default function HistoryPage() {
+function HistoryPageContent() {
   const theme = useTheme();
   const router = useRouter();
   const [history, setHistory] = useState<string[]>([]);
@@ -179,5 +180,13 @@ export default function HistoryPage() {
         </Container>
       </Box>
     </>
+  );
+}
+
+export default function HistoryPage() {
+  return (
+    <AuthGuard>
+      <HistoryPageContent />
+    </AuthGuard>
   );
 }

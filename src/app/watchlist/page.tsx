@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import AuthGuard from '@/components/AuthGuard';
 import {
   Box,
   Container,
@@ -282,8 +283,8 @@ function WatchlistPageContent() {
 
 export default function WatchlistPage() {
   return (
-    <ProtectedRoute>
+    <AuthGuard>
       <WatchlistPageContent />
-    </ProtectedRoute>
+    </AuthGuard>
   );
 }

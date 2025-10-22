@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import AuthGuard from '@/components/AuthGuard';
 import {
   Container,
   Box,
@@ -26,7 +27,7 @@ import { useWatchlist } from '@/hooks/useWatchlist';
 import { useContinueWatching } from '@/hooks/useContinueWatching';
 import SEO from '@/components/SEO';
 
-export default function StatsPage() {
+function StatsPageContent() {
   const theme = useTheme();
   const { watchlist, favorites } = useWatchlist();
   const { continueWatching } = useContinueWatching();
@@ -229,6 +230,14 @@ export default function StatsPage() {
         </Container>
       </Box>
     </>
+  );
+}
+
+export default function StatsPage() {
+  return (
+    <AuthGuard>
+      <StatsPageContent />
+    </AuthGuard>
   );
 }
 

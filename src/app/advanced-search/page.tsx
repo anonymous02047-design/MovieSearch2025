@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import AuthGuard from '@/components/AuthGuard';
 import {
   Container,
   Box,
@@ -56,7 +57,7 @@ const genres = [
 
 const years = Array.from({ length: 50 }, (_, i) => new Date().getFullYear() - i);
 
-export default function AdvancedSearchPage() {
+function AdvancedSearchPageContent() {
   const theme = useTheme();
   const [searchQuery, setSearchQuery] = useState('');
   const [contentType, setContentType] = useState<'movie' | 'tv'>('movie');
@@ -333,3 +334,10 @@ export default function AdvancedSearchPage() {
   );
 }
 
+export default function AdvancedSearchPage() {
+  return (
+    <AuthGuard>
+      <AdvancedSearchPageContent />
+    </AuthGuard>
+  );
+}

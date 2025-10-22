@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import AuthGuard from '@/components/AuthGuard';
 import {
   Box,
   Container,
@@ -292,8 +293,8 @@ function ProfilePageContent() {
 
 export default function ProfilePage() {
   return (
-    <ProtectedRoute>
+    <AuthGuard>
       <ProfilePageContent />
-    </ProtectedRoute>
+    </AuthGuard>
   );
 }

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import AuthGuard from '@/components/AuthGuard';
 import {
   Container,
   Box,
@@ -35,7 +36,7 @@ const popularCollections: Collection[] = [
   { id: 119050, name: 'The Hobbit Collection', poster_path: '/zqv2fTK4mHdlCzTaCnVKnWGUxAT.jpg', backdrop_path: null },
 ];
 
-export default function CollectionsPage() {
+function CollectionsPageContent() {
   const theme = useTheme();
   const [collections, setCollections] = useState<Collection[]>(popularCollections);
   const [filteredCollections, setFilteredCollections] = useState<Collection[]>(popularCollections);
@@ -129,5 +130,13 @@ export default function CollectionsPage() {
         </Container>
       </Box>
     </>
+  );
+}
+
+export default function CollectionsPage() {
+  return (
+    <AuthGuard>
+      <CollectionsPageContent />
+    </AuthGuard>
   );
 }

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import AuthGuard from '@/components/AuthGuard';
 import {
   Box,
   Container,
@@ -271,8 +272,8 @@ function FavoritesPageContent() {
 
 export default function FavoritesPage() {
   return (
-    <ProtectedRoute>
+    <AuthGuard>
       <FavoritesPageContent />
-    </ProtectedRoute>
+    </AuthGuard>
   );
 }

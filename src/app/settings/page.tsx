@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import AuthGuard from '@/components/AuthGuard';
 import {
   Container,
   Box,
@@ -29,7 +30,7 @@ import {
 import SEO from '@/components/SEO';
 import { getLanguage, setLanguage, Language, getAvailableLanguages } from '@/lib/i18n';
 
-export default function SettingsPage() {
+function SettingsPageContent() {
   const theme = useTheme();
   const [notifications, setNotifications] = useState(true);
   const [emailNotifications, setEmailNotifications] = useState(false);
@@ -251,5 +252,13 @@ export default function SettingsPage() {
         </Container>
       </Box>
     </>
+  );
+}
+
+export default function SettingsPage() {
+  return (
+    <AuthGuard>
+      <SettingsPageContent />
+    </AuthGuard>
   );
 }
