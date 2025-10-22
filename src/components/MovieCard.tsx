@@ -27,6 +27,7 @@ import { Movie, getImageUrl, formatDate } from '@/lib/tmdb';
 import { getGenreNames } from '@/lib/genres';
 import { addToFavorites, removeFromFavorites, addToWatchlist, removeFromWatchlist, isFavorite, isInWatchlist } from '@/lib/storage';
 import { useRouter } from 'next/navigation';
+import TMDBImage from './TMDBImage';
 
 interface MovieCardProps {
   movie: Movie;
@@ -201,28 +202,15 @@ export default function MovieCard({
             <PlayIcon sx={{ fontSize: 40 }} />
           </IconButton>
         </Box>
-        {imageLoading && (
-          <Skeleton 
-            variant="rectangular" 
-            width="100%" 
-            height="100%" 
-            animation="wave"
-          />
-        )}
-        <CardMedia
-          component="img"
-          image={
-            imageError 
-              ? '/placeholder-movie.svg' 
-              : getImageUrl(movie.poster_path, 'w500')
-          }
+        <TMDBImage
+          path={movie.poster_path}
           alt={movie.title}
-          onLoad={handleImageLoad}
-          onError={handleImageError}
+          width={500}
+          height={750}
+          size="w500"
+          fill
+          priority={false}
           sx={{
-            display: imageLoading ? 'none' : 'block',
-            height: '100%',
-            objectFit: 'cover',
             transition: 'transform 0.3s ease-in-out',
             '&:hover': {
               transform: 'scale(1.05)',

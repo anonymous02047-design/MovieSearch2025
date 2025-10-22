@@ -46,6 +46,10 @@ import {
 import { tmdbApi, Movie, MovieDetails, Credits, Review, Video, Images, getImageUrl, getBackdropUrl, formatRuntime, formatCurrency, formatDate } from '@/lib/tmdb';
 import { getGenreNames } from '@/lib/genres';
 import CastMemberDialog from '@/components/CastMemberDialog';
+import UniversalShareDialog from '@/components/UniversalShareDialog';
+import TMDBImage from '@/components/TMDBImage';
+import SimilarMoviesSection from '@/components/SimilarMoviesSection';
+import MovieAwards from '@/components/MovieAwards';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -89,6 +93,7 @@ export default function MovieDetailsPage() {
   const [isWatchlist, setIsWatchlist] = useState(false);
   const [castDialogOpen, setCastDialogOpen] = useState(false);
   const [selectedCastMember, setSelectedCastMember] = useState<{ id: number; name: string } | null>(null);
+  const [shareDialogOpen, setShareDialogOpen] = useState(false);
 
   const loadMovieData = useCallback(async () => {
     if (isNaN(movieId)) return;
@@ -202,21 +207,8 @@ export default function MovieDetailsPage() {
     }
   };
 
-  const handleShare = async () => {
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: movie?.title,
-          text: movie?.overview,
-          url: window.location.href,
-        });
-      } catch (err) {
-        console.log('Error sharing:', err);
-      }
-    } else {
-      // Fallback: copy to clipboard
-      navigator.clipboard.writeText(window.location.href);
-    }
+  const handleShare = () => {
+    setShareDialogOpen(true);
   };
 
   const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -810,6 +802,15 @@ export default function MovieDetailsPage() {
           personId={selectedCastMember?.id || null}
           personName={selectedCastMember?.name || ''}
         />
+
+      <UniversalShareDialog
+        open={shareDialogOpen}
+        onClose={() => setShareDialogOpen(false)}
+        url={typeof window !== 'undefined' ? window.location.href : ''}
+        title={movie?.title || 'Movie Details'}
+        description={movie?.overview || ''}
+        imageUrl={movie?.poster_path ? getImageUrl(movie.poster_path, 'w500') : ''}
+      />
       </Box>
     </>
   );
