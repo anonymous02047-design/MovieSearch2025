@@ -1,28 +1,33 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
-import { CustomThemeProvider } from "@/contexts/ThemeContext";
+import { ThemeProvider as CustomThemeProvider } from "@/contexts/ThemeContext";
 import ClientLayout from "@/components/ClientLayout";
+import EnhancedGoogleAnalytics from "@/components/EnhancedGoogleAnalytics";
+import { GoogleAdsScript } from "@/components/GoogleAds";
+import GoogleReCaptchaV3 from "@/components/GoogleReCaptchaV3";
+import EnhancedTawkTo from "@/components/EnhancedTawkTo";
 import SkipToContent from "@/components/SkipToContent";
-import GoogleAnalytics from "@/components/GoogleAnalytics";
+import "./globals.css";
 
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap", // Performance: swap text display
-  preload: true,
-});
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: {
-    default: "MovieSearch 2025 - Discover Your Next Favorite Movie",
-    template: "%s | MovieSearch 2025",
+  title: "MovieSearch 2025 - Discover Your Next Favorite Movie",
+  description: "Explore movies, TV shows, and more with advanced search and personalized recommendations.",
+  keywords: "movies, TV shows, search, recommendations, TMDB, streaming",
+  authors: [{ name: "MovieSearch Team" }],
+  openGraph: {
+    title: "MovieSearch 2025",
+    description: "Discover your next favorite movie",
+    type: "website",
+    locale: "en_US",
   },
-  description: "Discover, explore, and track your favorite movies and TV shows with MovieSearch 2025. Get personalized recommendations, read reviews, and find what to watch next.",
-  keywords: ["movies", "tv shows", "movie database", "film reviews", "streaming", "cinema", "entertainment"],
-  authors: [{ name: "MovieSearch 2025" }],
-  creator: "MovieSearch 2025",
-  publisher: "MovieSearch 2025",
+  twitter: {
+    card: "summary_large_image",
+    title: "MovieSearch 2025",
+    description: "Discover your next favorite movie",
+  },
   robots: {
     index: true,
     follow: true,
@@ -34,37 +39,9 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: process.env.NEXT_PUBLIC_BASE_URL || "https://moviesearch2025.netlify.app",
-    siteName: "MovieSearch 2025",
-    title: "MovieSearch 2025 - Discover Your Next Favorite Movie",
-    description: "Discover, explore, and track your favorite movies and TV shows",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "MovieSearch 2025",
-      },
-    ],
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "MovieSearch 2025 - Discover Your Next Favorite Movie",
-    description: "Discover, explore, and track your favorite movies and TV shows",
-    images: ["/og-image.jpg"],
-  },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
-  },
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
-  ],
 };
 
 export default function RootLayout({
@@ -80,9 +57,27 @@ export default function RootLayout({
           <link rel="preconnect" href="https://api.themoviedb.org" />
           <link rel="preconnect" href="https://image.tmdb.org" />
           <link rel="preconnect" href="https://www.googletagmanager.com" />
+          <link rel="preconnect" href="https://www.google-analytics.com" />
+          <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
+          <link rel="preconnect" href="https://www.google.com" />
+          <link rel="preconnect" href="https://embed.tawk.to" />
+          
+          {/* DNS Prefetch */}
           <link rel="dns-prefetch" href="https://api.themoviedb.org" />
           <link rel="dns-prefetch" href="https://image.tmdb.org" />
           <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+          <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+          <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
+          
+          {/* Favicon */}
+          <link rel="icon" href="/favicon.ico" />
+          <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+          
+          {/* PWA Manifest */}
+          <link rel="manifest" href="/manifest.webmanifest" />
+          
+          {/* Theme Color */}
+          <meta name="theme-color" content="#667eea" />
         </head>
         <body className={inter.className}>
           {/* Skip to main content link for accessibility */}
@@ -93,6 +88,18 @@ export default function RootLayout({
               {children}
             </ClientLayout>
           </CustomThemeProvider>
+
+          {/* Enhanced Google Analytics */}
+          <EnhancedGoogleAnalytics />
+          
+          {/* Google Ads Script */}
+          <GoogleAdsScript />
+          
+          {/* Google reCAPTCHA v3 */}
+          <GoogleReCaptchaV3 />
+          
+          {/* Enhanced Tawk.to Chat */}
+          <EnhancedTawkTo />
         </body>
       </html>
     </ClerkProvider>

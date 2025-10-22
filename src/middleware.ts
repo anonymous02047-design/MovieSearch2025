@@ -4,12 +4,78 @@ import { enhancedRateLimitMiddleware } from './middleware/rateLimit';
 
 // Define public routes that don't require authentication
 const isPublicRoute = createRouteMatcher([
+  '/',
   '/welcome',
   '/sign-in(.*)',
   '/sign-up(.*)',
+  '/about',
+  '/contact',
+  '/privacy',
+  '/terms',
+  '/help',
+  '/faq',
+  '/blog(.*)',
+  '/movie(.*)',
+  '/tv(.*)',
+  '/person(.*)',
+  '/search(.*)',
+  '/discover(.*)',
+  '/trending(.*)',
+  '/popular(.*)',
+  '/top-rated(.*)',
+  '/now-playing(.*)',
+  '/upcoming(.*)',
+  '/genre(.*)',
+  '/decades(.*)',
+  '/awards(.*)',
+  '/box-office(.*)',
+  '/festivals(.*)',
+  '/studios(.*)',
+  '/directors(.*)',
+  '/crew(.*)',
+  '/celebrity-news(.*)',
+  '/indie-films(.*)',
+  '/classics(.*)',
+  '/streaming(.*)',
+  '/languages(.*)',
   '/api/webhooks(.*)',
-  '/api/analytics(.*)', // Allow analytics API without Clerk auth
-  '/api/admin/auth(.*)', // Allow admin auth APIs
+  '/api/analytics(.*)',
+  '/api/admin/auth(.*)',
+  '/api/tmdb(.*)',
+  '/api/search(.*)',
+  '/api/health(.*)',
+  '/api/contact(.*)',
+  '/api/og(.*)',
+  '/api/ai/chat(.*)',
+  '/api/ai/sentiment(.*)',
+  '/api/ai/summary(.*)',
+  '/api/ai/compare(.*)',
+]);
+
+// Define routes that require authentication
+const isProtectedRoute = createRouteMatcher([
+  '/profile(.*)',
+  '/favorites(.*)',
+  '/watchlist(.*)',
+  '/settings(.*)',
+  '/history(.*)',
+  '/collections(.*)',
+  '/stats(.*)',
+  '/notifications(.*)',
+  '/reviews(.*)',
+  '/ratings(.*)',
+  '/notes(.*)',
+  '/api/profile(.*)',
+  '/api/favorites(.*)',
+  '/api/watchlist(.*)',
+  '/api/history(.*)',
+  '/api/reviews(.*)',
+  '/api/ratings(.*)',
+  '/api/notes(.*)',
+  '/api/collections(.*)',
+  '/api/user(.*)',
+  '/api/ai/recommendations(.*)',
+  '/api/ai/watch-suggestion(.*)',
 ]);
 
 // Define routes that should skip rate limiting
@@ -64,23 +130,23 @@ export default async function middleware(req: NextRequest) {
 
 
   // Apply Clerk authentication with proper configuration
-  return clerkMiddleware((auth, req) => {
-    const { userId } = auth();
+  return clerkMiddleware(async (auth, req) => {
+    const { userId } = await auth();
+    const { pathname } = req.nextUrl;
     
-    // For API routes, let them handle their own authentication
-    if (req.nextUrl.pathname.startsWith('/api/')) {
-      // Skip middleware authentication for all API routes
-      // Let the individual API routes handle their own auth
-      return NextResponse.next();
+    // Protected routes require authentication
+    if (isProtectedRoute(req) && !userId) {
+      const signInUrl = new URL('/sign-in', req.url);
+      signInUrl.searchParams.set('redirect_url', req.url);
+      return NextResponse.redirect(signInUrl);
     }
     
-    // Handle redirects for specific pages
-    // Redirect authenticated users from welcome page to home
-    if (req.nextUrl.pathname === '/welcome' && userId) {
+    // Redirect authenticated users from welcome/sign-in/sign-up to home
+    if ((pathname === '/welcome' || pathname.startsWith('/sign-in') || pathname.startsWith('/sign-up')) && userId) {
       return NextResponse.redirect(new URL('/', req.url));
     }
     
-    // Allow all page routes - let components handle authentication
+    // Allow request to proceed
     return NextResponse.next();
   })(req);
 }

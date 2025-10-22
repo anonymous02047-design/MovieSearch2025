@@ -265,9 +265,36 @@ Scopes: ☑ All
 
 ## 🎨 OPTIONAL VARIABLES
 
+### For AI-Powered Features (OpenAI)
+
+#### Variable 8: OpenAI API Key
+
+```
+Key:    OPENAI_API_KEY
+Value:  sk-proj-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+        (Get from: https://platform.openai.com/api-keys)
+Scopes: ☑ All
+```
+
+**What it enables:**
+- 🤖 AI Movie Recommendations
+- 💬 AI Chat Assistant
+- 📊 Sentiment Analysis
+- 📝 AI-Generated Summaries
+- 🔄 Movie Comparisons
+- 🎯 Smart Watch Suggestions
+
+**Cost**: ~$0.20 - $1.00 per 100 interactions (using GPT-4o-mini)
+
+**Setup Guide**: See `OPENAI_INTEGRATION_GUIDE.md`
+
+**Note**: App works without this - AI features will show setup instructions if missing.
+
+---
+
 ### For Blog Functionality (Strapi CMS)
 
-#### Variable 8: Strapi URL
+#### Variable 9: Strapi URL
 
 ```
 Key:    NEXT_PUBLIC_STRAPI_URL
@@ -276,7 +303,7 @@ Value:  https://your-strapi-instance.herokuapp.com
 Scopes: ☑ All
 ```
 
-#### Variable 9: Strapi API Token
+#### Variable 10: Strapi API Token
 
 ```
 Key:    NEXT_PUBLIC_STRAPI_API_TOKEN
@@ -286,7 +313,7 @@ Scopes: ☑ All
 
 ### For Google Analytics
 
-#### Variable 10: GA Measurement ID
+#### Variable 11: GA Measurement ID
 
 ```
 Key:    NEXT_PUBLIC_GA_MEASUREMENT_ID

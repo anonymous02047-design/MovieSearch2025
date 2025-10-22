@@ -501,11 +501,12 @@ export default function EnhancedHomePage() {
     }
   };
 
+  // Stats will be fetched from API in production
   const mockStats = {
-    totalMovies: 500000,
-    totalTVShows: 100000,
-    totalActors: 200000,
-    totalUsers: 1000000,
+    totalMovies: 0,
+    totalTVShows: 0,
+    totalActors: 0,
+    totalUsers: 0,
   };
 
   if (!isLoaded) {

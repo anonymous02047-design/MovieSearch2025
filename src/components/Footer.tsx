@@ -19,10 +19,6 @@ import {
   Movie as MovieIcon,
   Email as EmailIcon,
   Phone as PhoneIcon,
-  LocationOn as LocationIcon,
-  Twitter as TwitterIcon,
-  Instagram as InstagramIcon,
-  LinkedIn as LinkedInIcon,
   GitHub as GitHubIcon,
   Favorite as FavoriteIcon,
   Map as SitemapIcon,
@@ -33,7 +29,7 @@ export default function Footer() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [currentIP, setCurrentIP] = useState<string>('Loading...');
-  const [buildVersion, setBuildVersion] = useState<string>('1.0.0');
+  const [buildVersion, setBuildVersion] = useState<string>('2.0.0');
   const [buildTime, setBuildTime] = useState<string>('');
   const [showSitemap, setShowSitemap] = useState<boolean>(false);
 
@@ -41,26 +37,23 @@ export default function Footer() {
 
   useEffect(() => {
     // Get build version from environment variables
-    const version = process.env.NEXT_PUBLIC_APP_VERSION || '1.0.0';
+    const version = process.env.NEXT_PUBLIC_APP_VERSION || '2.0.0';
     setBuildVersion(version);
     
-    // Set build time (this will be the current time when the component loads)
+    // Set build time
     setBuildTime(new Date().toLocaleString());
 
     // Get current IP address with fallback
     const fetchIP = async () => {
       try {
-        // Try multiple IP services for better reliability
         const ipServices = [
           'https://api.ipify.org?format=json',
           'https://ipapi.co/json/',
-          'https://api.myip.com',
         ];
 
         for (const service of ipServices) {
           try {
             const response = await fetch(service, { 
-              timeout: 5000,
               headers: { 'Accept': 'application/json' }
             });
             
@@ -73,15 +66,12 @@ export default function Footer() {
               }
             }
           } catch (serviceError) {
-            console.warn(`IP service ${service} failed:`, serviceError);
             continue;
           }
         }
         
-        // If all services fail, show a fallback
         setCurrentIP('Unable to detect');
       } catch (error) {
-        console.error('Failed to fetch IP:', error);
         setCurrentIP('Unknown');
       }
     };
@@ -99,8 +89,8 @@ export default function Footer() {
       { text: 'Genres', href: '/genres' },
     ],
     'Discover': [
-      { text: 'Actors', href: '/actors' },
-      { text: 'Directors', href: '/directors' },
+      { text: 'Actors', href: '/person' },
+      { text: 'Directors', href: '/person' },
       { text: 'Studios', href: '/studios' },
       { text: 'Collections', href: '/collections' },
       { text: 'Awards', href: '/awards' },
@@ -111,7 +101,7 @@ export default function Footer() {
       { text: 'Favorites', href: '/favorites' },
       { text: 'Watchlist', href: '/watchlist' },
       { text: 'Search History', href: '/history' },
-      { text: 'Recommendations', href: '/recommendations' },
+      { text: 'My Stats', href: '/stats' },
     ],
     'Browse': [
       { text: 'Classics', href: '/classics' },
@@ -121,36 +111,16 @@ export default function Footer() {
       { text: 'Languages', href: '/languages' },
       { text: 'Decades', href: '/decades' },
     ],
-        'Support': [
-          { text: 'About Us', href: '/about' },
-          { text: 'Contact', href: '/contact' },
-          { text: 'Bug Report', href: '/bug-report' },
-          { text: 'Feedback', href: '/feedback' },
-          { text: 'Tech Specs', href: '/tech-specs' },
-          { text: 'Help Center', href: '/help' },
-          { text: 'Site Map', href: '/sitemap' },
-          { text: 'Privacy Policy', href: '/privacy' },
-          { text: 'Terms of Service', href: '/terms' },
-          { text: 'API Documentation', href: '/api-docs' },
-        ],
-    'Compliance': [
-      { text: 'Cookie Policy', href: '/cookies' },
-      { text: 'GDPR Compliance', href: '/gdpr' },
-      { text: 'Data Protection', href: '/data-protection' },
-      { text: 'Accessibility Statement', href: '/accessibility' },
-      { text: 'Security Policy', href: '/security' },
-      { text: 'DMCA Policy', href: '/dmca' },
-      { text: 'Content Guidelines', href: '/content-guidelines' },
-      { text: 'User Agreement', href: '/user-agreement' },
+    'Support': [
+      { text: 'About Us', href: '/about' },
+      { text: 'Contact', href: '/contact' },
+      { text: 'Feature Request', href: '/feature-request' },
+      { text: 'Feedback', href: '/feedback' },
+      { text: 'Help Center', href: '/help' },
+      { text: 'Privacy Policy', href: '/privacy' },
+      { text: 'Terms of Service', href: '/terms' },
     ],
   };
-
-  const socialLinks = [
-    { icon: <TwitterIcon />, href: '#', label: 'Twitter' },
-    { icon: <InstagramIcon />, href: '#', label: 'Instagram' },
-    { icon: <LinkedInIcon />, href: '#', label: 'LinkedIn' },
-    { icon: <GitHubIcon />, href: '#', label: 'GitHub' },
-  ];
 
   return (
     <Box
@@ -214,6 +184,21 @@ export default function Footer() {
                     +91 7492068998
                   </Link>
                 </Stack>
+                <Stack direction="row" alignItems="center" spacing={1}>
+                  <GitHubIcon sx={{ fontSize: 16, color: 'rgba(255, 255, 255, 0.7)' }} />
+                  <Link 
+                    href="https://github.com/yourusername/MovieSearch2025" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    sx={{ 
+                      color: 'rgba(255, 255, 255, 0.8)',
+                      textDecoration: 'none',
+                      '&:hover': { color: 'white' }
+                    }}
+                  >
+                    View on GitHub
+                  </Link>
+                </Stack>
               </Stack>
             </Box>
           </Grid>
@@ -222,7 +207,7 @@ export default function Footer() {
           <Grid item xs={12} md={8}>
             <Grid container spacing={4}>
               {Object.entries(footerLinks).map(([category, links]) => (
-                <Grid item xs={12} sm={4} key={category}>
+                <Grid item xs={12} sm={6} md={4} key={category}>
                   <Typography variant="h6" component="h3" sx={{ 
                     fontWeight: 'bold',
                     color: 'white',
@@ -326,30 +311,27 @@ export default function Footer() {
               color: 'rgba(255, 255, 255, 0.5)',
               fontSize: '0.75rem'
             }}>
-              Build v{buildVersion} | IP: {currentIP} | Built: {buildTime}
+              Build v{buildVersion} | IP: {currentIP} | Enhanced Security ✓
             </Typography>
           </Box>
 
-          {/* Social Links */}
+          {/* GitHub Link */}
           <Stack direction="row" spacing={1}>
-            {socialLinks.map((social) => (
-              <IconButton
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                sx={{
-                  color: 'rgba(255, 255, 255, 0.7)',
-                  '&:hover': {
-                    color: 'white',
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                  },
-                }}
-                aria-label={social.label}
-              >
-                {social.icon}
-              </IconButton>
-            ))}
+            <IconButton
+              href="https://github.com/yourusername/MovieSearch2025"
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{
+                color: 'rgba(255, 255, 255, 0.7)',
+                '&:hover': {
+                  color: 'white',
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                },
+              }}
+              aria-label="GitHub Repository"
+            >
+              <GitHubIcon />
+            </IconButton>
           </Stack>
         </Box>
       </Container>
