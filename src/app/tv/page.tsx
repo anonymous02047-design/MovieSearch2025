@@ -14,7 +14,7 @@ import TVShowCard, { TVShow } from '@/components/TVShowCard';
 import { LoadingSkeleton } from '@/components/LoadingStates';
 import { useApiErrorHandler } from '@/hooks/useErrorHandler';
 import ErrorDisplay from '@/components/ErrorDisplay';
-import tmdbApi from '@/lib/tmdb';
+import { tmdbApi } from '@/lib/tmdb';
 import ResponsiveGrid from '@/components/ResponsiveGrid';
 
 export default function TVShowsPage() {

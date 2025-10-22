@@ -705,6 +705,38 @@ export const tmdbApi = {
     return response.data;
   },
 
+  // Get top rated TV shows
+  getTopRatedTV: async (page: number = 1) => {
+    const response = await tmdbClient.get('/tv/top_rated', {
+      params: { page },
+    });
+    return response.data;
+  },
+
+  // Get airing today TV shows
+  getAiringTodayTV: async (page: number = 1) => {
+    const response = await tmdbClient.get('/tv/airing_today', {
+      params: { page },
+    });
+    return response.data;
+  },
+
+  // Get on the air TV shows
+  getOnTheAirTV: async (page: number = 1) => {
+    const response = await tmdbClient.get('/tv/on_the_air', {
+      params: { page },
+    });
+    return response.data;
+  },
+
+  // Get popular TV shows
+  getPopularTV: async (page: number = 1) => {
+    const response = await tmdbClient.get('/tv/popular', {
+      params: { page },
+    });
+    return response.data;
+  },
+
   // Get TV show season external IDs
   getTVSeasonExternalIds: async (tvId: number, seasonNumber: number) => {
     const response = await tmdbClient.get(`/tv/${tvId}/season/${seasonNumber}/external_ids`);
