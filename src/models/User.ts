@@ -38,7 +38,6 @@ const UserSchema: Schema = new Schema(
       type: String,
       required: true,
       unique: true,
-      index: true,
     },
     email: {
       type: String,
@@ -123,8 +122,7 @@ const UserSchema: Schema = new Schema(
 );
 
 // Indexes for better query performance
-UserSchema.index({ email: 1 });
-UserSchema.index({ clerkId: 1 });
+// Note: email and clerkId already have unique indexes from schema definition
 UserSchema.index({ createdAt: -1 });
 
 // Virtual for full name

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
-import { ThemeProvider as CustomThemeProvider } from "@/contexts/ThemeContext";
+import { CustomThemeProvider } from "@/contexts/ThemeContext";
 import ClientLayout from "@/components/ClientLayout";
 import EnhancedGoogleAnalytics from "@/components/EnhancedGoogleAnalytics";
 import { GoogleAdsScript } from "@/components/GoogleAds";
