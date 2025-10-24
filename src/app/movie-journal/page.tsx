@@ -134,7 +134,7 @@ export default function MovieJournalPage() {
 
   const totalMovies = entries.length;
   const averageRating = entries.reduce((sum, entry) => sum + entry.rating, 0) / entries.length || 0;
-  const rewatch edCount = entries.filter(entry => entry.rewatched).length;
+  const rewatchedCount = entries.filter(entry => entry.rewatched).length;
 
   return (
     <AuthGuard>
