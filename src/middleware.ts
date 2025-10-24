@@ -140,6 +140,25 @@ const isProtectedRoute = createRouteMatcher([
   // NEW: Notifications & Alerts
   '/alerts(.*)',
   
+  // NEW: Lightweight Free-Tier Features
+  '/quick-rate(.*)',
+  '/movie-memory(.*)',
+  '/movie-goals(.*)',
+  '/movie-diary(.*)',
+  '/personal-ratings(.*)',
+  '/movie-notes(.*)',
+  '/quick-lists(.*)',
+  '/movie-calendar-view(.*)',
+  '/binge-planner(.*)',
+  '/quotes-collection(.*)',
+  '/film-log(.*)',
+  '/cinema-visits(.*)',
+  '/director-explorer(.*)',
+  '/decade-explorer(.*)',
+  '/actor-filmography(.*)',
+  '/genre-stats(.*)',
+  '/runtime-analyzer(.*)',
+  
   // Protected API routes
   '/api/profile(.*)',
   '/api/favorites(.*)',

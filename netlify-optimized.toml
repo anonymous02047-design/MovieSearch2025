@@ -1,0 +1,86 @@
+# Netlify Configuration Optimized for Free Tier
+# MovieSearch 2025
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NPM_VERSION = "10"
+  NEXT_TELEMETRY_DISABLED = "1"
+  
+  # Optimize build
+  NODE_OPTIONS = "--max-old-space-size=3072"
+
+# Build plugin for Next.js
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Headers for all pages
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Cache static assets
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Cache images
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+# API rate limiting (Netlify free tier allows 125k requests/month)
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+  force = true
+  
+# Optimize serverless functions (free tier: 125k invocations/month, 10s timeout)
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+  
+  # Reduce function size for free tier
+  included_files = ["src/**/*.ts", "src/**/*.tsx"]
+  
+  # Timeout for free tier
+  [functions."*"]
+    timeout = 10
+    
+# Edge functions (optional, limited on free tier)
+# [edge_functions]
+#   path = "/api/edge/*"
+
+# Form handling (for contact forms on free tier)
+[forms]
+  # 100 submissions per month on free tier
+
+# Redirects for SPA
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  conditions = {Role = ["visitor"]}
+  
+# Optimize images (free tier: 2,500 image transforms/month)
+[images]
+  remote_images = ["https://image.tmdb.org"]
+
+# Free tier limits:
+# - 100 GB bandwidth/month
+# - 300 build minutes/month
+# - 125k serverless function requests/month
+# - 2,500 image transforms/month
+# - 100 form submissions/month
+

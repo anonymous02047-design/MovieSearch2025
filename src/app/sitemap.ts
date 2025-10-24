@@ -645,6 +645,109 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'daily' as const,
       priority: 0.5,
     },
+    // NEW: Lightweight Free-Tier Features
+    {
+      url: `${baseUrl}/quick-rate`,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/movie-memory`,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/movie-goals`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/movie-diary`,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/personal-ratings`,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/movie-notes`,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/quick-lists`,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/movie-calendar-view`,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/binge-planner`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/quotes-collection`,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/film-log`,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/cinema-visits`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/director-explorer`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/decade-explorer`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/actor-filmography`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/genre-stats`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/runtime-analyzer`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.5,
+    },
   ]
 
   // Genre pages
