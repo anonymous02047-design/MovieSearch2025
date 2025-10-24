@@ -1,0 +1,14 @@
+{
+  "name": "moviesearch2025-socketio",
+  "version": "1.0.0",
+  "description": "Socket.io server for MovieSearch 2025 - OPTIONAL",
+  "main": "server.js",
+  "scripts": {
+    "socket": "node server.js",
+    "install-socket": "npm install socket.io --save"
+  },
+  "dependencies": {
+    "socket.io": "^4.7.2"
+  }
+}
+

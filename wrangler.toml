@@ -1,0 +1,59 @@
+# Cloudflare Workers/Pages Configuration for MovieSearch 2025
+# Optimized for Cloudflare Free Tier
+
+name = "moviesearch2025"
+compatibility_date = "2024-01-01"
+pages_build_output_dir = ".next"
+
+# Cloudflare Pages settings
+[build]
+  command = "npm run build"
+  
+[build.environment]
+  NODE_VERSION = "20"
+  NPM_VERSION = "10"
+  NEXT_TELEMETRY_DISABLED = "1"
+
+# Environment variables (set in Cloudflare dashboard)
+[vars]
+  ENVIRONMENT = "production"
+
+# Routes configuration
+[[routes]]
+  pattern = "/*"
+  custom_domain = true
+
+# Cache settings for static assets
+[[rules]]
+  action = "Cache Everything"
+  pattern = "/_next/static/*"
+  cache_ttl = 31536000
+
+[[rules]]
+  action = "Cache Everything"  
+  pattern = "/images/*"
+  cache_ttl = 604800
+
+# Security headers
+[security.headers]
+  X-Frame-Options = "SAMEORIGIN"
+  X-Content-Type-Options = "nosniff"
+  X-XSS-Protection = "1; mode=block"
+  Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Rate limiting (Cloudflare Free: 100k requests/day)
+[rate_limit]
+  enabled = true
+  threshold = 1000
+  period = 60
+
+# Free tier limits:
+# - 100k requests/day (unlimited domains)
+# - Unlimited bandwidth
+# - Global CDN
+# - DDoS protection
+# - SSL/TLS included
+# - Web Analytics (free)
+# - 500 builds/month
+# - 1 concurrent build
+

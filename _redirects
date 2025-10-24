@@ -1,0 +1,16 @@
+# Cloudflare Pages Redirects
+# SPA routing and optimizations
+
+# API proxy (if using external APIs)
+/api/tmdb/*  https://api.themoviedb.org/:splat  200
+/api/images/*  https://image.tmdb.org/:splat  200
+
+# Redirect www to non-www (or vice versa)
+# https://www.ladlihub.in/*  https://ladlihub.in/:splat  301
+
+# Force HTTPS
+# http://ladlihub.in/*  https://ladlihub.in/:splat  301
+
+# SPA fallback
+/*  /index.html  200
+

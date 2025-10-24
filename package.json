@@ -16,7 +16,10 @@
     "deploy:gh-pages": "npm run build && npx gh-pages -d out",
     "start:production": "NODE_ENV=production next start",
     "analyze": "ANALYZE=true next build",
-    "optimize": "node scripts/optimize-production.js"
+    "optimize": "node scripts/optimize-production.js",
+    "check-config": "node scripts/check-config.js",
+    "setup": "node scripts/setup-complete.js",
+    "socket": "node server.js"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.32.0",
