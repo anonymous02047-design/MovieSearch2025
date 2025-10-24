@@ -374,6 +374,277 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'daily' as const,
       priority: 0.5,
     },
+    // NEW: User Profile & Personalization Features
+    {
+      url: `${baseUrl}/mood-board`,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/viewing-timeline`,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/movie-personality`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.4,
+    },
+    {
+      url: `${baseUrl}/custom-tags`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/movie-dna`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/viewing-streaks`,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/profile-themes`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.4,
+    },
+    {
+      url: `${baseUrl}/bucket-list`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.5,
+    },
+    // NEW: Social & Community Features
+    {
+      url: `${baseUrl}/movie-clubs`,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/watch-together`,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/movie-debates`,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/fan-theories`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/challenges`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/user-rankings`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/movie-polls`,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/friends-feed`,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
+      priority: 0.5,
+    },
+    // NEW: Gamification & Interactive Features
+    {
+      url: `${baseUrl}/trivia-tournaments`,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/scene-recreation`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/quote-game`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/actor-connection`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/soundtrack-quiz`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/weekly-challenges`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/leaderboards`,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
+      priority: 0.6,
+    },
+    // NEW: Discovery & Recommendations Features
+    {
+      url: `${baseUrl}/mood-search`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/weather-recommendations`,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/time-based-suggestions`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/occasion-finder`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/genre-mixer`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/hidden-gems`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.6,
+    },
+    // NEW: Analytics & Insights Features
+    {
+      url: `${baseUrl}/viewing-analytics`,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/prediction-tracker`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/release-calendar`,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/franchise-tracker`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/rating-comparison`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/watch-time-calculator`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.5,
+    },
+    // NEW: Creative & Content Features
+    {
+      url: `${baseUrl}/scripts-library`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/behind-scenes`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/movie-locations`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/costume-gallery`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/poster-generator`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/review-blog`,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/video-reviews`,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/mashups`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.5,
+    },
+    // NEW: Notifications & Alerts
+    {
+      url: `${baseUrl}/alerts`,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
+      priority: 0.5,
+    },
   ]
 
   // Genre pages

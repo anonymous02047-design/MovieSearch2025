@@ -8,6 +8,8 @@ import { GoogleAdsScript } from "@/components/GoogleAds";
 import GoogleReCaptchaV3 from "@/components/GoogleReCaptchaV3";
 import EnhancedTawkTo from "@/components/EnhancedTawkTo";
 import SkipToContent from "@/components/SkipToContent";
+import ResourceHints from "@/components/ResourceHints";
+import { SocketProvider } from "@/components/SocketProvider";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -84,9 +86,12 @@ export default function RootLayout({
           <SkipToContent />
           
           <CustomThemeProvider>
-            <ClientLayout>
-              {children}
-            </ClientLayout>
+            <SocketProvider autoConnect={false}>
+              <ResourceHints />
+              <ClientLayout>
+                {children}
+              </ClientLayout>
+            </SocketProvider>
           </CustomThemeProvider>
 
           {/* Enhanced Google Analytics */}

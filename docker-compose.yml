@@ -1,0 +1,101 @@
+# Docker Compose for MovieSearch 2025
+# Complete stack with Next.js, Socket.io, Nginx, and MongoDB
+
+version: '3.8'
+
+services:
+  # Next.js Application
+  nextjs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: moviesearch-nextjs
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_BASE_URL=${NEXT_PUBLIC_BASE_URL}
+      - NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=${NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
+      - CLERK_SECRET_KEY=${CLERK_SECRET_KEY}
+      - NEXT_PUBLIC_TMDB_API_KEY=${NEXT_PUBLIC_TMDB_API_KEY}
+      - MONGODB_URI=${MONGODB_URI}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    networks:
+      - moviesearch-network
+    depends_on:
+      - mongodb
+
+  # Socket.io Server
+  socketio:
+    build:
+      context: .
+      dockerfile: Dockerfile.socketio
+    container_name: moviesearch-socketio
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_BASE_URL=${NEXT_PUBLIC_BASE_URL}
+    networks:
+      - moviesearch-network
+
+  # MongoDB
+  mongodb:
+    image: mongo:7
+    container_name: moviesearch-mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
+      - MONGO_INITDB_DATABASE=moviesearch2025
+    volumes:
+      - mongodb-data:/data/db
+      - mongodb-config:/data/configdb
+    networks:
+      - moviesearch-network
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: moviesearch-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD}
+    volumes:
+      - redis-data:/data
+    networks:
+      - moviesearch-network
+
+  # Nginx Reverse Proxy
+  nginx:
+    image: nginx:alpine
+    container_name: moviesearch-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+      - nginx-cache:/var/cache/nginx
+    networks:
+      - moviesearch-network
+    depends_on:
+      - nextjs
+      - socketio
+
+networks:
+  moviesearch-network:
+    driver: bridge
+
+volumes:
+  mongodb-data:
+  mongodb-config:
+  redis-data:
+  nginx-cache:
+

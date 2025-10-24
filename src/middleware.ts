@@ -73,7 +73,7 @@ const isProtectedRoute = createRouteMatcher([
   '/stats(.*)',
   '/recommendations(.*)',
   
-  // New protected pages
+  // Existing protected pages
   '/compare-movies(.*)',
   '/movie-quiz(.*)',
   '/movie-bingo(.*)',
@@ -81,6 +81,64 @@ const isProtectedRoute = createRouteMatcher([
   '/achievement-badges(.*)',
   '/movie-journal(.*)',
   '/advanced-search(.*)',
+  
+  // NEW: User Profile & Personalization Features
+  '/mood-board(.*)',
+  '/viewing-timeline(.*)',
+  '/movie-personality(.*)',
+  '/custom-tags(.*)',
+  '/movie-dna(.*)',
+  '/viewing-streaks(.*)',
+  '/profile-themes(.*)',
+  '/bucket-list(.*)',
+  
+  // NEW: Social & Community Features
+  '/movie-clubs(.*)',
+  '/watch-together(.*)',
+  '/movie-debates(.*)',
+  '/fan-theories(.*)',
+  '/challenges(.*)',
+  '/user-rankings(.*)',
+  '/movie-polls(.*)',
+  '/friends-feed(.*)',
+  
+  // NEW: Gamification & Interactive Features
+  '/trivia-tournaments(.*)',
+  '/scene-recreation(.*)',
+  '/quote-game(.*)',
+  '/actor-connection(.*)',
+  '/soundtrack-quiz(.*)',
+  '/weekly-challenges(.*)',
+  '/leaderboards(.*)',
+  
+  // NEW: Discovery & Recommendations Features
+  '/mood-search(.*)',
+  '/weather-recommendations(.*)',
+  '/time-based-suggestions(.*)',
+  '/occasion-finder(.*)',
+  '/genre-mixer(.*)',
+  '/hidden-gems(.*)',
+  
+  // NEW: Analytics & Insights Features
+  '/viewing-analytics(.*)',
+  '/prediction-tracker(.*)',
+  '/release-calendar(.*)',
+  '/franchise-tracker(.*)',
+  '/rating-comparison(.*)',
+  '/watch-time-calculator(.*)',
+  
+  // NEW: Creative & Content Features
+  '/scripts-library(.*)',
+  '/behind-scenes(.*)',
+  '/movie-locations(.*)',
+  '/costume-gallery(.*)',
+  '/poster-generator(.*)',
+  '/review-blog(.*)',
+  '/video-reviews(.*)',
+  '/mashups(.*)',
+  
+  // NEW: Notifications & Alerts
+  '/alerts(.*)',
   
   // Protected API routes
   '/api/profile(.*)',
@@ -95,6 +153,9 @@ const isProtectedRoute = createRouteMatcher([
   '/api/ai/recommendations(.*)',
   '/api/ai/watch-suggestion(.*)',
   '/api/ai-enhanced(.*)',
+  '/api/social(.*)',
+  '/api/games(.*)',
+  '/api/content(.*)',
 ]);
 
 // Define routes that should skip rate limiting
