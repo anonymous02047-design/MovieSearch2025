@@ -43,11 +43,11 @@ class TawkService {
     this.config = {
       propertyId: process.env.NEXT_PUBLIC_TAWK_PROPERTY_ID || '',
       widgetId: process.env.NEXT_PUBLIC_TAWK_WIDGET_ID || '',
-      enabled: process.env.NEXT_PUBLIC_TAWK_ENABLED === 'true' && 
+      enabled: !!(process.env.NEXT_PUBLIC_TAWK_ENABLED === 'true' && 
                process.env.NEXT_PUBLIC_TAWK_PROPERTY_ID && 
                process.env.NEXT_PUBLIC_TAWK_WIDGET_ID &&
                process.env.NEXT_PUBLIC_TAWK_PROPERTY_ID !== 'your-property-id' &&
-               process.env.NEXT_PUBLIC_TAWK_WIDGET_ID !== 'your-widget-id',
+               process.env.NEXT_PUBLIC_TAWK_WIDGET_ID !== 'your-widget-id'),
       position: (process.env.NEXT_PUBLIC_TAWK_POSITION as any) || 'bottom-right',
       theme: (process.env.NEXT_PUBLIC_TAWK_THEME as any) || 'auto',
       showOnMobile: process.env.NEXT_PUBLIC_TAWK_SHOW_MOBILE !== 'false',

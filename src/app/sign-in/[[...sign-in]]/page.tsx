@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import { SignIn } from '@clerk/nextjs';
 import { useRouter, useSearchParams } from 'next/navigation';
+
+export const dynamic = 'force-dynamic';
 import {
   Box,
   Container,

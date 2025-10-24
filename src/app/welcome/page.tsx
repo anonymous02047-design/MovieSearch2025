@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useEffect } from 'react';
+
+export const dynamic = 'force-dynamic';
 import { useRouter } from 'next/navigation';
 import { useUser } from '@clerk/nextjs';
 import {
@@ -10,12 +12,12 @@ import {
   Button,
   Paper,
   Stack,
-  Grid,
   Card,
   CardContent,
   Chip,
   Divider,
   IconButton,
+  Grid,
 } from '@mui/material';
 
 import RouteGuard from '@/components/RouteGuard';
@@ -227,9 +229,9 @@ export default function WelcomePage() {
             </Stack>
 
             {/* Stats */}
-            <Grid container spacing={4} justifyContent="center">
+            <Grid container spacing={4} sx={{ justifyContent: 'center' }}>
               {stats.map((stat, index) => (
-                <Grid item xs={6} sm={3} key={index}>
+                <Grid size={{ xs: 6, sm: 3 }} key={index}>
                   <Box sx={{ textAlign: 'center' }}>
                     <Box sx={{ mb: 1 }}>
                       {stat.icon}
@@ -261,7 +263,7 @@ export default function WelcomePage() {
 
         <Grid container spacing={4}>
           {features.map((feature, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
+            <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
               <Card
                 elevation={2}
                 sx={{
