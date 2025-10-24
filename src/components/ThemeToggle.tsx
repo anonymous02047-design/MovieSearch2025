@@ -16,29 +16,18 @@ import {
   SettingsBrightness as AutoModeIcon,
   Palette as PaletteIcon,
 } from '@mui/icons-material';
+import { useTheme as useCustomTheme } from '@/contexts/ThemeContext';
 
 export default function ThemeToggle() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [mounted, setMounted] = React.useState(false);
-  const [mode, setMode] = React.useState<'dark' | 'light' | 'auto'>('light');
+  
+  // Use the actual theme context
+  const { mode, setMode: setThemeMode } = useCustomTheme();
   
   // Always call hooks in the same order
   React.useEffect(() => {
     setMounted(true);
-  }, []);
-
-  // Safe theme access with fallback
-  React.useEffect(() => {
-    try {
-      // Try to access theme context if available
-      const themeContext = (window as any).__themeContext;
-      if (themeContext) {
-        setMode(themeContext.mode || 'light');
-      }
-    } catch (error) {
-      // ThemeProvider not available, use defaults
-      console.warn('ThemeProvider not available, using default theme');
-    }
   }, []);
 
   const open = Boolean(anchorEl);
@@ -52,7 +41,7 @@ export default function ThemeToggle() {
   };
 
   const handleModeChange = (newMode: 'dark' | 'light' | 'auto') => {
-    setMode(newMode);
+    setThemeMode(newMode);
     handleClose();
   };
 

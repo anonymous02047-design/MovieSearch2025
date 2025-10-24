@@ -54,17 +54,35 @@ const isPublicRoute = createRouteMatcher([
 
 // Define routes that require authentication
 const isProtectedRoute = createRouteMatcher([
+  // User profile and settings
   '/profile(.*)',
+  '/settings(.*)',
+  '/notifications(.*)',
+  
+  // User collections
   '/favorites(.*)',
   '/watchlist(.*)',
-  '/settings(.*)',
   '/history(.*)',
   '/collections(.*)',
-  '/stats(.*)',
-  '/notifications(.*)',
+  '/my-lists(.*)',
+  
+  // User activities
   '/reviews(.*)',
   '/ratings(.*)',
   '/notes(.*)',
+  '/stats(.*)',
+  '/recommendations(.*)',
+  
+  // New protected pages
+  '/compare-movies(.*)',
+  '/movie-quiz(.*)',
+  '/movie-bingo(.*)',
+  '/watch-party(.*)',
+  '/achievement-badges(.*)',
+  '/movie-journal(.*)',
+  '/advanced-search(.*)',
+  
+  // Protected API routes
   '/api/profile(.*)',
   '/api/favorites(.*)',
   '/api/watchlist(.*)',
@@ -76,6 +94,7 @@ const isProtectedRoute = createRouteMatcher([
   '/api/user(.*)',
   '/api/ai/recommendations(.*)',
   '/api/ai/watch-suggestion(.*)',
+  '/api/ai-enhanced(.*)',
 ]);
 
 // Define routes that should skip rate limiting

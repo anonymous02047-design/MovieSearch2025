@@ -1,12 +1,14 @@
 import { MetadataRoute } from 'next'
 
-export const dynamic = 'force-static'
+export const dynamic = 'force-dynamic'
+export const revalidate = 3600 // Revalidate every hour
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://ladlihub.in'
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://ladlihub.in'
+  const currentDate = new Date()
   
-  // Static pages
-  const staticPages = [
+  // Static public pages (no auth required)
+  const publicPages = [
     {
       url: baseUrl,
       lastModified: new Date(),
@@ -220,13 +222,161 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/sitemap`,
-      lastModified: new Date(),
+      lastModified: currentDate,
       changeFrequency: 'weekly' as const,
       priority: 0.6,
     },
+    {
+      url: `${baseUrl}/api-docs`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/bug-report`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/content-guidelines`,
+      lastModified: currentDate,
+      changeFrequency: 'yearly' as const,
+      priority: 0.4,
+    },
+    {
+      url: `${baseUrl}/cookies`,
+      lastModified: currentDate,
+      changeFrequency: 'yearly' as const,
+      priority: 0.4,
+    },
+    {
+      url: `${baseUrl}/data-protection`,
+      lastModified: currentDate,
+      changeFrequency: 'yearly' as const,
+      priority: 0.4,
+    },
+    {
+      url: `${baseUrl}/dmca`,
+      lastModified: currentDate,
+      changeFrequency: 'yearly' as const,
+      priority: 0.4,
+    },
+    {
+      url: `${baseUrl}/gdpr`,
+      lastModified: currentDate,
+      changeFrequency: 'yearly' as const,
+      priority: 0.4,
+    },
+    {
+      url: `${baseUrl}/security`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/tech-specs`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/user-agreement`,
+      lastModified: currentDate,
+      changeFrequency: 'yearly' as const,
+      priority: 0.4,
+    },
+    {
+      url: `${baseUrl}/accessibility`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/feedback`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
   ]
 
-  // Add genre pages
+  // Protected pages (require authentication - lower priority for SEO)
+  const protectedPages = [
+    {
+      url: `${baseUrl}/favorites`,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/watchlist`,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/history`,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/stats`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/recommendations`,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/my-lists`,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/compare-movies`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/movie-quiz`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/movie-bingo`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/watch-party`,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/achievement-badges`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/movie-journal`,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
+      priority: 0.5,
+    },
+  ]
+
+  // Genre pages
   const genres = [
     'action', 'adventure', 'animation', 'comedy', 'crime', 'documentary',
     'drama', 'family', 'fantasy', 'history', 'horror', 'music', 'mystery',
@@ -235,10 +385,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const genrePages = genres.map(genre => ({
     url: `${baseUrl}/genre/${genre}`,
-    lastModified: new Date(),
+    lastModified: currentDate,
     changeFrequency: 'weekly' as const,
     priority: 0.7,
   }))
 
-  return [...staticPages, ...genrePages]
+  // Decade pages
+  const decades = ['1920s', '1930s', '1940s', '1950s', '1960s', '1970s', '1980s', '1990s', '2000s', '2010s', '2020s']
+  const decadePages = decades.map(decade => ({
+    url: `${baseUrl}/decades/${decade}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
+  }))
+
+  // Language pages
+  const languages = ['english', 'spanish', 'french', 'german', 'italian', 'japanese', 'korean', 'chinese', 'hindi', 'tamil', 'telugu']
+  const languagePages = languages.map(lang => ({
+    url: `${baseUrl}/languages/${lang}`,
+    lastModified: currentDate,
+    changeFrequency: 'weekly' as const,
+    priority: 0.6,
+  }))
+
+  // Combine all pages
+  return [...publicPages, ...protectedPages, ...genrePages, ...decadePages, ...languagePages]
 }
