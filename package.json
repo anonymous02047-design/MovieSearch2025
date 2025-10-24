@@ -22,30 +22,30 @@
     "socket": "node server.js"
   },
   "dependencies": {
-    "@clerk/nextjs": "^6.32.0",
+    "@clerk/nextjs": "^6.34.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
-    "@mui/icons-material": "^7.3.2",
+    "@mui/icons-material": "^7.3.4",
     "@mui/lab": "^7.0.0-beta.17",
-    "@mui/material": "^7.3.2",
+    "@mui/material": "^7.3.4",
     "@types/jsonwebtoken": "^9.0.10",
     "axios": "^1.12.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.19.2",
-    "next": "15.5.3",
-    "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "next": "^16.0.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "eslint": "^9.38.0",
     "eslint-config-next": "15.5.3",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "tailwindcss": "^4.1.16",
+    "typescript": "^5.9.3"
   },
   "engines": {
     "node": ">=18.0.0",
