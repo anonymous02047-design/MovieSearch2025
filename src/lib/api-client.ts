@@ -161,6 +161,73 @@ export const cinemaVisitAPI = {
   }),
 };
 
+// Movie Review API
+export const movieReviewAPI = {
+  getAll: (movieId?: number) => 
+    fetchAPI(`/api/movie-review${movieId ? `?movieId=${movieId}` : ''}`),
+  create: (review: any) => fetchAPI('/api/movie-review', {
+    method: 'POST',
+    body: JSON.stringify(review),
+  }),
+  delete: (id: string) => fetchAPI(`/api/movie-review?id=${id}`, {
+    method: 'DELETE',
+  }),
+};
+
+// Watch History API
+export const watchHistoryAPI = {
+  getAll: (limit?: number) => 
+    fetchAPI(`/api/watch-history${limit ? `?limit=${limit}` : ''}`),
+  create: (entry: any) => fetchAPI('/api/watch-history', {
+    method: 'POST',
+    body: JSON.stringify(entry),
+  }),
+};
+
+// Movie Tag API
+export const movieTagAPI = {
+  getAll: () => fetchAPI('/api/movie-tag'),
+  createOrUpdate: (tag: any) => fetchAPI('/api/movie-tag', {
+    method: 'POST',
+    body: JSON.stringify(tag),
+  }),
+};
+
+// User Stats API
+export const userStatsAPI = {
+  get: () => fetchAPI('/api/user-stats'),
+  update: (stats: any) => fetchAPI('/api/user-stats', {
+    method: 'PUT',
+    body: JSON.stringify(stats),
+  }),
+};
+
+// Achievement API
+export const achievementAPI = {
+  getAll: () => fetchAPI('/api/achievement'),
+  create: (achievement: any) => fetchAPI('/api/achievement', {
+    method: 'POST',
+    body: JSON.stringify(achievement),
+  }),
+  updateProgress: (id: string, progress?: number) => fetchAPI('/api/achievement', {
+    method: 'PUT',
+    body: JSON.stringify({ id, progress }),
+  }),
+};
+
+// Recommendation API
+export const recommendationAPI = {
+  getAll: () => fetchAPI('/api/recommendation'),
+  create: (recommendation: any) => fetchAPI('/api/recommendation', {
+    method: 'POST',
+    body: JSON.stringify(recommendation),
+  }),
+  update: (id: string, data: any) => fetchAPI('/api/recommendation', {
+    method: 'PUT',
+    body: JSON.stringify({ id, ...data }),
+  }),
+};
+
 export default {
   quickRatingAPI,
   movieMemoryAPI,
@@ -170,5 +237,11 @@ export default {
   quickListAPI,
   movieQuoteAPI,
   cinemaVisitAPI,
+  movieReviewAPI,
+  watchHistoryAPI,
+  movieTagAPI,
+  userStatsAPI,
+  achievementAPI,
+  recommendationAPI,
 };
 
