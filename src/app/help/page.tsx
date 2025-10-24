@@ -25,9 +25,6 @@ import {
   VideoLibrary as VideoLibraryIcon,
 } from '@mui/icons-material';
 
-// Prevent static generation
-export const dynamic = 'force-dynamic';
-
 const faqData = [
   {
     category: 'Getting Started',

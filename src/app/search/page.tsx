@@ -31,9 +31,6 @@ import {
   Person as PersonIcon,
 } from '@mui/icons-material';
 
-// Prevent static generation for search page
-export const dynamic = 'force-dynamic';
-
 interface SearchResult {
   id: number;
   title?: string;
