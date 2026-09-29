@@ -12,12 +12,12 @@ function GoogleAnalyticsContent({ measurementId }: GoogleAnalyticsProps) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   
-  // Use the provided measurement ID or default to G-Z2QNY6M1QL
-  const gaId = measurementId || process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-Z2QNY6M1QL';
+  // Only load GA when a measurement ID is configured
+  const gaId = measurementId || process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
   // Track page views on route changes
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.gtag) {
+    if (gaId && typeof window !== 'undefined' && window.gtag) {
       const url = pathname + (searchParams.toString() ? `?${searchParams.toString()}` : '');
       window.gtag('config', gaId, {
         page_path: url,
@@ -35,7 +35,6 @@ function GoogleAnalyticsContent({ measurementId }: GoogleAnalyticsProps) {
   }, [pathname, searchParams, gaId]);
 
   if (!gaId) {
-    console.warn('Google Analytics: No measurement ID found.');
     return null;
   }
 

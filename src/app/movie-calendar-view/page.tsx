@@ -17,7 +17,9 @@ export default function MovieCalendarViewPage() {
             <CalendarIcon sx={{ fontSize: 40, color: 'primary.main' }} />
             <Typography variant="h3" sx={{ fontWeight: 'bold' }}>Movie Calendar</Typography>
           </Box>
-          <Typography variant="body1" color="text.secondary">Visualize your watching schedule</Typography>
+          <Typography variant="body1" sx={{
+            color: "text.secondary"
+          }}>Visualize your watching schedule</Typography>
         </Container>
       </Box>
     </AuthGuard>

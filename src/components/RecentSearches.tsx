@@ -100,16 +100,24 @@ export default function RecentSearches({ onSearchSelect, maxItems = 10 }: Recent
       {searches.length > 0 && (
         <Box>
           <Box
-            display="flex"
-            justifyContent="space-between"
-            alignItems="center"
-            px={2}
-            py={1}
-            bgcolor="action.hover"
-          >
-            <Box display="flex" alignItems="center" gap={1}>
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              px: 2,
+              py: 1,
+              bgcolor: "action.hover"
+            }}>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: 1
+              }}>
               <HistoryIcon fontSize="small" color="action" />
-              <Typography variant="subtitle2" color="text.secondary">
+              <Typography variant="subtitle2" sx={{
+                color: "text.secondary"
+              }}>
                 Recent Searches
               </Typography>
             </Box>
@@ -157,21 +165,31 @@ export default function RecentSearches({ onSearchSelect, maxItems = 10 }: Recent
       {trendingSearches.length > 0 && (
         <Box>
           <Box
-            display="flex"
-            alignItems="center"
-            gap={1}
-            px={2}
-            py={1}
-            bgcolor="action.hover"
-          >
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: 1,
+              px: 2,
+              py: 1,
+              bgcolor: "action.hover"
+            }}>
             <TrendingIcon fontSize="small" color="action" />
-            <Typography variant="subtitle2" color="text.secondary">
+            <Typography variant="subtitle2" sx={{
+              color: "text.secondary"
+            }}>
               Trending Searches
             </Typography>
           </Box>
 
-          <Box p={2}>
-            <Box display="flex" flexWrap="wrap" gap={1}>
+          <Box sx={{
+            p: 2
+          }}>
+            <Box
+              sx={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: 1
+              }}>
               {trendingSearches.map((search) => (
                 <Chip
                   key={search}

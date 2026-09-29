@@ -134,19 +134,31 @@ function PeoplePageContent() {
           <Typography variant="subtitle2" noWrap gutterBottom sx={{ fontWeight: 'bold' }}>
             {person.title}
           </Typography>
-          <Stack direction="row" spacing={1} alignItems="center" justifyContent="center" sx={{ mb: 1 }}>
+          <Stack
+            direction="row"
+            spacing={1}
+            sx={{
+              alignItems: "center",
+              justifyContent: "center",
+              mb: 1
+            }}>
             <StarIcon sx={{ fontSize: 14, color: 'warning.main' }} />
-            <Typography variant="caption" color="text.secondary">
+            <Typography variant="caption" sx={{
+              color: "text.secondary"
+            }}>
               {person.popularity.toFixed(1)}
             </Typography>
           </Stack>
-          <Typography variant="caption" color="text.secondary" sx={{ 
-            display: '-webkit-box',
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: 'vertical',
-            overflow: 'hidden',
-            mb: 2
-          }}>
+          <Typography
+            variant="caption"
+            sx={{
+              color: "text.secondary",
+              display: '-webkit-box',
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: 'vertical',
+              overflow: 'hidden',
+              mb: 2
+            }}>
             {person.overview || 'Actor/Actress'}
           </Typography>
         </Box>
@@ -170,7 +182,13 @@ function PeoplePageContent() {
   if (loading) {
     return (
       <Container maxWidth="lg" sx={{ py: 4 }}>
-        <Box display="flex" justifyContent="center" alignItems="center" minHeight="400px">
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            minHeight: "400px"
+          }}>
           <CircularProgress />
         </Box>
       </Container>
@@ -201,7 +219,13 @@ function PeoplePageContent() {
       <Container maxWidth="lg" sx={{ py: 4 }}>
           {/* Header */}
           <Box sx={{ mb: 4 }}>
-            <Stack direction="row" alignItems="center" spacing={2} sx={{ mb: 2 }}>
+            <Stack
+              direction="row"
+              spacing={2}
+              sx={{
+                alignItems: "center",
+                mb: 2
+              }}>
               <PersonIcon sx={{ fontSize: 40, color: 'primary.main' }} />
               <Typography variant="body1" component="p" sx={{
                 fontSize: '14px',
@@ -215,13 +239,20 @@ function PeoplePageContent() {
                 👥 People
               </Typography>
             </Stack>
-            <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>
+            <Typography
+              variant="h6"
+              sx={{
+                color: "text.secondary",
+                mb: 3
+              }}>
               Discover trending actors, actresses, and celebrities
             </Typography>
 
             {/* Filters */}
             <Paper sx={{ p: 2, mb: 3 }}>
-              <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} alignItems="center">
+              <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{
+                alignItems: "center"
+              }}>
                 <FormControl size="small" sx={{ minWidth: 150 }}>
                   <InputLabel>Timeframe</InputLabel>
                   <Select
@@ -279,35 +310,55 @@ function PeoplePageContent() {
 
           {/* Stats */}
           <Box sx={{ mt: 4, p: 3, bgcolor: 'background.paper', borderRadius: 2 }}>
-            <Stack direction="row" spacing={4} justifyContent="center">
-              <Box textAlign="center">
-                <Typography variant="h4" color="primary.main">
+            <Stack direction="row" spacing={4} sx={{
+              justifyContent: "center"
+            }}>
+              <Box sx={{
+                textAlign: "center"
+              }}>
+                <Typography variant="h4" sx={{
+                  color: "primary.main"
+                }}>
                   {people.length}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" sx={{
+                  color: "text.secondary"
+                }}>
                   People
                 </Typography>
               </Box>
-              <Box textAlign="center">
-                <Typography variant="h4" color="secondary.main">
+              <Box sx={{
+                textAlign: "center"
+              }}>
+                <Typography variant="h4" sx={{
+                  color: "secondary.main"
+                }}>
                   {people.reduce((sum, person) => sum + person.popularity, 0) / people.length || 0}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" sx={{
+                  color: "text.secondary"
+                }}>
                   Avg Popularity
                 </Typography>
               </Box>
-              <Box textAlign="center">
-                <Typography variant="h4" color="success.main">
+              <Box sx={{
+                textAlign: "center"
+              }}>
+                <Typography variant="h4" sx={{
+                  color: "success.main"
+                }}>
                   {people.filter(p => p.profile_path).length}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" sx={{
+                  color: "text.secondary"
+                }}>
                   With Photos
                 </Typography>
               </Box>
             </Stack>
           </Box>
         </Container>
-      </>
+    </>
   );
 }
 

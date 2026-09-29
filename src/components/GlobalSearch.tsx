@@ -178,23 +178,6 @@ export default function GlobalSearch({ placeholder = "Search movies...", onClose
             setShowResults(true);
           }
         }}
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <SearchIcon sx={{ color: 'text.secondary' }} />
-            </InputAdornment>
-          ),
-          endAdornment: (
-            <InputAdornment position="end">
-              {loading && <CircularProgress size={20} />}
-              {query && !loading && (
-                <IconButton onClick={handleClear} size="small">
-                  <ClearIcon />
-                </IconButton>
-              )}
-            </InputAdornment>
-          ),
-        }}
         sx={{
           '& .MuiOutlinedInput-root': {
             backgroundColor: 'rgba(255, 255, 255, 0.1)',
@@ -219,6 +202,25 @@ export default function GlobalSearch({ placeholder = "Search movies...", onClose
               opacity: 1,
             },
           },
+        }}
+        slotProps={{
+          input: {
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon sx={{ color: 'text.secondary' }} />
+              </InputAdornment>
+            ),
+            endAdornment: (
+              <InputAdornment position="end">
+                {loading && <CircularProgress size={20} />}
+                {query && !loading && (
+                  <IconButton onClick={handleClear} size="small">
+                    <ClearIcon />
+                  </IconButton>
+                )}
+              </InputAdornment>
+            ),
+          }
         }}
       />
 

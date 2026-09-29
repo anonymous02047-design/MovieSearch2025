@@ -122,7 +122,12 @@ export default function CelebrityNewsPage() {
           <TrendingIcon sx={{ fontSize: 40, mr: 1, verticalAlign: 'middle', color: 'primary.main' }} />
           Trending Now - Celebrity News
         </Typography>
-        <Typography variant="body1" color="text.secondary" paragraph>
+        <Typography
+          variant="body1"
+          sx={{
+            color: "text.secondary",
+            marginBottom: "16px"
+          }}>
           Discover what's trending in movies, TV shows, and celebrity news this week.
         </Typography>
 
@@ -136,14 +141,16 @@ export default function CelebrityNewsPage() {
           placeholder="Search trending content..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <SearchIcon />
-              </InputAdornment>
-            ),
-          }}
           sx={{ mb: 4 }}
+          slotProps={{
+            input: {
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon />
+                </InputAdornment>
+              ),
+            }
+          }}
         />
       </Box>
 
@@ -156,7 +163,13 @@ export default function CelebrityNewsPage() {
       <Grid container spacing={3}>
         {loading ? (
           [...Array(6)].map((_, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
+            <Grid
+              key={index}
+              size={{
+                xs: 12,
+                sm: 6,
+                md: 4
+              }}>
               <Card>
                 <Skeleton variant="rectangular" height={300} />
                 <CardContent>
@@ -168,14 +181,20 @@ export default function CelebrityNewsPage() {
             </Grid>
           ))
         ) : filteredArticles.length === 0 ? (
-          <Grid item xs={12}>
+          <Grid size={12}>
             <Alert severity="info">
               No trending content found{searchQuery ? ` for "${searchQuery}"` : ''}.
             </Alert>
           </Grid>
         ) : (
           filteredArticles.map((article) => (
-            <Grid item xs={12} sm={6} md={4} key={article.id}>
+            <Grid
+              key={article.id}
+              size={{
+                xs: 12,
+                sm: 6,
+                md: 4
+              }}>
               <Card
                 sx={{
                   height: '100%',
@@ -231,27 +250,30 @@ export default function CelebrityNewsPage() {
 
                   <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
                     <TimeIcon sx={{ fontSize: 16, mr: 0.5, color: 'text.secondary' }} />
-                    <Typography variant="caption" color="text.secondary">
+                    <Typography variant="caption" sx={{
+                      color: "text.secondary"
+                    }}>
                       {formatDate(article.release_date || article.first_air_date || '')}
                     </Typography>
                   </Box>
 
                   <Typography
                     variant="body2"
-                    color="text.secondary"
                     sx={{
+                      color: "text.secondary",
                       overflow: 'hidden',
                       textOverflow: 'ellipsis',
                       display: '-webkit-box',
                       WebkitLineClamp: 3,
-                      WebkitBoxOrient: 'vertical',
-                    }}
-                  >
+                      WebkitBoxOrient: 'vertical'
+                    }}>
                     {article.overview || 'No description available.'}
                   </Typography>
 
                   <Box sx={{ mt: 2 }}>
-                    <Typography variant="caption" color="text.secondary">
+                    <Typography variant="caption" sx={{
+                      color: "text.secondary"
+                    }}>
                       Popularity: {article.popularity?.toFixed(0) || 'N/A'}
                     </Typography>
                   </Box>

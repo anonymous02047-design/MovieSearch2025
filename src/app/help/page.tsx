@@ -147,7 +147,12 @@ export default function HelpPage() {
         <Typography variant="h3" component="h1" gutterBottom>
           Help Center
         </Typography>
-        <Typography variant="h6" color="text.secondary" sx={{ mb: 4 }}>
+        <Typography
+          variant="h6"
+          sx={{
+            color: "text.secondary",
+            mb: 4
+          }}>
           Find answers to common questions and get support
         </Typography>
         
@@ -157,16 +162,24 @@ export default function HelpPage() {
           placeholder="Search help articles..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          InputProps={{
-            startAdornment: <SearchIcon sx={{ mr: 1, color: 'text.secondary' }} />,
-          }}
           sx={{ maxWidth: 600, mx: 'auto' }}
+          slotProps={{
+            input: {
+              startAdornment: <SearchIcon sx={{ mr: 1, color: 'text.secondary' }} />,
+            }
+          }}
         />
       </Box>
 
       <Grid container spacing={3} sx={{ mb: 6 }}>
         {helpCategories.map((category, index) => (
-          <Grid item xs={12} sm={6} md={3} key={index}>
+          <Grid
+            key={index}
+            size={{
+              xs: 12,
+              sm: 6,
+              md: 3
+            }}>
             <Card 
               sx={{ 
                 height: '100%',
@@ -186,7 +199,9 @@ export default function HelpPage() {
                 <Typography variant="h6" gutterBottom>
                   {category.title}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" sx={{
+                  color: "text.secondary"
+                }}>
                   {category.description}
                 </Typography>
               </CardContent>
@@ -201,7 +216,12 @@ export default function HelpPage() {
         </Typography>
         
         {searchQuery && (
-          <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
+          <Typography
+            variant="body1"
+            sx={{
+              color: "text.secondary",
+              mb: 3
+            }}>
             {filteredFAQs.reduce((total, category) => total + category.questions.length, 0)} results for "{searchQuery}"
           </Typography>
         )}
@@ -226,7 +246,9 @@ export default function HelpPage() {
                 </Typography>
               </AccordionSummary>
               <AccordionDetails>
-                <Typography variant="body1" color="text.secondary">
+                <Typography variant="body1" sx={{
+                  color: "text.secondary"
+                }}>
                   {faq.answer}
                 </Typography>
               </AccordionDetails>
@@ -245,7 +267,12 @@ export default function HelpPage() {
         <Typography variant="h5" gutterBottom>
           Still need help?
         </Typography>
-        <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
+        <Typography
+          variant="body1"
+          sx={{
+            color: "text.secondary",
+            mb: 3
+          }}>
           Can't find what you're looking for? Our support team is here to help.
         </Typography>
         <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>

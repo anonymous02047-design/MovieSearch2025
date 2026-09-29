@@ -17,7 +17,9 @@ export default function MovieQuizPage() {
             <QuizIcon sx={{ fontSize: 40, color: 'primary.main' }} />
             <Typography variant="h3" sx={{ fontWeight: 'bold' }}>Movie Quiz</Typography>
           </Box>
-          <Typography variant="body1" color="text.secondary">Test your movie knowledge</Typography>
+          <Typography variant="body1" sx={{
+            color: "text.secondary"
+          }}>Test your movie knowledge</Typography>
         </Container>
       </Box>
     </AuthGuard>

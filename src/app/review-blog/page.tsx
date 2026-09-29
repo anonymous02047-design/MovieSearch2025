@@ -22,7 +22,9 @@ export default function ReviewBlogPage() {
           <Card>
             <CardContent>
               <Typography variant="h6" sx={{ mb: 2 }}>My Latest Review</Typography>
-              <Typography variant="body2" color="text.secondary">Start writing your first in-depth movie review!</Typography>
+              <Typography variant="body2" sx={{
+                color: "text.secondary"
+              }}>Start writing your first in-depth movie review!</Typography>
             </CardContent>
           </Card>
         </Container>

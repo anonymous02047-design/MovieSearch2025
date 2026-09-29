@@ -39,7 +39,12 @@ export default function StatsCard({
     >
       <CardContent>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
-          <Typography variant="body2" color="text.secondary" fontWeight={600}>
+          <Typography
+            variant="body2"
+            sx={{
+              color: "text.secondary",
+              fontWeight: 600
+            }}>
             {title}
           </Typography>
           <Box
@@ -54,7 +59,9 @@ export default function StatsCard({
           </Box>
         </Box>
 
-        <Typography variant="h3" fontWeight={700} gutterBottom>
+        <Typography variant="h3" gutterBottom sx={{
+          fontWeight: 700
+        }}>
           {value}
         </Typography>
 
@@ -75,13 +82,17 @@ export default function StatsCard({
                     transform: trend < 0 ? 'rotate(180deg)' : 'none',
                   }}
                 />
-                <Typography variant="body2" fontWeight={600}>
+                <Typography variant="body2" sx={{
+                  fontWeight: 600
+                }}>
                   {Math.abs(trend)}%
                 </Typography>
               </Box>
             )}
             {subtitle && (
-              <Typography variant="caption" color="text.secondary">
+              <Typography variant="caption" sx={{
+                color: "text.secondary"
+              }}>
                 {subtitle}
               </Typography>
             )}

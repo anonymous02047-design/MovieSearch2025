@@ -120,11 +120,15 @@ export default function QuotesCollectionPage() {
                         </IconButton>
                       </Box>
                     </Box>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" sx={{
+                      color: "text.secondary"
+                    }}>
                       <strong>{quote.movieTitle}</strong>
                     </Typography>
                     {quote.character && (
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         — {quote.character}{quote.actor && ` (${quote.actor})`}
                       </Typography>
                     )}
@@ -133,7 +137,13 @@ export default function QuotesCollectionPage() {
               ))}
             </Box>
           ) : (
-            <Typography variant="body1" color="text.secondary" sx={{ textAlign: 'center', py: 4 }}>
+            <Typography
+              variant="body1"
+              sx={{
+                color: "text.secondary",
+                textAlign: 'center',
+                py: 4
+              }}>
               No quotes yet. Start collecting!
             </Typography>
           )}

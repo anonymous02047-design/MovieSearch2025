@@ -38,7 +38,12 @@ export default function QuoteGamePage() {
               Movie Quote Game
             </Typography>
           </Box>
-          <Typography variant="h6" color="text.secondary" sx={{ mb: 4 }}>
+          <Typography
+            variant="h6"
+            sx={{
+              color: "text.secondary",
+              mb: 4
+            }}>
             Guess the movie from famous quotes
           </Typography>
 
@@ -49,20 +54,31 @@ export default function QuoteGamePage() {
                 <Typography variant="h5" sx={{ mb: 2 }}>
                   Ready to Test Your Movie Knowledge?
                 </Typography>
-                <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: "text.secondary",
+                    mb: 4
+                  }}>
                   We'll show you famous movie quotes. Your job is to guess which movie they're from!
                 </Typography>
                 <Grid container spacing={2} sx={{ mb: 4 }}>
                   <Grid size={{ xs: 4 }}>
-                    <Typography variant="h4" color="primary.main">10</Typography>
+                    <Typography variant="h4" sx={{
+                      color: "primary.main"
+                    }}>10</Typography>
                     <Typography variant="body2">Questions</Typography>
                   </Grid>
                   <Grid size={{ xs: 4 }}>
-                    <Typography variant="h4" color="success.main">3</Typography>
+                    <Typography variant="h4" sx={{
+                      color: "success.main"
+                    }}>3</Typography>
                     <Typography variant="body2">Difficulty Levels</Typography>
                   </Grid>
                   <Grid size={{ xs: 4 }}>
-                    <Typography variant="h4" color="warning.main">60</Typography>
+                    <Typography variant="h4" sx={{
+                      color: "warning.main"
+                    }}>60</Typography>
                     <Typography variant="body2">Seconds Each</Typography>
                   </Grid>
                 </Grid>

@@ -110,10 +110,14 @@ export default function TVShowsPage() {
           {!loading && tvShows.length === 0 && (
             <Box sx={{ textAlign: 'center', py: 8 }}>
               <TvIcon sx={{ fontSize: 64, color: 'text.secondary', mb: 2, opacity: 0.5 }} />
-              <Typography variant="h5" color="text.secondary" gutterBottom>
+              <Typography variant="h5" gutterBottom sx={{
+                color: "text.secondary"
+              }}>
                 No TV shows found
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" sx={{
+                color: "text.secondary"
+              }}>
                 Try selecting a different category
               </Typography>
             </Box>

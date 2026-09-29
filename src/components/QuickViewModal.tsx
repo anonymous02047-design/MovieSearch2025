@@ -86,7 +86,13 @@ export default function QuickViewModal({ open, onClose, movieId }: QuickViewModa
 
       <DialogContent sx={{ p: 0 }}>
         {loading ? (
-          <Box display="flex" justifyContent="center" alignItems="center" minHeight={400}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              minHeight: 400
+            }}>
             <CircularProgress />
           </Box>
         ) : movie ? (
@@ -120,13 +126,22 @@ export default function QuickViewModal({ open, onClose, movieId }: QuickViewModa
                   color: 'white',
                 }}
               >
-                <Typography variant="h4" fontWeight="bold" gutterBottom>
+                <Typography variant="h4" gutterBottom sx={{
+                  fontWeight: "bold"
+                }}>
                   {movie.title}
                 </Typography>
-                <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
+                <Stack direction="row" spacing={1} useFlexGap sx={{
+                  flexWrap: "wrap"
+                }}>
                   <Chip label={formatDate(movie.release_date)} size="small" />
                   <Chip label={`${movie.runtime} min`} size="small" />
-                  <Box display="flex" alignItems="center" gap={0.5}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 0.5
+                    }}>
                     <Rating value={movie.vote_average / 2} precision={0.1} size="small" readOnly />
                     <Typography variant="body2">
                       {movie.vote_average.toFixed(1)}
@@ -137,14 +152,25 @@ export default function QuickViewModal({ open, onClose, movieId }: QuickViewModa
             </Box>
 
             {/* Content */}
-            <Box p={3}>
-              <Stack direction="row" spacing={1} mb={2} flexWrap="wrap" useFlexGap>
+            <Box sx={{
+              p: 3
+            }}>
+              <Stack
+                direction="row"
+                spacing={1}
+                useFlexGap
+                sx={{
+                  mb: 2,
+                  flexWrap: "wrap"
+                }}>
                 {movie.genres?.map((genre) => (
                   <Chip key={genre.id} label={genre.name} variant="outlined" size="small" />
                 ))}
               </Stack>
 
-              <Typography variant="body1" paragraph>
+              <Typography variant="body1" sx={{
+                marginBottom: "16px"
+              }}>
                 {movie.overview}
               </Typography>
 
@@ -153,8 +179,14 @@ export default function QuickViewModal({ open, onClose, movieId }: QuickViewModa
               {/* Quick Stats */}
               <Stack spacing={1}>
                 {movie.budget > 0 && (
-                  <Box display="flex" justifyContent="space-between">
-                    <Typography variant="body2" color="text.secondary">
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "space-between"
+                    }}>
+                    <Typography variant="body2" sx={{
+                      color: "text.secondary"
+                    }}>
                       Budget:
                     </Typography>
                     <Typography variant="body2">
@@ -163,8 +195,14 @@ export default function QuickViewModal({ open, onClose, movieId }: QuickViewModa
                   </Box>
                 )}
                 {movie.revenue > 0 && (
-                  <Box display="flex" justifyContent="space-between">
-                    <Typography variant="body2" color="text.secondary">
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "space-between"
+                    }}>
+                    <Typography variant="body2" sx={{
+                      color: "text.secondary"
+                    }}>
                       Revenue:
                     </Typography>
                     <Typography variant="body2">
@@ -172,8 +210,14 @@ export default function QuickViewModal({ open, onClose, movieId }: QuickViewModa
                     </Typography>
                   </Box>
                 )}
-                <Box display="flex" justifyContent="space-between">
-                  <Typography variant="body2" color="text.secondary">
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-between"
+                  }}>
+                  <Typography variant="body2" sx={{
+                    color: "text.secondary"
+                  }}>
                     Status:
                   </Typography>
                   <Typography variant="body2">{movie.status}</Typography>
@@ -181,7 +225,9 @@ export default function QuickViewModal({ open, onClose, movieId }: QuickViewModa
               </Stack>
 
               {/* Action Buttons */}
-              <Stack direction="row" spacing={2} mt={3}>
+              <Stack direction="row" spacing={2} sx={{
+                mt: 3
+              }}>
                 <Button
                   variant="contained"
                   startIcon={<PlayIcon />}

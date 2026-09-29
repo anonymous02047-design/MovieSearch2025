@@ -20,7 +20,7 @@ import SmartToyIcon from '@mui/icons-material/SmartToy';
 import CloseIcon from '@mui/icons-material/Close';
 import SendIcon from '@mui/icons-material/Send';
 import PersonIcon from '@mui/icons-material/Person';
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutlineOutlined';
 
 interface Message {
   id: string;
@@ -138,11 +138,13 @@ export default function AIChatAssistant() {
         anchor="right"
         open={open}
         onClose={() => setOpen(false)}
-        PaperProps={{
-          sx: {
-            width: { xs: '100%', sm: 400 },
-            maxWidth: '100%',
-          },
+        slotProps={{
+          paper: {
+            sx: {
+              width: { xs: '100%', sm: 400 },
+              maxWidth: '100%',
+            },
+          }
         }}
       >
         <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
@@ -200,12 +202,16 @@ export default function AIChatAssistant() {
                 <Typography variant="h6" gutterBottom>
                   Hello! I'm your AI Movie Assistant
                 </Typography>
-                <Typography variant="body2" color="text.secondary" gutterBottom>
+                <Typography variant="body2" gutterBottom sx={{
+                  color: "text.secondary"
+                }}>
                   Ask me anything about movies, actors, or what to watch!
                 </Typography>
 
                 <Stack spacing={1} sx={{ mt: 3 }}>
-                  <Typography variant="caption" color="text.secondary">
+                  <Typography variant="caption" sx={{
+                    color: "text.secondary"
+                  }}>
                     Try these questions:
                   </Typography>
                   {SUGGESTED_QUESTIONS.map((question, index) => (
@@ -257,7 +263,13 @@ export default function AIChatAssistant() {
                   <Typography variant="body2" sx={{ whiteSpace: 'pre-wrap' }}>
                     {message.content}
                   </Typography>
-                  <Typography variant="caption" color="text.secondary" sx={{ mt: 0.5, display: 'block' }}>
+                  <Typography
+                    variant="caption"
+                    sx={{
+                      color: "text.secondary",
+                      mt: 0.5,
+                      display: 'block'
+                    }}>
                     {message.timestamp.toLocaleTimeString()}
                   </Typography>
                 </Paper>

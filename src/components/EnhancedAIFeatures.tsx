@@ -191,7 +191,12 @@ export default function EnhancedAIFeatures() {
           <AIIcon sx={{ fontSize: 40, mr: 1, verticalAlign: 'middle' }} />
           Enhanced AI Features
         </Typography>
-        <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
+        <Typography
+          variant="body1"
+          sx={{
+            color: "text.secondary",
+            mb: 3
+          }}>
           14 Advanced AI-Powered Features with Token Optimization & Rate Limiting
         </Typography>
 
@@ -199,7 +204,9 @@ export default function EnhancedAIFeatures() {
         {rateLimitStatus && (
           <Card sx={{ maxWidth: 600, mx: 'auto', mb: 3 }}>
             <CardContent>
-              <Stack direction="row" spacing={2} alignItems="center">
+              <Stack direction="row" spacing={2} sx={{
+                alignItems: "center"
+              }}>
                 <UsageIcon color="primary" />
                 <Box sx={{ flexGrow: 1 }}>
                   <Typography variant="subtitle2">API Usage Status</Typography>
@@ -208,7 +215,9 @@ export default function EnhancedAIFeatures() {
                     value={(rateLimitStatus.tokensRemaining / 50000) * 100}
                     sx={{ my: 1 }}
                   />
-                  <Typography variant="caption" color="text.secondary">
+                  <Typography variant="caption" sx={{
+                    color: "text.secondary"
+                  }}>
                     {rateLimitStatus.requestsRemaining} requests, {rateLimitStatus.tokensRemaining} tokens remaining
                   </Typography>
                 </Box>
@@ -247,7 +256,13 @@ export default function EnhancedAIFeatures() {
 
       <Grid container spacing={3}>
         {features.map((feature) => (
-          <Grid item xs={12} sm={6} md={4} key={feature.id}>
+          <Grid
+            key={feature.id}
+            size={{
+              xs: 12,
+              sm: 6,
+              md: 4
+            }}>
             <Card
               sx={{
                 height: '100%',
@@ -276,7 +291,9 @@ export default function EnhancedAIFeatures() {
                   </Box>
                   <Typography variant="h6">{feature.title}</Typography>
                 </Box>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" sx={{
+                  color: "text.secondary"
+                }}>
                   {feature.description}
                 </Typography>
               </CardContent>
@@ -301,7 +318,9 @@ export default function EnhancedAIFeatures() {
       </Grid>
 
       <Box sx={{ mt: 4, textAlign: 'center' }}>
-        <Typography variant="caption" color="text.secondary">
+        <Typography variant="caption" sx={{
+          color: "text.secondary"
+        }}>
           All features are optimized for minimal token usage and include automatic caching
         </Typography>
       </Box>

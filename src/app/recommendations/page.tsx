@@ -142,7 +142,12 @@ function RecommendationsPageContent() {
         }}>
           🎬 Personalized Recommendations
         </Typography>
-        <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>
+        <Typography
+          variant="h6"
+          sx={{
+            color: "text.secondary",
+            mb: 3
+          }}>
           Discover your next favorite movie based on your preferences
         </Typography>
       </Box>
@@ -157,7 +162,11 @@ function RecommendationsPageContent() {
         </Box>
 
         <Grid container spacing={3}>
-          <Grid item xs={12} md={4}>
+          <Grid
+            size={{
+              xs: 12,
+              md: 4
+            }}>
             <FormControl fullWidth>
               <InputLabel sx={{ color: 'white' }}>Genres</InputLabel>
               <Select
@@ -194,7 +203,11 @@ function RecommendationsPageContent() {
             </FormControl>
           </Grid>
 
-          <Grid item xs={12} md={4}>
+          <Grid
+            size={{
+              xs: 12,
+              md: 4
+            }}>
             <Typography gutterBottom sx={{ color: 'white' }}>
               Release Year: {selectedYear}
             </Typography>
@@ -208,7 +221,11 @@ function RecommendationsPageContent() {
             />
           </Grid>
 
-          <Grid item xs={12} md={4}>
+          <Grid
+            size={{
+              xs: 12,
+              md: 4
+            }}>
             <Typography gutterBottom sx={{ color: 'white' }}>
               Minimum Rating: {minRating}
             </Typography>
@@ -273,10 +290,17 @@ function RecommendationsPageContent() {
 
           {recommendations.length === 0 ? (
             <Box sx={{ textAlign: 'center', py: 8 }}>
-              <Typography variant="h6" color="text.secondary" gutterBottom>
+              <Typography variant="h6" gutterBottom sx={{
+                color: "text.secondary"
+              }}>
                 No recommendations found with your current filters
               </Typography>
-              <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
+              <Typography
+                variant="body2"
+                sx={{
+                  color: "text.secondary",
+                  mb: 3
+                }}>
                 Try adjusting your preferences or clearing some filters
               </Typography>
               <Button
@@ -300,7 +324,7 @@ function RecommendationsPageContent() {
         </>
       )}
         </Container>
-      </>
+    </>
   );
 }
 

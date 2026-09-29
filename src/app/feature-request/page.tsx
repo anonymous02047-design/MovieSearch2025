@@ -194,7 +194,12 @@ export default function FeatureRequestPage() {
           <Typography variant="h4" gutterBottom>
             Feature Request Submitted!
           </Typography>
-          <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
+          <Typography
+            variant="body1"
+            sx={{
+              color: "text.secondary",
+              mb: 4
+            }}>
             Thank you for your suggestion. We'll review it and get back to you soon.
           </Typography>
           <Button
@@ -227,20 +232,31 @@ export default function FeatureRequestPage() {
           <Typography variant="h3" component="h1" gutterBottom className="fade-in">
             Feature Request
           </Typography>
-          <Typography variant="h6" color="text.secondary" className="fade-in stagger-1">
+          <Typography variant="h6" className="fade-in stagger-1" sx={{
+            color: "text.secondary"
+          }}>
             Help us improve MovieSearch by sharing your ideas and suggestions
           </Typography>
         </Box>
 
         <Grid container spacing={4}>
           {/* Feature Request Form */}
-          <Grid item xs={12} md={6}>
+          <Grid
+            size={{
+              xs: 12,
+              md: 6
+            }}>
             <Card className="fade-in stagger-2">
               <CardContent>
                 <Typography variant="h5" gutterBottom>
                   Submit a Feature Request
                 </Typography>
-                <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    color: "text.secondary",
+                    mb: 3
+                  }}>
                   Have an idea for a new feature? We'd love to hear from you!
                 </Typography>
 
@@ -325,13 +341,22 @@ export default function FeatureRequestPage() {
           </Grid>
 
           {/* Existing Feature Requests */}
-          <Grid item xs={12} md={6}>
+          <Grid
+            size={{
+              xs: 12,
+              md: 6
+            }}>
             <Card className="fade-in stagger-3">
               <CardContent>
                 <Typography variant="h5" gutterBottom>
                   Recent Feature Requests
                 </Typography>
-                <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    color: "text.secondary",
+                    mb: 3
+                  }}>
                   See what features other users have requested
                 </Typography>
 
@@ -363,7 +388,12 @@ export default function FeatureRequestPage() {
                           }
                           secondary={
                             <Box>
-                              <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+                              <Typography
+                                variant="body2"
+                                sx={{
+                                  color: "text.secondary",
+                                  mb: 1
+                                }}>
                                 {request.description}
                               </Typography>
                               <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
@@ -373,7 +403,9 @@ export default function FeatureRequestPage() {
                                     {request.votes} votes
                                   </Typography>
                                 </Box>
-                                <Typography variant="caption" color="text.secondary">
+                                <Typography variant="caption" sx={{
+                                  color: "text.secondary"
+                                }}>
                                   by {request.submittedBy}
                                 </Typography>
                               </Box>

@@ -110,7 +110,12 @@ export default function EnhancedShareDialog({
     <>
       <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
         <DialogTitle>
-          <Box display="flex" justifyContent="space-between" alignItems="center">
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center"
+            }}>
             <Typography variant="h6">Share "{title}"</Typography>
             <IconButton onClick={onClose} size="small">
               <CloseIcon />
@@ -122,10 +127,14 @@ export default function EnhancedShareDialog({
           <Stack spacing={3}>
             {/* Social Media Buttons */}
             <Box>
-              <Typography variant="subtitle2" gutterBottom color="text.secondary">
+              <Typography variant="subtitle2" gutterBottom sx={{
+                color: "text.secondary"
+              }}>
                 Share on Social Media
               </Typography>
-              <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
+              <Stack direction="row" spacing={1} useFlexGap sx={{
+                flexWrap: "wrap"
+              }}>
                 {shareButtons.map((button) => (
                   <Button
                     key={button.platform}
@@ -152,7 +161,9 @@ export default function EnhancedShareDialog({
 
             {/* Copy Link */}
             <Box>
-              <Typography variant="subtitle2" gutterBottom color="text.secondary">
+              <Typography variant="subtitle2" gutterBottom sx={{
+                color: "text.secondary"
+              }}>
                 Or Copy Link
               </Typography>
               <Stack direction="row" spacing={1}>
@@ -160,10 +171,12 @@ export default function EnhancedShareDialog({
                   fullWidth
                   size="small"
                   value={shareUrl}
-                  InputProps={{
-                    readOnly: true,
-                  }}
                   onClick={(e) => (e.target as HTMLInputElement).select()}
+                  slotProps={{
+                    input: {
+                      readOnly: true,
+                    }
+                  }}
                 />
                 <Button
                   variant="contained"

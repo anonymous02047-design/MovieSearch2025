@@ -159,7 +159,9 @@ export default function MovieGoalsPage() {
                             value={(g.watchedCount / g.goalCount) * 100} 
                             sx={{ height: 8, borderRadius: 4, mb: 1 }} 
                           />
-                          <Typography variant="body2" color="text.secondary">
+                          <Typography variant="body2" sx={{
+                            color: "text.secondary"
+                          }}>
                             {g.watchedCount} / {g.goalCount} movies
                           </Typography>
                         </Box>

@@ -197,7 +197,12 @@ export default function ContactPage() {
         }}>
           📞 Contact Us
         </Typography>
-        <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>
+        <Typography
+          variant="h6"
+          sx={{
+            color: "text.secondary",
+            mb: 3
+          }}>
           Get in touch with our team - we&apos;re here to help!
         </Typography>
       </Box>
@@ -418,9 +423,6 @@ export default function ContactPage() {
                     value={formData.inquiryType}
                     onChange={handleInputChange}
                     select
-                    SelectProps={{
-                      native: true,
-                    }}
                     sx={{
                       '& .MuiOutlinedInput-root': {
                         color: 'white',
@@ -429,6 +431,11 @@ export default function ContactPage() {
                         '&.Mui-focused fieldset': { borderColor: 'primary.main' },
                       },
                       '& .MuiInputLabel-root': { color: 'rgba(255, 255, 255, 0.7)' },
+                    }}
+                    slotProps={{
+                      select: {
+                        native: true,
+                      }
                     }}
                   >
                     <option value="general">General Inquiry</option>
@@ -535,10 +542,12 @@ export default function ContactPage() {
         onClose={() => setMapDialogOpen(false)}
         maxWidth="md"
         fullWidth
-        PaperProps={{
-          sx: {
-            background: 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
+        slotProps={{
+          paper: {
+            sx: {
+              background: 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+            }
           }
         }}
       >

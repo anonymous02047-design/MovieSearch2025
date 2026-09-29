@@ -66,8 +66,7 @@ export default function FloatingQuickActions({
         <SpeedDialAction
           key={action.name}
           icon={action.icon}
-          tooltipTitle={action.name}
-          tooltipOpen
+          slotProps={{ tooltip: { title: action.name, open: true } }}
           onClick={() => {
             action.onClick?.();
             setOpen(false);

@@ -90,7 +90,9 @@ export default function ProtectedRoute({
             You need to be logged in to use this feature. Sign up for a free account or sign in to continue.
           </Alert>
           
-          <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent="center">
+          <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{
+            justifyContent: "center"
+          }}>
             <Button
               variant="contained"
               size="large"

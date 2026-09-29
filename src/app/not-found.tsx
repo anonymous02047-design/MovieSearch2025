@@ -33,11 +33,22 @@ export default function NotFound() {
           404
         </Typography>
         
-        <Typography variant="h4" gutterBottom fontWeight={600} sx={{ mb: 2 }}>
+        <Typography
+          variant="h4"
+          gutterBottom
+          sx={{
+            fontWeight: 600,
+            mb: 2
+          }}>
           Page Not Found
         </Typography>
         
-        <Typography variant="h6" color="text.secondary" sx={{ mb: 4 }}>
+        <Typography
+          variant="h6"
+          sx={{
+            color: "text.secondary",
+            mb: 4
+          }}>
           The page you're looking for doesn't exist or has been moved.
         </Typography>
         

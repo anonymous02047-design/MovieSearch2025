@@ -82,7 +82,14 @@ export default function BulkActions({
             mb: 2,
           }}
         >
-          <Stack direction="row" spacing={2} alignItems="center" flexWrap="wrap" useFlexGap>
+          <Stack
+            direction="row"
+            spacing={2}
+            useFlexGap
+            sx={{
+              alignItems: "center",
+              flexWrap: "wrap"
+            }}>
             <Checkbox
               checked={isAllSelected}
               indeterminate={isSomeSelected}
@@ -95,7 +102,9 @@ export default function BulkActions({
               sx={{ bgcolor: 'white', color: 'primary.main' }}
             />
 
-            <Box flex={1} />
+            <Box sx={{
+              flex: 1
+            }} />
 
             {onAddToFavorites && (
               <Button

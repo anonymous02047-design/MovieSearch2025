@@ -78,3 +78,6 @@ secrets/
 # Data files (optional - uncomment if you don't want to commit data)
 # data/sessions/*.json
 # !data/sessions/sessions_sample.json
+
+# clerk configuration (can include secrets)
+/.clerk/

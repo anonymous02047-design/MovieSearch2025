@@ -146,7 +146,13 @@ export default function WelcomePage() {
 
         <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
           <Box sx={{ textAlign: 'center', mb: 6 }}>
-            <Stack direction="row" spacing={2} justifyContent="center" sx={{ mb: 3 }}>
+            <Stack
+              direction="row"
+              spacing={2}
+              sx={{
+                justifyContent: "center",
+                mb: 3
+              }}>
               <MovieIcon sx={{ fontSize: 64 }} />
               <StarIcon sx={{ fontSize: 64 }} />
             </Stack>
@@ -180,9 +186,10 @@ export default function WelcomePage() {
             <Stack
               direction={{ xs: 'column', sm: 'row' }}
               spacing={2}
-              justifyContent="center"
-              sx={{ mb: 6 }}
-            >
+              sx={{
+                justifyContent: "center",
+                mb: 6
+              }}>
               <Button
                 variant="contained"
                 size="large"
@@ -256,7 +263,13 @@ export default function WelcomePage() {
           <Typography variant="h3" component="h2" gutterBottom sx={{ fontWeight: 'bold' }}>
             Why Choose MovieSearch 2025?
           </Typography>
-          <Typography variant="h6" color="text.secondary" sx={{ maxWidth: 600, mx: 'auto' }}>
+          <Typography
+            variant="h6"
+            sx={{
+              color: "text.secondary",
+              maxWidth: 600,
+              mx: 'auto'
+            }}>
             Experience the future of movie discovery with our cutting-edge platform
           </Typography>
         </Box>
@@ -291,9 +304,10 @@ export default function WelcomePage() {
                   </Typography>
                   <Typography
                     variant="body1"
-                    color="text.secondary"
-                    sx={{ lineHeight: 1.6 }}
-                  >
+                    sx={{
+                      color: "text.secondary",
+                      lineHeight: 1.6
+                    }}>
                     {feature.description}
                   </Typography>
                 </CardContent>
@@ -331,9 +345,10 @@ export default function WelcomePage() {
             <Stack
               direction={{ xs: 'column', sm: 'row' }}
               spacing={2}
-              justifyContent="center"
-              sx={{ mb: 3 }}
-            >
+              sx={{
+                justifyContent: "center",
+                mb: 3
+              }}>
               <Button
                 variant="contained"
                 size="large"
@@ -393,6 +408,6 @@ export default function WelcomePage() {
       </Box>
 
         </Box>
-      </RouteGuard>
+    </RouteGuard>
   );
 }

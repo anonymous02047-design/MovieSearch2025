@@ -47,13 +47,12 @@ export default function PageHeader({ icon, title, subtitle, actions, gradient = 
           <Typography
             variant="h3"
             component="h1"
-            fontWeight={700}
             gutterBottom
             sx={{
+              fontWeight: 700,
               color: gradient ? 'white' : 'text.primary',
-              fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
-            }}
-          >
+              fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' }
+            }}>
             {title}
           </Typography>
           

@@ -67,7 +67,13 @@ export default function DataProtectionPage() {
             }}>
               🛡️ Data Protection
             </Typography>
-            <Typography variant="h6" color="text.secondary" sx={{ maxWidth: 800, mx: 'auto' }}>
+            <Typography
+              variant="h6"
+              sx={{
+                color: "text.secondary",
+                maxWidth: 800,
+                mx: 'auto'
+              }}>
               Your privacy and data security are our top priorities. Learn about our comprehensive data protection measures.
             </Typography>
           </Box>
@@ -77,7 +83,9 @@ export default function DataProtectionPage() {
             <Typography variant="h4" component="h2" gutterBottom>
               Our Data Protection Commitment
             </Typography>
-            <Typography variant="body1" paragraph>
+            <Typography variant="body1" sx={{
+              marginBottom: "16px"
+            }}>
               At MovieSearch 2025, we take data protection seriously. We implement comprehensive security measures 
               to ensure your personal information is safe, secure, and handled in accordance with applicable data 
               protection laws and best practices.
@@ -122,7 +130,12 @@ export default function DataProtectionPage() {
             <Typography variant="h5" gutterBottom>
               Questions About Data Protection?
             </Typography>
-            <Typography variant="body1" color="text.secondary" paragraph>
+            <Typography
+              variant="body1"
+              sx={{
+                color: "text.secondary",
+                marginBottom: "16px"
+              }}>
               If you have any questions about our data protection practices or need to report a security concern, 
               please contact us:
             </Typography>
@@ -136,6 +149,6 @@ export default function DataProtectionPage() {
             </Box>
           </Paper>
         </Container>
-      </>
+    </>
   );
 }

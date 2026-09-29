@@ -338,12 +338,14 @@ export default function Header({ onSearch, showSearch = true }: HeaderProps) {
         }}
         open={Boolean(anchorEl)}
         onClose={handleProfileMenuClose}
-        PaperProps={{
-          sx: {
-            mt: 1,
-            minWidth: 200,
-            background: 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
+        slotProps={{
+          paper: {
+            sx: {
+              mt: 1,
+              minWidth: 200,
+              background: 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+            }
           }
         }}
       >
@@ -390,10 +392,12 @@ export default function Header({ onSearch, showSearch = true }: HeaderProps) {
         open={mobileMenuOpen}
         onClose={handleMobileMenuToggle}
         onOpen={() => setMobileMenuOpen(true)}
-        PaperProps={{
-          sx: {
-            background: 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)',
-            borderRight: '1px solid rgba(255, 255, 255, 0.1)',
+        slotProps={{
+          paper: {
+            sx: {
+              background: 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)',
+              borderRight: '1px solid rgba(255, 255, 255, 0.1)',
+            }
           }
         }}
       >
@@ -482,7 +486,9 @@ export default function Header({ onSearch, showSearch = true }: HeaderProps) {
           }}
         >
           <Box sx={{ p: 2, borderBottom: '1px solid rgba(255, 255, 255, 0.1)' }}>
-            <Typography variant="subtitle2" color="text.secondary">
+            <Typography variant="subtitle2" sx={{
+              color: "text.secondary"
+            }}>
               Recent Searches
             </Typography>
           </Box>

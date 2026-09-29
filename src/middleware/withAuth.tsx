@@ -42,15 +42,18 @@ export function withAuth<P extends object>(
     if (!isLoaded) {
       return loadingComponent || (
         <Box
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-          justifyContent="center"
-          minHeight="60vh"
-          gap={2}
-        >
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            minHeight: "60vh",
+            gap: 2
+          }}>
           <CircularProgress size={60} />
-          <Typography variant="h6" color="text.secondary">
+          <Typography variant="h6" sx={{
+            color: "text.secondary"
+          }}>
             Authenticating...
           </Typography>
         </Box>
@@ -61,19 +64,28 @@ export function withAuth<P extends object>(
     if (!isSignedIn) {
       return unauthorizedComponent || (
         <Box
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-          justifyContent="center"
-          minHeight="60vh"
-          gap={3}
-          p={3}
-        >
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            minHeight: "60vh",
+            gap: 3,
+            p: 3
+          }}>
           <LockIcon sx={{ fontSize: 80, color: 'text.secondary' }} />
-          <Typography variant="h4" fontWeight="bold">
+          <Typography variant="h4" sx={{
+            fontWeight: "bold"
+          }}>
             Authentication Required
           </Typography>
-          <Typography variant="body1" color="text.secondary" textAlign="center" maxWidth={500}>
+          <Typography
+            variant="body1"
+            sx={{
+              color: "text.secondary",
+              textAlign: "center",
+              maxWidth: 500
+            }}>
             You need to be signed in to access this page. Please sign in to continue.
           </Typography>
           <Button
@@ -90,7 +102,9 @@ export function withAuth<P extends object>(
     // Email verification check
     if (requireEmailVerification && !user?.emailAddresses[0]?.verification?.status) {
       return (
-        <Box p={3}>
+        <Box sx={{
+          p: 3
+        }}>
           <Alert severity="warning">
             <Typography variant="h6" gutterBottom>
               Email Verification Required

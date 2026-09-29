@@ -102,10 +102,18 @@ export default function CompareMoviesPage() {
             <Avatar sx={{ bgcolor: 'primary.main', width: 72, height: 72, mx: 'auto', mb: 3 }}>
               <CompareIcon fontSize="large" />
             </Avatar>
-            <Typography variant="h3" fontWeight={700} gutterBottom>
+            <Typography variant="h3" gutterBottom sx={{
+              fontWeight: 700
+            }}>
               Compare Movies
             </Typography>
-            <Typography variant="h6" color="text.secondary" sx={{ maxWidth: 600, mx: 'auto' }}>
+            <Typography
+              variant="h6"
+              sx={{
+                color: "text.secondary",
+                maxWidth: 600,
+                mx: 'auto'
+              }}>
               Select two movies to compare their ratings, box office performance, and more
             </Typography>
           </Box>
@@ -113,7 +121,11 @@ export default function CompareMoviesPage() {
           {/* Movie Selection */}
           <Paper elevation={3} sx={{ p: 4, mb: 4 }}>
             <Grid container spacing={3}>
-              <Grid item xs={12} md={6}>
+              <Grid
+                size={{
+                  xs: 12,
+                  md: 6
+                }}>
                 <Autocomplete
                   options={mockMovies}
                   getOptionLabel={(option) => `${option.title} (${option.year})`}
@@ -122,9 +134,13 @@ export default function CompareMoviesPage() {
                       {...params}
                       label="Select First Movie"
                       placeholder="Search movies..."
-                      InputProps={{
-                        ...params.InputProps,
-                        startAdornment: <SearchIcon sx={{ mr: 1, color: 'text.secondary' }} />,
+                      slotProps={{
+                        ...params.slotProps,
+
+                        input: {
+                          ...params.slotProps.input,
+                          startAdornment: <SearchIcon sx={{ mr: 1, color: 'text.secondary' }} />,
+                        }
                       }}
                     />
                   )}
@@ -133,7 +149,11 @@ export default function CompareMoviesPage() {
                   fullWidth
                 />
               </Grid>
-              <Grid item xs={12} md={6}>
+              <Grid
+                size={{
+                  xs: 12,
+                  md: 6
+                }}>
                 <Autocomplete
                   options={mockMovies}
                   getOptionLabel={(option) => `${option.title} (${option.year})`}
@@ -142,9 +162,13 @@ export default function CompareMoviesPage() {
                       {...params}
                       label="Select Second Movie"
                       placeholder="Search movies..."
-                      InputProps={{
-                        ...params.InputProps,
-                        startAdornment: <SearchIcon sx={{ mr: 1, color: 'text.secondary' }} />,
+                      slotProps={{
+                        ...params.slotProps,
+
+                        input: {
+                          ...params.slotProps.input,
+                          startAdornment: <SearchIcon sx={{ mr: 1, color: 'text.secondary' }} />,
+                        }
                       }}
                     />
                   )}
@@ -159,14 +183,25 @@ export default function CompareMoviesPage() {
           {/* Comparison Results */}
           {movie1 && movie2 ? (
             <Paper elevation={3} sx={{ p: 4 }}>
-              <Typography variant="h5" fontWeight={600} gutterBottom sx={{ mb: 3 }}>
+              <Typography
+                variant="h5"
+                gutterBottom
+                sx={{
+                  fontWeight: 600,
+                  mb: 3
+                }}>
                 Comparison Results
               </Typography>
 
               {/* Movie Cards */}
               <Grid container spacing={3} sx={{ mb: 4 }}>
                 {[movie1, movie2].map((movie, index) => (
-                  <Grid item xs={12} md={6} key={index}>
+                  <Grid
+                    key={index}
+                    size={{
+                      xs: 12,
+                      md: 6
+                    }}>
                     <Card elevation={2}>
                       <CardContent>
                         <Box sx={{ display: 'flex', gap: 2, mb: 2 }}>
@@ -183,12 +218,16 @@ export default function CompareMoviesPage() {
                             }}
                           />
                           <Box sx={{ flex: 1 }}>
-                            <Typography variant="h6" fontWeight={600} gutterBottom>
+                            <Typography variant="h6" gutterBottom sx={{
+                              fontWeight: 600
+                            }}>
                               {movie.title}
                             </Typography>
                             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
                               <Rating value={movie.rating / 2} precision={0.1} readOnly size="small" />
-                              <Typography variant="body2" color="text.secondary">
+                              <Typography variant="body2" sx={{
+                                color: "text.secondary"
+                              }}>
                                 {movie.rating}/10
                               </Typography>
                             </Box>
@@ -252,10 +291,14 @@ export default function CompareMoviesPage() {
           ) : (
             <Paper elevation={2} sx={{ p: 8, textAlign: 'center' }}>
               <CompareIcon sx={{ fontSize: 80, color: 'text.disabled', mb: 2 }} />
-              <Typography variant="h6" color="text.secondary" gutterBottom>
+              <Typography variant="h6" gutterBottom sx={{
+                color: "text.secondary"
+              }}>
                 Select Two Movies to Compare
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" sx={{
+                color: "text.secondary"
+              }}>
                 Choose movies from the dropdowns above to see a detailed comparison
               </Typography>
             </Paper>

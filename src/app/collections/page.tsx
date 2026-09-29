@@ -76,11 +76,15 @@ function CollectionsPageContent() {
           <Box sx={{ mb: 4, textAlign: 'center' }}>
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2, mb: 2 }}>
               <CollectionsIcon sx={{ fontSize: 48, color: 'primary.main' }} />
-              <Typography variant="h3" component="h1" fontWeight={700}>
+              <Typography variant="h3" component="h1" sx={{
+                fontWeight: 700
+              }}>
                 Movie Collections
               </Typography>
             </Box>
-            <Typography variant="h6" color="text.secondary">
+            <Typography variant="h6" sx={{
+              color: "text.secondary"
+            }}>
               Explore popular movie franchises and series
             </Typography>
           </Box>
@@ -92,12 +96,14 @@ function CollectionsPageContent() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               sx={{ maxWidth: 500, width: '100%' }}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <SearchIcon />
-                  </InputAdornment>
-                ),
+              slotProps={{
+                input: {
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <SearchIcon />
+                    </InputAdornment>
+                  ),
+                }
               }}
             />
           </Box>
@@ -110,7 +116,14 @@ function CollectionsPageContent() {
           ) : (
             <Grid container spacing={3}>
               {filteredCollections.map((collection) => (
-                <Grid item xs={12} sm={6} md={4} lg={3} key={collection.id}>
+                <Grid
+                  key={collection.id}
+                  size={{
+                    xs: 12,
+                    sm: 6,
+                    md: 4,
+                    lg: 3
+                  }}>
                   <CollectionCard collection={collection} />
                 </Grid>
               ))}
@@ -119,10 +132,14 @@ function CollectionsPageContent() {
 
           {filteredCollections.length === 0 && !loading && (
             <Box sx={{ textAlign: 'center', py: 8 }}>
-              <Typography variant="h5" color="text.secondary" gutterBottom>
+              <Typography variant="h5" gutterBottom sx={{
+                color: "text.secondary"
+              }}>
                 No collections found
               </Typography>
-              <Typography variant="body1" color="text.secondary">
+              <Typography variant="body1" sx={{
+                color: "text.secondary"
+              }}>
                 Try a different search term
               </Typography>
             </Box>

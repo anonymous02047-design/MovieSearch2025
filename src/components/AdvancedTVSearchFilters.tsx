@@ -238,7 +238,9 @@ export default function AdvancedTVSearchFilters({
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 3 }}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           <FilterIcon color="primary" />
-          <Typography variant="h6" fontWeight="bold">
+          <Typography variant="h6" sx={{
+            fontWeight: "bold"
+          }}>
             Advanced Filters
           </Typography>
           {activeFiltersCount > 0 && (
@@ -281,7 +283,9 @@ export default function AdvancedTVSearchFilters({
       {/* Genres */}
       <Accordion defaultExpanded>
         <AccordionSummary expandIcon={<ExpandIcon />}>
-          <Typography fontWeight="bold">Genres</Typography>
+          <Typography sx={{
+            fontWeight: "bold"
+          }}>Genres</Typography>
           {filters.genres.length > 0 && (
             <Chip
               label={filters.genres.length}
@@ -324,7 +328,9 @@ export default function AdvancedTVSearchFilters({
       {/* Networks */}
       <Accordion>
         <AccordionSummary expandIcon={<ExpandIcon />}>
-          <Typography fontWeight="bold">Networks</Typography>
+          <Typography sx={{
+            fontWeight: "bold"
+          }}>Networks</Typography>
           {filters.networks.length > 0 && (
             <Chip
               label={filters.networks.length}
@@ -367,11 +373,15 @@ export default function AdvancedTVSearchFilters({
       {/* Year Range */}
       <Accordion>
         <AccordionSummary expandIcon={<ExpandIcon />}>
-          <Typography fontWeight="bold">First Air Date</Typography>
+          <Typography sx={{
+            fontWeight: "bold"
+          }}>First Air Date</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Box sx={{ px: 1 }}>
-            <Typography variant="body2" color="text.secondary" gutterBottom>
+            <Typography variant="body2" gutterBottom sx={{
+              color: "text.secondary"
+            }}>
               {filters.yearRange[0]} - {filters.yearRange[1]}
             </Typography>
             <Slider
@@ -392,11 +402,15 @@ export default function AdvancedTVSearchFilters({
       {/* Rating Range */}
       <Accordion>
         <AccordionSummary expandIcon={<ExpandIcon />}>
-          <Typography fontWeight="bold">Rating</Typography>
+          <Typography sx={{
+            fontWeight: "bold"
+          }}>Rating</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Box sx={{ px: 1 }}>
-            <Typography variant="body2" color="text.secondary" gutterBottom>
+            <Typography variant="body2" gutterBottom sx={{
+              color: "text.secondary"
+            }}>
               {filters.ratingRange[0]} - {filters.ratingRange[1]} ⭐
             </Typography>
             <Slider
@@ -418,11 +432,15 @@ export default function AdvancedTVSearchFilters({
       {/* Number of Seasons */}
       <Accordion>
         <AccordionSummary expandIcon={<ExpandIcon />}>
-          <Typography fontWeight="bold">Number of Seasons</Typography>
+          <Typography sx={{
+            fontWeight: "bold"
+          }}>Number of Seasons</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Box sx={{ px: 1 }}>
-            <Typography variant="body2" color="text.secondary" gutterBottom>
+            <Typography variant="body2" gutterBottom sx={{
+              color: "text.secondary"
+            }}>
               {filters.minSeasons} - {filters.maxSeasons === 50 ? '50+' : filters.maxSeasons} Seasons
             </Typography>
             <Slider
@@ -443,7 +461,9 @@ export default function AdvancedTVSearchFilters({
       {/* Status */}
       <Accordion>
         <AccordionSummary expandIcon={<ExpandIcon />}>
-          <Typography fontWeight="bold">Status</Typography>
+          <Typography sx={{
+            fontWeight: "bold"
+          }}>Status</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <FormControl fullWidth>
@@ -466,7 +486,9 @@ export default function AdvancedTVSearchFilters({
       {/* Type */}
       <Accordion>
         <AccordionSummary expandIcon={<ExpandIcon />}>
-          <Typography fontWeight="bold">Type</Typography>
+          <Typography sx={{
+            fontWeight: "bold"
+          }}>Type</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <FormControl fullWidth>
@@ -489,7 +511,9 @@ export default function AdvancedTVSearchFilters({
       {/* Language */}
       <Accordion>
         <AccordionSummary expandIcon={<ExpandIcon />}>
-          <Typography fontWeight="bold">Language</Typography>
+          <Typography sx={{
+            fontWeight: "bold"
+          }}>Language</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <FormControl fullWidth>

@@ -86,7 +86,12 @@ export default function MoodBoardPage() {
                 My Movie Mood Board
               </Typography>
             </Box>
-            <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>
+            <Typography
+              variant="h6"
+              sx={{
+                color: "text.secondary",
+                mb: 3
+              }}>
               Create a visual collection of movies that match your moods
             </Typography>
 
@@ -98,12 +103,14 @@ export default function MoodBoardPage() {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 size="small"
                 sx={{ flexGrow: 1, minWidth: 250 }}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <SearchIcon />
-                    </InputAdornment>
-                  ),
+                slotProps={{
+                  input: {
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <SearchIcon />
+                      </InputAdornment>
+                    ),
+                  }
                 }}
               />
               <Button
@@ -129,10 +136,17 @@ export default function MoodBoardPage() {
             <Grid size={{ xs: 6, sm: 3 }}>
               <Card>
                 <CardContent>
-                  <Typography variant="h4" color="primary.main" sx={{ fontWeight: 'bold' }}>
+                  <Typography
+                    variant="h4"
+                    sx={{
+                      color: "primary.main",
+                      fontWeight: 'bold'
+                    }}>
                     {boardItems.length}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" sx={{
+                    color: "text.secondary"
+                  }}>
                     Total Movies
                   </Typography>
                 </CardContent>
@@ -141,10 +155,17 @@ export default function MoodBoardPage() {
             <Grid size={{ xs: 6, sm: 3 }}>
               <Card>
                 <CardContent>
-                  <Typography variant="h4" color="success.main" sx={{ fontWeight: 'bold' }}>
+                  <Typography
+                    variant="h4"
+                    sx={{
+                      color: "success.main",
+                      fontWeight: 'bold'
+                    }}>
                     {moods.length}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" sx={{
+                    color: "text.secondary"
+                  }}>
                     Mood Categories
                   </Typography>
                 </CardContent>
@@ -178,7 +199,12 @@ export default function MoodBoardPage() {
                       <Chip label={item.mood} size="small" color="primary" />
                     </Box>
                     {item.note && (
-                      <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          color: "text.secondary",
+                          mt: 1
+                        }}>
                         {item.note}
                       </Typography>
                     )}

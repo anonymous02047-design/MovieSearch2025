@@ -73,11 +73,15 @@ function SettingsPageContent() {
           <Box sx={{ mb: 4, textAlign: 'center' }}>
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2, mb: 2 }}>
               <SettingsIcon sx={{ fontSize: 48, color: 'primary.main' }} />
-              <Typography variant="h3" component="h1" fontWeight={700}>
+              <Typography variant="h3" component="h1" sx={{
+                fontWeight: 700
+              }}>
                 Settings
               </Typography>
             </Box>
-            <Typography variant="h6" color="text.secondary">
+            <Typography variant="h6" sx={{
+              color: "text.secondary"
+            }}>
               Customize your experience
             </Typography>
           </Box>
@@ -86,7 +90,9 @@ function SettingsPageContent() {
           <Paper elevation={3} sx={{ p: 3, mb: 3 }}>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
               <NotificationsIcon color="primary" />
-              <Typography variant="h6" fontWeight={600}>
+              <Typography variant="h6" sx={{
+                fontWeight: 600
+              }}>
                 Notifications
               </Typography>
             </Box>
@@ -100,7 +106,13 @@ function SettingsPageContent() {
               }
               label="Enable notifications"
             />
-            <Typography variant="body2" color="text.secondary" sx={{ ml: 4, mb: 2 }}>
+            <Typography
+              variant="body2"
+              sx={{
+                color: "text.secondary",
+                ml: 4,
+                mb: 2
+              }}>
               Get notified about new releases and recommendations
             </Typography>
 
@@ -114,7 +126,12 @@ function SettingsPageContent() {
               }
               label="Email notifications"
             />
-            <Typography variant="body2" color="text.secondary" sx={{ ml: 4 }}>
+            <Typography
+              variant="body2"
+              sx={{
+                color: "text.secondary",
+                ml: 4
+              }}>
               Receive notifications via email
             </Typography>
           </Paper>
@@ -123,7 +140,9 @@ function SettingsPageContent() {
           <Paper elevation={3} sx={{ p: 3, mb: 3 }}>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
               <LanguageIcon color="primary" />
-              <Typography variant="h6" fontWeight={600}>
+              <Typography variant="h6" sx={{
+                fontWeight: 600
+              }}>
                 Language & Region
               </Typography>
             </Box>
@@ -170,7 +189,9 @@ function SettingsPageContent() {
           <Paper elevation={3} sx={{ p: 3, mb: 3 }}>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
               <PaletteIcon color="primary" />
-              <Typography variant="h6" fontWeight={600}>
+              <Typography variant="h6" sx={{
+                fontWeight: 600
+              }}>
                 Playback
               </Typography>
             </Box>
@@ -184,7 +205,12 @@ function SettingsPageContent() {
               }
               label="Autoplay trailers"
             />
-            <Typography variant="body2" color="text.secondary" sx={{ ml: 4 }}>
+            <Typography
+              variant="body2"
+              sx={{
+                color: "text.secondary",
+                ml: 4
+              }}>
               Automatically play trailers when opening details
             </Typography>
           </Paper>
@@ -193,7 +219,9 @@ function SettingsPageContent() {
           <Paper elevation={3} sx={{ p: 3, mb: 3 }}>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
               <SecurityIcon color="primary" />
-              <Typography variant="h6" fontWeight={600}>
+              <Typography variant="h6" sx={{
+                fontWeight: 600
+              }}>
                 Privacy & Security
               </Typography>
             </Box>
@@ -202,7 +230,9 @@ function SettingsPageContent() {
               <Typography variant="body2" gutterBottom>
                 Data Storage
               </Typography>
-              <Typography variant="caption" color="text.secondary">
+              <Typography variant="caption" sx={{
+                color: "text.secondary"
+              }}>
                 Your watchlist, favorites, and viewing history are stored locally on your device.
               </Typography>
             </Box>
@@ -244,7 +274,9 @@ function SettingsPageContent() {
               border: `1px solid ${alpha(theme.palette.info.main, 0.2)}`,
             }}
           >
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               💡 <strong>Tip:</strong> Changes to language and region will take effect immediately. 
               Some settings require a page refresh to apply.
             </Typography>

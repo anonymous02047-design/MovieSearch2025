@@ -484,7 +484,9 @@ export default function EnhancedAdminAnalyticsPage() {
           </Typography>
           
           {lastRefresh && (
-            <Typography variant="caption" color="text.secondary">
+            <Typography variant="caption" sx={{
+              color: "text.secondary"
+            }}>
               Last updated: {lastRefresh.toLocaleTimeString()}
             </Typography>
           )}
@@ -606,7 +608,13 @@ export default function EnhancedAdminAnalyticsPage() {
         {loading && (
           <Box sx={{ mb: 3 }}>
             <LinearProgress />
-            <Typography variant="body2" color="text.secondary" sx={{ mt: 1, textAlign: 'center' }}>
+            <Typography
+              variant="body2"
+              sx={{
+                color: "text.secondary",
+                mt: 1,
+                textAlign: 'center'
+              }}>
               Loading analytics data...
             </Typography>
           </Box>
@@ -626,7 +634,12 @@ export default function EnhancedAdminAnalyticsPage() {
         <TabPanel value={tabValue} index={0}>
           {summary && (
             <Grid container spacing={3} sx={{ mb: 4 }}>
-              <Grid item xs={12} sm={6} md={3}>
+              <Grid
+                size={{
+                  xs: 12,
+                  sm: 6,
+                  md: 3
+                }}>
                 <Card className="card-hover scale-in">
                   <CardContent>
                     <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
@@ -644,7 +657,12 @@ export default function EnhancedAdminAnalyticsPage() {
                 </Card>
               </Grid>
 
-              <Grid item xs={12} sm={6} md={3}>
+              <Grid
+                size={{
+                  xs: 12,
+                  sm: 6,
+                  md: 3
+                }}>
                 <Card className="card-hover scale-in stagger-1">
                   <CardContent>
                     <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
@@ -662,7 +680,12 @@ export default function EnhancedAdminAnalyticsPage() {
                 </Card>
               </Grid>
 
-              <Grid item xs={12} sm={6} md={3}>
+              <Grid
+                size={{
+                  xs: 12,
+                  sm: 6,
+                  md: 3
+                }}>
                 <Card className="card-hover scale-in stagger-2">
                   <CardContent>
                     <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
@@ -683,7 +706,12 @@ export default function EnhancedAdminAnalyticsPage() {
                 </Card>
               </Grid>
 
-              <Grid item xs={12} sm={6} md={3}>
+              <Grid
+                size={{
+                  xs: 12,
+                  sm: 6,
+                  md: 3
+                }}>
                 <Card className="card-hover scale-in stagger-3">
                   <CardContent>
                     <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
@@ -714,27 +742,46 @@ export default function EnhancedAdminAnalyticsPage() {
               Filters
             </Typography>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6} md={3}>
+              <Grid
+                size={{
+                  xs: 12,
+                  sm: 6,
+                  md: 3
+                }}>
                 <TextField
                   label="Date From"
                   type="date"
                   value={filters.dateFrom}
                   onChange={(e) => handleFilterChange('dateFrom', e.target.value)}
-                  InputLabelProps={{ shrink: true }}
                   fullWidth
+                  slotProps={{
+                    inputLabel: { shrink: true }
+                  }}
                 />
               </Grid>
-              <Grid item xs={12} sm={6} md={3}>
+              <Grid
+                size={{
+                  xs: 12,
+                  sm: 6,
+                  md: 3
+                }}>
                 <TextField
                   label="Date To"
                   type="date"
                   value={filters.dateTo}
                   onChange={(e) => handleFilterChange('dateTo', e.target.value)}
-                  InputLabelProps={{ shrink: true }}
                   fullWidth
+                  slotProps={{
+                    inputLabel: { shrink: true }
+                  }}
                 />
               </Grid>
-              <Grid item xs={12} sm={6} md={3}>
+              <Grid
+                size={{
+                  xs: 12,
+                  sm: 6,
+                  md: 3
+                }}>
                 <TextField
                   label="Country"
                   value={filters.country}
@@ -742,7 +789,12 @@ export default function EnhancedAdminAnalyticsPage() {
                   fullWidth
                 />
               </Grid>
-              <Grid item xs={12} sm={6} md={3}>
+              <Grid
+                size={{
+                  xs: 12,
+                  sm: 6,
+                  md: 3
+                }}>
                 <FormControl fullWidth>
                   <InputLabel>Device Type</InputLabel>
                   <Select
@@ -757,7 +809,12 @@ export default function EnhancedAdminAnalyticsPage() {
                   </Select>
                 </FormControl>
               </Grid>
-              <Grid item xs={12} sm={6} md={3}>
+              <Grid
+                size={{
+                  xs: 12,
+                  sm: 6,
+                  md: 3
+                }}>
                 <TextField
                   label="Browser"
                   value={filters.browser}
@@ -765,7 +822,12 @@ export default function EnhancedAdminAnalyticsPage() {
                   fullWidth
                 />
               </Grid>
-              <Grid item xs={12} sm={6} md={3}>
+              <Grid
+                size={{
+                  xs: 12,
+                  sm: 6,
+                  md: 3
+                }}>
                 <TextField
                   label="User ID"
                   value={filters.userId}
@@ -773,7 +835,12 @@ export default function EnhancedAdminAnalyticsPage() {
                   fullWidth
                 />
               </Grid>
-              <Grid item xs={12} sm={6} md={3}>
+              <Grid
+                size={{
+                  xs: 12,
+                  sm: 6,
+                  md: 3
+                }}>
                 <TextField
                   label="IP Address"
                   value={filters.ipAddress}
@@ -781,7 +848,12 @@ export default function EnhancedAdminAnalyticsPage() {
                   fullWidth
                 />
               </Grid>
-              <Grid item xs={12} sm={6} md={3}>
+              <Grid
+                size={{
+                  xs: 12,
+                  sm: 6,
+                  md: 3
+                }}>
                 <Box sx={{ display: 'flex', gap: 1, alignItems: 'center', height: '100%' }}>
                   <Button variant="contained" onClick={handleApplyFilters} className="button-glow">
                     Apply
@@ -819,10 +891,14 @@ export default function EnhancedAdminAnalyticsPage() {
                       <TableRow>
                         <TableCell colSpan={10} align="center">
                           <Box sx={{ py: 4 }}>
-                            <Typography variant="h6" color="text.secondary">
+                            <Typography variant="h6" sx={{
+                              color: "text.secondary"
+                            }}>
                               No sessions found
                             </Typography>
-                            <Typography variant="body2" color="text.secondary">
+                            <Typography variant="body2" sx={{
+                              color: "text.secondary"
+                            }}>
                               Try adjusting your filters or check back later
                             </Typography>
                           </Box>
@@ -949,7 +1025,11 @@ export default function EnhancedAdminAnalyticsPage() {
         <TabPanel value={tabValue} index={2}>
           {summary && (
             <Grid container spacing={3}>
-              <Grid item xs={12} md={6}>
+              <Grid
+                size={{
+                  xs: 12,
+                  md: 6
+                }}>
                 <Paper sx={{ p: 3 }} className="fade-in">
                   <Typography variant="h6" gutterBottom>
                     Country Distribution
@@ -966,7 +1046,11 @@ export default function EnhancedAdminAnalyticsPage() {
                   </List>
                 </Paper>
               </Grid>
-              <Grid item xs={12} md={6}>
+              <Grid
+                size={{
+                  xs: 12,
+                  md: 6
+                }}>
                 <Paper sx={{ p: 3 }} className="fade-in stagger-1">
                   <Typography variant="h6" gutterBottom>
                     Top Referrers
@@ -991,7 +1075,11 @@ export default function EnhancedAdminAnalyticsPage() {
         <TabPanel value={tabValue} index={3}>
           {summary && (
             <Grid container spacing={3}>
-              <Grid item xs={12} md={6}>
+              <Grid
+                size={{
+                  xs: 12,
+                  md: 6
+                }}>
                 <Paper sx={{ p: 3 }} className="fade-in">
                   <Typography variant="h6" gutterBottom>
                     Device Types
@@ -1008,7 +1096,11 @@ export default function EnhancedAdminAnalyticsPage() {
                   </List>
                 </Paper>
               </Grid>
-              <Grid item xs={12} md={6}>
+              <Grid
+                size={{
+                  xs: 12,
+                  md: 6
+                }}>
                 <Paper sx={{ p: 3 }} className="fade-in stagger-1">
                   <Typography variant="h6" gutterBottom>
                     Browser Distribution
@@ -1041,7 +1133,11 @@ export default function EnhancedAdminAnalyticsPage() {
             {selectedSession && (
               <Box>
                 <Grid container spacing={2}>
-                  <Grid item xs={12} sm={6}>
+                  <Grid
+                    size={{
+                      xs: 12,
+                      sm: 6
+                    }}>
                     <Typography variant="subtitle2" color="textSecondary">
                       Session ID
                     </Typography>
@@ -1049,7 +1145,11 @@ export default function EnhancedAdminAnalyticsPage() {
                       {selectedSession.sessionId}
                     </Typography>
                   </Grid>
-                  <Grid item xs={12} sm={6}>
+                  <Grid
+                    size={{
+                      xs: 12,
+                      sm: 6
+                    }}>
                     <Typography variant="subtitle2" color="textSecondary">
                       User ID
                     </Typography>
@@ -1057,7 +1157,11 @@ export default function EnhancedAdminAnalyticsPage() {
                       {selectedSession.userId || 'Guest'}
                     </Typography>
                   </Grid>
-                  <Grid item xs={12} sm={6}>
+                  <Grid
+                    size={{
+                      xs: 12,
+                      sm: 6
+                    }}>
                     <Typography variant="subtitle2" color="textSecondary">
                       Timestamp
                     </Typography>
@@ -1065,7 +1169,11 @@ export default function EnhancedAdminAnalyticsPage() {
                       {formatTimestamp(selectedSession.timestamp)}
                     </Typography>
                   </Grid>
-                  <Grid item xs={12} sm={6}>
+                  <Grid
+                    size={{
+                      xs: 12,
+                      sm: 6
+                    }}>
                     <Typography variant="subtitle2" color="textSecondary">
                       Duration
                     </Typography>
@@ -1073,7 +1181,11 @@ export default function EnhancedAdminAnalyticsPage() {
                       {formatDuration(selectedSession.sessionDuration)}
                     </Typography>
                   </Grid>
-                  <Grid item xs={12} sm={6}>
+                  <Grid
+                    size={{
+                      xs: 12,
+                      sm: 6
+                    }}>
                     <Typography variant="subtitle2" color="textSecondary">
                       IP Address
                     </Typography>
@@ -1081,7 +1193,11 @@ export default function EnhancedAdminAnalyticsPage() {
                       {selectedSession.ipAddress}
                     </Typography>
                   </Grid>
-                  <Grid item xs={12} sm={6}>
+                  <Grid
+                    size={{
+                      xs: 12,
+                      sm: 6
+                    }}>
                     <Typography variant="subtitle2" color="textSecondary">
                       Location
                     </Typography>
@@ -1089,7 +1205,11 @@ export default function EnhancedAdminAnalyticsPage() {
                       {selectedSession.city}, {selectedSession.region}, {selectedSession.country}
                     </Typography>
                   </Grid>
-                  <Grid item xs={12} sm={6}>
+                  <Grid
+                    size={{
+                      xs: 12,
+                      sm: 6
+                    }}>
                     <Typography variant="subtitle2" color="textSecondary">
                       Device
                     </Typography>
@@ -1097,7 +1217,11 @@ export default function EnhancedAdminAnalyticsPage() {
                       {selectedSession.deviceType} - {selectedSession.operatingSystem}
                     </Typography>
                   </Grid>
-                  <Grid item xs={12} sm={6}>
+                  <Grid
+                    size={{
+                      xs: 12,
+                      sm: 6
+                    }}>
                     <Typography variant="subtitle2" color="textSecondary">
                       Browser
                     </Typography>
@@ -1105,7 +1229,7 @@ export default function EnhancedAdminAnalyticsPage() {
                       {selectedSession.browser} {selectedSession.browserVersion}
                     </Typography>
                   </Grid>
-                  <Grid item xs={12}>
+                  <Grid size={12}>
                     <Typography variant="subtitle2" color="textSecondary">
                       Pages Visited
                     </Typography>
@@ -1121,7 +1245,7 @@ export default function EnhancedAdminAnalyticsPage() {
                       ))}
                     </Box>
                   </Grid>
-                  <Grid item xs={12}>
+                  <Grid size={12}>
                     <Typography variant="subtitle2" color="textSecondary">
                       Events ({selectedSession.events.length})
                     </Typography>

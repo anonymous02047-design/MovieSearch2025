@@ -140,7 +140,9 @@ export default function SimilarMoviesPage() {
           <Typography variant="h3" component="h1" gutterBottom className="fade-in">
             Similar Movies
           </Typography>
-          <Typography variant="h6" color="text.secondary" className="fade-in stagger-1">
+          <Typography variant="h6" className="fade-in stagger-1" sx={{
+            color: "text.secondary"
+          }}>
             Discover movies similar to your favorites
           </Typography>
         </Box>
@@ -148,8 +150,15 @@ export default function SimilarMoviesPage() {
         {selectedMovie && (
           <Card sx={{ mb: 4 }} className="fade-in stagger-2">
             <CardContent>
-              <Grid container spacing={3} alignItems="center">
-                <Grid item xs={12} sm={3} md={2}>
+              <Grid container spacing={3} sx={{
+                alignItems: "center"
+              }}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    sm: 3,
+                    md: 2
+                  }}>
                   <CardMedia
                     component="img"
                     height="200"
@@ -162,11 +171,21 @@ export default function SimilarMoviesPage() {
                     sx={{ borderRadius: 1 }}
                   />
                 </Grid>
-                <Grid item xs={12} sm={9} md={10}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    sm: 9,
+                    md: 10
+                  }}>
                   <Typography variant="h5" component="h2" gutterBottom>
                     Finding movies similar to: {selectedMovie.title}
                   </Typography>
-                  <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      color: "text.secondary",
+                      mb: 2
+                    }}>
                     {selectedMovie.overview}
                   </Typography>
                   <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
@@ -187,24 +206,36 @@ export default function SimilarMoviesPage() {
 
         {/* Search and Filters */}
         <Box sx={{ mb: 4 }}>
-          <Grid container spacing={2} alignItems="center">
-            <Grid item xs={12} md={8}>
+          <Grid container spacing={2} sx={{
+            alignItems: "center"
+          }}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 8
+              }}>
               <TextField
                 fullWidth
                 placeholder="Search similar movies..."
                 value={searchQuery}
                 onChange={(e) => handleSearch(e.target.value)}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <SearchIcon />
-                    </InputAdornment>
-                  ),
-                }}
                 className="fade-in stagger-3"
+                slotProps={{
+                  input: {
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <SearchIcon />
+                      </InputAdornment>
+                    ),
+                  }
+                }}
               />
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <FormControl fullWidth>
                 <InputLabel>Sort By</InputLabel>
                 <Select

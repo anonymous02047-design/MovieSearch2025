@@ -163,10 +163,10 @@ export default function AIRecommendations({
                 placeholder="Select genres you enjoy"
               />
             )}
-            renderTags={(value, getTagProps) =>
+            renderValue={(value, getItemProps) =>
               value.map((option, index) => (
                 <Chip
-                  {...getTagProps({ index })}
+                  {...getItemProps({ index })}
                   key={option}
                   label={option}
                   size="small"

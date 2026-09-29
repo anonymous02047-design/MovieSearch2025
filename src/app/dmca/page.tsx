@@ -66,7 +66,13 @@ export default function DMCAPolicyPage() {
             }}>
               ©️ DMCA Policy
             </Typography>
-            <Typography variant="h6" color="text.secondary" sx={{ maxWidth: 800, mx: 'auto' }}>
+            <Typography
+              variant="h6"
+              sx={{
+                color: "text.secondary",
+                maxWidth: 800,
+                mx: 'auto'
+              }}>
               Our Digital Millennium Copyright Act (DMCA) policy and procedures for handling copyright infringement claims.
             </Typography>
           </Box>
@@ -76,7 +82,9 @@ export default function DMCAPolicyPage() {
             <Typography variant="h4" component="h2" gutterBottom>
               DMCA Compliance
             </Typography>
-            <Typography variant="body1" paragraph>
+            <Typography variant="body1" sx={{
+              marginBottom: "16px"
+            }}>
               MovieSearch 2025 respects the intellectual property rights of others and expects our users to do the same. 
               We comply with the Digital Millennium Copyright Act (DMCA) and will respond to valid takedown requests 
               in accordance with the law.
@@ -121,7 +129,12 @@ export default function DMCAPolicyPage() {
             <Typography variant="h5" gutterBottom>
               DMCA Contact
             </Typography>
-            <Typography variant="body1" color="text.secondary" paragraph>
+            <Typography
+              variant="body1"
+              sx={{
+                color: "text.secondary",
+                marginBottom: "16px"
+              }}>
               For DMCA takedown requests or copyright concerns, please contact us:
             </Typography>
             <Box sx={{ mt: 3 }}>

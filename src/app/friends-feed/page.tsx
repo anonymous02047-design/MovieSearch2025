@@ -24,7 +24,9 @@ export default function FriendsFeedPage() {
                 <Avatar>J</Avatar>
                 <Box>
                   <Typography variant="body1">John watched <strong>Inception</strong></Typography>
-                  <Typography variant="caption" color="text.secondary">2 hours ago</Typography>
+                  <Typography variant="caption" sx={{
+                    color: "text.secondary"
+                  }}>2 hours ago</Typography>
                 </Box>
               </Box>
             </CardContent>

@@ -20,7 +20,12 @@ export default function OccasionFinderPage() {
             <CelebrationIcon sx={{ fontSize: 40, color: 'primary.main' }} />
             <Typography variant="h3" sx={{ fontWeight: 'bold' }}>Occasion Finder</Typography>
           </Box>
-          <Typography variant="h6" color="text.secondary" sx={{ mb: 4 }}>
+          <Typography
+            variant="h6"
+            sx={{
+              color: "text.secondary",
+              mb: 4
+            }}>
             Find perfect movies for any occasion
           </Typography>
           <Grid container spacing={2}>

@@ -24,7 +24,9 @@ export default function ViewingStreaksPage() {
                 <CardContent sx={{ textAlign: 'center' }}>
                   <FireIcon sx={{ fontSize: 60, color: 'orange', mb: 1 }} />
                   <Typography variant="h3" sx={{ fontWeight: 'bold' }}>0</Typography>
-                  <Typography color="text.secondary">Current Streak</Typography>
+                  <Typography sx={{
+                    color: "text.secondary"
+                  }}>Current Streak</Typography>
                 </CardContent>
               </Card>
             </Grid>
@@ -32,7 +34,9 @@ export default function ViewingStreaksPage() {
               <Card>
                 <CardContent sx={{ textAlign: 'center' }}>
                   <Typography variant="h3" sx={{ fontWeight: 'bold' }}>0</Typography>
-                  <Typography color="text.secondary">Longest Streak</Typography>
+                  <Typography sx={{
+                    color: "text.secondary"
+                  }}>Longest Streak</Typography>
                 </CardContent>
               </Card>
             </Grid>

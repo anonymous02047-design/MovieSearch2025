@@ -151,7 +151,9 @@ export default function SignInPage() {
               mb: 3,
               boxShadow: '0 10px 25px rgba(102, 126, 234, 0.3)',
             }}>
-              <Stack direction="row" spacing={0.5} justifyContent="center">
+              <Stack direction="row" spacing={0.5} sx={{
+                justifyContent: "center"
+              }}>
                 <MovieIcon sx={{ fontSize: 28, color: 'white' }} />
                 <StarIcon sx={{ fontSize: 28, color: 'white' }} />
               </Stack>
@@ -171,10 +173,17 @@ export default function SignInPage() {
             >
               Welcome Back
             </Typography>
-            <Typography variant="h6" color="text.secondary" sx={{ mb: 1 }}>
+            <Typography
+              variant="h6"
+              sx={{
+                color: "text.secondary",
+                mb: 1
+              }}>
               Sign in to your MovieSearch account
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               Continue your movie discovery journey
             </Typography>
           </Box>
@@ -293,13 +302,13 @@ export default function SignInPage() {
                 path="/sign-in"
                 routing="path"
                 signUpUrl="/sign-up"
-                redirectUrl="/"
-                afterSignInUrl="/"
                 forceRedirectUrl="/"
               />
             </Box>
           <Box sx={{ textAlign: 'center', mt: 3 }}>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               Don't have an account?{' '}
               <Button
                 variant="text"

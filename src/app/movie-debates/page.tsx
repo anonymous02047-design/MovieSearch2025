@@ -23,7 +23,9 @@ export default function MovieDebatesPage() {
             <CardContent>
               <Chip label="Active" color="success" size="small" sx={{ mb: 2 }} />
               <Typography variant="h6" sx={{ mb: 2 }}>Is CGI ruining modern cinema?</Typography>
-              <Typography variant="body2" color="text.secondary">1,234 votes • 567 comments</Typography>
+              <Typography variant="body2" sx={{
+                color: "text.secondary"
+              }}>1,234 votes • 567 comments</Typography>
             </CardContent>
           </Card>
         </Container>

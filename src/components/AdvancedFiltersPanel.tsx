@@ -136,8 +136,19 @@ export default function AdvancedFiltersPanel({ onFiltersChange, initialFilters }
 
   return (
     <Paper elevation={2} sx={{ p: 2 }}>
-      <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
-        <Box display="flex" alignItems="center" gap={1}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          mb: 2
+        }}>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: 1
+          }}>
           <FilterIcon color="primary" />
           <Typography variant="h6">Advanced Filters</Typography>
           {activeFiltersCount > 0 && (
@@ -248,7 +259,12 @@ export default function AdvancedFiltersPanel({ onFiltersChange, initialFilters }
           </AccordionSummary>
           <AccordionDetails>
             <FormGroup>
-              <Stack direction="row" flexWrap="wrap" gap={1}>
+              <Stack
+                direction="row"
+                sx={{
+                  flexWrap: "wrap",
+                  gap: 1
+                }}>
                 {GENRES.map((genre) => (
                   <Chip
                     key={genre.id}
@@ -276,7 +292,12 @@ export default function AdvancedFiltersPanel({ onFiltersChange, initialFilters }
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <Stack direction="row" flexWrap="wrap" gap={1}>
+            <Stack
+              direction="row"
+              sx={{
+                flexWrap: "wrap",
+                gap: 1
+              }}>
               {LANGUAGES.map((lang) => (
                 <Chip
                   key={lang.code}

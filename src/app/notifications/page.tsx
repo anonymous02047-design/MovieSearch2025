@@ -199,7 +199,9 @@ export default function NotificationsPage() {
           <Typography variant="h3" component="h1" gutterBottom className="fade-in">
             Notifications
           </Typography>
-          <Typography variant="h6" color="text.secondary" className="fade-in stagger-1">
+          <Typography variant="h6" className="fade-in stagger-1" sx={{
+            color: "text.secondary"
+          }}>
             Stay updated with your movie recommendations and account activity
           </Typography>
         </Box>
@@ -257,10 +259,14 @@ export default function NotificationsPage() {
             ) : notifications.length === 0 ? (
               <Box sx={{ textAlign: 'center', py: 4 }}>
                 <NotificationsOffIcon sx={{ fontSize: 64, color: 'text.secondary', mb: 2 }} />
-                <Typography variant="h6" color="text.secondary">
+                <Typography variant="h6" sx={{
+                  color: "text.secondary"
+                }}>
                   No notifications yet
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" sx={{
+                  color: "text.secondary"
+                }}>
                   You'll receive notifications about movie recommendations and account activity here.
                 </Typography>
               </Box>
@@ -298,10 +304,14 @@ export default function NotificationsPage() {
                         }
                         secondary={
                           <Box>
-                            <Typography variant="body2" color="text.secondary">
+                            <Typography variant="body2" sx={{
+                              color: "text.secondary"
+                            }}>
                               {notification.message}
                             </Typography>
-                            <Typography variant="caption" color="text.secondary">
+                            <Typography variant="caption" sx={{
+                              color: "text.secondary"
+                            }}>
                               {formatTimestamp(notification.timestamp)}
                             </Typography>
                           </Box>

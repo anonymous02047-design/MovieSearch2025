@@ -125,12 +125,16 @@ export default function MovieDetails({ movie }: MovieDetailsProps) {
           poster: getImageUrl(movie.poster_path, 'w500'),
         }}
       />
-      
+
       <Container maxWidth="lg" sx={{ py: 4 }}>
         <Paper elevation={6} sx={{ p: 4, borderRadius: 3 }}>
           <Grid container spacing={4}>
             {/* Movie Poster */}
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <Box sx={{ position: 'relative' }}>
                 {imageLoading && (
                   <Box
@@ -178,21 +182,33 @@ export default function MovieDetails({ movie }: MovieDetailsProps) {
                       borderRadius: 2,
                     }}
                   >
-                    <Typography color="text.secondary">Image not available</Typography>
+                    <Typography sx={{
+                      color: "text.secondary"
+                    }}>Image not available</Typography>
                   </Box>
                 )}
               </Box>
             </Grid>
 
             {/* Movie Information */}
-            <Grid item xs={12} md={8}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 8
+              }}>
               <Box sx={{ mb: 3 }}>
                 <Typography variant="h3" component="h1" gutterBottom sx={{ fontWeight: 'bold' }}>
                   {movie.title}
                 </Typography>
                 
                 {movie.tagline && (
-                  <Typography variant="h6" color="text.secondary" sx={{ fontStyle: 'italic', mb: 2 }}>
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      color: "text.secondary",
+                      fontStyle: 'italic',
+                      mb: 2
+                    }}>
                     "{movie.tagline}"
                   </Typography>
                 )}
@@ -210,7 +226,9 @@ export default function MovieDetails({ movie }: MovieDetailsProps) {
                     readOnly
                     size="large"
                   />
-                  <Typography variant="h6" color="text.secondary">
+                  <Typography variant="h6" sx={{
+                    color: "text.secondary"
+                  }}>
                     {movie.vote_average.toFixed(1)}/10
                   </Typography>
                   <Chip
@@ -225,7 +243,9 @@ export default function MovieDetails({ movie }: MovieDetailsProps) {
                   {movie.release_date && (
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                       <CalendarIcon color="action" />
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         {formatDate(movie.release_date)}
                       </Typography>
                     </Box>
@@ -233,7 +253,9 @@ export default function MovieDetails({ movie }: MovieDetailsProps) {
                   {movie.runtime && (
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                       <TimeIcon color="action" />
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         {formatRuntime(movie.runtime)}
                       </Typography>
                     </Box>
@@ -241,7 +263,9 @@ export default function MovieDetails({ movie }: MovieDetailsProps) {
                   {movie.original_language && (
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                       <LanguageIcon color="action" />
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         {movie.original_language.toUpperCase()}
                       </Typography>
                     </Box>
@@ -249,7 +273,9 @@ export default function MovieDetails({ movie }: MovieDetailsProps) {
                   {movie.status && (
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                       <PublicIcon color="action" />
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         {movie.status}
                       </Typography>
                     </Box>
@@ -323,7 +349,13 @@ export default function MovieDetails({ movie }: MovieDetailsProps) {
               </Typography>
               <Grid container spacing={2}>
                 {movie.credits.cast.slice(0, 12).map((actor) => (
-                  <Grid item xs={6} sm={4} md={3} key={actor.id}>
+                  <Grid
+                    key={actor.id}
+                    size={{
+                      xs: 6,
+                      sm: 4,
+                      md: 3
+                    }}>
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                       <Avatar
                         src={getImageUrl(actor.profile_path, 'w185')}
@@ -334,7 +366,9 @@ export default function MovieDetails({ movie }: MovieDetailsProps) {
                         <Typography variant="body2" sx={{ fontWeight: 'bold' }}>
                           {actor.name}
                         </Typography>
-                        <Typography variant="caption" color="text.secondary">
+                        <Typography variant="caption" sx={{
+                          color: "text.secondary"
+                        }}>
                           {actor.character}
                         </Typography>
                       </Box>

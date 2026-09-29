@@ -130,7 +130,11 @@ export default function PersonPage() {
         </Button>
 
         <Grid container spacing={4}>
-          <Grid item xs={12} md={4}>
+          <Grid
+            size={{
+              xs: 12,
+              md: 4
+            }}>
             <Card>
               {person.profile_path ? (
                 <CardMedia
@@ -149,8 +153,14 @@ export default function PersonPage() {
             </Card>
           </Grid>
 
-          <Grid item xs={12} md={8}>
-            <Typography variant="h3" component="h1" gutterBottom fontWeight={700}>
+          <Grid
+            size={{
+              xs: 12,
+              md: 8
+            }}>
+            <Typography variant="h3" component="h1" gutterBottom sx={{
+              fontWeight: 700
+            }}>
               {person.name}
             </Typography>
 
@@ -183,7 +193,9 @@ export default function PersonPage() {
 
             {person.biography && (
               <Box sx={{ mb: 4 }}>
-                <Typography variant="h5" gutterBottom fontWeight={600}>
+                <Typography variant="h5" gutterBottom sx={{
+                  fontWeight: 600
+                }}>
                   Biography
                 </Typography>
                 <Typography variant="body1" sx={{ whiteSpace: 'pre-line', lineHeight: 1.8 }}>
@@ -197,7 +209,9 @@ export default function PersonPage() {
         {/* Filmography */}
         {credits && credits.cast && credits.cast.length > 0 && (
           <Box sx={{ mt: 6 }}>
-            <Typography variant="h4" gutterBottom fontWeight={700}>
+            <Typography variant="h4" gutterBottom sx={{
+              fontWeight: 700
+            }}>
               Known For
             </Typography>
             <ResponsiveGrid columns={{ xs: 1, sm: 2, md: 3, lg: 4 }} spacing={3}>

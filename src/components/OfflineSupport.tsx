@@ -181,7 +181,9 @@ export default function OfflineSupport({
             maxWidth: 300,
           }}
         >
-          <Stack direction="row" alignItems="center" spacing={1}>
+          <Stack direction="row" spacing={1} sx={{
+            alignItems: "center"
+          }}>
             <WifiOffIcon />
             <Typography variant="body2" sx={{ flex: 1 }}>
               You're offline
@@ -251,7 +253,9 @@ export default function OfflineSupport({
           }}
         >
           <Stack spacing={1}>
-            <Stack direction="row" alignItems="center" spacing={1}>
+            <Stack direction="row" spacing={1} sx={{
+              alignItems: "center"
+            }}>
               <UploadIcon fontSize="small" />
               <Typography variant="body2">
                 Syncing offline actions...
@@ -294,7 +298,12 @@ export default function OfflineSupport({
           }}
         >
           <Stack spacing={2}>
-            <Stack direction="row" alignItems="center" justifyContent="space-between">
+            <Stack
+              direction="row"
+              sx={{
+                alignItems: "center",
+                justifyContent: "space-between"
+              }}>
               <Typography variant="h6" sx={{ color: 'white' }}>
                 Offline Queue ({queuedActions.length})
               </Typography>
@@ -333,7 +342,12 @@ export default function OfflineSupport({
                       border: action.retries > 0 ? '1px solid #ff9800' : 'none',
                     }}
                   >
-                    <Stack direction="row" alignItems="center" justifyContent="space-between">
+                    <Stack
+                      direction="row"
+                      sx={{
+                        alignItems: "center",
+                        justifyContent: "space-between"
+                      }}>
                       <Box>
                         <Typography variant="body2" sx={{ color: 'white', fontWeight: 'bold' }}>
                           {action.action}
@@ -342,7 +356,9 @@ export default function OfflineSupport({
                           {action.timestamp.toLocaleString()}
                         </Typography>
                       </Box>
-                      <Stack direction="row" spacing={1} alignItems="center">
+                      <Stack direction="row" spacing={1} sx={{
+                        alignItems: "center"
+                      }}>
                         {action.retries > 0 && (
                           <Chip
                             label={`${action.retries}/${action.maxRetries}`}

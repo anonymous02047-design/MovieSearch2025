@@ -385,7 +385,12 @@ export default function ApiDocsPage() {
         }}>
           📚 API Documentation
         </Typography>
-        <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>
+        <Typography
+          variant="h6"
+          sx={{
+            color: "text.secondary",
+            mb: 3
+          }}>
           Complete API reference for MovieSearch 2025
         </Typography>
       </Box>
@@ -399,7 +404,13 @@ export default function ApiDocsPage() {
           </Typography>
         </Box>
         
-        <Stack direction="row" spacing={2} flexWrap="wrap" sx={{ mb: 3 }}>
+        <Stack
+          direction="row"
+          spacing={2}
+          sx={{
+            flexWrap: "wrap",
+            mb: 3
+          }}>
           <Chip 
             icon={<HttpIcon />} 
             label="RESTful API" 

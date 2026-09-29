@@ -35,10 +35,17 @@ export default function TermsPage() {
         }}>
           📋 Terms of Service
         </Typography>
-        <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>
+        <Typography
+          variant="h6"
+          sx={{
+            color: "text.secondary",
+            mb: 3
+          }}>
           Please read these terms carefully before using our service
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" sx={{
+          color: "text.secondary"
+        }}>
           Last updated: {new Date().toLocaleDateString()}
         </Typography>
       </Box>
@@ -48,7 +55,9 @@ export default function TermsPage() {
         <Typography variant="h6" sx={{ color: 'white', mb: 2 }}>
           Quick Navigation
         </Typography>
-        <Stack direction="row" spacing={1} flexWrap="wrap">
+        <Stack direction="row" spacing={1} sx={{
+          flexWrap: "wrap"
+        }}>
           <Chip label="1. Acceptance" icon={<GavelIcon />} color="primary" variant="outlined" sx={{ color: 'white', borderColor: 'rgba(255, 255, 255, 0.3)' }} />
           <Chip label="2. Service Description" icon={<SupportIcon />} color="secondary" variant="outlined" sx={{ color: 'white', borderColor: 'rgba(255, 255, 255, 0.3)' }} />
           <Chip label="3. User Responsibilities" icon={<SecurityIcon />} color="info" variant="outlined" sx={{ color: 'white', borderColor: 'rgba(255, 255, 255, 0.3)' }} />

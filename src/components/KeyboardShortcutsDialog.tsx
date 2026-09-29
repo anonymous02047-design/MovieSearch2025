@@ -42,17 +42,21 @@ export default function KeyboardShortcutsDialog({ open, onClose }: KeyboardShort
       onClose={onClose}
       maxWidth="sm"
       fullWidth
-      PaperProps={{
-        sx: {
-          background: theme.palette.mode === 'dark'
-            ? 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)'
-            : 'linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%)',
+      slotProps={{
+        paper: {
+          sx: {
+            background: theme.palette.mode === 'dark'
+              ? 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)'
+              : 'linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%)',
+          }
         }
       }}
     >
       <DialogTitle sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
         <KeyboardIcon color="primary" />
-        <Typography variant="h6" fontWeight={600}>
+        <Typography variant="h6" sx={{
+          fontWeight: 600
+        }}>
           Keyboard Shortcuts
         </Typography>
       </DialogTitle>
@@ -100,7 +104,9 @@ export default function KeyboardShortcutsDialog({ open, onClose }: KeyboardShort
             border: `1px solid ${alpha(theme.palette.info.main, 0.2)}`,
           }}
         >
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" sx={{
+            color: "text.secondary"
+          }}>
             💡 Tip: Press <Chip label="?" size="small" sx={{ mx: 0.5 }} /> at any time to view this help
           </Typography>
         </Box>

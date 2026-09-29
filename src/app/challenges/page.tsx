@@ -25,7 +25,12 @@ export default function ChallengesPage() {
                 <CardContent>
                   <Chip label="Popular" color="primary" size="small" sx={{ mb: 2 }} />
                   <Typography variant="h6" sx={{ mb: 1 }}>100 Movies in 100 Days</Typography>
-                  <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>Watch 100 movies in 100 consecutive days</Typography>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: "text.secondary",
+                      mb: 2
+                    }}>Watch 100 movies in 100 consecutive days</Typography>
                   <Button variant="outlined">Join Challenge</Button>
                 </CardContent>
               </Card>

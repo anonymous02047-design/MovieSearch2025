@@ -193,7 +193,13 @@ export default class ErrorBoundary extends Component<Props, State> {
             )}
 
             {/* Action Buttons */}
-            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent="center" sx={{ mb: 3 }}>
+            <Stack
+              direction={{ xs: 'column', sm: 'row' }}
+              spacing={2}
+              sx={{
+                justifyContent: "center",
+                mb: 3
+              }}>
               {showRetry && (
                 <Button
                   variant="contained"

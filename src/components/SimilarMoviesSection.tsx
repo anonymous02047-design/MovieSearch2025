@@ -58,7 +58,12 @@ export default function SimilarMoviesSection({ movieId, maxResults = 6 }: Simila
 
   if (loading) {
     return (
-      <Box display="flex" justifyContent="center" py={4}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          py: 4
+        }}>
         <CircularProgress />
       </Box>
     );
@@ -74,8 +79,16 @@ export default function SimilarMoviesSection({ movieId, maxResults = 6 }: Simila
 
   return (
     <Box>
-      <Box display="flex" alignItems="center" justifyContent="space-between" mb={3}>
-        <Typography variant="h5" fontWeight="bold">
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          mb: 3
+        }}>
+        <Typography variant="h5" sx={{
+          fontWeight: "bold"
+        }}>
           Similar Movies
         </Typography>
         <Chip label={`${movies.length} movies`} />
@@ -83,7 +96,13 @@ export default function SimilarMoviesSection({ movieId, maxResults = 6 }: Simila
 
       <Grid container spacing={2}>
         {movies.map((movie) => (
-          <Grid item xs={6} sm={4} md={2} key={movie.id}>
+          <Grid
+            key={movie.id}
+            size={{
+              xs: 6,
+              sm: 4,
+              md: 2
+            }}>
             <Card
               sx={{
                 cursor: 'pointer',
@@ -95,7 +114,9 @@ export default function SimilarMoviesSection({ movieId, maxResults = 6 }: Simila
               }}
               onClick={() => router.push(`/movie/${movie.id}`)}
             >
-              <Box position="relative">
+              <Box sx={{
+                position: "relative"
+              }}>
                 <CardMedia
                   component="img"
                   height="240"
@@ -117,7 +138,9 @@ export default function SimilarMoviesSection({ movieId, maxResults = 6 }: Simila
                   }}
                 >
                   <StarIcon sx={{ fontSize: 16, color: 'gold' }} />
-                  <Typography variant="caption" color="white" fontWeight="bold">
+                  <Typography variant="caption" color="white" sx={{
+                    fontWeight: "bold"
+                  }}>
                     {movie.vote_average.toFixed(1)}
                   </Typography>
                 </Box>
@@ -125,13 +148,17 @@ export default function SimilarMoviesSection({ movieId, maxResults = 6 }: Simila
               <CardContent>
                 <Typography
                   variant="subtitle2"
-                  fontWeight="bold"
                   noWrap
                   title={movie.title}
+                  sx={{
+                    fontWeight: "bold"
+                  }}
                 >
                   {movie.title}
                 </Typography>
-                <Typography variant="caption" color="text.secondary">
+                <Typography variant="caption" sx={{
+                  color: "text.secondary"
+                }}>
                   {formatDate(movie.release_date)}
                 </Typography>
               </CardContent>
@@ -141,7 +168,12 @@ export default function SimilarMoviesSection({ movieId, maxResults = 6 }: Simila
       </Grid>
 
       {movies.length === maxResults && (
-        <Box display="flex" justifyContent="center" mt={3}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            mt: 3
+          }}>
           <IconButton
             color="primary"
             onClick={() => router.push(`/discover?similar=${movieId}`)}

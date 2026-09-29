@@ -27,7 +27,9 @@ export default function Error({
       >
         <ErrorIcon sx={{ fontSize: 80, mb: 3, opacity: 0.9 }} />
         
-        <Typography variant="h3" component="h1" gutterBottom fontWeight={700}>
+        <Typography variant="h3" component="h1" gutterBottom sx={{
+          fontWeight: 700
+        }}>
           Oops! Something Went Wrong
         </Typography>
         

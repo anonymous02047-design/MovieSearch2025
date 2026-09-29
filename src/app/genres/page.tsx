@@ -113,7 +113,14 @@ export default function GenresPage() {
           {loading ? (
             <Grid container spacing={3}>
               {Array.from({ length: 12 }).map((_, index) => (
-                <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+                <Grid
+                  key={index}
+                  size={{
+                    xs: 12,
+                    sm: 6,
+                    md: 4,
+                    lg: 3
+                  }}>
                   <LoadingSkeleton type="card" count={1} />
                 </Grid>
               ))}
@@ -121,7 +128,14 @@ export default function GenresPage() {
           ) : (
             <Grid container spacing={3}>
               {allGenres.map((genre) => (
-                <Grid item xs={12} sm={6} md={4} lg={3} key={genre.id}>
+                <Grid
+                  key={genre.id}
+                  size={{
+                    xs: 12,
+                    sm: 6,
+                    md: 4,
+                    lg: 3
+                  }}>
                   <Card
                     sx={{
                       height: '100%',
@@ -149,7 +163,9 @@ export default function GenresPage() {
                           p: 3,
                         }}
                       >
-                        <Typography variant="h4" component="h2" fontWeight={700} gutterBottom>
+                        <Typography variant="h4" component="h2" gutterBottom sx={{
+                          fontWeight: 700
+                        }}>
                           {genre.name}
                         </Typography>
                         <Typography variant="body2" sx={{ opacity: 0.9 }}>

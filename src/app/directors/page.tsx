@@ -343,7 +343,13 @@ function DirectorsPageContent() {
   if (loading) {
     return (
       <Container maxWidth="lg" sx={{ py: 4 }}>
-        <Box display="flex" justifyContent="center" alignItems="center" minHeight="400px">
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            minHeight: "400px"
+          }}>
           <CircularProgress />
         </Box>
       </Container>
@@ -368,7 +374,13 @@ function DirectorsPageContent() {
       <Container maxWidth="lg" sx={{ py: 4 }}>
       {/* Header */}
       <Box sx={{ mb: 4 }}>
-        <Stack direction="row" alignItems="center" spacing={2} sx={{ mb: 2 }}>
+        <Stack
+          direction="row"
+          spacing={2}
+          sx={{
+            alignItems: "center",
+            mb: 2
+          }}>
           <MovieIcon sx={{ fontSize: 40, color: 'primary.main' }} />
           <Typography variant="body1" component="p" sx={{
             fontWeight: 'bold',
@@ -378,7 +390,12 @@ function DirectorsPageContent() {
             🎬 Directors
           </Typography>
         </Stack>
-        <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>
+        <Typography
+          variant="h6"
+          sx={{
+            color: "text.secondary",
+            mb: 3
+          }}>
           Discover talented directors and their acclaimed works
         </Typography>
 
@@ -389,12 +406,14 @@ function DirectorsPageContent() {
             placeholder="Search directors..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <SearchIcon />
-                </InputAdornment>
-              ),
+            slotProps={{
+              input: {
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon />
+                  </InputAdornment>
+                ),
+              }
             }}
           />
           <FormControl sx={{ minWidth: 200 }}>
@@ -431,7 +450,13 @@ function DirectorsPageContent() {
         {/* Advanced Filters */}
         {showAdvancedFilters && (
           <Paper elevation={2} sx={{ p: 3, mb: 3, bgcolor: 'background.paper' }}>
-            <Stack direction="row" alignItems="center" spacing={2} sx={{ mb: 2 }}>
+            <Stack
+              direction="row"
+              spacing={2}
+              sx={{
+                alignItems: "center",
+                mb: 2
+              }}>
               <FilterAltIcon color="primary" />
               <Typography variant="h6">Advanced Filters</Typography>
               <Button
@@ -445,7 +470,12 @@ function DirectorsPageContent() {
             </Stack>
             
             <Grid container spacing={3}>
-              <Grid item xs={12} sm={6} md={3}>
+              <Grid
+                size={{
+                  xs: 12,
+                  sm: 6,
+                  md: 3
+                }}>
                 <FormControl fullWidth>
                   <InputLabel>Genre</InputLabel>
                   <Select
@@ -463,7 +493,12 @@ function DirectorsPageContent() {
                 </FormControl>
               </Grid>
               
-              <Grid item xs={12} sm={6} md={3}>
+              <Grid
+                size={{
+                  xs: 12,
+                  sm: 6,
+                  md: 3
+                }}>
                 <FormControl fullWidth>
                   <InputLabel>Decade</InputLabel>
                   <Select
@@ -481,7 +516,12 @@ function DirectorsPageContent() {
                 </FormControl>
               </Grid>
               
-              <Grid item xs={12} sm={6} md={3}>
+              <Grid
+                size={{
+                  xs: 12,
+                  sm: 6,
+                  md: 3
+                }}>
                 <Box>
                   <Typography variant="body2" gutterBottom>
                     Minimum Rating: {filterRating.toFixed(1)}
@@ -495,8 +535,15 @@ function DirectorsPageContent() {
                 </Box>
               </Grid>
               
-              <Grid item xs={12} sm={6} md={3}>
-                <Stack direction="row" spacing={1} alignItems="center">
+              <Grid
+                size={{
+                  xs: 12,
+                  sm: 6,
+                  md: 3
+                }}>
+                <Stack direction="row" spacing={1} sx={{
+                  alignItems: "center"
+                }}>
                   <Button
                     variant="outlined"
                     startIcon={<CompareIcon />}
@@ -514,7 +561,9 @@ function DirectorsPageContent() {
         {/* Comparison Bar */}
         {comparisonDirectors.length > 0 && (
           <Paper elevation={1} sx={{ p: 2, mb: 3, bgcolor: 'primary.light', color: 'primary.contrastText' }}>
-            <Stack direction="row" alignItems="center" spacing={2}>
+            <Stack direction="row" spacing={2} sx={{
+              alignItems: "center"
+            }}>
               <CompareIcon />
               <Typography variant="subtitle1">
                 Comparing {comparisonDirectors.length} directors
@@ -587,7 +636,13 @@ function DirectorsPageContent() {
                   </Typography>
                   
                   {/* Director Info */}
-                  <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 2 }}>
+                  <Stack
+                    direction="row"
+                    spacing={1}
+                    sx={{
+                      alignItems: "center",
+                      mb: 2
+                    }}>
                     <Chip
                       label="Director"
                       size="small"
@@ -595,21 +650,31 @@ function DirectorsPageContent() {
                       variant="outlined"
                     />
                     <StarIcon fontSize="small" color="action" />
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" sx={{
+                      color: "text.secondary"
+                    }}>
                       {director.popularity.toFixed(1)}
                     </Typography>
                   </Stack>
 
                   {/* Rating */}
                   {averageRating > 0 && (
-                    <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 2 }}>
+                    <Stack
+                      direction="row"
+                      spacing={1}
+                      sx={{
+                        alignItems: "center",
+                        mb: 2
+                      }}>
                       <Rating
                         value={averageRating / 2}
                         precision={0.1}
                         size="small"
                         readOnly
                       />
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         {averageRating.toFixed(1)} avg
                       </Typography>
                     </Stack>
@@ -617,28 +682,48 @@ function DirectorsPageContent() {
 
                   {/* Career Stats */}
                   <Box sx={{ mb: 2 }}>
-                    <Stack direction="row" spacing={2} justifyContent="space-between">
-                      <Box textAlign="center">
-                        <Typography variant="h6" color="primary.main">
+                    <Stack direction="row" spacing={2} sx={{
+                      justifyContent: "space-between"
+                    }}>
+                      <Box sx={{
+                        textAlign: "center"
+                      }}>
+                        <Typography variant="h6" sx={{
+                          color: "primary.main"
+                        }}>
                           {stats.totalMovies}
                         </Typography>
-                        <Typography variant="caption" color="text.secondary">
+                        <Typography variant="caption" sx={{
+                          color: "text.secondary"
+                        }}>
                           Movies
                         </Typography>
                       </Box>
-                      <Box textAlign="center">
-                        <Typography variant="h6" color="secondary.main">
+                      <Box sx={{
+                        textAlign: "center"
+                      }}>
+                        <Typography variant="h6" sx={{
+                          color: "secondary.main"
+                        }}>
                           {stats.careerSpan}
                         </Typography>
-                        <Typography variant="caption" color="text.secondary">
+                        <Typography variant="caption" sx={{
+                          color: "text.secondary"
+                        }}>
                           Years
                         </Typography>
                       </Box>
-                      <Box textAlign="center">
-                        <Typography variant="h6" color="success.main">
+                      <Box sx={{
+                        textAlign: "center"
+                      }}>
+                        <Typography variant="h6" sx={{
+                          color: "success.main"
+                        }}>
                           {stats.totalVotes.toLocaleString()}
                         </Typography>
-                        <Typography variant="caption" color="text.secondary">
+                        <Typography variant="caption" sx={{
+                          color: "text.secondary"
+                        }}>
                           Votes
                         </Typography>
                       </Box>
@@ -651,7 +736,9 @@ function DirectorsPageContent() {
                       <Typography variant="subtitle2" gutterBottom>
                         Notable Films:
                       </Typography>
-                      <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
+                      <Stack direction="row" spacing={1} useFlexGap sx={{
+                        flexWrap: "wrap"
+                      }}>
                         {topMovies.map((movie) => (
                           <Chip
                             key={movie.id}
@@ -674,11 +761,19 @@ function DirectorsPageContent() {
                       {/* Career Timeline */}
                       {stats.firstMovieYear && stats.latestMovieYear && (
                         <Box sx={{ mb: 2 }}>
-                          <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 1 }}>
+                          <Stack
+                            direction="row"
+                            spacing={1}
+                            sx={{
+                              alignItems: "center",
+                              mb: 1
+                            }}>
                             <TimelineIcon fontSize="small" color="action" />
                             <Typography variant="subtitle2">Career Span</Typography>
                           </Stack>
-                          <Typography variant="body2" color="text.secondary">
+                          <Typography variant="body2" sx={{
+                            color: "text.secondary"
+                          }}>
                             {stats.firstMovieYear} - {stats.latestMovieYear}
                           </Typography>
                         </Box>
@@ -687,11 +782,19 @@ function DirectorsPageContent() {
                       {/* Genre Distribution */}
                       {genreDistribution.length > 0 && (
                         <Box sx={{ mb: 2 }}>
-                          <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 1 }}>
+                          <Stack
+                            direction="row"
+                            spacing={1}
+                            sx={{
+                              alignItems: "center",
+                              mb: 1
+                            }}>
                             <TheaterIcon fontSize="small" color="action" />
                             <Typography variant="subtitle2">Top Genres</Typography>
                           </Stack>
-                          <Stack direction="row" spacing={0.5} flexWrap="wrap" useFlexGap>
+                          <Stack direction="row" spacing={0.5} useFlexGap sx={{
+                            flexWrap: "wrap"
+                          }}>
                             {genreDistribution.slice(0, 3).map(([genreId, count]) => (
                               <Chip
                                 key={genreId}
@@ -768,7 +871,12 @@ function DirectorsPageContent() {
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <Box display="flex" justifyContent="center" sx={{ mt: 4 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            mt: 4
+          }}>
           <Pagination
             count={totalPages}
             page={currentPage}
@@ -781,8 +889,14 @@ function DirectorsPageContent() {
 
       {/* No Results */}
       {filteredDirectors.length === 0 && searchQuery && (
-        <Box textAlign="center" sx={{ py: 4 }}>
-          <Typography variant="h6" color="text.secondary">
+        <Box
+          sx={{
+            textAlign: "center",
+            py: 4
+          }}>
+          <Typography variant="h6" sx={{
+            color: "text.secondary"
+          }}>
             No directors found for "{searchQuery}"
           </Typography>
         </Box>
@@ -790,28 +904,48 @@ function DirectorsPageContent() {
 
       {/* Stats */}
       <Box sx={{ mt: 4, p: 3, bgcolor: 'background.paper', borderRadius: 2 }}>
-        <Stack direction="row" spacing={4} justifyContent="center">
-          <Box textAlign="center">
-            <Typography variant="h4" color="primary.main">
+        <Stack direction="row" spacing={4} sx={{
+          justifyContent: "center"
+        }}>
+          <Box sx={{
+            textAlign: "center"
+          }}>
+            <Typography variant="h4" sx={{
+              color: "primary.main"
+            }}>
               {filteredDirectors.length}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               Directors
             </Typography>
           </Box>
-          <Box textAlign="center">
-            <Typography variant="h4" color="secondary.main">
+          <Box sx={{
+            textAlign: "center"
+          }}>
+            <Typography variant="h4" sx={{
+              color: "secondary.main"
+            }}>
               {filteredDirectors.reduce((sum, dir) => sum + dir.known_for.length, 0)}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               Total Films
             </Typography>
           </Box>
-          <Box textAlign="center">
-            <Typography variant="h4" color="success.main">
+          <Box sx={{
+            textAlign: "center"
+          }}>
+            <Typography variant="h4" sx={{
+              color: "success.main"
+            }}>
               {filteredDirectors.length > 0 ? (filteredDirectors.reduce((sum, dir) => sum + getAverageRating(dir), 0) / filteredDirectors.length).toFixed(1) : '0.0'}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               Avg Rating
             </Typography>
           </Box>
@@ -824,12 +958,16 @@ function DirectorsPageContent() {
         onClose={() => setFilmographyDialogOpen(false)}
         maxWidth="md"
         fullWidth
-        PaperProps={{
-          sx: { minHeight: '70vh' }
+        slotProps={{
+          paper: {
+            sx: { minHeight: '70vh' }
+          }
         }}
       >
         <DialogTitle>
-          <Stack direction="row" alignItems="center" spacing={2}>
+          <Stack direction="row" spacing={2} sx={{
+            alignItems: "center"
+          }}>
             <Avatar
               src={selectedDirector?.profile_path ? `https://image.tmdb.org/t/p/w500${selectedDirector.profile_path}` : undefined}
               sx={{ width: 48, height: 48 }}
@@ -840,7 +978,9 @@ function DirectorsPageContent() {
               <Typography variant="h6">
                 {selectedDirector?.name}'s Filmography
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" sx={{
+                color: "text.secondary"
+              }}>
                 Complete list of movies and TV shows
               </Typography>
             </Box>
@@ -856,42 +996,82 @@ function DirectorsPageContent() {
                   Career Statistics
                 </Typography>
                 <Grid container spacing={3}>
-                  <Grid item xs={6} sm={3}>
-                    <Box textAlign="center">
-                      <Typography variant="h4" color="primary.main">
+                  <Grid
+                    size={{
+                      xs: 6,
+                      sm: 3
+                    }}>
+                    <Box sx={{
+                      textAlign: "center"
+                    }}>
+                      <Typography variant="h4" sx={{
+                        color: "primary.main"
+                      }}>
                         {getDirectorStats(selectedDirector).totalMovies}
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         Movies Directed
                       </Typography>
                     </Box>
                   </Grid>
-                  <Grid item xs={6} sm={3}>
-                    <Box textAlign="center">
-                      <Typography variant="h4" color="secondary.main">
+                  <Grid
+                    size={{
+                      xs: 6,
+                      sm: 3
+                    }}>
+                    <Box sx={{
+                      textAlign: "center"
+                    }}>
+                      <Typography variant="h4" sx={{
+                        color: "secondary.main"
+                      }}>
                         {getDirectorStats(selectedDirector).totalTVShows}
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         TV Shows
                       </Typography>
                     </Box>
                   </Grid>
-                  <Grid item xs={6} sm={3}>
-                    <Box textAlign="center">
-                      <Typography variant="h4" color="success.main">
+                  <Grid
+                    size={{
+                      xs: 6,
+                      sm: 3
+                    }}>
+                    <Box sx={{
+                      textAlign: "center"
+                    }}>
+                      <Typography variant="h4" sx={{
+                        color: "success.main"
+                      }}>
                         {getDirectorStats(selectedDirector).careerSpan}
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         Career Years
                       </Typography>
                     </Box>
                   </Grid>
-                  <Grid item xs={6} sm={3}>
-                    <Box textAlign="center">
-                      <Typography variant="h4" color="warning.main">
+                  <Grid
+                    size={{
+                      xs: 6,
+                      sm: 3
+                    }}>
+                    <Box sx={{
+                      textAlign: "center"
+                    }}>
+                      <Typography variant="h4" sx={{
+                        color: "warning.main"
+                      }}>
                         {getAverageRating(selectedDirector).toFixed(1)}
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         Avg Rating
                       </Typography>
                     </Box>
@@ -936,7 +1116,13 @@ function DirectorsPageContent() {
                       
                       <Box sx={{ flex: 1, ml: 2 }}>
                         {/* Title and Type */}
-                        <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 1 }}>
+                        <Stack
+                          direction="row"
+                          spacing={1}
+                          sx={{
+                            alignItems: "center",
+                            mb: 1
+                          }}>
                           <Typography variant="h6" component="h3">
                             {work.title || work.name}
                           </Typography>
@@ -949,21 +1135,33 @@ function DirectorsPageContent() {
                         </Stack>
 
                         {/* Stats */}
-                        <Stack direction="row" alignItems="center" spacing={2} sx={{ mb: 1 }}>
-                          <Stack direction="row" alignItems="center" spacing={0.5}>
+                        <Stack
+                          direction="row"
+                          spacing={2}
+                          sx={{
+                            alignItems: "center",
+                            mb: 1
+                          }}>
+                          <Stack direction="row" spacing={0.5} sx={{
+                            alignItems: "center"
+                          }}>
                             <StarIcon fontSize="small" color="action" />
                             <Typography variant="body2">
                               {work.vote_average.toFixed(1)}
                             </Typography>
                           </Stack>
-                          <Stack direction="row" alignItems="center" spacing={0.5}>
+                          <Stack direction="row" spacing={0.5} sx={{
+                            alignItems: "center"
+                          }}>
                             <CalendarIcon fontSize="small" color="action" />
                             <Typography variant="body2">
                               {formatDate(work.release_date || work.first_air_date)}
                             </Typography>
                           </Stack>
                           {work.vote_count && (
-                            <Stack direction="row" alignItems="center" spacing={0.5}>
+                            <Stack direction="row" spacing={0.5} sx={{
+                              alignItems: "center"
+                            }}>
                               <ViewIcon fontSize="small" color="action" />
                               <Typography variant="body2">
                                 {work.vote_count.toLocaleString()} votes
@@ -974,7 +1172,12 @@ function DirectorsPageContent() {
 
                         {/* Overview */}
                         {work.overview && (
-                          <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                          <Typography
+                            variant="body2"
+                            sx={{
+                              color: "text.secondary",
+                              mb: 2
+                            }}>
                             {work.overview.length > 150 
                               ? `${work.overview.substring(0, 150)}...` 
                               : work.overview
@@ -1031,17 +1234,23 @@ function DirectorsPageContent() {
         onClose={() => setComparisonDialogOpen(false)}
         maxWidth="lg"
         fullWidth
-        PaperProps={{
-          sx: { minHeight: '80vh' }
+        slotProps={{
+          paper: {
+            sx: { minHeight: '80vh' }
+          }
         }}
       >
         <DialogTitle>
-          <Stack direction="row" alignItems="center" spacing={2}>
+          <Stack direction="row" spacing={2} sx={{
+            alignItems: "center"
+          }}>
             <CompareIcon color="primary" />
             <Typography variant="h6">
               Director Comparison
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               Compare {comparisonDirectors.length} directors side by side
             </Typography>
           </Stack>
@@ -1056,9 +1265,20 @@ function DirectorsPageContent() {
                 const topMovies = getTopMovies(director);
                 
                 return (
-                  <Grid item xs={12} md={12 / comparisonDirectors.length} key={director.id}>
+                  <Grid
+                    key={director.id}
+                    size={{
+                      xs: 12,
+                      md: 12 / comparisonDirectors.length
+                    }}>
                     <Paper elevation={2} sx={{ p: 3, height: '100%' }}>
-                      <Stack direction="row" alignItems="center" spacing={2} sx={{ mb: 3 }}>
+                      <Stack
+                        direction="row"
+                        spacing={2}
+                        sx={{
+                          alignItems: "center",
+                          mb: 3
+                        }}>
                         <Avatar
                           src={director.profile_path ? `https://image.tmdb.org/t/p/w500${director.profile_path}` : undefined}
                           sx={{ width: 60, height: 60 }}
@@ -1067,7 +1287,9 @@ function DirectorsPageContent() {
                         </Avatar>
                         <Box>
                           <Typography variant="h6">{director.name}</Typography>
-                          <Typography variant="body2" color="text.secondary">
+                          <Typography variant="body2" sx={{
+                            color: "text.secondary"
+                          }}>
                             Director
                           </Typography>
                         </Box>
@@ -1075,33 +1297,49 @@ function DirectorsPageContent() {
 
                       {/* Comparison Stats */}
                       <Grid container spacing={2} sx={{ mb: 3 }}>
-                        <Grid item xs={6}>
-                          <Box textAlign="center">
-                            <Typography variant="h4" color="primary.main">
+                        <Grid size={6}>
+                          <Box sx={{
+                            textAlign: "center"
+                          }}>
+                            <Typography variant="h4" sx={{
+                              color: "primary.main"
+                            }}>
                               {stats.totalMovies}
                             </Typography>
                             <Typography variant="caption">Movies</Typography>
                           </Box>
                         </Grid>
-                        <Grid item xs={6}>
-                          <Box textAlign="center">
-                            <Typography variant="h4" color="secondary.main">
+                        <Grid size={6}>
+                          <Box sx={{
+                            textAlign: "center"
+                          }}>
+                            <Typography variant="h4" sx={{
+                              color: "secondary.main"
+                            }}>
                               {stats.careerSpan}
                             </Typography>
                             <Typography variant="caption">Years</Typography>
                           </Box>
                         </Grid>
-                        <Grid item xs={6}>
-                          <Box textAlign="center">
-                            <Typography variant="h4" color="success.main">
+                        <Grid size={6}>
+                          <Box sx={{
+                            textAlign: "center"
+                          }}>
+                            <Typography variant="h4" sx={{
+                              color: "success.main"
+                            }}>
                               {avgRating.toFixed(1)}
                             </Typography>
                             <Typography variant="caption">Avg Rating</Typography>
                           </Box>
                         </Grid>
-                        <Grid item xs={6}>
-                          <Box textAlign="center">
-                            <Typography variant="h4" color="warning.main">
+                        <Grid size={6}>
+                          <Box sx={{
+                            textAlign: "center"
+                          }}>
+                            <Typography variant="h4" sx={{
+                              color: "warning.main"
+                            }}>
                               {director.popularity.toFixed(1)}
                             </Typography>
                             <Typography variant="caption">Popularity</Typography>
@@ -1127,12 +1365,16 @@ function DirectorsPageContent() {
                               <Typography variant="body2" noWrap>
                                 {movie.title || movie.name}
                               </Typography>
-                              <Stack direction="row" alignItems="center" spacing={1}>
+                              <Stack direction="row" spacing={1} sx={{
+                                alignItems: "center"
+                              }}>
                                 <StarIcon fontSize="small" color="action" />
                                 <Typography variant="caption">
                                   {movie.vote_average.toFixed(1)}
                                 </Typography>
-                                <Typography variant="caption" color="text.secondary">
+                                <Typography variant="caption" sx={{
+                                  color: "text.secondary"
+                                }}>
                                   ({formatDate(movie.release_date || movie.first_air_date)})
                                 </Typography>
                               </Stack>
@@ -1175,7 +1417,7 @@ function DirectorsPageContent() {
         </DialogActions>
       </Dialog>
         </Container>
-      </>
+    </>
   );
 }
 

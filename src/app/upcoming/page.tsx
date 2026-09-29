@@ -156,7 +156,12 @@ function UpcomingMoviesPageContent() {
                     <Typography variant="h6" sx={{ color: 'white', mb: 1 }}>
                       {movie.title}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        color: "text.secondary",
+                        mb: 1
+                      }}>
                       {movie.release_date && formatDate(movie.release_date)}
                     </Typography>
                     <Typography
@@ -220,7 +225,9 @@ function UpcomingMoviesPageContent() {
                     >
                       {movie.title}
                     </Typography>
-                    <Typography variant="caption" color="text.secondary">
+                    <Typography variant="caption" sx={{
+                      color: "text.secondary"
+                    }}>
                       {movie.release_date && formatDate(movie.release_date)}
                     </Typography>
                   </CardContent>
@@ -255,7 +262,9 @@ function UpcomingMoviesPageContent() {
 
           {movies.length === 0 && !loading && (
             <Box sx={{ textAlign: 'center', py: 8 }}>
-              <Typography variant="h6" color="text.secondary">
+              <Typography variant="h6" sx={{
+                color: "text.secondary"
+              }}>
                 No movies found.
               </Typography>
             </Box>
@@ -276,7 +285,7 @@ function UpcomingMoviesPageContent() {
           )}
         </>
       )}
-      </Container>
+    </Container>
   );
 }
 

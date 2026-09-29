@@ -10,7 +10,12 @@ export default function PrivacyPolicyPage() {
           Privacy Policy
         </Typography>
         
-        <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
+        <Typography
+          variant="body2"
+          sx={{
+            color: "text.secondary",
+            mb: 3
+          }}>
           Last updated: {new Date().toLocaleDateString()}
         </Typography>
 
@@ -18,7 +23,9 @@ export default function PrivacyPolicyPage() {
           <Typography variant="h5" component="h2" gutterBottom>
             1. Information We Collect
           </Typography>
-          <Typography variant="body1" paragraph>
+          <Typography variant="body1" sx={{
+            marginBottom: "16px"
+          }}>
             We collect information you provide directly to us, such as when you create an account, 
             use our services, or contact us for support.
           </Typography>
@@ -48,7 +55,9 @@ export default function PrivacyPolicyPage() {
           <Typography variant="h5" component="h2" gutterBottom>
             2. How We Use Your Information
           </Typography>
-          <Typography variant="body1" paragraph>
+          <Typography variant="body1" sx={{
+            marginBottom: "16px"
+          }}>
             We use the information we collect to:
           </Typography>
           <List>
@@ -74,7 +83,9 @@ export default function PrivacyPolicyPage() {
           <Typography variant="h5" component="h2" gutterBottom>
             3. Information Sharing
           </Typography>
-          <Typography variant="body1" paragraph>
+          <Typography variant="body1" sx={{
+            marginBottom: "16px"
+          }}>
             We do not sell, trade, or otherwise transfer your personal information to third parties, 
             except in the following circumstances:
           </Typography>
@@ -98,7 +109,9 @@ export default function PrivacyPolicyPage() {
           <Typography variant="h5" component="h2" gutterBottom>
             4. Data Security
           </Typography>
-          <Typography variant="body1" paragraph>
+          <Typography variant="body1" sx={{
+            marginBottom: "16px"
+          }}>
             We implement appropriate security measures to protect your personal information against 
             unauthorized access, alteration, disclosure, or destruction. However, no method of 
             transmission over the internet is 100% secure.
@@ -109,7 +122,9 @@ export default function PrivacyPolicyPage() {
           <Typography variant="h5" component="h2" gutterBottom>
             5. Your Rights
           </Typography>
-          <Typography variant="body1" paragraph>
+          <Typography variant="body1" sx={{
+            marginBottom: "16px"
+          }}>
             You have the right to:
           </Typography>
           <List>
@@ -135,7 +150,9 @@ export default function PrivacyPolicyPage() {
           <Typography variant="h5" component="h2" gutterBottom>
             6. Cookies and Tracking
           </Typography>
-          <Typography variant="body1" paragraph>
+          <Typography variant="body1" sx={{
+            marginBottom: "16px"
+          }}>
             We use cookies and similar technologies to enhance your experience, analyze usage patterns, 
             and provide personalized content. You can control cookie settings through your browser.
           </Typography>
@@ -145,7 +162,9 @@ export default function PrivacyPolicyPage() {
           <Typography variant="h5" component="h2" gutterBottom>
             7. Third-Party Services
           </Typography>
-          <Typography variant="body1" paragraph>
+          <Typography variant="body1" sx={{
+            marginBottom: "16px"
+          }}>
             Our app integrates with third-party services including:
           </Typography>
           <List>
@@ -159,7 +178,9 @@ export default function PrivacyPolicyPage() {
               <ListItemText primary="Social login providers (Google)" />
             </ListItem>
           </List>
-          <Typography variant="body1" paragraph>
+          <Typography variant="body1" sx={{
+            marginBottom: "16px"
+          }}>
             These services have their own privacy policies, and we encourage you to review them.
           </Typography>
         </Box>
@@ -168,7 +189,9 @@ export default function PrivacyPolicyPage() {
           <Typography variant="h5" component="h2" gutterBottom>
             8. Data Retention
           </Typography>
-          <Typography variant="body1" paragraph>
+          <Typography variant="body1" sx={{
+            marginBottom: "16px"
+          }}>
             We retain your personal information for as long as necessary to provide our services 
             and comply with legal obligations. You can request deletion of your data at any time.
           </Typography>
@@ -178,7 +201,9 @@ export default function PrivacyPolicyPage() {
           <Typography variant="h5" component="h2" gutterBottom>
             9. Children's Privacy
           </Typography>
-          <Typography variant="body1" paragraph>
+          <Typography variant="body1" sx={{
+            marginBottom: "16px"
+          }}>
             Our services are not intended for children under 13. We do not knowingly collect 
             personal information from children under 13.
           </Typography>
@@ -188,7 +213,9 @@ export default function PrivacyPolicyPage() {
           <Typography variant="h5" component="h2" gutterBottom>
             10. Changes to This Policy
           </Typography>
-          <Typography variant="body1" paragraph>
+          <Typography variant="body1" sx={{
+            marginBottom: "16px"
+          }}>
             We may update this privacy policy from time to time. We will notify you of any 
             changes by posting the new policy on this page and updating the "Last updated" date.
           </Typography>
@@ -198,7 +225,9 @@ export default function PrivacyPolicyPage() {
           <Typography variant="h5" component="h2" gutterBottom>
             11. Contact Us
           </Typography>
-          <Typography variant="body1" paragraph>
+          <Typography variant="body1" sx={{
+            marginBottom: "16px"
+          }}>
             If you have any questions about this privacy policy or our data practices, 
             please contact us at:
           </Typography>

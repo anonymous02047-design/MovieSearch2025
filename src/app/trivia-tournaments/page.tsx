@@ -35,7 +35,12 @@ export default function TriviaTournamentsPage() {
                 <CardContent>
                   <Chip label="Live Now" color="error" size="small" sx={{ mb: 2 }} />
                   <Typography variant="h6" sx={{ mb: 1 }}>90s Action Movies Championship</Typography>
-                  <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: "text.secondary",
+                      mb: 2
+                    }}>
                     245 players • Ends in 2h 15m
                   </Typography>
                   <Button variant="contained" startIcon={<PlayIcon />}>Join Tournament</Button>
@@ -47,7 +52,12 @@ export default function TriviaTournamentsPage() {
                 <CardContent>
                   <Chip label="Upcoming" color="primary" size="small" sx={{ mb: 2 }} />
                   <Typography variant="h6" sx={{ mb: 1 }}>Classic Cinema Challenge</Typography>
-                  <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: "text.secondary",
+                      mb: 2
+                    }}>
                     Starts in 4 hours • $500 prize pool
                   </Typography>
                   <Button variant="outlined">Register Now</Button>

@@ -313,7 +313,13 @@ function BoxOfficePageContent() {
   };
 
   const renderMovieCard = (movie: BoxOfficeMovie) => (
-    <Grid item xs={12} sm={6} md={4} key={movie.id}>
+    <Grid
+      key={movie.id}
+      size={{
+        xs: 12,
+        sm: 6,
+        md: 4
+      }}>
       <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
         <CardMedia
           component="img"
@@ -327,7 +333,7 @@ function BoxOfficePageContent() {
             {movie.title}
           </Typography>
           
-          <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 1 }}>
+          <Stack direction="row" spacing={1} sx={{ alignItems: 'center', mb: 1 }}>
             <Rating
               value={movie.vote_average / 2}
               precision={0.1}
@@ -339,7 +345,7 @@ function BoxOfficePageContent() {
             </Typography>
           </Stack>
 
-          <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 2 }}>
+          <Stack direction="row" spacing={1} sx={{ alignItems: 'center', mb: 2 }}>
             <CalendarIcon fontSize="small" color="action" />
             <Typography variant="body2" color="text.secondary">
               {new Date(movie.release_date).getFullYear()}
@@ -347,15 +353,15 @@ function BoxOfficePageContent() {
           </Stack>
 
           <Stack spacing={1} sx={{ mb: 2 }}>
-            <Box display="flex" justifyContent="space-between">
+            <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
               <Typography variant="body2" color="text.secondary">
                 Worldwide:
               </Typography>
-              <Typography variant="body2" fontWeight="bold" color="primary.main">
+              <Typography variant="body2" color="primary.main" sx={{ fontWeight: 'bold' }}>
                 {formatCurrency(movie.worldwide_gross)}
               </Typography>
             </Box>
-            <Box display="flex" justifyContent="space-between">
+            <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
               <Typography variant="body2" color="text.secondary">
                 Domestic:
               </Typography>
@@ -363,7 +369,7 @@ function BoxOfficePageContent() {
                 {formatCurrency(movie.domestic_gross)}
               </Typography>
             </Box>
-            <Box display="flex" justifyContent="space-between">
+            <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
               <Typography variant="body2" color="text.secondary">
                 Budget:
               </Typography>
@@ -371,15 +377,15 @@ function BoxOfficePageContent() {
                 {formatCurrency(movie.budget)}
               </Typography>
             </Box>
-            <Box display="flex" justifyContent="space-between">
+            <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
               <Typography variant="body2" color="text.secondary">
                 Profit:
               </Typography>
-              <Typography variant="body2" fontWeight="bold" color={`${getProfitColor(movie.profit_margin)}.main`}>
+              <Typography variant="body2" color={`${getProfitColor(movie.profit_margin)}.main`} sx={{ fontWeight: 'bold' }}>
                 {formatCurrency(movie.profit)}
               </Typography>
             </Box>
-            <Box display="flex" justifyContent="space-between">
+            <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
               <Typography variant="body2" color="text.secondary">
                 Margin:
               </Typography>
@@ -414,7 +420,7 @@ function BoxOfficePageContent() {
   if (loading) {
     return (
       <Container maxWidth="lg" sx={{ py: 4 }}>
-        <Box display="flex" justifyContent="center" alignItems="center" minHeight="400px">
+        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '400px' }}>
           <CircularProgress />
         </Box>
       </Container>
@@ -439,7 +445,7 @@ function BoxOfficePageContent() {
       <Container maxWidth="lg" sx={{ py: 4 }}>
       {/* Header */}
       <Box sx={{ mb: 4 }}>
-        <Stack direction="row" alignItems="center" spacing={2} sx={{ mb: 2 }}>
+        <Stack direction="row" spacing={2} sx={{ alignItems: 'center', mb: 2 }}>
           <BoxOfficeIcon sx={{ fontSize: 40, color: 'primary.main' }} />
           <Typography variant="h3" component="h1">
             Box Office
@@ -456,12 +462,14 @@ function BoxOfficePageContent() {
             placeholder="Search movies or distributors..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <SearchIcon />
-                </InputAdornment>
-              ),
+            slotProps={{
+              input: {
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon />
+                  </InputAdornment>
+                ),
+              }
             }}
           />
           <FormControl sx={{ minWidth: 200 }}>
@@ -534,7 +542,7 @@ function BoxOfficePageContent() {
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <Box display="flex" justifyContent="center" sx={{ mt: 4 }}>
+        <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
           <Pagination
             count={totalPages}
             page={currentPage}
@@ -547,7 +555,7 @@ function BoxOfficePageContent() {
 
       {/* No Results */}
       {filteredMovies.length === 0 && (searchQuery || yearFilter !== 'all') && (
-        <Box textAlign="center" sx={{ py: 4 }}>
+        <Box sx={{ textAlign: 'center', py: 4 }}>
           <Typography variant="h6" color="text.secondary">
             No movies found matching your criteria
           </Typography>
@@ -556,8 +564,8 @@ function BoxOfficePageContent() {
 
       {/* Stats */}
       <Box sx={{ mt: 4, p: 3, bgcolor: 'background.paper', borderRadius: 2 }}>
-        <Stack direction="row" spacing={4} justifyContent="center">
-          <Box textAlign="center">
+        <Stack direction="row" spacing={4} sx={{ justifyContent: 'center' }}>
+          <Box sx={{ textAlign: 'center' }}>
             <Typography variant="h4" color="primary.main">
               {formatCurrency(filteredMovies.reduce((sum, movie) => sum + movie.worldwide_gross, 0))}
             </Typography>
@@ -565,7 +573,7 @@ function BoxOfficePageContent() {
               Total Worldwide Gross
             </Typography>
           </Box>
-          <Box textAlign="center">
+          <Box sx={{ textAlign: 'center' }}>
             <Typography variant="h4" color="secondary.main">
               {formatCurrency(filteredMovies.reduce((sum, movie) => sum + movie.profit, 0))}
             </Typography>
@@ -573,7 +581,7 @@ function BoxOfficePageContent() {
               Total Profit
             </Typography>
           </Box>
-          <Box textAlign="center">
+          <Box sx={{ textAlign: 'center' }}>
             <Typography variant="h4" color="success.main">
               {filteredMovies.length > 0 ? (filteredMovies.reduce((sum, movie) => sum + movie.profit_margin, 0) / filteredMovies.length).toFixed(1) : '0.0'}%
             </Typography>
@@ -584,7 +592,7 @@ function BoxOfficePageContent() {
         </Stack>
       </Box>
         </Container>
-      </>
+    </>
   );
 }
 

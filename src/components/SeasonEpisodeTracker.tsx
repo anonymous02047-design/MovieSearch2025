@@ -193,7 +193,9 @@ export default function SeasonEpisodeTracker({
       <Card sx={{ mb: 3 }}>
         <CardContent>
           <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 2 }}>
-            <Typography variant="h6" fontWeight="bold">
+            <Typography variant="h6" sx={{
+              fontWeight: "bold"
+            }}>
               Watch Progress
             </Typography>
             <Chip
@@ -217,7 +219,12 @@ export default function SeasonEpisodeTracker({
             }}
           />
           
-          <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+          <Typography
+            variant="body2"
+            sx={{
+              color: "text.secondary",
+              mt: 1
+            }}>
             {seasons.reduce((sum, s) => sum + s.episode_count, 0)} episodes across {seasons.length} seasons
           </Typography>
         </CardContent>
@@ -254,7 +261,9 @@ export default function SeasonEpisodeTracker({
               >
                 <Box sx={{ flex: 1, pr: 2 }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1 }}>
-                    <Typography variant="h6" fontWeight="bold">
+                    <Typography variant="h6" sx={{
+                      fontWeight: "bold"
+                    }}>
                       {season.name}
                     </Typography>
                     <Chip
@@ -282,12 +291,18 @@ export default function SeasonEpisodeTracker({
                     }}
                   />
                   
-                  <Typography variant="caption" color="text.secondary" sx={{ mt: 0.5, display: 'block' }}>
+                  <Typography
+                    variant="caption"
+                    sx={{
+                      color: "text.secondary",
+                      mt: 0.5,
+                      display: 'block'
+                    }}>
                     {progress.toFixed(0)}% watched • First aired: {formatDate(season.air_date)}
                   </Typography>
                 </Box>
               </AccordionSummary>
-              
+
               <AccordionDetails>
                 <Box sx={{ display: 'flex', gap: 1, mb: 2 }}>
                   <Button
@@ -418,7 +433,9 @@ export default function SeasonEpisodeTracker({
               </Box>
               
               {selectedEpisode.overview && (
-                <Typography variant="body2" paragraph>
+                <Typography variant="body2" sx={{
+                  marginBottom: "16px"
+                }}>
                   {selectedEpisode.overview}
                 </Typography>
               )}

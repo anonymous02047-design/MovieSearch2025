@@ -17,7 +17,9 @@ export default function GenreStatsPage() {
             <ChartIcon sx={{ fontSize: 40, color: 'primary.main' }} />
             <Typography variant="h3" sx={{ fontWeight: 'bold' }}>Genre Statistics</Typography>
           </Box>
-          <Typography variant="body1" color="text.secondary">Analyze your genre preferences</Typography>
+          <Typography variant="body1" sx={{
+            color: "text.secondary"
+          }}>Analyze your genre preferences</Typography>
         </Container>
       </Box>
     </AuthGuard>

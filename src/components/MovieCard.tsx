@@ -237,7 +237,12 @@ export default function MovieCard({
             }}
           >
             <MovieIcon sx={{ fontSize: 48, mb: 1, opacity: 0.7 }} />
-            <Typography variant="caption" textAlign="center" sx={{ opacity: 0.8 }}>
+            <Typography
+              variant="caption"
+              sx={{
+                textAlign: "center",
+                opacity: 0.8
+              }}>
               {movie.title}
             </Typography>
           </Box>
@@ -401,13 +406,20 @@ export default function MovieCard({
             readOnly
             sx={{ mr: 1 }}
           />
-          <Typography variant="caption" color="text.secondary">
+          <Typography variant="caption" sx={{
+            color: "text.secondary"
+          }}>
             ({movie.vote_count})
           </Typography>
         </Box>
 
         {movie.release_date && (
-          <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+          <Typography
+            variant="body2"
+            sx={{
+              color: "text.secondary",
+              mb: 1
+            }}>
             {formatDate(movie.release_date)}
           </Typography>
         )}
@@ -415,16 +427,15 @@ export default function MovieCard({
         {movie.overview && (
           <Typography
             variant="body2"
-            color="text.secondary"
             sx={{
+              color: "text.secondary",
               display: '-webkit-box',
               WebkitLineClamp: 3,
               WebkitBoxOrient: 'vertical',
               overflow: 'hidden',
               textOverflow: 'ellipsis',
-              lineHeight: 1.4,
-            }}
-          >
+              lineHeight: 1.4
+            }}>
             {movie.overview}
           </Typography>
         )}

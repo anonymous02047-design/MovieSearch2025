@@ -87,8 +87,14 @@ export default function ContactForm() {
       <Typography variant="h4" component="h1" gutterBottom align="center">
         Contact Us
       </Typography>
-      
-      <Typography variant="body1" color="text.secondary" align="center" sx={{ mb: 4 }}>
+
+      <Typography
+        variant="body1"
+        align="center"
+        sx={{
+          color: "text.secondary",
+          mb: 4
+        }}>
         Send us a message and we'll get back to you as soon as possible.
       </Typography>
 
@@ -100,10 +106,12 @@ export default function ContactForm() {
             value={formData.name}
             onChange={handleInputChange('name')}
             required
-            InputProps={{
-              startAdornment: <PersonIcon sx={{ mr: 1, color: 'text.secondary' }} />,
-            }}
             disabled={isSubmitting}
+            slotProps={{
+              input: {
+                startAdornment: <PersonIcon sx={{ mr: 1, color: 'text.secondary' }} />,
+              }
+            }}
           />
 
           <TextField
@@ -113,10 +121,12 @@ export default function ContactForm() {
             value={formData.email}
             onChange={handleInputChange('email')}
             required
-            InputProps={{
-              startAdornment: <EmailIcon sx={{ mr: 1, color: 'text.secondary' }} />,
-            }}
             disabled={isSubmitting}
+            slotProps={{
+              input: {
+                startAdornment: <EmailIcon sx={{ mr: 1, color: 'text.secondary' }} />,
+              }
+            }}
           />
 
           <TextField
@@ -136,10 +146,12 @@ export default function ContactForm() {
             value={formData.message}
             onChange={handleInputChange('message')}
             required
-            InputProps={{
-              startAdornment: <MessageIcon sx={{ mr: 1, color: 'text.secondary', alignSelf: 'flex-start', mt: 1 }} />,
-            }}
             disabled={isSubmitting}
+            slotProps={{
+              input: {
+                startAdornment: <MessageIcon sx={{ mr: 1, color: 'text.secondary', alignSelf: 'flex-start', mt: 1 }} />,
+              }
+            }}
           />
 
           <Button

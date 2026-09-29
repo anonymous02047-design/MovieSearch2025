@@ -137,7 +137,9 @@ export default function AdminLoginPage() {
               <Typography variant="h4" component="h1" gutterBottom>
                 Admin Login
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" sx={{
+                color: "text.secondary"
+              }}>
                 Access the rate limiting management system
               </Typography>
             </Box>
@@ -185,7 +187,9 @@ export default function AdminLoginPage() {
             </Box>
 
             <Box sx={{ mt: 3, p: 2, bgcolor: 'grey.50', borderRadius: 1 }}>
-              <Typography variant="caption" color="text.secondary">
+              <Typography variant="caption" sx={{
+                color: "text.secondary"
+              }}>
                 <strong>Admin Access:</strong><br />
                 Contact your system administrator for login credentials.
               </Typography>

@@ -119,13 +119,15 @@ export default function ThemeToggle() {
           vertical: 'top',
           horizontal: 'right',
         }}
-        PaperProps={{
-          sx: {
-            mt: 1,
-            minWidth: 180,
-            '& .MuiMenuItem-root': {
-              px: 2,
-              py: 1,
+        slotProps={{
+          paper: {
+            sx: {
+              mt: 1,
+              minWidth: 180,
+              '& .MuiMenuItem-root': {
+                px: 2,
+                py: 1,
+              },
             },
           },
         }}

@@ -218,31 +218,45 @@ export default function ReviewsPage() {
           <Typography variant="h3" component="h1" gutterBottom className="fade-in">
             Movie Reviews
           </Typography>
-          <Typography variant="h6" color="text.secondary" className="fade-in stagger-1">
+          <Typography variant="h6" className="fade-in stagger-1" sx={{
+            color: "text.secondary"
+          }}>
             Discover what our community thinks about the latest movies
           </Typography>
         </Box>
 
         {/* Search and Filters */}
         <Box sx={{ mb: 4 }}>
-          <Grid container spacing={2} alignItems="center">
-            <Grid item xs={12} md={8}>
+          <Grid container spacing={2} sx={{
+            alignItems: "center"
+          }}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 8
+              }}>
               <TextField
                 fullWidth
                 placeholder="Search reviews by movie, user, or content..."
                 value={searchQuery}
                 onChange={(e) => handleSearch(e.target.value)}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <SearchIcon />
-                    </InputAdornment>
-                  ),
-                }}
                 className="fade-in stagger-2"
+                slotProps={{
+                  input: {
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <SearchIcon />
+                      </InputAdornment>
+                    ),
+                  }
+                }}
               />
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <FormControl fullWidth>
                 <InputLabel>Sort By</InputLabel>
                 <Select
@@ -272,14 +286,19 @@ export default function ReviewsPage() {
 
             <Grid container spacing={3}>
               {filteredReviews.map((review, index) => (
-                <Grid item xs={12} key={review.id}>
+                <Grid key={review.id} size={12}>
                   <Card
                     className="card-hover fade-in"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     <CardContent>
                       <Grid container spacing={3}>
-                        <Grid item xs={12} sm={3} md={2}>
+                        <Grid
+                          size={{
+                            xs: 12,
+                            sm: 3,
+                            md: 2
+                          }}>
                           <CardMedia
                             component="img"
                             height="200"
@@ -288,7 +307,12 @@ export default function ReviewsPage() {
                             sx={{ borderRadius: 1 }}
                           />
                         </Grid>
-                        <Grid item xs={12} sm={9} md={10}>
+                        <Grid
+                          size={{
+                            xs: 12,
+                            sm: 9,
+                            md: 10
+                          }}>
                           <Box sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', mb: 2 }}>
                             <Box>
                               <Typography variant="h6" component="h3" gutterBottom>
@@ -300,7 +324,9 @@ export default function ReviewsPage() {
                             </Box>
                             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                               <Rating value={review.rating} readOnly size="small" />
-                              <Typography variant="body2" color="text.secondary">
+                              <Typography variant="body2" sx={{
+                                color: "text.secondary"
+                              }}>
                                 {review.rating}/5
                               </Typography>
                             </Box>
@@ -319,7 +345,9 @@ export default function ReviewsPage() {
                                 <Chip label="Verified" size="small" color="primary" />
                               )}
                             </Box>
-                            <Typography variant="caption" color="text.secondary">
+                            <Typography variant="caption" sx={{
+                              color: "text.secondary"
+                            }}>
                               {formatDate(review.createdAt)}
                             </Typography>
                           </Box>

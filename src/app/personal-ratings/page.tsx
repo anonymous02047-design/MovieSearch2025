@@ -90,12 +90,20 @@ export default function PersonalRatingsPage() {
             <CardContent>
               <Box sx={{ display: 'flex', justifyContent: 'space-around', textAlign: 'center' }}>
                 <Box>
-                  <Typography variant="h4" color="primary.main">{ratings.length}</Typography>
-                  <Typography variant="body2" color="text.secondary">Movies Rated</Typography>
+                  <Typography variant="h4" sx={{
+                    color: "primary.main"
+                  }}>{ratings.length}</Typography>
+                  <Typography variant="body2" sx={{
+                    color: "text.secondary"
+                  }}>Movies Rated</Typography>
                 </Box>
                 <Box>
-                  <Typography variant="h4" color="primary.main">{averageRating}</Typography>
-                  <Typography variant="body2" color="text.secondary">Average Rating</Typography>
+                  <Typography variant="h4" sx={{
+                    color: "primary.main"
+                  }}>{averageRating}</Typography>
+                  <Typography variant="body2" sx={{
+                    color: "text.secondary"
+                  }}>Average Rating</Typography>
                 </Box>
               </Box>
             </CardContent>
@@ -124,7 +132,9 @@ export default function PersonalRatingsPage() {
                         secondary={
                           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mt: 1 }}>
                             <Rating value={rating.rating} readOnly size="small" />
-                            <Typography variant="caption" color="text.secondary">
+                            <Typography variant="caption" sx={{
+                              color: "text.secondary"
+                            }}>
                               {new Date(rating.createdAt).toLocaleDateString()}
                             </Typography>
                           </Box>
@@ -136,7 +146,13 @@ export default function PersonalRatingsPage() {
               </CardContent>
             </Card>
           ) : (
-            <Typography variant="body1" color="text.secondary" sx={{ textAlign: 'center', py: 4 }}>
+            <Typography
+              variant="body1"
+              sx={{
+                color: "text.secondary",
+                textAlign: 'center',
+                py: 4
+              }}>
               No ratings yet. Start rating movies!
             </Typography>
           )}

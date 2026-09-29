@@ -63,19 +63,23 @@ export default function LanguageSelector() {
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}
         onClose={handleClose}
-        PaperProps={{
-          sx: {
-            maxHeight: 400,
-            width: 250,
-            background: theme.palette.mode === 'dark'
-              ? 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)'
-              : 'linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%)',
-            border: `1px solid ${alpha(theme.palette.divider, 0.1)}`,
+        slotProps={{
+          paper: {
+            sx: {
+              maxHeight: 400,
+              width: 250,
+              background: theme.palette.mode === 'dark'
+                ? 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)'
+                : 'linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%)',
+              border: `1px solid ${alpha(theme.palette.divider, 0.1)}`,
+            }
           }
         }}
       >
         <Box sx={{ px: 2, py: 1 }}>
-          <Typography variant="subtitle2" fontWeight={600}>
+          <Typography variant="subtitle2" sx={{
+            fontWeight: 600
+          }}>
             Select Language
           </Typography>
         </Box>

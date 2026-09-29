@@ -278,7 +278,9 @@ export default function RateLimitConfigPage() {
           <Typography variant="h4" component="h1" gutterBottom sx={{ color: 'text.primary' }}>
             Rate Limit Configuration
           </Typography>
-          <Typography variant="body1" color="text.secondary">
+          <Typography variant="body1" sx={{
+            color: "text.secondary"
+          }}>
             Configure rate limiting settings for IP addresses, countries, TMDB API, and global limits
           </Typography>
         </Box>
@@ -291,7 +293,11 @@ export default function RateLimitConfigPage() {
 
         <Grid container spacing={3}>
           {/* IP Rate Limit */}
-          <Grid item xs={12} md={6}>
+          <Grid
+            size={{
+              xs: 12,
+              md: 6
+            }}>
             <Card sx={{ 
               background: isDarkMode 
                 ? 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)' 
@@ -346,7 +352,11 @@ export default function RateLimitConfigPage() {
           </Grid>
 
           {/* Country Rate Limit */}
-          <Grid item xs={12} md={6}>
+          <Grid
+            size={{
+              xs: 12,
+              md: 6
+            }}>
             <Card sx={{ 
               background: isDarkMode 
                 ? 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)' 
@@ -401,7 +411,11 @@ export default function RateLimitConfigPage() {
           </Grid>
 
           {/* TMDB Rate Limit */}
-          <Grid item xs={12} md={6}>
+          <Grid
+            size={{
+              xs: 12,
+              md: 6
+            }}>
             <Card sx={{ 
               background: isDarkMode 
                 ? 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)' 
@@ -456,7 +470,11 @@ export default function RateLimitConfigPage() {
           </Grid>
 
           {/* Global Rate Limit */}
-          <Grid item xs={12} md={6}>
+          <Grid
+            size={{
+              xs: 12,
+              md: 6
+            }}>
             <Card sx={{ 
               background: isDarkMode 
                 ? 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)' 

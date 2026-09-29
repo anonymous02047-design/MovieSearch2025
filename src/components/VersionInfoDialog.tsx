@@ -59,10 +59,12 @@ export default function VersionInfoDialog({ open, onClose }: VersionInfoDialogPr
       onClose={onClose}
       maxWidth="md"
       fullWidth
-      PaperProps={{
-        sx: {
-          background: 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
+      slotProps={{
+        paper: {
+          sx: {
+            background: 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
+          }
         }
       }}
     >
@@ -72,7 +74,7 @@ export default function VersionInfoDialog({ open, onClose }: VersionInfoDialogPr
           <Typography variant="h6">Application Information</Typography>
         </Box>
       </DialogTitle>
-      
+
       <DialogContent sx={{ color: 'white' }}>
         <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 3 }}>
           {/* Version Info */}
@@ -88,11 +90,15 @@ export default function VersionInfoDialog({ open, onClose }: VersionInfoDialogPr
                   variant="outlined"
                   size="medium"
                 />
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" sx={{
+                  color: "text.secondary"
+                }}>
                   Released: {releaseDate}
                 </Typography>
               </Box>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" sx={{
+                color: "text.secondary"
+              }}>
                 MovieSearch 2025 - Advanced Movie Discovery Platform
               </Typography>
             </Box>
@@ -158,20 +164,33 @@ export default function VersionInfoDialog({ open, onClose }: VersionInfoDialogPr
               <Typography variant="h6" gutterBottom sx={{ color: 'primary.main' }}>
                 Developer Information
               </Typography>
-              <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+              <Typography
+                variant="body2"
+                sx={{
+                  color: "text.secondary",
+                  mb: 1
+                }}>
                 Developed by <strong>Naushad Alam</strong>
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" sx={{
+                color: "text.secondary"
+              }}>
                 Email: naushadalamprivate@gmail.com | Phone: +91 7209752686
               </Typography>
-              <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 1 }}>
+              <Typography
+                variant="caption"
+                sx={{
+                  color: "text.secondary",
+                  display: 'block',
+                  mt: 1
+                }}>
                 Made with ❤️ for movie enthusiasts worldwide
               </Typography>
             </Box>
           </Box>
         </Box>
       </DialogContent>
-      
+
       <DialogActions sx={{ borderTop: '1px solid rgba(255, 255, 255, 0.1)' }}>
         <Button onClick={onClose} variant="outlined" sx={{ color: 'white', borderColor: 'rgba(255, 255, 255, 0.3)' }}>
           Close

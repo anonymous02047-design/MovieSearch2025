@@ -136,9 +136,19 @@ export default function Footer() {
       <Container maxWidth="lg">
         <Grid container spacing={4}>
           {/* Brand Section */}
-          <Grid item xs={12} md={4}>
+          <Grid
+            size={{
+              xs: 12,
+              md: 4
+            }}>
             <Box sx={{ mb: 3 }}>
-              <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 2 }}>
+              <Stack
+                direction="row"
+                spacing={1}
+                sx={{
+                  alignItems: "center",
+                  mb: 2
+                }}>
                 <MovieIcon sx={{ fontSize: 32, color: 'white' }} />
                 <Typography variant="h5" component="h2" sx={{ 
                   fontWeight: 'bold',
@@ -158,7 +168,9 @@ export default function Footer() {
               
               {/* Contact Info */}
               <Stack spacing={1}>
-                <Stack direction="row" alignItems="center" spacing={1}>
+                <Stack direction="row" spacing={1} sx={{
+                  alignItems: "center"
+                }}>
                   <EmailIcon sx={{ fontSize: 16, color: 'rgba(255, 255, 255, 0.7)' }} />
                   <Link 
                     href="mailto:naushadnaushad7777@gmail.com" 
@@ -171,7 +183,9 @@ export default function Footer() {
                     naushadnaushad7777@gmail.com
                   </Link>
                 </Stack>
-                <Stack direction="row" alignItems="center" spacing={1}>
+                <Stack direction="row" spacing={1} sx={{
+                  alignItems: "center"
+                }}>
                   <PhoneIcon sx={{ fontSize: 16, color: 'rgba(255, 255, 255, 0.7)' }} />
                   <Link 
                     href="tel:+917492068998" 
@@ -184,7 +198,9 @@ export default function Footer() {
                     +91 7492068998
                   </Link>
                 </Stack>
-                <Stack direction="row" alignItems="center" spacing={1}>
+                <Stack direction="row" spacing={1} sx={{
+                  alignItems: "center"
+                }}>
                   <GitHubIcon sx={{ fontSize: 16, color: 'rgba(255, 255, 255, 0.7)' }} />
                   <Link 
                     href="https://github.com/yourusername/MovieSearch2025" 
@@ -204,10 +220,20 @@ export default function Footer() {
           </Grid>
 
           {/* Links Sections */}
-          <Grid item xs={12} md={8}>
+          <Grid
+            size={{
+              xs: 12,
+              md: 8
+            }}>
             <Grid container spacing={4}>
               {Object.entries(footerLinks).map(([category, links]) => (
-                <Grid item xs={12} sm={6} md={4} key={category}>
+                <Grid
+                  key={category}
+                  size={{
+                    xs: 12,
+                    sm: 6,
+                    md: 4
+                  }}>
                   <Typography variant="h6" component="h3" sx={{ 
                     fontWeight: 'bold',
                     color: 'white',
@@ -244,7 +270,13 @@ export default function Footer() {
         {/* Sitemap Section */}
         <Box sx={{ mt: 4 }}>
           <Box sx={{ textAlign: 'center', mb: 3 }}>
-            <Stack direction="row" spacing={2} justifyContent="center" flexWrap="wrap">
+            <Stack
+              direction="row"
+              spacing={2}
+              sx={{
+                justifyContent: "center",
+                flexWrap: "wrap"
+              }}>
               <Button
                 variant="outlined"
                 startIcon={<SitemapIcon />}

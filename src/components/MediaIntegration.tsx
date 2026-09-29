@@ -472,10 +472,12 @@ export default function MediaIntegration({
             placeholder="Search media..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            InputProps={{
-              startAdornment: <SearchIcon sx={{ mr: 1, color: 'text.secondary' }} />,
-            }}
             sx={{ minWidth: 200 }}
+            slotProps={{
+              input: {
+                startAdornment: <SearchIcon sx={{ mr: 1, color: 'text.secondary' }} />,
+              }
+            }}
           />
 
           {/* Sort */}
@@ -735,10 +737,14 @@ export default function MediaIntegration({
             <Typography variant="h6" gutterBottom>
               Click to upload media files
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               Supported formats: {allowedFormats.join(', ')}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               Max file size: {(maxFileSize / 1024 / 1024).toFixed(0)}MB
             </Typography>
           </Box>

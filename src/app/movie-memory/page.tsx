@@ -113,7 +113,9 @@ export default function MovieMemoryPage() {
                     primary={m.memory} 
                     secondary={
                       <Box sx={{ mt: 1 }}>
-                        <Typography variant="caption" color="text.secondary">
+                        <Typography variant="caption" sx={{
+                          color: "text.secondary"
+                        }}>
                           {new Date(m.createdAt).toLocaleDateString()}
                         </Typography>
                         {m.movieTitle && (
@@ -126,7 +128,13 @@ export default function MovieMemoryPage() {
               ))}
             </List>
           ) : (
-            <Typography variant="body1" color="text.secondary" sx={{ textAlign: 'center', py: 4 }}>
+            <Typography
+              variant="body1"
+              sx={{
+                color: "text.secondary",
+                textAlign: 'center',
+                py: 4
+              }}>
               No memories yet. Share your first movie memory!
             </Typography>
           )}

@@ -18,13 +18,20 @@ export default function WeatherRecommendationsPage() {
             <SunIcon sx={{ fontSize: 40, color: 'primary.main' }} />
             <Typography variant="h3" sx={{ fontWeight: 'bold' }}>Weather Recommendations</Typography>
           </Box>
-          <Typography variant="h6" color="text.secondary" sx={{ mb: 4 }}>
+          <Typography
+            variant="h6"
+            sx={{
+              color: "text.secondary",
+              mb: 4
+            }}>
             Movies perfect for your current weather
           </Typography>
           <Card>
             <CardContent>
               <Typography variant="h6" sx={{ mb: 2 }}>Current Weather: Sunny ☀️</Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" sx={{
+                color: "text.secondary"
+              }}>
                 Perfect day for summer-themed movies or outdoor adventures!
               </Typography>
             </CardContent>

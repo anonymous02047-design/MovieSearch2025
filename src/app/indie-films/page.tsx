@@ -138,7 +138,12 @@ function IndieFilmsPageContent() {
           <MovieIcon sx={{ fontSize: 40, mr: 1, verticalAlign: 'middle', color: 'primary.main' }} />
           Independent Films
         </Typography>
-        <Typography variant="body1" color="text.secondary" paragraph>
+        <Typography
+          variant="body1"
+          sx={{
+            color: "text.secondary",
+            marginBottom: "16px"
+          }}>
           Discover critically acclaimed independent films from renowned indie studios like A24, Plan B, Annapurna, and more.
         </Typography>
 
@@ -197,7 +202,14 @@ function IndieFilmsPageContent() {
       <Grid container spacing={3}>
         {loading ? (
           [...Array(12)].map((_, index) => (
-            <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+            <Grid
+              key={index}
+              size={{
+                xs: 12,
+                sm: 6,
+                md: 4,
+                lg: 3
+              }}>
               <Card>
                 <Skeleton variant="rectangular" height={400} />
                 <CardContent>
@@ -208,14 +220,21 @@ function IndieFilmsPageContent() {
             </Grid>
           ))
         ) : films.length === 0 ? (
-          <Grid item xs={12}>
+          <Grid size={12}>
             <Alert severity="info">
               No indie films found with the selected filters.
             </Alert>
           </Grid>
         ) : (
           films.map((film) => (
-            <Grid item xs={12} sm={6} md={4} lg={3} key={film.id}>
+            <Grid
+              key={film.id}
+              size={{
+                xs: 12,
+                sm: 6,
+                md: 4,
+                lg: 3
+              }}>
               <Card
                 sx={{
                   height: '100%',
@@ -265,21 +284,26 @@ function IndieFilmsPageContent() {
                     {film.title}
                   </Typography>
 
-                  <Typography variant="caption" color="text.secondary" display="block" sx={{ mb: 1 }}>
+                  <Typography
+                    variant="caption"
+                    sx={{
+                      color: "text.secondary",
+                      display: "block",
+                      mb: 1
+                    }}>
                     {formatDate(film.release_date)}
                   </Typography>
 
                   <Typography
                     variant="body2"
-                    color="text.secondary"
                     sx={{
+                      color: "text.secondary",
                       overflow: 'hidden',
                       textOverflow: 'ellipsis',
                       display: '-webkit-box',
                       WebkitLineClamp: 3,
-                      WebkitBoxOrient: 'vertical',
-                    }}
-                  >
+                      WebkitBoxOrient: 'vertical'
+                    }}>
                     {film.overview || 'No description available.'}
                   </Typography>
                 </CardContent>

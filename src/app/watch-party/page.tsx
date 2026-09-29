@@ -144,10 +144,14 @@ export default function WatchPartyPage() {
                   <TvIcon fontSize="large" />
                 </Avatar>
                 <Box>
-                  <Typography variant="h3" fontWeight={700} gutterBottom>
+                  <Typography variant="h3" gutterBottom sx={{
+                    fontWeight: 700
+                  }}>
                     Watch Parties
                   </Typography>
-                  <Typography variant="body1" color="text.secondary">
+                  <Typography variant="body1" sx={{
+                    color: "text.secondary"
+                  }}>
                     Watch movies together with friends online
                   </Typography>
                 </Box>
@@ -166,32 +170,65 @@ export default function WatchPartyPage() {
 
           {/* Stats */}
           <Grid container spacing={3} sx={{ mb: 4 }}>
-            <Grid item xs={12} sm={4}>
+            <Grid
+              size={{
+                xs: 12,
+                sm: 4
+              }}>
               <Paper elevation={2} sx={{ p: 3, textAlign: 'center' }}>
-                <Typography variant="h4" color="primary.main" fontWeight={700}>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    color: "primary.main",
+                    fontWeight: 700
+                  }}>
                   {parties.filter(p => p.status === 'upcoming').length}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" sx={{
+                  color: "text.secondary"
+                }}>
                   Upcoming Parties
                 </Typography>
               </Paper>
             </Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid
+              size={{
+                xs: 12,
+                sm: 4
+              }}>
               <Paper elevation={2} sx={{ p: 3, textAlign: 'center' }}>
-                <Typography variant="h4" color="success.main" fontWeight={700}>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    color: "success.main",
+                    fontWeight: 700
+                  }}>
                   {parties.filter(p => p.isHost).length}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" sx={{
+                  color: "text.secondary"
+                }}>
                   Parties You're Hosting
                 </Typography>
               </Paper>
             </Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid
+              size={{
+                xs: 12,
+                sm: 4
+              }}>
               <Paper elevation={2} sx={{ p: 3, textAlign: 'center' }}>
-                <Typography variant="h4" color="info.main" fontWeight={700}>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    color: "info.main",
+                    fontWeight: 700
+                  }}>
                   {parties.reduce((sum, p) => sum + p.participants, 0)}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" sx={{
+                  color: "text.secondary"
+                }}>
                   Total Participants
                 </Typography>
               </Paper>
@@ -202,10 +239,17 @@ export default function WatchPartyPage() {
           {parties.length === 0 ? (
             <Paper elevation={2} sx={{ p: 8, textAlign: 'center' }}>
               <TvIcon sx={{ fontSize: 80, color: 'text.disabled', mb: 2 }} />
-              <Typography variant="h5" gutterBottom color="text.secondary">
+              <Typography variant="h5" gutterBottom sx={{
+                color: "text.secondary"
+              }}>
                 No Watch Parties Yet
               </Typography>
-              <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
+              <Typography
+                variant="body1"
+                sx={{
+                  color: "text.secondary",
+                  mb: 3
+                }}>
                 Host a watch party or join one created by friends
               </Typography>
               <Button
@@ -219,7 +263,12 @@ export default function WatchPartyPage() {
           ) : (
             <Grid container spacing={3}>
               {parties.map((party) => (
-                <Grid item xs={12} md={6} key={party.id}>
+                <Grid
+                  key={party.id}
+                  size={{
+                    xs: 12,
+                    md: 6
+                  }}>
                   <Card
                     elevation={3}
                     sx={{
@@ -256,24 +305,32 @@ export default function WatchPartyPage() {
                               <Chip label="HOST" size="small" color="primary" />
                             )}
                           </Box>
-                          <Typography variant="h6" fontWeight={600} gutterBottom>
+                          <Typography variant="h6" gutterBottom sx={{
+                            fontWeight: 600
+                          }}>
                             {party.movieTitle}
                           </Typography>
                           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
                             <Avatar src={party.hostAvatar} sx={{ width: 24, height: 24 }} />
-                            <Typography variant="body2" color="text.secondary">
+                            <Typography variant="body2" sx={{
+                              color: "text.secondary"
+                            }}>
                               Hosted by {party.hostName}
                             </Typography>
                           </Box>
                           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
                             <ScheduleIcon fontSize="small" color="action" />
-                            <Typography variant="body2" color="text.secondary">
+                            <Typography variant="body2" sx={{
+                              color: "text.secondary"
+                            }}>
                               {formatDateTime(party.scheduledTime)}
                             </Typography>
                           </Box>
                           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                             <PeopleIcon fontSize="small" color="action" />
-                            <Typography variant="body2" color="text.secondary">
+                            <Typography variant="body2" sx={{
+                              color: "text.secondary"
+                            }}>
                               {party.participants}/{party.maxParticipants} participants
                             </Typography>
                           </Box>
@@ -338,9 +395,11 @@ export default function WatchPartyPage() {
                 type="datetime-local"
                 value={newParty.scheduledTime}
                 onChange={(e) => setNewParty({ ...newParty, scheduledTime: e.target.value })}
-                InputLabelProps={{ shrink: true }}
                 sx={{ mb: 2 }}
                 required
+                slotProps={{
+                  inputLabel: { shrink: true }
+                }}
               />
               <TextField
                 fullWidth
@@ -356,8 +415,10 @@ export default function WatchPartyPage() {
                 type="number"
                 value={newParty.maxParticipants}
                 onChange={(e) => setNewParty({ ...newParty, maxParticipants: parseInt(e.target.value) })}
-                inputProps={{ min: 2, max: 50 }}
                 required
+                slotProps={{
+                  htmlInput: { min: 2, max: 50 }
+                }}
               />
             </Box>
           </DialogContent>

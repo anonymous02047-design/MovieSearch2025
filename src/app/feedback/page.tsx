@@ -195,7 +195,14 @@ Allow Contact: ${formData.allowContact ? 'Yes' : 'No'}
       <Container maxWidth="lg" sx={{ py: 4 }}>
           {/* Header */}
           <Box sx={{ mb: 4, textAlign: 'center' }}>
-            <Stack direction="row" alignItems="center" justifyContent="center" spacing={2} sx={{ mb: 2 }}>
+            <Stack
+              direction="row"
+              spacing={2}
+              sx={{
+                alignItems: "center",
+                justifyContent: "center",
+                mb: 2
+              }}>
               <FeedbackIcon sx={{ fontSize: 40, color: 'primary.main' }} />
               <Typography variant="body1" component="p" sx={{
                 fontWeight: 'bold',
@@ -205,7 +212,12 @@ Allow Contact: ${formData.allowContact ? 'Yes' : 'No'}
                 💬 Feedback
               </Typography>
             </Stack>
-            <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>
+            <Typography
+              variant="h6"
+              sx={{
+                color: "text.secondary",
+                mb: 3
+              }}>
               Help us make MovieSearch 2025 better with your feedback and suggestions
             </Typography>
           </Box>
@@ -255,7 +267,9 @@ Allow Contact: ${formData.allowContact ? 'Yes' : 'No'}
                         >
                           {feedbackTypes.map((type) => (
                             <MenuItem key={type.value} value={type.value}>
-                              <Stack direction="row" alignItems="center" spacing={1}>
+                              <Stack direction="row" spacing={1} sx={{
+                                alignItems: "center"
+                              }}>
                                 {type.icon}
                                 <Typography variant="body2">{type.label}</Typography>
                               </Stack>
@@ -267,7 +281,9 @@ Allow Contact: ${formData.allowContact ? 'Yes' : 'No'}
 
                     <Grid size={{ xs: 12, sm: 6 }}>
                       <Box>
-                        <Typography variant="body2" color="text.secondary" gutterBottom>
+                        <Typography variant="body2" gutterBottom sx={{
+                          color: "text.secondary"
+                        }}>
                           Overall Rating
                         </Typography>
                         <Rating
@@ -279,7 +295,12 @@ Allow Contact: ${formData.allowContact ? 'Yes' : 'No'}
                           icon={<StarIcon fontSize="inherit" />}
                           emptyIcon={<StarIcon fontSize="inherit" />}
                         />
-                        <Typography variant="caption" color="text.secondary" sx={{ ml: 1 }}>
+                        <Typography
+                          variant="caption"
+                          sx={{
+                            color: "text.secondary",
+                            ml: 1
+                          }}>
                           {formData.rating} star{formData.rating !== 1 ? 's' : ''}
                         </Typography>
                       </Box>
@@ -314,10 +335,14 @@ Allow Contact: ${formData.allowContact ? 'Yes' : 'No'}
 
                     {/* Feature Areas */}
                     <Grid size={{ xs: 12 }}>
-                      <Typography variant="body2" color="text.secondary" gutterBottom>
+                      <Typography variant="body2" gutterBottom sx={{
+                        color: "text.secondary"
+                      }}>
                         Which areas would you like to provide feedback on? (Select all that apply)
                       </Typography>
-                      <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
+                      <Stack direction="row" spacing={1} useFlexGap sx={{
+                        flexWrap: "wrap"
+                      }}>
                         {featureOptions.map((feature) => (
                           <Chip
                             key={feature}
@@ -428,16 +453,24 @@ Allow Contact: ${formData.allowContact ? 'Yes' : 'No'}
                       💡 Why Your Feedback Matters
                     </Typography>
                     <Stack spacing={2}>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         • Helps us prioritize new features
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         • Improves user experience
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         • Identifies areas for improvement
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         • Shapes the future of MovieSearch 2025
                       </Typography>
                     </Stack>
@@ -450,16 +483,24 @@ Allow Contact: ${formData.allowContact ? 'Yes' : 'No'}
                       🎯 What We're Looking For
                     </Typography>
                     <Stack spacing={2}>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         • Honest opinions about features
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         • Suggestions for new functionality
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         • User experience improvements
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         • Performance feedback
                       </Typography>
                     </Stack>
@@ -472,13 +513,19 @@ Allow Contact: ${formData.allowContact ? 'Yes' : 'No'}
                       📞 Other Ways to Connect
                     </Typography>
                     <Stack spacing={2}>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         For urgent matters or detailed discussions:
                       </Typography>
-                      <Typography variant="body2" color="primary.main">
+                      <Typography variant="body2" sx={{
+                        color: "primary.main"
+                      }}>
                         📧 naushadalamprivate@gmail.com
                       </Typography>
-                      <Typography variant="body2" color="primary.main">
+                      <Typography variant="body2" sx={{
+                        color: "primary.main"
+                      }}>
                         📱 +91 7209752686
                       </Typography>
                       <Button
@@ -504,6 +551,6 @@ Allow Contact: ${formData.allowContact ? 'Yes' : 'No'}
             </Alert>
           </Snackbar>
         </Container>
-      </>
+    </>
   );
 }

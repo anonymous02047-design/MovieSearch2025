@@ -188,7 +188,12 @@ export default function PostAuthWelcome({ onComplete }: PostAuthWelcomeProps) {
             value={progress}
             sx={{ height: 6, borderRadius: 3 }}
           />
-          <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+          <Typography
+            variant="body2"
+            sx={{
+              color: "text.secondary",
+              mt: 1
+            }}>
             Step {currentStep + 1} of {steps.length}
           </Typography>
         </Box>
@@ -200,7 +205,12 @@ export default function PostAuthWelcome({ onComplete }: PostAuthWelcomeProps) {
             <Typography variant="h5" component="h2" gutterBottom sx={{ fontWeight: 'bold', mt: 2 }}>
               {currentStepData.title}
             </Typography>
-            <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.6 }}>
+            <Typography
+              variant="body1"
+              sx={{
+                color: "text.secondary",
+                lineHeight: 1.6
+              }}>
               {currentStepData.description}
             </Typography>
           </Box>
@@ -213,7 +223,7 @@ export default function PostAuthWelcome({ onComplete }: PostAuthWelcomeProps) {
               </Typography>
               <Grid container spacing={2}>
                 {quickActions.map((action, index) => (
-                  <Grid item xs={6} key={index}>
+                  <Grid key={index} size={6}>
                     <Card
                       elevation={2}
                       sx={{
@@ -233,7 +243,9 @@ export default function PostAuthWelcome({ onComplete }: PostAuthWelcomeProps) {
                         <Typography variant="subtitle2" gutterBottom sx={{ fontWeight: 'bold' }}>
                           {action.title}
                         </Typography>
-                        <Typography variant="caption" color="text.secondary">
+                        <Typography variant="caption" sx={{
+                          color: "text.secondary"
+                        }}>
                           {action.description}
                         </Typography>
                       </CardContent>
@@ -245,7 +257,9 @@ export default function PostAuthWelcome({ onComplete }: PostAuthWelcomeProps) {
           )}
 
           {/* Action Buttons */}
-          <Stack direction="row" spacing={2} justifyContent="center">
+          <Stack direction="row" spacing={2} sx={{
+            justifyContent: "center"
+          }}>
             {currentStep < steps.length - 1 ? (
               <>
                 <Button

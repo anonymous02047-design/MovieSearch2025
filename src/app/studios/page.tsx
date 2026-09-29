@@ -280,7 +280,13 @@ function StudiosPageContent() {
   if (loading) {
     return (
       <Container maxWidth="lg" sx={{ py: 4 }}>
-        <Box display="flex" justifyContent="center" alignItems="center" minHeight="400px">
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            minHeight: "400px"
+          }}>
           <CircularProgress />
         </Box>
       </Container>
@@ -305,13 +311,24 @@ function StudiosPageContent() {
       <Container maxWidth="lg" sx={{ py: 4 }}>
       {/* Header */}
       <Box sx={{ mb: 4 }}>
-        <Stack direction="row" alignItems="center" spacing={2} sx={{ mb: 2 }}>
+        <Stack
+          direction="row"
+          spacing={2}
+          sx={{
+            alignItems: "center",
+            mb: 2
+          }}>
           <StudioIcon sx={{ fontSize: 40, color: 'primary.main' }} />
           <Typography variant="h3" component="h1">
             Film Studios
           </Typography>
         </Stack>
-        <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>
+        <Typography
+          variant="h6"
+          sx={{
+            color: "text.secondary",
+            mb: 3
+          }}>
           Discover major film studios, production companies, and their notable works
         </Typography>
 
@@ -322,12 +339,14 @@ function StudiosPageContent() {
             placeholder="Search studios..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <SearchIcon />
-                </InputAdornment>
-              ),
+            slotProps={{
+              input: {
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon />
+                  </InputAdornment>
+                ),
+              }
             }}
           />
           <FormControl sx={{ minWidth: 150 }}>
@@ -365,10 +384,21 @@ function StudiosPageContent() {
       {/* Studios Grid */}
       <Grid container spacing={3}>
         {filteredStudios.map((studio) => (
-          <Grid item xs={12} md={6} key={studio.id}>
+          <Grid
+            key={studio.id}
+            size={{
+              xs: 12,
+              md: 6
+            }}>
             <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
               <CardContent sx={{ flexGrow: 1 }}>
-                <Stack direction="row" spacing={2} alignItems="center" sx={{ mb: 2 }}>
+                <Stack
+                  direction="row"
+                  spacing={2}
+                  sx={{
+                    alignItems: "center",
+                    mb: 2
+                  }}>
                   <Box
                     component="img"
                     src={studio.logo_path ? `https://image.tmdb.org/t/p/w200${studio.logo_path}` : '/placeholder-movie.svg'}
@@ -379,16 +409,26 @@ function StudiosPageContent() {
                     <Typography variant="h5" component="h3" gutterBottom>
                       {studio.name}
                     </Typography>
-                    <Stack direction="row" spacing={1} alignItems="center">
+                    <Stack direction="row" spacing={1} sx={{
+                      alignItems: "center"
+                    }}>
                       <LocationIcon fontSize="small" color="action" />
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         {studio.headquarters}
                       </Typography>
                     </Stack>
                   </Box>
                 </Stack>
 
-                <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 2 }}>
+                <Stack
+                  direction="row"
+                  spacing={1}
+                  sx={{
+                    alignItems: "center",
+                    mb: 2
+                  }}>
                   <Chip
                     label={getCountryName(studio.origin_country)}
                     size="small"
@@ -396,46 +436,74 @@ function StudiosPageContent() {
                     variant="outlined"
                   />
                   <CalendarIcon fontSize="small" color="action" />
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" sx={{
+                    color: "text.secondary"
+                  }}>
                     Founded {studio.founded}
                   </Typography>
                 </Stack>
 
-                <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    color: "text.secondary",
+                    mb: 2
+                  }}>
                   {studio.description}
                 </Typography>
 
                 {studio.parent_company && (
-                  <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: "text.secondary",
+                      mb: 2
+                    }}>
                     <strong>Parent Company:</strong> {studio.parent_company}
                   </Typography>
                 )}
 
                 <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
-                  <Box textAlign="center">
-                    <Typography variant="h6" color="primary.main">
+                  <Box sx={{
+                    textAlign: "center"
+                  }}>
+                    <Typography variant="h6" sx={{
+                      color: "primary.main"
+                    }}>
                       {studio.total_films}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" sx={{
+                      color: "text.secondary"
+                    }}>
                       Films
                     </Typography>
                   </Box>
-                  <Box textAlign="center">
+                  <Box sx={{
+                    textAlign: "center"
+                  }}>
                     <Rating
                       value={studio.average_rating / 2}
                       precision={0.1}
                       size="small"
                       readOnly
                     />
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" sx={{
+                      color: "text.secondary"
+                    }}>
                       {studio.average_rating.toFixed(1)} avg
                     </Typography>
                   </Box>
-                  <Box textAlign="center">
-                    <Typography variant="h6" color="success.main">
+                  <Box sx={{
+                    textAlign: "center"
+                  }}>
+                    <Typography variant="h6" sx={{
+                      color: "success.main"
+                    }}>
                       {studio.revenue}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" sx={{
+                      color: "text.secondary"
+                    }}>
                       Revenue
                     </Typography>
                   </Box>
@@ -445,7 +513,9 @@ function StudiosPageContent() {
                   <Typography variant="subtitle2" gutterBottom>
                     Notable Films:
                   </Typography>
-                  <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
+                  <Stack direction="row" spacing={1} useFlexGap sx={{
+                    flexWrap: "wrap"
+                  }}>
                     {studio.notable_films.slice(0, 3).map((film) => (
                       <Chip
                         key={film.id}
@@ -483,7 +553,12 @@ function StudiosPageContent() {
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <Box display="flex" justifyContent="center" sx={{ mt: 4 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            mt: 4
+          }}>
           <Pagination
             count={totalPages}
             page={currentPage}
@@ -496,8 +571,14 @@ function StudiosPageContent() {
 
       {/* No Results */}
       {filteredStudios.length === 0 && (searchQuery || countryFilter !== 'all') && (
-        <Box textAlign="center" sx={{ py: 4 }}>
-          <Typography variant="h6" color="text.secondary">
+        <Box
+          sx={{
+            textAlign: "center",
+            py: 4
+          }}>
+          <Typography variant="h6" sx={{
+            color: "text.secondary"
+          }}>
             No studios found matching your criteria
           </Typography>
         </Box>
@@ -505,35 +586,55 @@ function StudiosPageContent() {
 
       {/* Stats */}
       <Box sx={{ mt: 4, p: 3, bgcolor: 'background.paper', borderRadius: 2 }}>
-        <Stack direction="row" spacing={4} justifyContent="center">
-          <Box textAlign="center">
-            <Typography variant="h4" color="primary.main">
+        <Stack direction="row" spacing={4} sx={{
+          justifyContent: "center"
+        }}>
+          <Box sx={{
+            textAlign: "center"
+          }}>
+            <Typography variant="h4" sx={{
+              color: "primary.main"
+            }}>
               {filteredStudios.length}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               Studios
             </Typography>
           </Box>
-          <Box textAlign="center">
-            <Typography variant="h4" color="secondary.main">
+          <Box sx={{
+            textAlign: "center"
+          }}>
+            <Typography variant="h4" sx={{
+              color: "secondary.main"
+            }}>
               {filteredStudios.reduce((sum, studio) => sum + studio.total_films, 0)}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               Total Films
             </Typography>
           </Box>
-          <Box textAlign="center">
-            <Typography variant="h4" color="success.main">
+          <Box sx={{
+            textAlign: "center"
+          }}>
+            <Typography variant="h4" sx={{
+              color: "success.main"
+            }}>
               {filteredStudios.length > 0 ? (filteredStudios.reduce((sum, studio) => sum + studio.average_rating, 0) / filteredStudios.length).toFixed(1) : '0.0'}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               Avg Rating
             </Typography>
           </Box>
         </Stack>
       </Box>
         </Container>
-      </>
+    </>
   );
 }
 

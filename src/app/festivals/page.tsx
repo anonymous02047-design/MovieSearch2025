@@ -293,7 +293,13 @@ function FestivalsPageContent() {
   if (loading) {
     return (
       <Container maxWidth="lg" sx={{ py: 4 }}>
-        <Box display="flex" justifyContent="center" alignItems="center" minHeight="400px">
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            minHeight: "400px"
+          }}>
           <CircularProgress />
         </Box>
       </Container>
@@ -312,13 +318,24 @@ function FestivalsPageContent() {
     <Container maxWidth="lg" sx={{ py: 4 }}>
       {/* Header */}
       <Box sx={{ mb: 4 }}>
-        <Stack direction="row" alignItems="center" spacing={2} sx={{ mb: 2 }}>
+        <Stack
+          direction="row"
+          spacing={2}
+          sx={{
+            alignItems: "center",
+            mb: 2
+          }}>
           <FestivalIcon sx={{ fontSize: 40, color: 'primary.main' }} />
           <Typography variant="h3" component="h1">
             Film Festivals
           </Typography>
         </Stack>
-        <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>
+        <Typography
+          variant="h6"
+          sx={{
+            color: "text.secondary",
+            mb: 3
+          }}>
           Discover the world's most prestigious film festivals and their award-winning selections
         </Typography>
 
@@ -329,12 +346,14 @@ function FestivalsPageContent() {
             placeholder="Search festivals..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <SearchIcon />
-                </InputAdornment>
-              ),
+            slotProps={{
+              input: {
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon />
+                  </InputAdornment>
+                ),
+              }
             }}
           />
           <FormControl sx={{ minWidth: 150 }}>
@@ -372,10 +391,21 @@ function FestivalsPageContent() {
       {/* Festivals Grid */}
       <Grid container spacing={3}>
         {filteredFestivals.map((festival) => (
-          <Grid item xs={12} md={6} key={festival.id}>
+          <Grid
+            key={festival.id}
+            size={{
+              xs: 12,
+              md: 6
+            }}>
             <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
               <CardContent sx={{ flexGrow: 1 }}>
-                <Stack direction="row" spacing={2} alignItems="center" sx={{ mb: 2 }}>
+                <Stack
+                  direction="row"
+                  spacing={2}
+                  sx={{
+                    alignItems: "center",
+                    mb: 2
+                  }}>
                   <Box
                     component="img"
                     src={festival.logo_path || '/placeholder-movie.svg'}
@@ -386,16 +416,26 @@ function FestivalsPageContent() {
                     <Typography variant="h5" component="h3" gutterBottom>
                       {festival.name}
                     </Typography>
-                    <Stack direction="row" spacing={1} alignItems="center">
+                    <Stack direction="row" spacing={1} sx={{
+                      alignItems: "center"
+                    }}>
                       <LocationIcon fontSize="small" color="action" />
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         {festival.location}, {festival.country}
                       </Typography>
                     </Stack>
                   </Box>
                 </Stack>
 
-                <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 2 }}>
+                <Stack
+                  direction="row"
+                  spacing={1}
+                  sx={{
+                    alignItems: "center",
+                    mb: 2
+                  }}>
                   <Chip
                     label={festival.type}
                     size="small"
@@ -408,19 +448,34 @@ function FestivalsPageContent() {
                     size="small"
                     readOnly
                   />
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" sx={{
+                    color: "text.secondary"
+                  }}>
                     {festival.prestige}/10
                   </Typography>
                 </Stack>
 
-                <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 2 }}>
+                <Stack
+                  direction="row"
+                  spacing={1}
+                  sx={{
+                    alignItems: "center",
+                    mb: 2
+                  }}>
                   <CalendarIcon fontSize="small" color="action" />
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" sx={{
+                    color: "text.secondary"
+                  }}>
                     {formatDate(festival.startDate)} - {formatDate(festival.endDate)}
                   </Typography>
                 </Stack>
 
-                <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    color: "text.secondary",
+                    mb: 2
+                  }}>
                   {festival.description}
                 </Typography>
 
@@ -428,7 +483,9 @@ function FestivalsPageContent() {
                   <Typography variant="subtitle2" gutterBottom>
                     Focus Areas:
                   </Typography>
-                  <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
+                  <Stack direction="row" spacing={1} useFlexGap sx={{
+                    flexWrap: "wrap"
+                  }}>
                     {festival.focus.map((area) => (
                       <Chip
                         key={area}
@@ -444,7 +501,9 @@ function FestivalsPageContent() {
                   <Typography variant="subtitle2" gutterBottom>
                     Notable Award Winners:
                   </Typography>
-                  <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
+                  <Stack direction="row" spacing={1} useFlexGap sx={{
+                    flexWrap: "wrap"
+                  }}>
                     {festival.notableFilms.slice(0, 2).map((film) => (
                       <Chip
                         key={film.id}
@@ -484,7 +543,12 @@ function FestivalsPageContent() {
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <Box display="flex" justifyContent="center" sx={{ mt: 4 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            mt: 4
+          }}>
           <Pagination
             count={totalPages}
             page={currentPage}
@@ -497,8 +561,14 @@ function FestivalsPageContent() {
 
       {/* No Results */}
       {filteredFestivals.length === 0 && (searchQuery || typeFilter !== 'all') && (
-        <Box textAlign="center" sx={{ py: 4 }}>
-          <Typography variant="h6" color="text.secondary">
+        <Box
+          sx={{
+            textAlign: "center",
+            py: 4
+          }}>
+          <Typography variant="h6" sx={{
+            color: "text.secondary"
+          }}>
             No festivals found matching your criteria
           </Typography>
         </Box>
@@ -506,34 +576,54 @@ function FestivalsPageContent() {
 
       {/* Stats */}
       <Box sx={{ mt: 4, p: 3, bgcolor: 'background.paper', borderRadius: 2 }}>
-        <Stack direction="row" spacing={4} justifyContent="center">
-          <Box textAlign="center">
-            <Typography variant="h4" color="primary.main">
+        <Stack direction="row" spacing={4} sx={{
+          justifyContent: "center"
+        }}>
+          <Box sx={{
+            textAlign: "center"
+          }}>
+            <Typography variant="h4" sx={{
+              color: "primary.main"
+            }}>
               {filteredFestivals.length}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               Festivals
             </Typography>
           </Box>
-          <Box textAlign="center">
-            <Typography variant="h4" color="secondary.main">
+          <Box sx={{
+            textAlign: "center"
+          }}>
+            <Typography variant="h4" sx={{
+              color: "secondary.main"
+            }}>
               {new Set(filteredFestivals.map(f => f.country)).size}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               Countries
             </Typography>
           </Box>
-          <Box textAlign="center">
-            <Typography variant="h4" color="success.main">
+          <Box sx={{
+            textAlign: "center"
+          }}>
+            <Typography variant="h4" sx={{
+              color: "success.main"
+            }}>
               {filteredFestivals.reduce((sum, f) => sum + f.notableFilms.length, 0)}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               Award Winners
             </Typography>
           </Box>
         </Stack>
       </Box>
-      </Container>
+    </Container>
   );
 }
 

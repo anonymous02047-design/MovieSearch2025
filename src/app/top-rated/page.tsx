@@ -92,7 +92,12 @@ function TopRatedPageContent() {
             }}>
               ⭐ Top Rated Movies
             </Typography>
-            <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>
+            <Typography
+              variant="h6"
+              sx={{
+                color: "text.secondary",
+                mb: 3
+              }}>
               Discover the highest rated movies of all time
             </Typography>
           </Box>
@@ -138,7 +143,7 @@ function TopRatedPageContent() {
             </Box>
           )}
         </Container>
-      </>
+    </>
   );
 }
 

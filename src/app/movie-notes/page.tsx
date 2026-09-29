@@ -142,7 +142,9 @@ export default function MovieNotesPage() {
                     <Typography variant="body2" sx={{ whiteSpace: 'pre-wrap', mb: 1 }}>
                       {note.note}
                     </Typography>
-                    <Typography variant="caption" color="text.secondary">
+                    <Typography variant="caption" sx={{
+                      color: "text.secondary"
+                    }}>
                       {new Date(note.createdAt).toLocaleDateString()}
                     </Typography>
                   </CardContent>
@@ -150,7 +152,13 @@ export default function MovieNotesPage() {
               ))}
             </Box>
           ) : (
-            <Typography variant="body1" color="text.secondary" sx={{ textAlign: 'center', py: 4 }}>
+            <Typography
+              variant="body1"
+              sx={{
+                color: "text.secondary",
+                textAlign: 'center',
+                py: 4
+              }}>
               No notes yet. Start taking notes!
             </Typography>
           )}

@@ -84,7 +84,12 @@ export default function ViewingTimelinePage() {
                 My Viewing Timeline
               </Typography>
             </Box>
-            <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>
+            <Typography
+              variant="h6"
+              sx={{
+                color: "text.secondary",
+                mb: 3
+              }}>
               Your cinematic journey through time
             </Typography>
 
@@ -110,30 +115,51 @@ export default function ViewingTimelinePage() {
           <Box sx={{ display: 'flex', gap: 2, mb: 4, flexWrap: 'wrap' }}>
             <Card sx={{ flexGrow: 1 }}>
               <CardContent>
-                <Typography variant="h4" color="primary.main" sx={{ fontWeight: 'bold' }}>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    color: "primary.main",
+                    fontWeight: 'bold'
+                  }}>
                   {timelineData.length}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" sx={{
+                  color: "text.secondary"
+                }}>
                   Movies Watched
                 </Typography>
               </CardContent>
             </Card>
             <Card sx={{ flexGrow: 1 }}>
               <CardContent>
-                <Typography variant="h4" color="success.main" sx={{ fontWeight: 'bold' }}>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    color: "success.main",
+                    fontWeight: 'bold'
+                  }}>
                   0
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" sx={{
+                  color: "text.secondary"
+                }}>
                   This Month
                 </Typography>
               </CardContent>
             </Card>
             <Card sx={{ flexGrow: 1 }}>
               <CardContent>
-                <Typography variant="h4" color="warning.main" sx={{ fontWeight: 'bold' }}>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    color: "warning.main",
+                    fontWeight: 'bold'
+                  }}>
                   0h
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" sx={{
+                  color: "text.secondary"
+                }}>
                   Watch Time
                 </Typography>
               </CardContent>
@@ -172,7 +198,12 @@ export default function ViewingTimelinePage() {
                         <Box>
                           <Typography variant="h6">{entry.movieTitle}</Typography>
                           <Chip label={entry.genre} size="small" sx={{ mt: 1 }} />
-                          <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+                          <Typography
+                            variant="body2"
+                            sx={{
+                              color: "text.secondary",
+                              mt: 1
+                            }}>
                             Rating: {entry.rating}/10
                           </Typography>
                         </Box>
@@ -187,7 +218,9 @@ export default function ViewingTimelinePage() {
           {timelineData.length === 0 && !loading && (
             <Box sx={{ textAlign: 'center', py: 8 }}>
               <MovieIcon sx={{ fontSize: 80, color: 'text.disabled', mb: 2 }} />
-              <Typography variant="h6" color="text.secondary">
+              <Typography variant="h6" sx={{
+                color: "text.secondary"
+              }}>
                 Your viewing journey starts here
               </Typography>
             </Box>

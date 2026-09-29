@@ -145,11 +145,15 @@ function AdvancedSearchPageContent() {
           <Box sx={{ mb: 4, textAlign: 'center' }}>
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2, mb: 2 }}>
               <SearchIcon sx={{ fontSize: 48, color: 'primary.main' }} />
-              <Typography variant="h3" component="h1" fontWeight={700}>
+              <Typography variant="h3" component="h1" sx={{
+                fontWeight: 700
+              }}>
                 Advanced Search
               </Typography>
             </Box>
-            <Typography variant="h6" color="text.secondary">
+            <Typography variant="h6" sx={{
+              color: "text.secondary"
+            }}>
               Find exactly what you're looking for
             </Typography>
           </Box>
@@ -158,7 +162,11 @@ function AdvancedSearchPageContent() {
           <Paper elevation={3} sx={{ p: 4, mb: 4 }}>
             <Grid container spacing={3}>
               {/* Content Type */}
-              <Grid item xs={12} md={6}>
+              <Grid
+                size={{
+                  xs: 12,
+                  md: 6
+                }}>
                 <FormControl fullWidth>
                   <InputLabel>Content Type</InputLabel>
                   <Select
@@ -173,7 +181,11 @@ function AdvancedSearchPageContent() {
               </Grid>
 
               {/* Sort By */}
-              <Grid item xs={12} md={6}>
+              <Grid
+                size={{
+                  xs: 12,
+                  md: 6
+                }}>
                 <FormControl fullWidth>
                   <InputLabel>Sort By</InputLabel>
                   <Select
@@ -192,7 +204,11 @@ function AdvancedSearchPageContent() {
               </Grid>
 
               {/* Year */}
-              <Grid item xs={12} md={6}>
+              <Grid
+                size={{
+                  xs: 12,
+                  md: 6
+                }}>
                 <FormControl fullWidth>
                   <InputLabel>Year</InputLabel>
                   <Select
@@ -209,7 +225,11 @@ function AdvancedSearchPageContent() {
               </Grid>
 
               {/* Rating */}
-              <Grid item xs={12} md={6}>
+              <Grid
+                size={{
+                  xs: 12,
+                  md: 6
+                }}>
                 <Typography variant="body2" gutterBottom>
                   Rating: {rating[0]} - {rating[1]}
                 </Typography>
@@ -229,7 +249,7 @@ function AdvancedSearchPageContent() {
               </Grid>
 
               {/* Genres */}
-              <Grid item xs={12}>
+              <Grid size={12}>
                 <Typography variant="body2" gutterBottom>
                   Genres
                 </Typography>
@@ -247,7 +267,7 @@ function AdvancedSearchPageContent() {
               </Grid>
 
               {/* Include Adult */}
-              <Grid item xs={12}>
+              <Grid size={12}>
                 <FormControlLabel
                   control={
                     <Switch
@@ -260,7 +280,7 @@ function AdvancedSearchPageContent() {
               </Grid>
 
               {/* Buttons */}
-              <Grid item xs={12}>
+              <Grid size={12}>
                 <Box sx={{ display: 'flex', gap: 2 }}>
                   <Button
                     variant="contained"
@@ -292,7 +312,13 @@ function AdvancedSearchPageContent() {
             </Box>
           ) : searched ? (
             <Box>
-              <Typography variant="h5" gutterBottom fontWeight={600} sx={{ mb: 3 }}>
+              <Typography
+                variant="h5"
+                gutterBottom
+                sx={{
+                  fontWeight: 600,
+                  mb: 3
+                }}>
                 {results.length} Results Found
               </Typography>
               {results.length > 0 ? (
@@ -308,10 +334,14 @@ function AdvancedSearchPageContent() {
                 </ResponsiveGrid>
               ) : (
                 <Box sx={{ textAlign: 'center', py: 8 }}>
-                  <Typography variant="h5" color="text.secondary" gutterBottom>
+                  <Typography variant="h5" gutterBottom sx={{
+                    color: "text.secondary"
+                  }}>
                     No results found
                   </Typography>
-                  <Typography variant="body1" color="text.secondary">
+                  <Typography variant="body1" sx={{
+                    color: "text.secondary"
+                  }}>
                     Try adjusting your search criteria
                   </Typography>
                 </Box>
@@ -320,10 +350,14 @@ function AdvancedSearchPageContent() {
           ) : (
             <Box sx={{ textAlign: 'center', py: 8 }}>
               <FilterIcon sx={{ fontSize: 64, color: 'text.secondary', opacity: 0.5, mb: 2 }} />
-              <Typography variant="h5" color="text.secondary" gutterBottom>
+              <Typography variant="h5" gutterBottom sx={{
+                color: "text.secondary"
+              }}>
                 Configure your search criteria above
               </Typography>
-              <Typography variant="body1" color="text.secondary">
+              <Typography variant="body1" sx={{
+                color: "text.secondary"
+              }}>
                 Use the filters to find exactly what you're looking for
               </Typography>
             </Box>

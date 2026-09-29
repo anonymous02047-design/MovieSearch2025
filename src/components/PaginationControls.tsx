@@ -52,7 +52,14 @@ export default function PaginationControls({
 
   if (variant === 'compact') {
     return (
-      <Box display="flex" justifyContent="center" alignItems="center" gap={1} py={2}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: 1,
+          py: 2
+        }}>
         <IconButton
           onClick={() => onPageChange(currentPage - 1)}
           disabled={currentPage === 1}
@@ -60,7 +67,7 @@ export default function PaginationControls({
         >
           <PrevIcon />
         </IconButton>
-        
+
         <Typography variant="body2">
           Page {currentPage} of {totalPages}
         </Typography>
@@ -78,10 +85,19 @@ export default function PaginationControls({
 
   if (variant === 'detailed') {
     return (
-      <Stack spacing={2} py={3}>
+      <Stack spacing={2} sx={{
+        py: 3
+      }}>
         {showTotalItems && totalItems && (
-          <Box display="flex" justifyContent="space-between" alignItems="center">
-            <Typography variant="body2" color="text.secondary">
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center"
+            }}>
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               Showing {startItem}-{endItem} of {totalItems.toLocaleString()} items
             </Typography>
             
@@ -104,7 +120,14 @@ export default function PaginationControls({
           </Box>
         )}
 
-        <Box display="flex" justifyContent="space-between" alignItems="center" flexWrap="wrap" gap={2}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: 2
+          }}>
           <Stack direction="row" spacing={1}>
             <Button
               startIcon={<FirstPageIcon />}
@@ -160,14 +183,28 @@ export default function PaginationControls({
 
   // Standard variant
   return (
-    <Stack spacing={2} py={3} alignItems="center">
+    <Stack
+      spacing={2}
+      sx={{
+        py: 3,
+        alignItems: "center"
+      }}>
       {showTotalItems && totalItems && (
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" sx={{
+          color: "text.secondary"
+        }}>
           Showing {startItem}-{endItem} of {totalItems.toLocaleString()} items
         </Typography>
       )}
 
-      <Box display="flex" alignItems="center" gap={2} flexWrap="wrap" justifyContent="center">
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          gap: 2,
+          flexWrap: "wrap",
+          justifyContent: "center"
+        }}>
         <Pagination
           count={totalPages}
           page={currentPage}

@@ -149,7 +149,12 @@ function PopularPageContent() {
             }}>
               🎬 {getCurrentTitle()}
             </Typography>
-            <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>
+            <Typography
+              variant="h6"
+              sx={{
+                color: "text.secondary",
+                mb: 3
+              }}>
               Discover the best movies everyone's talking about
             </Typography>
           </Box>
@@ -222,7 +227,7 @@ function PopularPageContent() {
             </Box>
           )}
         </Container>
-      </>
+    </>
   );
 }
 

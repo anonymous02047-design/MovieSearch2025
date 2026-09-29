@@ -149,13 +149,21 @@ export default function TechSpecsPage() {
         <Stack spacing={2}>
           {items.map((item, index) => (
             <Box key={index}>
-              <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 0.5 }}>
+              <Stack
+                direction="row"
+                spacing={1}
+                sx={{
+                  alignItems: "center",
+                  mb: 0.5
+                }}>
                 <Typography variant="subtitle2" sx={{ fontWeight: 'bold' }}>
                   {item.name}
                 </Typography>
                 <Chip label={item.version} size="small" color="primary" variant="outlined" />
               </Stack>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" sx={{
+                color: "text.secondary"
+              }}>
                 {item.description}
               </Typography>
             </Box>
@@ -175,7 +183,14 @@ export default function TechSpecsPage() {
       <Container maxWidth="lg" sx={{ py: 4 }}>
           {/* Header */}
           <Box sx={{ mb: 4, textAlign: 'center' }}>
-            <Stack direction="row" alignItems="center" justifyContent="center" spacing={2} sx={{ mb: 2 }}>
+            <Stack
+              direction="row"
+              spacing={2}
+              sx={{
+                alignItems: "center",
+                justifyContent: "center",
+                mb: 2
+              }}>
               <CodeIcon sx={{ fontSize: 40, color: 'primary.main' }} />
               <Typography variant="body1" component="p" sx={{
                 fontWeight: 'bold',
@@ -185,7 +200,12 @@ export default function TechSpecsPage() {
                 🔧 Technical Specifications
               </Typography>
             </Stack>
-            <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>
+            <Typography
+              variant="h6"
+              sx={{
+                color: "text.secondary",
+                mb: 3
+              }}>
               Comprehensive technical details about MovieSearch 2025 architecture and implementation
             </Typography>
           </Box>
@@ -196,16 +216,36 @@ export default function TechSpecsPage() {
               🛠️ Technology Stack
             </Typography>
             <Grid container spacing={3}>
-              <Grid item xs={12} sm={6} md={3}>
+              <Grid
+                size={{
+                  xs: 12,
+                  sm: 6,
+                  md: 3
+                }}>
                 {renderTechStack('Frontend', techStack.frontend)}
               </Grid>
-              <Grid item xs={12} sm={6} md={3}>
+              <Grid
+                size={{
+                  xs: 12,
+                  sm: 6,
+                  md: 3
+                }}>
                 {renderTechStack('Backend', techStack.backend)}
               </Grid>
-              <Grid item xs={12} sm={6} md={3}>
+              <Grid
+                size={{
+                  xs: 12,
+                  sm: 6,
+                  md: 3
+                }}>
                 {renderTechStack('Deployment', techStack.deployment)}
               </Grid>
-              <Grid item xs={12} sm={6} md={3}>
+              <Grid
+                size={{
+                  xs: 12,
+                  sm: 6,
+                  md: 3
+                }}>
                 {renderTechStack('Development Tools', techStack.tools)}
               </Grid>
             </Grid>
@@ -218,10 +258,22 @@ export default function TechSpecsPage() {
             </Typography>
             <Grid container spacing={3}>
               {features.map((feature, index) => (
-                <Grid item xs={12} sm={6} md={3} key={index}>
+                <Grid
+                  key={index}
+                  size={{
+                    xs: 12,
+                    sm: 6,
+                    md: 3
+                  }}>
                   <Card elevation={3} sx={{ height: '100%', borderRadius: 3 }}>
                     <CardContent>
-                      <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 2 }}>
+                      <Stack
+                        direction="row"
+                        spacing={1}
+                        sx={{
+                          alignItems: "center",
+                          mb: 2
+                        }}>
                         <Box sx={{ color: 'primary.main' }}>{feature.icon}</Box>
                         <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
                           {feature.category}
@@ -235,7 +287,9 @@ export default function TechSpecsPage() {
                             </ListItemIcon>
                             <ListItemText 
                               primary={item} 
-                              primaryTypographyProps={{ variant: 'body2' }}
+                              slotProps={{
+                                primary: { variant: 'body2' }
+                              }}
                             />
                           </ListItem>
                         ))}
@@ -254,7 +308,9 @@ export default function TechSpecsPage() {
             </Typography>
             <Paper elevation={3} sx={{ borderRadius: 3, overflow: 'hidden' }}>
               <Box sx={{ p: 3, bgcolor: 'primary.main', color: 'white' }}>
-                <Stack direction="row" alignItems="center" spacing={1}>
+                <Stack direction="row" spacing={1} sx={{
+                  alignItems: "center"
+                }}>
                   <ApiIcon />
                   <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
                     RESTful API Documentation
@@ -265,7 +321,9 @@ export default function TechSpecsPage() {
                 {apiEndpoints.map((endpoint, index) => (
                   <Box key={index}>
                     <Box sx={{ p: 2, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                      <Stack direction="row" alignItems="center" spacing={2}>
+                      <Stack direction="row" spacing={2} sx={{
+                        alignItems: "center"
+                      }}>
                         <Chip 
                           label={endpoint.method} 
                           color={endpoint.method === 'GET' ? 'success' : 'primary'}
@@ -275,7 +333,9 @@ export default function TechSpecsPage() {
                         <Typography variant="body1" sx={{ fontFamily: 'monospace' }}>
                           {endpoint.endpoint}
                         </Typography>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body2" sx={{
+                          color: "text.secondary"
+                        }}>
                           {endpoint.description}
                         </Typography>
                       </Stack>
@@ -301,10 +361,20 @@ export default function TechSpecsPage() {
               🏗️ Architecture Overview
             </Typography>
             <Grid container spacing={3}>
-              <Grid item xs={12} md={6}>
+              <Grid
+                size={{
+                  xs: 12,
+                  md: 6
+                }}>
                 <Card elevation={3} sx={{ height: '100%', borderRadius: 3 }}>
                   <CardContent>
-                    <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 2 }}>
+                    <Stack
+                      direction="row"
+                      spacing={1}
+                      sx={{
+                        alignItems: "center",
+                        mb: 2
+                      }}>
                       <CloudIcon sx={{ color: 'primary.main' }} />
                       <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
                         Frontend Architecture
@@ -339,10 +409,20 @@ export default function TechSpecsPage() {
                   </CardContent>
                 </Card>
               </Grid>
-              <Grid item xs={12} md={6}>
+              <Grid
+                size={{
+                  xs: 12,
+                  md: 6
+                }}>
                 <Card elevation={3} sx={{ height: '100%', borderRadius: 3 }}>
                   <CardContent>
-                    <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 2 }}>
+                    <Stack
+                      direction="row"
+                      spacing={1}
+                      sx={{
+                        alignItems: "center",
+                        mb: 2
+                      }}>
                       <DatabaseIcon sx={{ color: 'primary.main' }} />
                       <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
                         Backend Architecture
@@ -386,53 +466,101 @@ export default function TechSpecsPage() {
               📊 Performance Metrics
             </Typography>
             <Grid container spacing={3}>
-              <Grid item xs={12} sm={6} md={3}>
+              <Grid
+                size={{
+                  xs: 12,
+                  sm: 6,
+                  md: 3
+                }}>
                 <Card elevation={3} sx={{ textAlign: 'center', borderRadius: 3 }}>
                   <CardContent>
                     <SpeedIcon sx={{ fontSize: 40, color: 'success.main', mb: 1 }} />
-                    <Typography variant="h4" color="success.main" sx={{ fontWeight: 'bold' }}>
+                    <Typography
+                      variant="h4"
+                      sx={{
+                        color: "success.main",
+                        fontWeight: 'bold'
+                      }}>
                       &lt; 2s
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" sx={{
+                      color: "text.secondary"
+                    }}>
                       Page Load Time
                     </Typography>
                   </CardContent>
                 </Card>
               </Grid>
-              <Grid item xs={12} sm={6} md={3}>
+              <Grid
+                size={{
+                  xs: 12,
+                  sm: 6,
+                  md: 3
+                }}>
                 <Card elevation={3} sx={{ textAlign: 'center', borderRadius: 3 }}>
                   <CardContent>
                     <StarIcon sx={{ fontSize: 40, color: 'warning.main', mb: 1 }} />
-                    <Typography variant="h4" color="warning.main" sx={{ fontWeight: 'bold' }}>
+                    <Typography
+                      variant="h4"
+                      sx={{
+                        color: "warning.main",
+                        fontWeight: 'bold'
+                      }}>
                       95+
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" sx={{
+                      color: "text.secondary"
+                    }}>
                       Lighthouse Score
                     </Typography>
                   </CardContent>
                 </Card>
               </Grid>
-              <Grid item xs={12} sm={6} md={3}>
+              <Grid
+                size={{
+                  xs: 12,
+                  sm: 6,
+                  md: 3
+                }}>
                 <Card elevation={3} sx={{ textAlign: 'center', borderRadius: 3 }}>
                   <CardContent>
                     <DevicesIcon sx={{ fontSize: 40, color: 'info.main', mb: 1 }} />
-                    <Typography variant="h4" color="info.main" sx={{ fontWeight: 'bold' }}>
+                    <Typography
+                      variant="h4"
+                      sx={{
+                        color: "info.main",
+                        fontWeight: 'bold'
+                      }}>
                       100%
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" sx={{
+                      color: "text.secondary"
+                    }}>
                       Mobile Responsive
                     </Typography>
                   </CardContent>
                 </Card>
               </Grid>
-              <Grid item xs={12} sm={6} md={3}>
+              <Grid
+                size={{
+                  xs: 12,
+                  sm: 6,
+                  md: 3
+                }}>
                 <Card elevation={3} sx={{ textAlign: 'center', borderRadius: 3 }}>
                   <CardContent>
                     <SecurityIcon sx={{ fontSize: 40, color: 'primary.main', mb: 1 }} />
-                    <Typography variant="h4" color="primary.main" sx={{ fontWeight: 'bold' }}>
+                    <Typography
+                      variant="h4"
+                      sx={{
+                        color: "primary.main",
+                        fontWeight: 'bold'
+                      }}>
                       A+
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" sx={{
+                      color: "text.secondary"
+                    }}>
                       Security Rating
                     </Typography>
                   </CardContent>
@@ -448,7 +576,11 @@ export default function TechSpecsPage() {
             </Typography>
             <Paper elevation={3} sx={{ p: 3, borderRadius: 3 }}>
               <Grid container spacing={3}>
-                <Grid item xs={12} md={6}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 6
+                  }}>
                   <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold' }}>
                     🚀 Getting Started
                   </Typography>
@@ -479,7 +611,11 @@ export default function TechSpecsPage() {
                     </ListItem>
                   </List>
                 </Grid>
-                <Grid item xs={12} md={6}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    md: 6
+                  }}>
                   <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold' }}>
                     📝 Code Quality
                   </Typography>
@@ -523,7 +659,13 @@ export default function TechSpecsPage() {
               <Typography variant="body1" sx={{ mb: 3 }}>
                 For technical questions, API access, or development inquiries, contact our development team.
               </Typography>
-              <Stack direction="row" spacing={2} justifyContent="center" flexWrap="wrap">
+              <Stack
+                direction="row"
+                spacing={2}
+                sx={{
+                  justifyContent: "center",
+                  flexWrap: "wrap"
+                }}>
                 <Button
                   variant="contained"
                   color="secondary"
@@ -547,6 +689,6 @@ export default function TechSpecsPage() {
             </Paper>
           </Box>
         </Container>
-      </>
+    </>
   );
 }

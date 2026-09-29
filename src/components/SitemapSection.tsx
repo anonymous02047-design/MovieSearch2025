@@ -275,10 +275,16 @@ export default function SitemapSection() {
       }}>
         Complete Site Map
       </Typography>
-      
+
       <Grid container spacing={3}>
         {sitemapData.map((category) => (
-          <Grid item xs={12} sm={6} md={4} key={category.title}>
+          <Grid
+            key={category.title}
+            size={{
+              xs: 12,
+              sm: 6,
+              md: 4
+            }}>
             <Box
               sx={{
                 backgroundColor: 'rgba(255, 255, 255, 0.05)',
@@ -293,7 +299,13 @@ export default function SitemapSection() {
                 },
               }}
             >
-              <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 2 }}>
+              <Stack
+                direction="row"
+                spacing={1}
+                sx={{
+                  alignItems: "center",
+                  mb: 2
+                }}>
                 {category.icon}
                 <Typography variant="h6" sx={{ 
                   fontWeight: 'bold',

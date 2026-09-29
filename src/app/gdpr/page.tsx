@@ -62,7 +62,13 @@ export default function GDPRCompliancePage() {
             }}>
               🔒 GDPR Compliance
             </Typography>
-            <Typography variant="h6" color="text.secondary" sx={{ maxWidth: 800, mx: 'auto' }}>
+            <Typography
+              variant="h6"
+              sx={{
+                color: "text.secondary",
+                maxWidth: 800,
+                mx: 'auto'
+              }}>
               MovieSearch 2025 is committed to protecting your privacy and complying with the General Data Protection Regulation (GDPR).
             </Typography>
           </Box>
@@ -72,7 +78,9 @@ export default function GDPRCompliancePage() {
             <Typography variant="h4" component="h2" gutterBottom>
               What is GDPR?
             </Typography>
-            <Typography variant="body1" paragraph>
+            <Typography variant="body1" sx={{
+              marginBottom: "16px"
+            }}>
               The General Data Protection Regulation (GDPR) is a comprehensive data protection law that came into effect 
               on May 25, 2018. It applies to all organizations that process personal data of EU residents, regardless of 
               where the organization is located.
@@ -90,7 +98,9 @@ export default function GDPRCompliancePage() {
             <Typography variant="h4" component="h2" gutterBottom>
               Your Data Protection Rights
             </Typography>
-            <Typography variant="body1" paragraph>
+            <Typography variant="body1" sx={{
+              marginBottom: "16px"
+            }}>
               Under GDPR, you have several important rights regarding your personal data:
             </Typography>
             <List>
@@ -120,7 +130,12 @@ export default function GDPRCompliancePage() {
             <Typography variant="h5" gutterBottom>
               Exercise Your Rights
             </Typography>
-            <Typography variant="body1" color="text.secondary" paragraph>
+            <Typography
+              variant="body1"
+              sx={{
+                color: "text.secondary",
+                marginBottom: "16px"
+              }}>
               To exercise any of your GDPR rights or if you have questions about our data processing practices, 
               please contact us:
             </Typography>
@@ -134,6 +149,6 @@ export default function GDPRCompliancePage() {
             </Box>
           </Paper>
         </Container>
-      </>
+    </>
   );
 }

@@ -55,8 +55,8 @@ export default function AdminLayoutWrapper({ children }: AdminLayoutWrapperProps
       }}
       signInUrl="/sign-in"
       signUpUrl="/sign-up"
-      afterSignInUrl="/"
-      afterSignUpUrl="/"
+      signInFallbackRedirectUrl="/"
+      signUpFallbackRedirectUrl="/"
     >
       <PageLayout>
         {children}

@@ -186,10 +186,17 @@ function FavoritesPageContent() {
       {favorites.length === 0 ? (
         <Box sx={{ textAlign: 'center', py: 8 }}>
           <FavoriteIcon sx={{ fontSize: 80, color: 'text.secondary', mb: 2 }} />
-          <Typography variant="h5" gutterBottom color="text.secondary">
+          <Typography variant="h5" gutterBottom sx={{
+            color: "text.secondary"
+          }}>
             No Favorite Movies Yet
           </Typography>
-          <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
+          <Typography
+            variant="body1"
+            sx={{
+              color: "text.secondary",
+              mb: 3
+            }}>
             Start adding movies to your favorites by clicking the heart icon on any movie card.
           </Typography>
           <Button
@@ -234,10 +241,12 @@ function FavoritesPageContent() {
       <Dialog
         open={clearDialogOpen}
         onClose={() => setClearDialogOpen(false)}
-        PaperProps={{
-          sx: {
-            background: 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
+        slotProps={{
+          paper: {
+            sx: {
+              background: 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+            }
           }
         }}
       >

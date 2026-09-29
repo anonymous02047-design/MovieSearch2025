@@ -186,19 +186,25 @@ export default function UserReviewsSection({ contentId, contentType, contentTitl
           : `linear-gradient(135deg, ${alpha('#2196f3', 0.05)} 0%, ${alpha('#21cbf3', 0.02)} 100%)`,
       }}
     >
-      <Typography variant="h5" fontWeight={700} gutterBottom>
+      <Typography variant="h5" gutterBottom sx={{
+        fontWeight: 700
+      }}>
         User Reviews
       </Typography>
 
       {/* Average Rating */}
       {reviews.length > 0 && (
         <Box sx={{ mb: 3, display: 'flex', alignItems: 'center', gap: 2 }}>
-          <Typography variant="h3" fontWeight={700}>
+          <Typography variant="h3" sx={{
+            fontWeight: 700
+          }}>
             {averageRating.toFixed(1)}
           </Typography>
           <Box>
             <Rating value={averageRating} readOnly precision={0.1} size="large" />
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               Based on {reviews.length} review{reviews.length !== 1 ? 's' : ''}
             </Typography>
           </Box>
@@ -275,7 +281,9 @@ export default function UserReviewsSection({ contentId, contentType, contentTitl
       <Box>
         {reviews.length === 0 ? (
           <Box sx={{ textAlign: 'center', py: 4 }}>
-            <Typography variant="body1" color="text.secondary">
+            <Typography variant="body1" sx={{
+              color: "text.secondary"
+            }}>
               No reviews yet. Be the first to review!
             </Typography>
           </Box>
@@ -298,12 +306,16 @@ export default function UserReviewsSection({ contentId, contentType, contentTitl
                     {review.userName[0]}
                   </Avatar>
                   <Box>
-                    <Typography variant="subtitle1" fontWeight={600}>
+                    <Typography variant="subtitle1" sx={{
+                      fontWeight: 600
+                    }}>
                       {review.userName}
                     </Typography>
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                       <Rating value={review.rating} readOnly size="small" />
-                      <Typography variant="caption" color="text.secondary">
+                      <Typography variant="caption" sx={{
+                        color: "text.secondary"
+                      }}>
                         {formatDate(review.createdAt)}
                       </Typography>
                       {review.isEdited && (
@@ -346,7 +358,9 @@ export default function UserReviewsSection({ contentId, contentType, contentTitl
                 {review.title}
               </Typography>
 
-              <Typography variant="body1" paragraph>
+              <Typography variant="body1" sx={{
+                marginBottom: "16px"
+              }}>
                 {review.content}
               </Typography>
 

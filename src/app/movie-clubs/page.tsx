@@ -42,7 +42,12 @@ export default function MovieClubsPage() {
               Movie Clubs
             </Typography>
           </Box>
-          <Typography variant="h6" color="text.secondary" sx={{ mb: 4 }}>
+          <Typography
+            variant="h6"
+            sx={{
+              color: "text.secondary",
+              mb: 4
+            }}>
             Join or create communities of movie enthusiasts
           </Typography>
 
@@ -68,7 +73,12 @@ export default function MovieClubsPage() {
                     <Typography variant="h6">Classic Cinema Society</Typography>
                     <Chip icon={<PublicIcon />} label="Public" size="small" />
                   </Box>
-                  <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: "text.secondary",
+                      mb: 2
+                    }}>
                     Dedicated to discussing and celebrating classic films from the golden age of cinema.
                   </Typography>
                   <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -77,7 +87,9 @@ export default function MovieClubsPage() {
                       <Avatar>B</Avatar>
                       <Avatar>C</Avatar>
                     </AvatarGroup>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" sx={{
+                      color: "text.secondary"
+                    }}>
                       248 members
                     </Typography>
                   </Box>

@@ -150,10 +150,14 @@ export default function MyListsPage() {
                   <ListIcon fontSize="large" />
                 </Avatar>
                 <Box>
-                  <Typography variant="h3" fontWeight={700} gutterBottom>
+                  <Typography variant="h3" gutterBottom sx={{
+                    fontWeight: 700
+                  }}>
                     My Lists
                   </Typography>
-                  <Typography variant="body1" color="text.secondary">
+                  <Typography variant="body1" sx={{
+                    color: "text.secondary"
+                  }}>
                     Create and manage your custom movie lists
                   </Typography>
                 </Box>
@@ -173,32 +177,65 @@ export default function MyListsPage() {
           {/* Stats */}
           <Paper elevation={2} sx={{ p: 3, mb: 4 }}>
             <Grid container spacing={3}>
-              <Grid item xs={12} sm={4}>
+              <Grid
+                size={{
+                  xs: 12,
+                  sm: 4
+                }}>
                 <Box sx={{ textAlign: 'center' }}>
-                  <Typography variant="h4" color="primary.main" fontWeight={700}>
+                  <Typography
+                    variant="h4"
+                    sx={{
+                      color: "primary.main",
+                      fontWeight: 700
+                    }}>
                     {lists.length}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" sx={{
+                    color: "text.secondary"
+                  }}>
                     Total Lists
                   </Typography>
                 </Box>
               </Grid>
-              <Grid item xs={12} sm={4}>
+              <Grid
+                size={{
+                  xs: 12,
+                  sm: 4
+                }}>
                 <Box sx={{ textAlign: 'center' }}>
-                  <Typography variant="h4" color="success.main" fontWeight={700}>
+                  <Typography
+                    variant="h4"
+                    sx={{
+                      color: "success.main",
+                      fontWeight: 700
+                    }}>
                     {lists.reduce((sum, list) => sum + list.movieCount, 0)}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" sx={{
+                    color: "text.secondary"
+                  }}>
                     Total Movies
                   </Typography>
                 </Box>
               </Grid>
-              <Grid item xs={12} sm={4}>
+              <Grid
+                size={{
+                  xs: 12,
+                  sm: 4
+                }}>
                 <Box sx={{ textAlign: 'center' }}>
-                  <Typography variant="h4" color="info.main" fontWeight={700}>
+                  <Typography
+                    variant="h4"
+                    sx={{
+                      color: "info.main",
+                      fontWeight: 700
+                    }}>
                     {lists.filter(list => list.isPublic).length}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" sx={{
+                    color: "text.secondary"
+                  }}>
                     Public Lists
                   </Typography>
                 </Box>
@@ -214,10 +251,17 @@ export default function MyListsPage() {
           ) : lists.length === 0 ? (
             <Paper elevation={2} sx={{ p: 8, textAlign: 'center' }}>
               <ListIcon sx={{ fontSize: 80, color: 'text.disabled', mb: 2 }} />
-              <Typography variant="h5" gutterBottom color="text.secondary">
+              <Typography variant="h5" gutterBottom sx={{
+                color: "text.secondary"
+              }}>
                 No Lists Yet
               </Typography>
-              <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
+              <Typography
+                variant="body1"
+                sx={{
+                  color: "text.secondary",
+                  mb: 3
+                }}>
                 Create your first custom movie list to get started
               </Typography>
               <Button
@@ -231,7 +275,13 @@ export default function MyListsPage() {
           ) : (
             <Grid container spacing={3}>
               {lists.map((list) => (
-                <Grid item xs={12} sm={6} md={4} key={list.id}>
+                <Grid
+                  key={list.id}
+                  size={{
+                    xs: 12,
+                    sm: 6,
+                    md: 4
+                  }}>
                   <Card
                     elevation={3}
                     sx={{
@@ -248,7 +298,9 @@ export default function MyListsPage() {
                     <CardContent sx={{ flex: 1 }}>
                       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start', mb: 2 }}>
                         <Box sx={{ flex: 1 }}>
-                          <Typography variant="h6" fontWeight={600} gutterBottom>
+                          <Typography variant="h6" gutterBottom sx={{
+                            fontWeight: 600
+                          }}>
                             {list.name}
                           </Typography>
                           <Chip
@@ -267,7 +319,12 @@ export default function MyListsPage() {
                         </IconButton>
                       </Box>
                       
-                      <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          color: "text.secondary",
+                          mb: 2
+                        }}>
                         {list.description || 'No description'}
                       </Typography>
                       
@@ -275,7 +332,9 @@ export default function MyListsPage() {
                       
                       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                         <MovieIcon fontSize="small" color="action" />
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body2" sx={{
+                          color: "text.secondary"
+                        }}>
                           {list.movieCount} {list.movieCount === 1 ? 'movie' : 'movies'}
                         </Typography>
                       </Box>
@@ -334,7 +393,9 @@ export default function MyListsPage() {
                   onClick={() => setNewListPublic(!newListPublic)}
                   color={newListPublic ? 'success' : 'default'}
                 />
-                <Typography variant="caption" color="text.secondary">
+                <Typography variant="caption" sx={{
+                  color: "text.secondary"
+                }}>
                   {newListPublic ? 'Anyone can view this list' : 'Only you can view this list'}
                 </Typography>
               </Box>

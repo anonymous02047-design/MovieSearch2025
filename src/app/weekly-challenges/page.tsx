@@ -22,7 +22,9 @@ export default function WeeklyChallengesPage() {
             <CardContent>
               <Typography variant="h6" sx={{ mb: 2 }}>This Week: Watch 3 80s Movies</Typography>
               <LinearProgress variant="determinate" value={33} sx={{ mb: 1 }} />
-              <Typography variant="body2" color="text.secondary">1 of 3 complete</Typography>
+              <Typography variant="body2" sx={{
+                color: "text.secondary"
+              }}>1 of 3 complete</Typography>
             </CardContent>
           </Card>
         </Container>

@@ -109,7 +109,13 @@ export default function AccessibilityStatementPage() {
             }}>
               ♿ Accessibility Statement
             </Typography>
-            <Typography variant="h6" color="text.secondary" sx={{ maxWidth: 800, mx: 'auto' }}>
+            <Typography
+              variant="h6"
+              sx={{
+                color: "text.secondary",
+                maxWidth: 800,
+                mx: 'auto'
+              }}>
               MovieSearch 2025 is committed to ensuring digital accessibility for all users, including those with disabilities.
             </Typography>
           </Box>
@@ -119,7 +125,9 @@ export default function AccessibilityStatementPage() {
             <Typography variant="h4" component="h2" gutterBottom>
               Our Commitment
             </Typography>
-            <Typography variant="body1" paragraph>
+            <Typography variant="body1" sx={{
+              marginBottom: "16px"
+            }}>
               We believe that everyone should have equal access to information and services online. 
               MovieSearch 2025 is committed to providing an accessible and inclusive experience for all users, 
               regardless of their abilities or the technologies they use to access our website.
@@ -138,7 +146,12 @@ export default function AccessibilityStatementPage() {
             </Typography>
             <Grid container spacing={3} sx={{ mt: 2 }}>
               {accessibilityFeatures.map((category, index) => (
-                <Grid item xs={12} md={6} key={index}>
+                <Grid
+                  key={index}
+                  size={{
+                    xs: 12,
+                    md: 6
+                  }}>
                   <Card sx={{ height: '100%' }}>
                     <CardContent>
                       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
@@ -169,7 +182,9 @@ export default function AccessibilityStatementPage() {
             <Typography variant="h4" component="h2" gutterBottom>
               Standards Compliance
             </Typography>
-            <Typography variant="body1" paragraph>
+            <Typography variant="body1" sx={{
+              marginBottom: "16px"
+            }}>
               Our website strives to conform to the following accessibility standards:
             </Typography>
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mt: 2 }}>
@@ -190,7 +205,9 @@ export default function AccessibilityStatementPage() {
             <Typography variant="h4" component="h2" gutterBottom>
               Feedback and Support
             </Typography>
-            <Typography variant="body1" paragraph>
+            <Typography variant="body1" sx={{
+              marginBottom: "16px"
+            }}>
               We welcome feedback on the accessibility of MovieSearch 2025. If you encounter any accessibility barriers 
               or have suggestions for improvement, please contact us:
             </Typography>
@@ -208,18 +225,25 @@ export default function AccessibilityStatementPage() {
                 />
               </ListItem>
             </List>
-            <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
+            <Typography
+              variant="body2"
+              sx={{
+                color: "text.secondary",
+                mt: 2
+              }}>
               We aim to respond to accessibility feedback within 2 business days.
             </Typography>
           </Paper>
 
           {/* Last Updated */}
           <Paper sx={{ p: 4, textAlign: 'center' }}>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               This accessibility statement was last updated on {new Date().toLocaleDateString()}.
             </Typography>
           </Paper>
         </Container>
-      </>
+    </>
   );
 }

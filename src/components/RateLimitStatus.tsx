@@ -49,7 +49,9 @@ export default function RateLimitStatus({ showDetails = false, compact = false }
     return (
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
         <LinearProgress sx={{ width: 100, height: 6, borderRadius: 3 }} />
-        <Typography variant="caption" color="text.secondary">
+        <Typography variant="caption" sx={{
+          color: "text.secondary"
+        }}>
           Checking rate limit...
         </Typography>
       </Box>
@@ -99,7 +101,9 @@ export default function RateLimitStatus({ showDetails = false, compact = false }
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1 }}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           <SpeedIcon sx={{ color: 'text.secondary' }} />
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" sx={{
+            color: "text.secondary"
+          }}>
             Rate Limit:
           </Typography>
           <Chip
@@ -112,7 +116,9 @@ export default function RateLimitStatus({ showDetails = false, compact = false }
 
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           <PublicIcon sx={{ color: 'text.secondary' }} />
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" sx={{
+            color: "text.secondary"
+          }}>
             Country:
           </Typography>
           <Chip
@@ -126,7 +132,9 @@ export default function RateLimitStatus({ showDetails = false, compact = false }
         {riskScore > 0 && (
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <SecurityIcon sx={{ color: 'text.secondary' }} />
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               Risk:
             </Typography>
             <Chip
@@ -183,7 +191,9 @@ export default function RateLimitStatus({ showDetails = false, compact = false }
           
           <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 2 }}>
             <Box>
-              <Typography variant="caption" color="text.secondary">
+              <Typography variant="caption" sx={{
+                color: "text.secondary"
+              }}>
                 Remaining Requests
               </Typography>
               <Typography variant="body2" sx={{ color: 'white', fontWeight: 'bold' }}>
@@ -192,7 +202,9 @@ export default function RateLimitStatus({ showDetails = false, compact = false }
             </Box>
 
             <Box>
-              <Typography variant="caption" color="text.secondary">
+              <Typography variant="caption" sx={{
+                color: "text.secondary"
+              }}>
                 Reset Time
               </Typography>
               <Typography variant="body2" sx={{ color: 'white', fontWeight: 'bold' }}>
@@ -201,7 +213,9 @@ export default function RateLimitStatus({ showDetails = false, compact = false }
             </Box>
 
             <Box>
-              <Typography variant="caption" color="text.secondary">
+              <Typography variant="caption" sx={{
+                color: "text.secondary"
+              }}>
                 Country
               </Typography>
               <Typography variant="body2" sx={{ color: 'white', fontWeight: 'bold' }}>
@@ -210,7 +224,9 @@ export default function RateLimitStatus({ showDetails = false, compact = false }
             </Box>
 
             <Box>
-              <Typography variant="caption" color="text.secondary">
+              <Typography variant="caption" sx={{
+                color: "text.secondary"
+              }}>
                 Risk Level
               </Typography>
               <Typography variant="body2" sx={{ color: 'white', fontWeight: 'bold' }}>

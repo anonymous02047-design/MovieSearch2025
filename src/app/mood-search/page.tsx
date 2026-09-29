@@ -50,7 +50,12 @@ export default function MoodSearchPage() {
               Mood-Based Search
             </Typography>
           </Box>
-          <Typography variant="h6" color="text.secondary" sx={{ mb: 4 }}>
+          <Typography
+            variant="h6"
+            sx={{
+              color: "text.secondary",
+              mb: 4
+            }}>
             Find the perfect movie for how you're feeling right now
           </Typography>
 

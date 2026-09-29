@@ -187,22 +187,37 @@ export default function AchievementBadgesPage() {
             <Avatar sx={{ bgcolor: 'warning.main', width: 72, height: 72, mx: 'auto', mb: 2 }}>
               <TrophyIcon fontSize="large" />
             </Avatar>
-            <Typography variant="h3" fontWeight={700} gutterBottom>
+            <Typography variant="h3" gutterBottom sx={{
+              fontWeight: 700
+            }}>
               Achievement Badges
             </Typography>
-            <Typography variant="h6" color="text.secondary">
+            <Typography variant="h6" sx={{
+              color: "text.secondary"
+            }}>
               Track your movie-watching milestones
             </Typography>
           </Box>
 
           {/* Stats */}
           <Grid container spacing={3} sx={{ mb: 4 }}>
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <Paper elevation={2} sx={{ p: 3, textAlign: 'center' }}>
-                <Typography variant="h4" color="primary.main" fontWeight={700}>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    color: "primary.main",
+                    fontWeight: 700
+                  }}>
                   {earnedCount}/{badges.length}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" sx={{
+                  color: "text.secondary"
+                }}>
                   Badges Earned
                 </Typography>
                 <LinearProgress
@@ -212,22 +227,44 @@ export default function AchievementBadgesPage() {
                 />
               </Paper>
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <Paper elevation={2} sx={{ p: 3, textAlign: 'center' }}>
-                <Typography variant="h4" color="success.main" fontWeight={700}>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    color: "success.main",
+                    fontWeight: 700
+                  }}>
                   {totalPoints}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" sx={{
+                  color: "text.secondary"
+                }}>
                   Total Points
                 </Typography>
               </Paper>
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <Paper elevation={2} sx={{ p: 3, textAlign: 'center' }}>
-                <Typography variant="h4" color="info.main" fontWeight={700}>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    color: "info.main",
+                    fontWeight: 700
+                  }}>
                   {Math.round((earnedCount / badges.length) * 100)}%
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" sx={{
+                  color: "text.secondary"
+                }}>
                   Completion Rate
                 </Typography>
               </Paper>
@@ -256,7 +293,13 @@ export default function AchievementBadgesPage() {
           {/* Badges Grid */}
           <Grid container spacing={3}>
             {filteredBadges.map((badge) => (
-              <Grid item xs={12} sm={6} md={4} key={badge.id}>
+              <Grid
+                key={badge.id}
+                size={{
+                  xs: 12,
+                  sm: 6,
+                  md: 4
+                }}>
                 <Card
                   elevation={badge.earned ? 4 : 2}
                   sx={{
@@ -295,11 +338,23 @@ export default function AchievementBadgesPage() {
                       />
                     </Box>
 
-                    <Typography variant="h6" fontWeight={600} gutterBottom textAlign="center">
+                    <Typography
+                      variant="h6"
+                      gutterBottom
+                      sx={{
+                        fontWeight: 600,
+                        textAlign: "center"
+                      }}>
                       {badge.name}
                     </Typography>
                     
-                    <Typography variant="body2" color="text.secondary" textAlign="center" sx={{ mb: 2 }}>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        color: "text.secondary",
+                        textAlign: "center",
+                        mb: 2
+                      }}>
                       {badge.description}
                     </Typography>
 
@@ -308,10 +363,17 @@ export default function AchievementBadgesPage() {
                         <Divider sx={{ my: 2 }} />
                         <Box>
                           <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
-                            <Typography variant="caption" color="text.secondary">
+                            <Typography variant="caption" sx={{
+                              color: "text.secondary"
+                            }}>
                               Progress
                             </Typography>
-                            <Typography variant="caption" color="text.secondary" fontWeight={600}>
+                            <Typography
+                              variant="caption"
+                              sx={{
+                                color: "text.secondary",
+                                fontWeight: 600
+                              }}>
                               {badge.progress}/{badge.maxProgress}
                             </Typography>
                           </Box>
@@ -327,7 +389,13 @@ export default function AchievementBadgesPage() {
                     {badge.earned && badge.earnedDate && (
                       <>
                         <Divider sx={{ my: 2 }} />
-                        <Typography variant="caption" color="text.secondary" textAlign="center" display="block">
+                        <Typography
+                          variant="caption"
+                          sx={{
+                            color: "text.secondary",
+                            textAlign: "center",
+                            display: "block"
+                          }}>
                           Earned on {new Date(badge.earnedDate).toLocaleDateString()}
                         </Typography>
                       </>
@@ -340,7 +408,9 @@ export default function AchievementBadgesPage() {
 
           {/* Rarity Legend */}
           <Paper elevation={2} sx={{ p: 3, mt: 4 }}>
-            <Typography variant="h6" fontWeight={600} gutterBottom>
+            <Typography variant="h6" gutterBottom sx={{
+              fontWeight: 600
+            }}>
               Rarity Levels
             </Typography>
             <Grid container spacing={2}>
@@ -350,7 +420,12 @@ export default function AchievementBadgesPage() {
                 { rarity: 'epic', points: 50 },
                 { rarity: 'legendary', points: 100 },
               ].map((item) => (
-                <Grid item xs={6} sm={3} key={item.rarity}>
+                <Grid
+                  key={item.rarity}
+                  size={{
+                    xs: 6,
+                    sm: 3
+                  }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                     <Box
                       sx={{
@@ -361,10 +436,17 @@ export default function AchievementBadgesPage() {
                       }}
                     />
                     <Box>
-                      <Typography variant="body2" fontWeight={600} textTransform="capitalize">
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          fontWeight: 600,
+                          textTransform: "capitalize"
+                        }}>
                         {item.rarity}
                       </Typography>
-                      <Typography variant="caption" color="text.secondary">
+                      <Typography variant="caption" sx={{
+                        color: "text.secondary"
+                      }}>
                         {item.points} points
                       </Typography>
                     </Box>

@@ -74,7 +74,12 @@ export default function CustomTagsPage() {
               Custom Movie Tags
             </Typography>
           </Box>
-          <Typography variant="h6" color="text.secondary" sx={{ mb: 4 }}>
+          <Typography
+            variant="h6"
+            sx={{
+              color: "text.secondary",
+              mb: 4
+            }}>
             Organize your movies with personalized tags
           </Typography>
 
@@ -83,10 +88,17 @@ export default function CustomTagsPage() {
             <Grid size={{ xs: 6, sm: 3 }}>
               <Card>
                 <CardContent>
-                  <Typography variant="h4" color="primary.main" sx={{ fontWeight: 'bold' }}>
+                  <Typography
+                    variant="h4"
+                    sx={{
+                      color: "primary.main",
+                      fontWeight: 'bold'
+                    }}>
                     {tags.length}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" sx={{
+                    color: "text.secondary"
+                  }}>
                     Total Tags
                   </Typography>
                 </CardContent>
@@ -95,10 +107,17 @@ export default function CustomTagsPage() {
             <Grid size={{ xs: 6, sm: 3 }}>
               <Card>
                 <CardContent>
-                  <Typography variant="h4" color="success.main" sx={{ fontWeight: 'bold' }}>
+                  <Typography
+                    variant="h4"
+                    sx={{
+                      color: "success.main",
+                      fontWeight: 'bold'
+                    }}>
                     0
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" sx={{
+                    color: "text.secondary"
+                  }}>
                     Tagged Movies
                   </Typography>
                 </CardContent>
@@ -142,7 +161,12 @@ export default function CustomTagsPage() {
                         </IconButton>
                       </Box>
                     </Box>
-                    <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        color: "text.secondary",
+                        mt: 2
+                      }}>
                       {tag.movieCount} movies
                     </Typography>
                   </CardContent>

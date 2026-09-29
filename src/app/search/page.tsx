@@ -198,14 +198,16 @@ export default function SearchPage() {
             placeholder="Search for movies, TV shows, actors, directors..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <SearchIcon />
-                </InputAdornment>
-              ),
-            }}
             sx={{ mb: 2 }}
+            slotProps={{
+              input: {
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon />
+                  </InputAdornment>
+                ),
+              }
+            }}
           />
           
           <Box sx={{ display: 'flex', gap: 2, alignItems: 'center', flexWrap: 'wrap' }}>
@@ -226,7 +228,9 @@ export default function SearchPage() {
         </Box>
 
         {totalResults > 0 && (
-          <Typography variant="body1" color="text.secondary" align="center">
+          <Typography variant="body1" align="center" sx={{
+            color: "text.secondary"
+          }}>
             Found {totalResults.toLocaleString()} results for "{query}"
           </Typography>
         )}
@@ -248,7 +252,14 @@ export default function SearchPage() {
         <>
           <Grid container spacing={3}>
             {results.map((result) => (
-              <Grid item xs={12} sm={6} md={4} lg={3} key={`${result.media_type}-${result.id}`}>
+              <Grid
+                key={`${result.media_type}-${result.id}`}
+                size={{
+                  xs: 12,
+                  sm: 6,
+                  md: 4,
+                  lg: 3
+                }}>
                 <Card 
                   sx={{ 
                     height: '100%', 
@@ -271,7 +282,9 @@ export default function SearchPage() {
                     <Typography variant="h6" component="h3" gutterBottom noWrap>
                       {getResultTitle(result)}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary" gutterBottom>
+                    <Typography variant="body2" gutterBottom sx={{
+                      color: "text.secondary"
+                    }}>
                       {getResultSubtitle(result)}
                     </Typography>
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
@@ -289,7 +302,9 @@ export default function SearchPage() {
                         />
                       )}
                     </Box>
-                    <Typography variant="body2" color="text.secondary" noWrap>
+                    <Typography variant="body2" noWrap sx={{
+                      color: "text.secondary"
+                    }}>
                       {result.overview}
                     </Typography>
                   </CardContent>
@@ -318,7 +333,9 @@ export default function SearchPage() {
           <Typography variant="h5" gutterBottom>
             No results found
           </Typography>
-          <Typography variant="body1" color="text.secondary">
+          <Typography variant="body1" sx={{
+            color: "text.secondary"
+          }}>
             Try adjusting your search terms or filters
           </Typography>
         </Box>
@@ -330,7 +347,9 @@ export default function SearchPage() {
           <Typography variant="h5" gutterBottom>
             Start your search
           </Typography>
-          <Typography variant="body1" color="text.secondary">
+          <Typography variant="body1" sx={{
+            color: "text.secondary"
+          }}>
             Search for movies, TV shows, actors, and directors
           </Typography>
         </Box>

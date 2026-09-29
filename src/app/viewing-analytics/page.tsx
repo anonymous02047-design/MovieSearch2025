@@ -31,7 +31,9 @@ export default function ViewingAnalyticsPage() {
             <Grid size={{ xs: 12, md: 4 }}>
               <Card>
                 <CardContent>
-                  <Typography variant="h4" color="primary.main">0</Typography>
+                  <Typography variant="h4" sx={{
+                    color: "primary.main"
+                  }}>0</Typography>
                   <Typography>Movies This Month</Typography>
                 </CardContent>
               </Card>
@@ -39,7 +41,9 @@ export default function ViewingAnalyticsPage() {
             <Grid size={{ xs: 12, md: 4 }}>
               <Card>
                 <CardContent>
-                  <Typography variant="h4" color="success.main">0h</Typography>
+                  <Typography variant="h4" sx={{
+                    color: "success.main"
+                  }}>0h</Typography>
                   <Typography>Watch Time</Typography>
                 </CardContent>
               </Card>
@@ -47,7 +51,9 @@ export default function ViewingAnalyticsPage() {
             <Grid size={{ xs: 12, md: 4 }}>
               <Card>
                 <CardContent>
-                  <Typography variant="h4" color="warning.main">0</Typography>
+                  <Typography variant="h4" sx={{
+                    color: "warning.main"
+                  }}>0</Typography>
                   <Typography>Avg Rating</Typography>
                 </CardContent>
               </Card>

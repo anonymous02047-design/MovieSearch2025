@@ -256,44 +256,78 @@ function DecadesPageContent() {
   };
 
   const renderDecadeCard = (decade: DecadeData) => (
-    <Grid item xs={12} md={6} key={decade.decade}>
+    <Grid
+      key={decade.decade}
+      size={{
+        xs: 12,
+        md: 6
+      }}>
       <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
         <CardContent sx={{ flexGrow: 1 }}>
-          <Stack direction="row" spacing={2} alignItems="center" sx={{ mb: 2 }}>
+          <Stack
+            direction="row"
+            spacing={2}
+            sx={{
+              alignItems: "center",
+              mb: 2
+            }}>
             <HistoryIcon color="primary" />
             <Typography variant="h5" component="h3">
               {decade.decade}
             </Typography>
           </Stack>
           
-          <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 2 }}>
+          <Stack
+            direction="row"
+            spacing={1}
+            sx={{
+              alignItems: "center",
+              mb: 2
+            }}>
             <CalendarIcon fontSize="small" color="action" />
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               {decade.startYear} - {decade.endYear}
             </Typography>
           </Stack>
 
-          <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+          <Typography
+            variant="body2"
+            sx={{
+              color: "text.secondary",
+              mb: 2
+            }}>
             {decade.description}
           </Typography>
 
           <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
-            <Box textAlign="center">
-              <Typography variant="h6" color="primary.main">
+            <Box sx={{
+              textAlign: "center"
+            }}>
+              <Typography variant="h6" sx={{
+                color: "primary.main"
+              }}>
                 {decade.totalMovies}
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" sx={{
+                color: "text.secondary"
+              }}>
                 Movies
               </Typography>
             </Box>
-            <Box textAlign="center">
+            <Box sx={{
+              textAlign: "center"
+            }}>
               <Rating
                 value={decade.averageRating / 2}
                 precision={0.1}
                 size="small"
                 readOnly
               />
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" sx={{
+                color: "text.secondary"
+              }}>
                 {decade.averageRating.toFixed(1)} avg
               </Typography>
             </Box>
@@ -303,7 +337,9 @@ function DecadesPageContent() {
             <Typography variant="subtitle2" gutterBottom>
               Top Genres:
             </Typography>
-            <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
+            <Stack direction="row" spacing={1} useFlexGap sx={{
+              flexWrap: "wrap"
+            }}>
               {decade.topGenres.slice(0, 4).map((genre) => (
                 <Chip
                   key={genre.id}
@@ -319,7 +355,9 @@ function DecadesPageContent() {
             <Typography variant="subtitle2" gutterBottom>
               Notable Films:
             </Typography>
-            <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
+            <Stack direction="row" spacing={1} useFlexGap sx={{
+              flexWrap: "wrap"
+            }}>
               {decade.movies.slice(0, 3).map((movie) => (
                 <Chip
                   key={movie.id}
@@ -357,7 +395,13 @@ function DecadesPageContent() {
   if (loading) {
     return (
       <Container maxWidth="lg" sx={{ py: 4 }}>
-        <Box display="flex" justifyContent="center" alignItems="center" minHeight="400px">
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            minHeight: "400px"
+          }}>
           <CircularProgress />
         </Box>
       </Container>
@@ -382,13 +426,24 @@ function DecadesPageContent() {
       <Container maxWidth="lg" sx={{ py: 4 }}>
       {/* Header */}
       <Box sx={{ mb: 4 }}>
-        <Stack direction="row" alignItems="center" spacing={2} sx={{ mb: 2 }}>
+        <Stack
+          direction="row"
+          spacing={2}
+          sx={{
+            alignItems: "center",
+            mb: 2
+          }}>
           <HistoryIcon sx={{ fontSize: 40, color: 'primary.main' }} />
           <Typography variant="h3" component="h1">
             Movie Decades
           </Typography>
         </Stack>
-        <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>
+        <Typography
+          variant="h6"
+          sx={{
+            color: "text.secondary",
+            mb: 3
+          }}>
           Explore cinema through the decades and discover the evolution of filmmaking
         </Typography>
 
@@ -399,12 +454,14 @@ function DecadesPageContent() {
             placeholder="Search decades or movies..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <SearchIcon />
-                </InputAdornment>
-              ),
+            slotProps={{
+              input: {
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon />
+                  </InputAdornment>
+                ),
+              }
             }}
           />
           <FormControl sx={{ minWidth: 200 }}>
@@ -455,7 +512,12 @@ function DecadesPageContent() {
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <Box display="flex" justifyContent="center" sx={{ mt: 4 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            mt: 4
+          }}>
           <Pagination
             count={totalPages}
             page={currentPage}
@@ -468,8 +530,14 @@ function DecadesPageContent() {
 
       {/* No Results */}
       {filteredDecades.length === 0 && searchQuery && (
-        <Box textAlign="center" sx={{ py: 4 }}>
-          <Typography variant="h6" color="text.secondary">
+        <Box
+          sx={{
+            textAlign: "center",
+            py: 4
+          }}>
+          <Typography variant="h6" sx={{
+            color: "text.secondary"
+          }}>
             No decades found for "{searchQuery}"
           </Typography>
         </Box>
@@ -477,35 +545,55 @@ function DecadesPageContent() {
 
       {/* Stats */}
       <Box sx={{ mt: 4, p: 3, bgcolor: 'background.paper', borderRadius: 2 }}>
-        <Stack direction="row" spacing={4} justifyContent="center">
-          <Box textAlign="center">
-            <Typography variant="h4" color="primary.main">
+        <Stack direction="row" spacing={4} sx={{
+          justifyContent: "center"
+        }}>
+          <Box sx={{
+            textAlign: "center"
+          }}>
+            <Typography variant="h4" sx={{
+              color: "primary.main"
+            }}>
               {filteredDecades.length}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               Decades
             </Typography>
           </Box>
-          <Box textAlign="center">
-            <Typography variant="h4" color="secondary.main">
+          <Box sx={{
+            textAlign: "center"
+          }}>
+            <Typography variant="h4" sx={{
+              color: "secondary.main"
+            }}>
               {filteredDecades.reduce((sum, decade) => sum + decade.totalMovies, 0)}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               Total Movies
             </Typography>
           </Box>
-          <Box textAlign="center">
-            <Typography variant="h4" color="success.main">
+          <Box sx={{
+            textAlign: "center"
+          }}>
+            <Typography variant="h4" sx={{
+              color: "success.main"
+            }}>
               {filteredDecades.length > 0 ? (filteredDecades.reduce((sum, decade) => sum + decade.averageRating, 0) / filteredDecades.length).toFixed(1) : '0.0'}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               Avg Rating
             </Typography>
           </Box>
         </Stack>
       </Box>
         </Container>
-      </>
+    </>
   );
 }
 

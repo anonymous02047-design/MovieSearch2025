@@ -17,7 +17,9 @@ export default function DecadeExplorerPage() {
             <HistoryIcon sx={{ fontSize: 40, color: 'primary.main' }} />
             <Typography variant="h3" sx={{ fontWeight: 'bold' }}>Decade Explorer</Typography>
           </Box>
-          <Typography variant="body1" color="text.secondary">Discover movies from each decade</Typography>
+          <Typography variant="body1" sx={{
+            color: "text.secondary"
+          }}>Discover movies from each decade</Typography>
         </Container>
       </Box>
     </AuthGuard>

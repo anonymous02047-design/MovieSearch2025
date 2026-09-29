@@ -320,7 +320,9 @@ export default function EnhancedTVShowCard({
 
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
           {show.first_air_date && (
-            <Typography variant="caption" color="text.secondary">
+            <Typography variant="caption" sx={{
+              color: "text.secondary"
+            }}>
               {formatDate(show.first_air_date)}
             </Typography>
           )}
@@ -344,7 +346,9 @@ export default function EnhancedTVShowCard({
               readOnly
               sx={{ fontSize: '1rem' }}
             />
-            <Typography variant="caption" color="text.secondary">
+            <Typography variant="caption" sx={{
+              color: "text.secondary"
+            }}>
               ({show.vote_count.toLocaleString()})
             </Typography>
           </Box>
@@ -352,16 +356,15 @@ export default function EnhancedTVShowCard({
 
         <Typography
           variant="body2"
-          color="text.secondary"
           sx={{
+            color: "text.secondary",
             mt: 1,
             overflow: 'hidden',
             textOverflow: 'ellipsis',
             display: '-webkit-box',
             WebkitLineClamp: 3,
-            WebkitBoxOrient: 'vertical',
-          }}
-        >
+            WebkitBoxOrient: 'vertical'
+          }}>
           {show.overview || 'No overview available.'}
         </Typography>
       </CardContent>

@@ -19,7 +19,9 @@ export default function MashupsPage() {
             <Typography variant="h3" sx={{ fontWeight: 'bold' }}>Movie Mashups</Typography>
           </Box>
           <Button variant="contained" startIcon={<AddIcon />} sx={{ mb: 3 }}>Create Mashup</Button>
-          <Typography color="text.secondary">Create fun crossover concepts between different movies!</Typography>
+          <Typography sx={{
+            color: "text.secondary"
+          }}>Create fun crossover concepts between different movies!</Typography>
         </Container>
       </Box>
     </AuthGuard>

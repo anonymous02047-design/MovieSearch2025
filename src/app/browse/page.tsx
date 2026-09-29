@@ -109,11 +109,15 @@ export default function BrowsePage() {
           <Box sx={{ mb: 4, textAlign: 'center' }}>
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2, mb: 2 }}>
               <CategoryIcon sx={{ fontSize: 48, color: 'primary.main' }} />
-              <Typography variant="h3" component="h1" fontWeight={700}>
+              <Typography variant="h3" component="h1" sx={{
+                fontWeight: 700
+              }}>
                 Browse by Genre
               </Typography>
             </Box>
-            <Typography variant="h6" color="text.secondary">
+            <Typography variant="h6" sx={{
+              color: "text.secondary"
+            }}>
               Discover content by your favorite genres
             </Typography>
           </Box>
@@ -154,7 +158,14 @@ export default function BrowsePage() {
           ) : (
             <Grid container spacing={3}>
               {displayGenres.map((genre) => (
-                <Grid item xs={12} sm={6} md={4} lg={3} key={genre.id}>
+                <Grid
+                  key={genre.id}
+                  size={{
+                    xs: 12,
+                    sm: 6,
+                    md: 4,
+                    lg: 3
+                  }}>
                   <Card
                     onClick={() => handleGenreClick(genre.id, genre.name)}
                     sx={{
@@ -197,22 +208,23 @@ export default function BrowsePage() {
                       />
                       <Typography
                         variant="h4"
-                        fontWeight={700}
                         color="white"
                         sx={{
+                          fontWeight: 700,
                           position: 'relative',
                           zIndex: 1,
                           textShadow: '0 2px 8px rgba(0, 0, 0, 0.5)',
                           textAlign: 'center',
-                          px: 2,
-                        }}
-                      >
+                          px: 2
+                        }}>
                         {genre.name}
                       </Typography>
                     </Box>
                     <CardContent>
                       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body2" sx={{
+                          color: "text.secondary"
+                        }}>
                           Explore {contentType === 'movie' ? 'Movies' : 'TV Shows'}
                         </Typography>
                         <Chip
@@ -239,10 +251,14 @@ export default function BrowsePage() {
               textAlign: 'center',
             }}
           >
-            <Typography variant="h5" gutterBottom fontWeight={600}>
+            <Typography variant="h5" gutterBottom sx={{
+              fontWeight: 600
+            }}>
               💡 Did You Know?
             </Typography>
-            <Typography variant="body1" color="text.secondary">
+            <Typography variant="body1" sx={{
+              color: "text.secondary"
+            }}>
               The most popular movie genres worldwide are Action, Comedy, and Drama. 
               TV shows tend to favor Drama, Crime, and Sci-Fi genres.
             </Typography>

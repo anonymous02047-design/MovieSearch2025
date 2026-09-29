@@ -28,7 +28,12 @@ export default function PredictionTrackerPage() {
             <TrophyIcon sx={{ fontSize: 40, color: 'primary.main' }} />
             <Typography variant="h3" sx={{ fontWeight: 'bold' }}>Awards Prediction Tracker</Typography>
           </Box>
-          <Typography variant="h6" color="text.secondary" sx={{ mb: 4 }}>
+          <Typography
+            variant="h6"
+            sx={{
+              color: "text.secondary",
+              mb: 4
+            }}>
             Make your Oscar predictions and track your accuracy
           </Typography>
           <Grid container spacing={3}>
@@ -36,7 +41,12 @@ export default function PredictionTrackerPage() {
               <Card>
                 <CardContent>
                   <Typography variant="h6" sx={{ mb: 2 }}>2025 Oscars</Typography>
-                  <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: "text.secondary",
+                      mb: 2
+                    }}>
                     Ceremony: March 2, 2025
                   </Typography>
                   <Button variant="contained">Make Predictions</Button>

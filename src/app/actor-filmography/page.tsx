@@ -17,7 +17,9 @@ export default function ActorFilmographyPage() {
             <PersonIcon sx={{ fontSize: 40, color: 'primary.main' }} />
             <Typography variant="h3" sx={{ fontWeight: 'bold' }}>Actor Filmography</Typography>
           </Box>
-          <Typography variant="body1" color="text.secondary">Browse complete actor filmographies</Typography>
+          <Typography variant="body1" sx={{
+            color: "text.secondary"
+          }}>Browse complete actor filmographies</Typography>
         </Container>
       </Box>
     </AuthGuard>

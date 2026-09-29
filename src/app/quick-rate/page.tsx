@@ -78,7 +78,12 @@ export default function QuickRatePage() {
                 disabled={saving}
               />
               {saving && <CircularProgress size={24} sx={{ mt: 2 }} />}
-              <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
+              <Typography
+                variant="body2"
+                sx={{
+                  color: "text.secondary",
+                  mt: 2
+                }}>
                 Total ratings: {ratings.length}
               </Typography>
             </CardContent>

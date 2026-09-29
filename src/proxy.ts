@@ -189,7 +189,7 @@ const skipRateLimitRoutes = createRouteMatcher([
   '/api/analytics(.*)',
 ]);
 
-export default async function middleware(req: NextRequest) {
+export default async function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   // For admin routes, apply minimal tracking but skip authentication and rate limiting
