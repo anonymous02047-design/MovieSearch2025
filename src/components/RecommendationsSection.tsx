@@ -118,7 +118,9 @@ export default function RecommendationsSection() {
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 3, flexWrap: 'wrap', gap: 2 }}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           <RecommendIcon sx={{ color: 'secondary.main', fontSize: 32 }} />
-          <Typography variant="h5" fontWeight={700}>
+          <Typography variant="h5" sx={{
+            fontWeight: 700
+          }}>
             {isPersonalized ? 'Recommended for You' : 'Trending Recommendations'}
           </Typography>
           {isPersonalized && (
@@ -136,7 +138,12 @@ export default function RecommendationsSection() {
       </Box>
 
       {isPersonalized && (
-        <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
+        <Typography
+          variant="body2"
+          sx={{
+            color: "text.secondary",
+            mb: 3
+          }}>
           Based on your watchlist, favorites, and viewing history
         </Typography>
       )}

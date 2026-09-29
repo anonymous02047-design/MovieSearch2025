@@ -173,7 +173,9 @@ export default function TVShowCard({
           }}
         >
           <StarIcon sx={{ fontSize: 16, color: '#ffd700' }} />
-          <Typography variant="caption" fontWeight={600} color="white">
+          <Typography variant="caption" color="white" sx={{
+            fontWeight: 600
+          }}>
             {rating}
           </Typography>
         </Box>
@@ -211,16 +213,15 @@ export default function TVShowCard({
 
         <Typography
           variant="body2"
-          color="text.secondary"
           sx={{
+            color: "text.secondary",
             overflow: 'hidden',
             textOverflow: 'ellipsis',
             display: '-webkit-box',
             WebkitLineClamp: 3,
             WebkitBoxOrient: 'vertical',
-            fontSize: '0.875rem',
-          }}
-        >
+            fontSize: '0.875rem'
+          }}>
           {show.overview || 'No description available.'}
         </Typography>
       </CardContent>

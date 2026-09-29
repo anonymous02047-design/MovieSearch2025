@@ -71,7 +71,9 @@ export default function TrendingSection() {
     >
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 3 }}>
         <HotIcon sx={{ color: 'error.main', fontSize: 32 }} />
-        <Typography variant="h5" fontWeight={700}>
+        <Typography variant="h5" sx={{
+          fontWeight: 700
+        }}>
           Trending Now
         </Typography>
       </Box>
@@ -132,7 +134,9 @@ export default function TrendingSection() {
           {(contentType === 'all' || contentType === 'movie') && movies.length > 0 && (
             <Box sx={{ mb: contentType === 'all' ? 4 : 0 }}>
               {contentType === 'all' && (
-                <Typography variant="h6" gutterBottom fontWeight={600}>
+                <Typography variant="h6" gutterBottom sx={{
+                  fontWeight: 600
+                }}>
                   Movies
                 </Typography>
               )}
@@ -147,7 +151,9 @@ export default function TrendingSection() {
           {(contentType === 'all' || contentType === 'tv') && tvShows.length > 0 && (
             <Box>
               {contentType === 'all' && (
-                <Typography variant="h6" gutterBottom fontWeight={600}>
+                <Typography variant="h6" gutterBottom sx={{
+                  fontWeight: 600
+                }}>
                   TV Shows
                 </Typography>
               )}

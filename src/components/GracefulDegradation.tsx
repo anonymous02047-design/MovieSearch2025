@@ -280,14 +280,24 @@ export default function GracefulDegradation({
       }}
     >
       <Box sx={{ p: 2 }}>
-        <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ mb: 1 }}>
-          <Stack direction="row" alignItems="center" spacing={1}>
+        <Stack
+          direction="row"
+          sx={{
+            alignItems: "center",
+            justifyContent: "space-between",
+            mb: 1
+          }}>
+          <Stack direction="row" spacing={1} sx={{
+            alignItems: "center"
+          }}>
             {totalIssues > 0 ? (
               <WarningIcon color="warning" />
             ) : (
               <CheckCircleIcon color="success" />
             )}
-            <Typography variant="subtitle2" fontWeight="bold">
+            <Typography variant="subtitle2" sx={{
+              fontWeight: "bold"
+            }}>
               System Status
             </Typography>
           </Stack>
@@ -351,7 +361,9 @@ export default function GracefulDegradation({
                     </ListItemIcon>
                     <ListItemText
                       primary={
-                        <Stack direction="row" alignItems="center" spacing={1}>
+                        <Stack direction="row" spacing={1} sx={{
+                          alignItems: "center"
+                        }}>
                           <Typography variant="body2">
                             {feature.name}
                           </Typography>
@@ -366,7 +378,9 @@ export default function GracefulDegradation({
                       }
                       secondary={
                         !feature.available && feature.fallback && (
-                          <Typography variant="caption" color="text.secondary">
+                          <Typography variant="caption" sx={{
+                            color: "text.secondary"
+                          }}>
                             Fallback: {feature.fallback}
                           </Typography>
                         )

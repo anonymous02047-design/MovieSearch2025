@@ -56,7 +56,9 @@ export default function ContinueWatchingSection() {
     >
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 3 }}>
         <HistoryIcon sx={{ color: 'secondary.main', fontSize: 32 }} />
-        <Typography variant="h5" fontWeight={700}>
+        <Typography variant="h5" sx={{
+          fontWeight: 700
+        }}>
           Continue Watching
         </Typography>
       </Box>
@@ -150,29 +152,37 @@ export default function ContinueWatchingSection() {
             <CardContent sx={{ p: 1.5 }}>
               <Typography
                 variant="body2"
-                fontWeight={600}
                 sx={{
+                  fontWeight: 600,
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
-                  whiteSpace: 'nowrap',
-                }}
-              >
+                  whiteSpace: 'nowrap'
+                }}>
                 {item.title}
               </Typography>
               
               {item.episodeTitle && (
-                <Typography variant="caption" color="text.secondary" display="block">
+                <Typography
+                  variant="caption"
+                  sx={{
+                    color: "text.secondary",
+                    display: "block"
+                  }}>
                   S{item.seasonNumber}:E{item.episodeNumber} - {item.episodeTitle}
                 </Typography>
               )}
               
               <Box sx={{ mt: 1 }}>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 0.5 }}>
-                  <Typography variant="caption" color="text.secondary">
+                  <Typography variant="caption" sx={{
+                    color: "text.secondary"
+                  }}>
                     {Math.round(item.progress)}% watched
                   </Typography>
                   {item.duration && (
-                    <Typography variant="caption" color="text.secondary">
+                    <Typography variant="caption" sx={{
+                      color: "text.secondary"
+                    }}>
                       {Math.round((item.duration * (100 - item.progress)) / 100)} min left
                     </Typography>
                   )}

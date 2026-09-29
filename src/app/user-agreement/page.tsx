@@ -75,7 +75,13 @@ export default function UserAgreementPage() {
             >
               ⚖️ User Agreement
             </GradientHeading>
-            <Typography variant="h6" color="text.secondary" sx={{ maxWidth: 800, mx: 'auto' }}>
+            <Typography
+              variant="h6"
+              sx={{
+                color: "text.secondary",
+                maxWidth: 800,
+                mx: 'auto'
+              }}>
               The terms and conditions governing your use of MovieSearch 2025 and our services.
             </Typography>
           </Box>
@@ -85,7 +91,9 @@ export default function UserAgreementPage() {
             <Typography variant="h4" component="h2" gutterBottom>
               User Agreement
             </Typography>
-            <Typography variant="body1" paragraph>
+            <Typography variant="body1" sx={{
+              marginBottom: "16px"
+            }}>
               This User Agreement ("Agreement") governs your use of MovieSearch 2025 and our services. 
               By using our platform, you agree to be bound by these terms and conditions.
             </Typography>
@@ -129,7 +137,12 @@ export default function UserAgreementPage() {
             <Typography variant="h5" gutterBottom>
               Questions About This Agreement?
             </Typography>
-            <Typography variant="body1" color="text.secondary" paragraph>
+            <Typography
+              variant="body1"
+              sx={{
+                color: "text.secondary",
+                marginBottom: "16px"
+              }}>
               If you have questions about this user agreement or need clarification on any terms, 
               please contact us:
             </Typography>
@@ -143,6 +156,6 @@ export default function UserAgreementPage() {
             </Box>
           </Paper>
         </Container>
-      </>
+    </>
   );
 }

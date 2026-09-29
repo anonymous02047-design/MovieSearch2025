@@ -32,10 +32,12 @@ export default function VideoPlayer({ videoKey, title, open, onClose }: VideoPla
       onClose={onClose}
       maxWidth="lg"
       fullWidth
-      PaperProps={{
-        sx: {
-          backgroundColor: 'black',
-          backgroundImage: 'none',
+      slotProps={{
+        paper: {
+          sx: {
+            backgroundColor: 'black',
+            backgroundImage: 'none',
+          }
         }
       }}
     >
@@ -46,7 +48,9 @@ export default function VideoPlayer({ videoKey, title, open, onClose }: VideoPla
         alignItems: 'center',
         backgroundColor: alpha('#000', 0.9),
       }}>
-        <Typography variant="h6" fontWeight={600}>
+        <Typography variant="h6" sx={{
+          fontWeight: 600
+        }}>
           {title}
         </Typography>
         <IconButton onClick={onClose} sx={{ color: 'white' }}>

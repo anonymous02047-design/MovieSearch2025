@@ -251,7 +251,9 @@ export default function ProfileImageUpload({
         </Box>
 
         {/* Action Buttons */}
-        <Stack direction="row" spacing={1} justifyContent="center">
+        <Stack direction="row" spacing={1} sx={{
+          justifyContent: "center"
+        }}>
           <Button
             variant="outlined"
             startIcon={<PhotoCameraIcon />}
@@ -383,7 +385,9 @@ export default function ProfileImageUpload({
                 />
               </Box>
 
-              <Stack direction="row" spacing={1} justifyContent="center">
+              <Stack direction="row" spacing={1} sx={{
+                justifyContent: "center"
+              }}>
                 <IconButton onClick={() => setRotation(prev => prev - 15)}>
                   <RotateLeftIcon />
                 </IconButton>

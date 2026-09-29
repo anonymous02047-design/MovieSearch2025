@@ -76,18 +76,24 @@ function HistoryPageContent() {
           <Box sx={{ mb: 4, textAlign: 'center' }}>
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2, mb: 2 }}>
               <HistoryIcon sx={{ fontSize: 48, color: 'primary.main' }} />
-              <Typography variant="h3" component="h1" fontWeight={700}>
+              <Typography variant="h3" component="h1" sx={{
+                fontWeight: 700
+              }}>
                 Search History
               </Typography>
             </Box>
-            <Typography variant="h6" color="text.secondary">
+            <Typography variant="h6" sx={{
+              color: "text.secondary"
+            }}>
               Your recent searches
             </Typography>
           </Box>
 
           <Paper elevation={3} sx={{ p: 3 }}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
-              <Typography variant="h6" fontWeight={600}>
+              <Typography variant="h6" sx={{
+                fontWeight: 600
+              }}>
                 Recent Searches
               </Typography>
               {history.length > 0 && (
@@ -106,10 +112,14 @@ function HistoryPageContent() {
             {history.length === 0 ? (
               <Box sx={{ textAlign: 'center', py: 8 }}>
                 <SearchIcon sx={{ fontSize: 64, color: 'text.secondary', opacity: 0.5, mb: 2 }} />
-                <Typography variant="h6" color="text.secondary" gutterBottom>
+                <Typography variant="h6" gutterBottom sx={{
+                  color: "text.secondary"
+                }}>
                   No search history
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" sx={{
+                  color: "text.secondary"
+                }}>
                   Your search queries will appear here
                 </Typography>
               </Box>
@@ -173,7 +183,9 @@ function HistoryPageContent() {
               border: `1px solid ${alpha(theme.palette.info.main, 0.2)}`,
             }}
           >
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               💡 <strong>Tip:</strong> Click on any search query to search again. Your search history is stored locally on your device.
             </Typography>
           </Paper>

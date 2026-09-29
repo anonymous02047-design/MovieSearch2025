@@ -77,7 +77,12 @@ export function LoadingSpinner({
         {getIcon()}
         <CircularProgress size={getSize()} />
       </Box>
-      <Typography variant="body1" color="text.secondary" textAlign="center">
+      <Typography
+        variant="body1"
+        sx={{
+          color: "text.secondary",
+          textAlign: "center"
+        }}>
         {getMessage()}
       </Typography>
     </Box>
@@ -172,11 +177,15 @@ export function LoadingProgress({
   return (
     <Box sx={{ width: '100%', p: 2 }}>
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 1 }}>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" sx={{
+          color: "text.secondary"
+        }}>
           {message}
         </Typography>
         {showPercentage && (
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" sx={{
+            color: "text.secondary"
+          }}>
             {Math.round(progress)}%
           </Typography>
         )}
@@ -220,7 +229,9 @@ export function OfflineIndicator({
         minWidth: 200,
       }}
     >
-      <Stack direction="row" alignItems="center" spacing={1}>
+      <Stack direction="row" spacing={1} sx={{
+        alignItems: "center"
+      }}>
         <CloudOffIcon />
         <Typography variant="body2" sx={{ flex: 1 }}>
           You're offline
@@ -296,7 +307,9 @@ export function RetryButton({
         ) : (
           <RefreshIcon />
         )}
-        <Typography variant="body2" fontWeight="bold">
+        <Typography variant="body2" sx={{
+          fontWeight: "bold"
+        }}>
           {loading ? 'Retrying...' : buttonText}
         </Typography>
       </Box>

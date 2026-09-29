@@ -92,7 +92,12 @@ function NowPlayingPageContent() {
             }}>
               🎬 Now Playing Movies
             </Typography>
-            <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>
+            <Typography
+              variant="h6"
+              sx={{
+                color: "text.secondary",
+                mb: 3
+              }}>
               Discover movies currently playing in theaters
             </Typography>
           </Box>
@@ -138,7 +143,7 @@ function NowPlayingPageContent() {
             </Box>
           )}
         </Container>
-      </>
+    </>
   );
 }
 

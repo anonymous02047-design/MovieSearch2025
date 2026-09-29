@@ -47,14 +47,21 @@ export default function BucketListPage() {
               Movie Bucket List
             </Typography>
           </Box>
-          <Typography variant="h6" color="text.secondary" sx={{ mb: 4 }}>
+          <Typography
+            variant="h6"
+            sx={{
+              color: "text.secondary",
+              mb: 4
+            }}>
             Must-watch movies before you die
           </Typography>
 
           {/* Progress Card */}
           <Card sx={{ mb: 4, bgcolor: 'primary.main', color: 'white' }}>
             <CardContent>
-              <Grid container spacing={3} alignItems="center">
+              <Grid container spacing={3} sx={{
+                alignItems: "center"
+              }}>
                 <Grid size={{ xs: 12, md: 8 }}>
                   <Typography variant="h5" sx={{ mb: 2 }}>
                     Your Progress

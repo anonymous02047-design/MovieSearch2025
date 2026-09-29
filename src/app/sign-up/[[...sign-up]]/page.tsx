@@ -105,14 +105,22 @@ export default function SignUpPage() {
           )}
           {/* Header */}
           <Box sx={{ textAlign: 'center', mb: 4 }}>
-            <Stack direction="row" spacing={1} justifyContent="center" sx={{ mb: 2 }}>
+            <Stack
+              direction="row"
+              spacing={1}
+              sx={{
+                justifyContent: "center",
+                mb: 2
+              }}>
               <MovieIcon sx={{ fontSize: 32, color: 'primary.main' }} />
               <StarIcon sx={{ fontSize: 32, color: 'primary.main' }} />
             </Stack>
             <Typography variant="h4" component="h1" gutterBottom sx={{ fontWeight: 'bold' }}>
               Join MovieSearch 2025
             </Typography>
-            <Typography variant="body1" color="text.secondary">
+            <Typography variant="body1" sx={{
+              color: "text.secondary"
+            }}>
               Create your free account and start discovering amazing movies
             </Typography>
           </Box>
@@ -126,7 +134,9 @@ export default function SignUpPage() {
               {benefits.map((benefit, index) => (
                 <Box key={index} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                   <CheckCircleIcon sx={{ fontSize: 20, color: 'success.main' }} />
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" sx={{
+                    color: "text.secondary"
+                  }}>
                     {benefit}
                   </Typography>
                 </Box>
@@ -248,14 +258,14 @@ export default function SignUpPage() {
                 path="/sign-up"
                 routing="path"
                 signInUrl="/sign-in"
-                redirectUrl="/"
-                afterSignUpUrl="/"
                 forceRedirectUrl="/"
               />
             </Box>
           {/* Footer */}
           <Box sx={{ textAlign: 'center', mt: 3 }}>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               Already have an account?{' '}
               <Button
                 variant="text"

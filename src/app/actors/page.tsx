@@ -126,10 +126,14 @@ export default function ActorsPage() {
                         </Avatar>
                       )}
                       <CardContent>
-                        <Typography variant="h6" fontWeight={600} noWrap>
+                        <Typography variant="h6" noWrap sx={{
+                          fontWeight: 600
+                        }}>
                           {actor.name}
                         </Typography>
-                        <Typography variant="body2" color="text.secondary" noWrap>
+                        <Typography variant="body2" noWrap sx={{
+                          color: "text.secondary"
+                        }}>
                           {actor.known_for_department}
                         </Typography>
                       </CardContent>

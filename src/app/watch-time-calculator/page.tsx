@@ -22,16 +22,24 @@ export default function WatchTimeCalculatorPage() {
             <Grid size={{ xs: 12, md: 4 }}>
               <Card>
                 <CardContent sx={{ textAlign: 'center' }}>
-                  <Typography variant="h4" color="primary.main">0h</Typography>
-                  <Typography color="text.secondary">Total Watch Time</Typography>
+                  <Typography variant="h4" sx={{
+                    color: "primary.main"
+                  }}>0h</Typography>
+                  <Typography sx={{
+                    color: "text.secondary"
+                  }}>Total Watch Time</Typography>
                 </CardContent>
               </Card>
             </Grid>
             <Grid size={{ xs: 12, md: 4 }}>
               <Card>
                 <CardContent sx={{ textAlign: 'center' }}>
-                  <Typography variant="h4" color="success.main">0</Typography>
-                  <Typography color="text.secondary">Movies This Year</Typography>
+                  <Typography variant="h4" sx={{
+                    color: "success.main"
+                  }}>0</Typography>
+                  <Typography sx={{
+                    color: "text.secondary"
+                  }}>Movies This Year</Typography>
                 </CardContent>
               </Card>
             </Grid>

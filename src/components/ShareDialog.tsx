@@ -100,17 +100,21 @@ export default function ShareDialog({ open, onClose, title, url, description }: 
         onClose={onClose}
         maxWidth="sm"
         fullWidth
-        PaperProps={{
-          sx: {
-            background: theme.palette.mode === 'dark'
-              ? 'linear-gradient(135deg, rgba(30, 30, 30, 0.98) 0%, rgba(50, 50, 50, 0.98) 100%)'
-              : 'linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 240, 240, 0.98) 100%)',
-            backdropFilter: 'blur(20px)',
+        slotProps={{
+          paper: {
+            sx: {
+              background: theme.palette.mode === 'dark'
+                ? 'linear-gradient(135deg, rgba(30, 30, 30, 0.98) 0%, rgba(50, 50, 50, 0.98) 100%)'
+                : 'linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 240, 240, 0.98) 100%)',
+              backdropFilter: 'blur(20px)',
+            }
           }
         }}
       >
         <DialogTitle sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <Typography variant="h6" fontWeight={600}>
+          <Typography variant="h6" sx={{
+            fontWeight: 600
+          }}>
             Share {title}
           </Typography>
           <IconButton onClick={onClose} size="small">
@@ -120,7 +124,9 @@ export default function ShareDialog({ open, onClose, title, url, description }: 
 
         <DialogContent>
           <Box sx={{ mb: 3 }}>
-            <Typography variant="body2" color="text.secondary" gutterBottom>
+            <Typography variant="body2" gutterBottom sx={{
+              color: "text.secondary"
+            }}>
               Share via
             </Typography>
             <Box
@@ -167,20 +173,24 @@ export default function ShareDialog({ open, onClose, title, url, description }: 
           </Box>
 
           <Box>
-            <Typography variant="body2" color="text.secondary" gutterBottom>
+            <Typography variant="body2" gutterBottom sx={{
+              color: "text.secondary"
+            }}>
               Or copy link
             </Typography>
             <TextField
               fullWidth
               value={shareUrl}
               size="small"
-              InputProps={{
-                readOnly: true,
-                endAdornment: (
-                  <IconButton onClick={handleCopy} edge="end" size="small">
-                    <CopyIcon />
-                  </IconButton>
-                )
+              slotProps={{
+                input: {
+                  readOnly: true,
+                  endAdornment: (
+                    <IconButton onClick={handleCopy} edge="end" size="small">
+                      <CopyIcon />
+                    </IconButton>
+                  )
+                }
               }}
             />
           </Box>

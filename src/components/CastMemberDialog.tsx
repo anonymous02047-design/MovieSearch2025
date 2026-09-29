@@ -159,9 +159,11 @@ export default function CastMemberDialog({ open, onClose, personId, personName }
       onClose={handleClose}
       maxWidth="md"
       fullWidth
-      PaperProps={{
-        sx: {
-          maxHeight: '90vh',
+      slotProps={{
+        paper: {
+          sx: {
+            maxHeight: '90vh',
+          }
         }
       }}
     >
@@ -205,7 +207,9 @@ export default function CastMemberDialog({ open, onClose, personId, personName }
                 
                 {person.also_known_as && person.also_known_as.length > 0 && (
                   <Box sx={{ mb: 2 }}>
-                    <Typography variant="body2" color="text.secondary" gutterBottom>
+                    <Typography variant="body2" gutterBottom sx={{
+                      color: "text.secondary"
+                    }}>
                       Also known as:
                     </Typography>
                     <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
@@ -221,7 +225,9 @@ export default function CastMemberDialog({ open, onClose, personId, personName }
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                       <CalendarIcon fontSize="small" color="action" />
                       <Box>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body2" sx={{
+                          color: "text.secondary"
+                        }}>
                           Born
                         </Typography>
                         <Typography variant="body1">
@@ -239,7 +245,9 @@ export default function CastMemberDialog({ open, onClose, personId, personName }
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                       <LocationIcon fontSize="small" color="action" />
                       <Box>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body2" sx={{
+                          color: "text.secondary"
+                        }}>
                           Place of Birth
                         </Typography>
                         <Typography variant="body1">
@@ -252,7 +260,9 @@ export default function CastMemberDialog({ open, onClose, personId, personName }
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                     <PersonIcon fontSize="small" color="action" />
                     <Box>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         Gender
                       </Typography>
                       <Typography variant="body1">
@@ -265,7 +275,9 @@ export default function CastMemberDialog({ open, onClose, personId, personName }
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                       <MovieIcon fontSize="small" color="action" />
                       <Box>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body2" sx={{
+                          color: "text.secondary"
+                        }}>
                           Known For
                         </Typography>
                         <Typography variant="body1">
@@ -319,10 +331,14 @@ export default function CastMemberDialog({ open, onClose, personId, personName }
                               primary={movie.title}
                               secondary={
                                 <Box>
-                                  <Typography variant="body2" color="text.secondary">
+                                  <Typography variant="body2" sx={{
+                                    color: "text.secondary"
+                                  }}>
                                     {movie.release_date && formatDate(movie.release_date)}
                                   </Typography>
-                                  <Typography variant="body2" color="text.secondary">
+                                  <Typography variant="body2" sx={{
+                                    color: "text.secondary"
+                                  }}>
                                     Rating: {movie.vote_average.toFixed(1)}/10
                                   </Typography>
                                 </Box>
@@ -353,10 +369,14 @@ export default function CastMemberDialog({ open, onClose, personId, personName }
                               primary={movie.title}
                               secondary={
                                 <Box>
-                                  <Typography variant="body2" color="text.secondary">
+                                  <Typography variant="body2" sx={{
+                                    color: "text.secondary"
+                                  }}>
                                     {movie.release_date && formatDate(movie.release_date)}
                                   </Typography>
-                                  <Typography variant="body2" color="text.secondary">
+                                  <Typography variant="body2" sx={{
+                                    color: "text.secondary"
+                                  }}>
                                     Rating: {movie.vote_average.toFixed(1)}/10
                                   </Typography>
                                 </Box>
@@ -392,7 +412,9 @@ export default function CastMemberDialog({ open, onClose, personId, personName }
                   </Box>
                 </Box>
               ) : (
-                <Typography color="text.secondary">
+                <Typography sx={{
+                  color: "text.secondary"
+                }}>
                   No photos available for this person.
                 </Typography>
               )}

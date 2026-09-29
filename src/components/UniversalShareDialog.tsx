@@ -212,10 +212,17 @@ export default function UniversalShareDialog({
     <>
       <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>
         <DialogTitle>
-          <Box display="flex" justifyContent="space-between" alignItems="center">
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center"
+            }}>
             <Box>
               <Typography variant="h6">Share "{title}"</Typography>
-              <Typography variant="caption" color="text.secondary">
+              <Typography variant="caption" sx={{
+                color: "text.secondary"
+              }}>
                 170+ Sharing Options
               </Typography>
             </Box>
@@ -234,12 +241,14 @@ export default function UniversalShareDialog({
               placeholder="Search platforms..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <SearchIcon />
-                  </InputAdornment>
-                ),
+              slotProps={{
+                input: {
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <SearchIcon />
+                    </InputAdornment>
+                  ),
+                }
               }}
             />
 
@@ -259,7 +268,13 @@ export default function UniversalShareDialog({
             <Box sx={{ maxHeight: 400, overflow: 'auto' }}>
               <Grid container spacing={1}>
                 {filteredPlatforms.map((platform) => (
-                  <Grid item xs={6} sm={4} md={3} key={platform.name}>
+                  <Grid
+                    key={platform.name}
+                    size={{
+                      xs: 6,
+                      sm: 4,
+                      md: 3
+                    }}>
                     <Tooltip title={`Share on ${platform.name}`}>
                       <Button
                         fullWidth
@@ -277,8 +292,12 @@ export default function UniversalShareDialog({
                           fontSize: '0.75rem',
                         }}
                       >
-                        <Stack alignItems="center" spacing={0.5}>
-                          <Typography fontSize="1.5rem">{platform.icon}</Typography>
+                        <Stack spacing={0.5} sx={{
+                          alignItems: "center"
+                        }}>
+                          <Typography sx={{
+                            fontSize: "1.5rem"
+                          }}>{platform.icon}</Typography>
                           <Typography variant="caption" noWrap>
                             {platform.name}
                           </Typography>
@@ -290,8 +309,14 @@ export default function UniversalShareDialog({
               </Grid>
 
               {filteredPlatforms.length === 0 && (
-                <Box textAlign="center" py={4}>
-                  <Typography color="text.secondary">
+                <Box
+                  sx={{
+                    textAlign: "center",
+                    py: 4
+                  }}>
+                  <Typography sx={{
+                    color: "text.secondary"
+                  }}>
                     No platforms found matching "{searchQuery}"
                   </Typography>
                 </Box>
@@ -299,7 +324,12 @@ export default function UniversalShareDialog({
             </Box>
 
             {/* Quick Stats */}
-            <Box display="flex" justifyContent="center" gap={2}>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                gap: 2
+              }}>
               <Chip 
                 label={`${filteredPlatforms.length} platforms`} 
                 size="small" 

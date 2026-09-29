@@ -287,7 +287,9 @@ function ProfileManagePageContent() {
           <EditIcon fontSize="large" color="primary" />
           Manage Profile
         </Typography>
-        <Typography variant="body1" color="text.secondary">
+        <Typography variant="body1" sx={{
+          color: "text.secondary"
+        }}>
           Update your profile information, preferences, and account settings.
         </Typography>
       </Box>
@@ -310,7 +312,11 @@ function ProfileManagePageContent() {
 
       <Grid container spacing={4}>
         {/* Profile Image */}
-        <Grid item xs={12} md={4}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 4
+          }}>
           <Card>
             <CardContent>
               <Typography variant="h6" gutterBottom>
@@ -328,7 +334,11 @@ function ProfileManagePageContent() {
         </Grid>
 
         {/* Main Content */}
-        <Grid item xs={12} md={8}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 8
+          }}>
           {/* Tab Navigation */}
           <Paper sx={{ mb: 3 }}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -362,7 +372,11 @@ function ProfileManagePageContent() {
                     Basic Information
                   </Typography>
                   <Grid container spacing={3}>
-                    <Grid item xs={12} sm={6}>
+                    <Grid
+                      size={{
+                        xs: 12,
+                        sm: 6
+                      }}>
                       <TextField
                         fullWidth
                         label="First Name"
@@ -371,7 +385,11 @@ function ProfileManagePageContent() {
                         disabled={saving}
                       />
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+                    <Grid
+                      size={{
+                        xs: 12,
+                        sm: 6
+                      }}>
                       <TextField
                         fullWidth
                         label="Last Name"
@@ -380,7 +398,7 @@ function ProfileManagePageContent() {
                         disabled={saving}
                       />
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid size={12}>
                       <TextField
                         fullWidth
                         label="Email"
@@ -389,7 +407,7 @@ function ProfileManagePageContent() {
                         helperText="Email cannot be changed here. Use your account settings."
                       />
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid size={12}>
                       <TextField
                         fullWidth
                         label="Bio"
@@ -401,19 +419,29 @@ function ProfileManagePageContent() {
                         helperText="Tell us about yourself (max 500 characters)"
                       />
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+                    <Grid
+                      size={{
+                        xs: 12,
+                        sm: 6
+                      }}>
                       <TextField
                         fullWidth
                         label="Location"
                         value={formData.location || ''}
                         onChange={(e) => handleInputChange('location', e.target.value)}
                         disabled={saving}
-                        InputProps={{
-                          startAdornment: <LocationIcon sx={{ mr: 1, color: 'text.secondary' }} />,
+                        slotProps={{
+                          input: {
+                            startAdornment: <LocationIcon sx={{ mr: 1, color: 'text.secondary' }} />,
+                          }
                         }}
                       />
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+                    <Grid
+                      size={{
+                        xs: 12,
+                        sm: 6
+                      }}>
                       <TextField
                         fullWidth
                         label="Website"
@@ -423,7 +451,11 @@ function ProfileManagePageContent() {
                         placeholder="https://example.com"
                       />
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+                    <Grid
+                      size={{
+                        xs: 12,
+                        sm: 6
+                      }}>
                       <TextField
                         fullWidth
                         label="Date of Birth"
@@ -431,10 +463,16 @@ function ProfileManagePageContent() {
                         value={formData.dateOfBirth || ''}
                         onChange={(e) => handleInputChange('dateOfBirth', e.target.value)}
                         disabled={saving}
-                        InputLabelProps={{ shrink: true }}
+                        slotProps={{
+                          inputLabel: { shrink: true }
+                        }}
                       />
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+                    <Grid
+                      size={{
+                        xs: 12,
+                        sm: 6
+                      }}>
                       <FormControl fullWidth disabled={saving}>
                         <InputLabel>Gender</InputLabel>
                         <Select
@@ -460,7 +498,11 @@ function ProfileManagePageContent() {
                     Account Preferences
                   </Typography>
                   <Grid container spacing={3}>
-                    <Grid item xs={12} sm={6}>
+                    <Grid
+                      size={{
+                        xs: 12,
+                        sm: 6
+                      }}>
                       <FormControl fullWidth disabled={saving}>
                         <InputLabel>Theme</InputLabel>
                         <Select
@@ -474,7 +516,11 @@ function ProfileManagePageContent() {
                         </Select>
                       </FormControl>
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+                    <Grid
+                      size={{
+                        xs: 12,
+                        sm: 6
+                      }}>
                       <FormControl fullWidth disabled={saving}>
                         <InputLabel>Language</InputLabel>
                         <Select
@@ -491,7 +537,7 @@ function ProfileManagePageContent() {
                         </Select>
                       </FormControl>
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid size={12}>
                       <Typography variant="subtitle1" gutterBottom>
                         Notifications
                       </Typography>
@@ -528,7 +574,7 @@ function ProfileManagePageContent() {
                         />
                       </Stack>
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid size={12}>
                       <Typography variant="subtitle1" gutterBottom>
                         Privacy
                       </Typography>
@@ -578,15 +624,15 @@ function ProfileManagePageContent() {
                     Movie Preferences
                   </Typography>
                   <Grid container spacing={3}>
-                    <Grid item xs={12}>
+                    <Grid size={12}>
                       <Autocomplete
                         multiple
                         options={['Action', 'Comedy', 'Drama', 'Horror', 'Romance', 'Sci-Fi', 'Thriller', 'Documentary', 'Animation', 'Adventure']}
                         value={profile?.moviePreferences.favoriteGenres || []}
                         onChange={(event, newValue) => handleMoviePreferenceChange('favoriteGenres', newValue)}
-                        renderTags={(value, getTagProps) =>
+                        renderValue={(value, getItemProps) =>
                           value.map((option, index) => {
-                            const { key, ...otherProps } = getTagProps({ index });
+                            const { key, ...otherProps } = getItemProps({ index });
                             return (
                               <Chip key={key} variant="outlined" label={option} {...otherProps} />
                             );
@@ -602,7 +648,11 @@ function ProfileManagePageContent() {
                         )}
                       />
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+                    <Grid
+                      size={{
+                        xs: 12,
+                        sm: 6
+                      }}>
                       <FormControl fullWidth disabled={saving}>
                         <InputLabel>Content Rating</InputLabel>
                         <Select
@@ -619,15 +669,19 @@ function ProfileManagePageContent() {
                         </Select>
                       </FormControl>
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+                    <Grid
+                      size={{
+                        xs: 12,
+                        sm: 6
+                      }}>
                       <Autocomplete
                         multiple
                         options={['English', 'Spanish', 'French', 'German', 'Italian', 'Portuguese', 'Japanese', 'Korean', 'Chinese']}
                         value={profile?.moviePreferences.preferredLanguages || []}
                         onChange={(event, newValue) => handleMoviePreferenceChange('preferredLanguages', newValue)}
-                        renderTags={(value, getTagProps) =>
+                        renderValue={(value, getItemProps) =>
                           value.map((option, index) => {
-                            const { key, ...otherProps } = getTagProps({ index });
+                            const { key, ...otherProps } = getItemProps({ index });
                             return (
                               <Chip key={key} variant="outlined" label={option} {...otherProps} />
                             );
@@ -654,7 +708,11 @@ function ProfileManagePageContent() {
                     Social Links
                   </Typography>
                   <Grid container spacing={3}>
-                    <Grid item xs={12} sm={6}>
+                    <Grid
+                      size={{
+                        xs: 12,
+                        sm: 6
+                      }}>
                       <TextField
                         fullWidth
                         label="Twitter"
@@ -664,7 +722,11 @@ function ProfileManagePageContent() {
                         placeholder="@username"
                       />
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+                    <Grid
+                      size={{
+                        xs: 12,
+                        sm: 6
+                      }}>
                       <TextField
                         fullWidth
                         label="Instagram"
@@ -674,7 +736,11 @@ function ProfileManagePageContent() {
                         placeholder="@username"
                       />
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+                    <Grid
+                      size={{
+                        xs: 12,
+                        sm: 6
+                      }}>
                       <TextField
                         fullWidth
                         label="Facebook"
@@ -684,7 +750,11 @@ function ProfileManagePageContent() {
                         placeholder="https://facebook.com/username"
                       />
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+                    <Grid
+                      size={{
+                        xs: 12,
+                        sm: 6
+                      }}>
                       <TextField
                         fullWidth
                         label="LinkedIn"
@@ -740,7 +810,9 @@ function ProfileManagePageContent() {
           {/* Save/Cancel Buttons */}
           {hasChanges && (
             <Paper sx={{ p: 2, mt: 3 }}>
-              <Stack direction="row" spacing={2} justifyContent="flex-end">
+              <Stack direction="row" spacing={2} sx={{
+                justifyContent: "flex-end"
+              }}>
                 <Button
                   variant="outlined"
                   startIcon={<CancelIcon />}

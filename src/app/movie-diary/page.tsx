@@ -112,7 +112,12 @@ export default function MovieDiaryPage() {
                         </Box>
                       )}
                       {entry.review && (
-                        <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+                        <Typography
+                          variant="body2"
+                          sx={{
+                            color: "text.secondary",
+                            mb: 1
+                          }}>
                           {entry.review}
                         </Typography>
                       )}
@@ -126,7 +131,13 @@ export default function MovieDiaryPage() {
               ))}
             </Grid>
           ) : (
-            <Typography variant="body1" color="text.secondary" sx={{ textAlign: 'center', py: 4 }}>
+            <Typography
+              variant="body1"
+              sx={{
+                color: "text.secondary",
+                textAlign: 'center',
+                py: 4
+              }}>
               No diary entries yet. Start tracking your movie journey!
             </Typography>
           )}
@@ -147,7 +158,9 @@ export default function MovieDiaryPage() {
                   label="Watch Date"
                   value={newEntry.watchedDate}
                   onChange={(e) => setNewEntry({ ...newEntry, watchedDate: e.target.value })}
-                  InputLabelProps={{ shrink: true }}
+                  slotProps={{
+                    inputLabel: { shrink: true }
+                  }}
                 />
                 <Box>
                   <Typography variant="body2" sx={{ mb: 1 }}>Rating</Typography>

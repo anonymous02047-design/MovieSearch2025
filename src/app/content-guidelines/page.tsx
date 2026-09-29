@@ -67,7 +67,13 @@ export default function ContentGuidelinesPage() {
             }}>
               📋 Content Guidelines
             </Typography>
-            <Typography variant="h6" color="text.secondary" sx={{ maxWidth: 800, mx: 'auto' }}>
+            <Typography
+              variant="h6"
+              sx={{
+                color: "text.secondary",
+                maxWidth: 800,
+                mx: 'auto'
+              }}>
               Our community guidelines and content standards to ensure a positive experience for all users.
             </Typography>
           </Box>
@@ -77,7 +83,9 @@ export default function ContentGuidelinesPage() {
             <Typography variant="h4" component="h2" gutterBottom>
               Community Guidelines
             </Typography>
-            <Typography variant="body1" paragraph>
+            <Typography variant="body1" sx={{
+              marginBottom: "16px"
+            }}>
               At MovieSearch 2025, we strive to create a welcoming and respectful community for all movie enthusiasts. 
               These guidelines help ensure that everyone can enjoy our platform safely and respectfully.
             </Typography>
@@ -121,7 +129,12 @@ export default function ContentGuidelinesPage() {
             <Typography variant="h5" gutterBottom>
               Report Violations
             </Typography>
-            <Typography variant="body1" color="text.secondary" paragraph>
+            <Typography
+              variant="body1"
+              sx={{
+                color: "text.secondary",
+                marginBottom: "16px"
+              }}>
               If you encounter content that violates our guidelines, please report it to us:
             </Typography>
             <Box sx={{ mt: 3 }}>
@@ -134,6 +147,6 @@ export default function ContentGuidelinesPage() {
             </Box>
           </Paper>
         </Container>
-      </>
+    </>
   );
 }

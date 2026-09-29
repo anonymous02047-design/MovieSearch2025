@@ -53,16 +53,28 @@ export default function CountrySelector({ open, onClose, onSelect }: CountrySele
       onClose={onClose}
       maxWidth="md"
       fullWidth
-      PaperProps={{
-        sx: {
-          borderRadius: 3,
-          maxHeight: '80vh',
-        },
+      slotProps={{
+        paper: {
+          sx: {
+            borderRadius: 3,
+            maxHeight: '80vh',
+          },
+        }
       }}
     >
       <DialogTitle>
-        <Box display="flex" alignItems="center" justifyContent="space-between">
-          <Box display="flex" alignItems="center" gap={2}>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between"
+          }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: 2
+            }}>
             <PublicIcon color="primary" />
             <Typography variant="h6">Select Your Country</Typography>
           </Box>
@@ -86,13 +98,24 @@ export default function CountrySelector({ open, onClose, onSelect }: CountrySele
               borderColor: 'primary.200',
             }}
           >
-            <Box display="flex" alignItems="center" gap={2}>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: 2
+              }}>
               <Typography variant="h2">{currentCountry.flag}</Typography>
-              <Box flex={1}>
-                <Typography variant="subtitle1" fontWeight={600}>
+              <Box sx={{
+                flex: 1
+              }}>
+                <Typography variant="subtitle1" sx={{
+                  fontWeight: 600
+                }}>
                   Current: {currentCountry.name}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" sx={{
+                  color: "text.secondary"
+                }}>
                   {currentCountry.nativeName} • {currentCountry.region}
                 </Typography>
               </Box>
@@ -108,11 +131,20 @@ export default function CountrySelector({ open, onClose, onSelect }: CountrySele
         )}
 
         {/* Continent Filter */}
-        <Box mb={3}>
-          <Typography variant="subtitle2" gutterBottom color="text.secondary">
+        <Box sx={{
+          mb: 3
+        }}>
+          <Typography variant="subtitle2" gutterBottom sx={{
+            color: "text.secondary"
+          }}>
             Filter by Continent
           </Typography>
-          <Box display="flex" gap={1} flexWrap="wrap">
+          <Box
+            sx={{
+              display: "flex",
+              gap: 1,
+              flexWrap: "wrap"
+            }}>
             <Chip
               label="All Countries"
               onClick={() => setSelectedContinent(null)}
@@ -145,11 +177,21 @@ export default function CountrySelector({ open, onClose, onSelect }: CountrySele
           )}
           renderOption={(props, option) => (
             <li {...props} key={option.code}>
-              <Box display="flex" alignItems="center" gap={2} width="100%">
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 2,
+                  width: "100%"
+                }}>
                 <Typography variant="h5">{option.flag}</Typography>
-                <Box flex={1}>
+                <Box sx={{
+                  flex: 1
+                }}>
                   <Typography variant="body1">{option.name}</Typography>
-                  <Typography variant="caption" color="text.secondary">
+                  <Typography variant="caption" sx={{
+                    color: "text.secondary"
+                  }}>
                     {option.nativeName} • {option.region}
                   </Typography>
                 </Box>
@@ -192,8 +234,10 @@ export default function CountrySelector({ open, onClose, onSelect }: CountrySele
                 <ListItemText
                   primary={country.name}
                   secondary={`${country.nativeName} • ${country.region}`}
-                  primaryTypographyProps={{
-                    fontWeight: currentCountry?.code === country.code ? 600 : 400,
+                  slotProps={{
+                    primary: {
+                      sx: { fontWeight: currentCountry?.code === country.code ? 600 : 400 },
+                    }
                   }}
                 />
                 {currentCountry?.code === country.code && (
@@ -204,7 +248,13 @@ export default function CountrySelector({ open, onClose, onSelect }: CountrySele
           </List>
         </Box>
 
-        <Typography variant="caption" color="text.secondary" sx={{ mt: 2, display: 'block' }}>
+        <Typography
+          variant="caption"
+          sx={{
+            color: "text.secondary",
+            mt: 2,
+            display: 'block'
+          }}>
           Total: {filteredCountries.length} countries
           {selectedContinent && ` in ${selectedContinent}`}
         </Typography>

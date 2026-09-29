@@ -22,7 +22,12 @@ export default function FanTheoriesPage() {
           <Card>
             <CardContent>
               <Typography variant="h6" sx={{ mb: 2 }}>Inception: The Entire Movie is a Dream</Typography>
-              <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              <Typography
+                variant="body2"
+                sx={{
+                  color: "text.secondary",
+                  mb: 2
+                }}>
                 A detailed analysis of why the spinning top never matters...
               </Typography>
               <Typography variant="caption">👍 456 upvotes • 89 comments</Typography>

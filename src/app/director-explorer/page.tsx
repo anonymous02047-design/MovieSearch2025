@@ -17,7 +17,9 @@ export default function DirectorExplorerPage() {
             <MovieIcon sx={{ fontSize: 40, color: 'primary.main' }} />
             <Typography variant="h3" sx={{ fontWeight: 'bold' }}>Director Explorer</Typography>
           </Box>
-          <Typography variant="body1" color="text.secondary">Explore films by your favorite directors</Typography>
+          <Typography variant="body1" sx={{
+            color: "text.secondary"
+          }}>Explore films by your favorite directors</Typography>
         </Container>
       </Box>
     </AuthGuard>

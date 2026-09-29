@@ -70,7 +70,9 @@ export default function ErrorPage({
           {message}
         </Typography>
         
-        <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent="center">
+        <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{
+          justifyContent: "center"
+        }}>
           {showRetry && (
             <Button
               variant="contained"

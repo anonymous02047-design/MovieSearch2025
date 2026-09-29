@@ -98,7 +98,9 @@ export default function FilterPanel({ filters, onFilterChange, onReset, availabl
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 2 }}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           <FilterIcon color="primary" />
-          <Typography variant="h6" fontWeight={600}>
+          <Typography variant="h6" sx={{
+            fontWeight: 600
+          }}>
             Filters
           </Typography>
           {hasActiveFilters && (
@@ -128,7 +130,12 @@ export default function FilterPanel({ filters, onFilterChange, onReset, availabl
       <Collapse in={expanded}>
         <Grid container spacing={3}>
           {/* Sort By */}
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid
+            size={{
+              xs: 12,
+              sm: 6,
+              md: 3
+            }}>
             <FormControl fullWidth size="small">
               <InputLabel>Sort By</InputLabel>
               <Select
@@ -146,7 +153,12 @@ export default function FilterPanel({ filters, onFilterChange, onReset, availabl
           </Grid>
 
           {/* Year */}
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid
+            size={{
+              xs: 12,
+              sm: 6,
+              md: 3
+            }}>
             <FormControl fullWidth size="small">
               <InputLabel>Year</InputLabel>
               <Select
@@ -165,7 +177,12 @@ export default function FilterPanel({ filters, onFilterChange, onReset, availabl
           </Grid>
 
           {/* Language */}
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid
+            size={{
+              xs: 12,
+              sm: 6,
+              md: 3
+            }}>
             <FormControl fullWidth size="small">
               <InputLabel>Language</InputLabel>
               <Select
@@ -184,8 +201,15 @@ export default function FilterPanel({ filters, onFilterChange, onReset, availabl
           </Grid>
 
           {/* Rating */}
-          <Grid item xs={12} sm={6} md={3}>
-            <Typography variant="body2" color="text.secondary" gutterBottom>
+          <Grid
+            size={{
+              xs: 12,
+              sm: 6,
+              md: 3
+            }}>
+            <Typography variant="body2" gutterBottom sx={{
+              color: "text.secondary"
+            }}>
               Rating: {filters.minRating || 0} - {filters.maxRating || 10}
             </Typography>
             <Slider
@@ -205,8 +229,10 @@ export default function FilterPanel({ filters, onFilterChange, onReset, availabl
 
           {/* Genres */}
           {availableGenres.length > 0 && (
-            <Grid item xs={12}>
-              <Typography variant="body2" color="text.secondary" gutterBottom>
+            <Grid size={12}>
+              <Typography variant="body2" gutterBottom sx={{
+                color: "text.secondary"
+              }}>
                 Genres
               </Typography>
               <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>

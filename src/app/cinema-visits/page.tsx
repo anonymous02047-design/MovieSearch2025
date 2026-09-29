@@ -120,7 +120,12 @@ export default function CinemaVisitsPage() {
                           color="primary"
                         />
                       </Box>
-                      <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          color: "text.secondary",
+                          mb: 1
+                        }}>
                         <strong>{visit.cinemaName}</strong>
                         {visit.location && ` • ${visit.location}`}
                       </Typography>
@@ -143,7 +148,13 @@ export default function CinemaVisitsPage() {
               ))}
             </Grid>
           ) : (
-            <Typography variant="body1" color="text.secondary" sx={{ textAlign: 'center', py: 4 }}>
+            <Typography
+              variant="body1"
+              sx={{
+                color: "text.secondary",
+                textAlign: 'center',
+                py: 4
+              }}>
               No cinema visits logged yet. Track your first visit!
             </Typography>
           )}
@@ -176,7 +187,9 @@ export default function CinemaVisitsPage() {
                   label="Visit Date"
                   value={newVisit.visitDate}
                   onChange={(e) => setNewVisit({ ...newVisit, visitDate: e.target.value })}
-                  InputLabelProps={{ shrink: true }}
+                  slotProps={{
+                    inputLabel: { shrink: true }
+                  }}
                 />
                 <FormControl fullWidth>
                   <InputLabel>Screen Type</InputLabel>

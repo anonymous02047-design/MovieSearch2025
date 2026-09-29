@@ -129,24 +129,28 @@ export default function SearchAutocomplete() {
           {...params}
           placeholder="Search movies, TV shows..."
           size="small"
-          InputProps={{
-            ...params.InputProps,
-            startAdornment: (
-              <InputAdornment position="start">
-                <SearchIcon />
-              </InputAdornment>
-            ),
-            endAdornment: (
-              <>
-                {loading ? <CircularProgress size={20} /> : null}
-                {params.InputProps.endAdornment}
-              </>
-            ),
-          }}
           sx={{
             '& .MuiOutlinedInput-root': {
               backgroundColor: alpha(theme.palette.background.paper, 0.8),
               backdropFilter: 'blur(10px)',
+            }
+          }}
+          slotProps={{
+            ...params.slotProps,
+
+            input: {
+              ...params.slotProps.input,
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon />
+                </InputAdornment>
+              ),
+              endAdornment: (
+                <>
+                  {loading ? <CircularProgress size={20} /> : null}
+                  {params.slotProps.input.endAdornment}
+                </>
+              ),
             }
           }}
         />
@@ -174,15 +178,24 @@ export default function SearchAutocomplete() {
           <Box sx={{ flex: 1 }}>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
               {getIcon(option.media_type)}
-              <Typography variant="body2" fontWeight={600}>
+              <Typography variant="body2" sx={{
+                fontWeight: 600
+              }}>
                 {getDisplayTitle(option)}
               </Typography>
             </Box>
-            <Typography variant="caption" color="text.secondary">
+            <Typography variant="caption" sx={{
+              color: "text.secondary"
+            }}>
               {getDisplayYear(option)} • {option.media_type.toUpperCase()}
             </Typography>
             {option.vote_average && (
-              <Typography variant="caption" color="text.secondary" sx={{ display: 'block' }}>
+              <Typography
+                variant="caption"
+                sx={{
+                  color: "text.secondary",
+                  display: 'block'
+                }}>
                 ⭐ {option.vote_average.toFixed(1)}
               </Typography>
             )}

@@ -418,11 +418,16 @@ export default function AdminDashboard() {
           </Box>
         </Toolbar>
       </AppBar>
-      
+
       <Container maxWidth="lg" sx={{ py: 4 }}>
         {/* Page Description */}
         <Box sx={{ mb: 4 }}>
-          <Typography variant="subtitle1" color="text.secondary" sx={{ textAlign: 'center' }}>
+          <Typography
+            variant="subtitle1"
+            sx={{
+              color: "text.secondary",
+              textAlign: 'center'
+            }}>
             Comprehensive admin control center for security, analytics, and system management
           </Typography>
         </Box>
@@ -566,7 +571,12 @@ export default function AdminDashboard() {
                   <Typography variant="h6" sx={{ color: 'text.primary', fontWeight: 'bold' }}>
                     📱 Device Types
                   </Typography>
-                  <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: "text.secondary",
+                      mt: 1
+                    }}>
                     Distribution of device types accessing the system
                   </Typography>
                 </Box>
@@ -590,7 +600,13 @@ export default function AdminDashboard() {
                       ))}
                     </Box>
                   ) : (
-                    <Typography variant="body2" color="text.secondary" sx={{ textAlign: 'center', py: 2 }}>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        color: "text.secondary",
+                        textAlign: 'center',
+                        py: 2
+                      }}>
                       No device data available
                     </Typography>
                   )}
@@ -610,7 +626,12 @@ export default function AdminDashboard() {
                   <Typography variant="h6" sx={{ color: 'text.primary', fontWeight: 'bold' }}>
                     💻 Operating Systems
                   </Typography>
-                  <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: "text.secondary",
+                      mt: 1
+                    }}>
                     Distribution of operating systems
                   </Typography>
                 </Box>
@@ -634,7 +655,13 @@ export default function AdminDashboard() {
                       ))}
                     </Box>
                   ) : (
-                    <Typography variant="body2" color="text.secondary" sx={{ textAlign: 'center', py: 2 }}>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        color: "text.secondary",
+                        textAlign: 'center',
+                        py: 2
+                      }}>
                       No OS data available
                     </Typography>
                   )}
@@ -654,7 +681,12 @@ export default function AdminDashboard() {
                   <Typography variant="h6" sx={{ color: 'text.primary', fontWeight: 'bold' }}>
                     🌐 Browsers
                   </Typography>
-                  <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: "text.secondary",
+                      mt: 1
+                    }}>
                     Most popular browsers
                   </Typography>
                 </Box>
@@ -678,7 +710,13 @@ export default function AdminDashboard() {
                       ))}
                     </Box>
                   ) : (
-                    <Typography variant="body2" color="text.secondary" sx={{ textAlign: 'center', py: 2 }}>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        color: "text.secondary",
+                        textAlign: 'center',
+                        py: 2
+                      }}>
                       No browser data available
                     </Typography>
                   )}
@@ -699,7 +737,12 @@ export default function AdminDashboard() {
               <Typography variant="h6" sx={{ color: 'text.primary', fontWeight: 'bold' }}>
                 🚫 Blocked IP Addresses
               </Typography>
-              <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+              <Typography
+                variant="body2"
+                sx={{
+                  color: "text.secondary",
+                  mt: 1
+                }}>
                 Manage IP addresses that are currently blocked from accessing the system
               </Typography>
             </Box>
@@ -707,7 +750,9 @@ export default function AdminDashboard() {
               {blockedIPs.length === 0 ? (
                 <Box sx={{ textAlign: 'center', py: 4 }}>
                   <BlockIcon sx={{ fontSize: 48, color: 'text.secondary', mb: 2 }} />
-                  <Typography variant="body1" color="text.secondary">
+                  <Typography variant="body1" sx={{
+                    color: "text.secondary"
+                  }}>
                     No IP addresses are currently blocked
                   </Typography>
                 </Box>
@@ -754,7 +799,12 @@ export default function AdminDashboard() {
               <Typography variant="h6" sx={{ color: 'text.primary', fontWeight: 'bold' }}>
                 🌍 Blocked Countries
               </Typography>
-              <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+              <Typography
+                variant="body2"
+                sx={{
+                  color: "text.secondary",
+                  mt: 1
+                }}>
                 Manage countries that are currently blocked from accessing the system
               </Typography>
             </Box>
@@ -762,7 +812,9 @@ export default function AdminDashboard() {
               {blockedCountries.length === 0 ? (
                 <Box sx={{ textAlign: 'center', py: 4 }}>
                   <PublicIcon sx={{ fontSize: 48, color: 'text.secondary', mb: 2 }} />
-                  <Typography variant="body1" color="text.secondary">
+                  <Typography variant="body1" sx={{
+                    color: "text.secondary"
+                  }}>
                     No countries are currently blocked
                   </Typography>
                 </Box>
@@ -809,7 +861,12 @@ export default function AdminDashboard() {
               <Typography variant="h6" sx={{ color: 'text.primary', fontWeight: 'bold' }}>
                 📊 Top Active Countries
               </Typography>
-              <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+              <Typography
+                variant="body2"
+                sx={{
+                  color: "text.secondary",
+                  mt: 1
+                }}>
                 Countries with the highest request activity
               </Typography>
             </Box>
@@ -891,7 +948,9 @@ export default function AdminDashboard() {
               ) : (
                 <Box sx={{ textAlign: 'center', py: 4 }}>
                   <PublicIcon sx={{ fontSize: 48, color: 'text.secondary', mb: 2 }} />
-                  <Typography variant="body1" color="text.secondary">
+                  <Typography variant="body1" sx={{
+                    color: "text.secondary"
+                  }}>
                     No country activity data available
                   </Typography>
                 </Box>
@@ -912,7 +971,12 @@ export default function AdminDashboard() {
               <Typography variant="h6" sx={{ color: 'text.primary', fontWeight: 'bold' }}>
                 📊 Live Rate Limit Statistics
               </Typography>
-              <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+              <Typography
+                variant="body2"
+                sx={{
+                  color: "text.secondary",
+                  mt: 1
+                }}>
                 Real-time monitoring of IP and country-based rate limiting activity
               </Typography>
             </Box>
@@ -932,7 +996,9 @@ export default function AdminDashboard() {
                       {Object.entries(stats.ipRateLimits).length === 0 ? (
                         <Box sx={{ textAlign: 'center', py: 4 }}>
                           <SpeedIcon sx={{ fontSize: 48, color: 'text.secondary', mb: 2 }} />
-                          <Typography variant="body2" color="text.secondary">
+                          <Typography variant="body2" sx={{
+                            color: "text.secondary"
+                          }}>
                             No IP activity detected
                           </Typography>
                         </Box>
@@ -946,10 +1012,17 @@ export default function AdminDashboard() {
                             border: 1,
                             borderColor: 'divider'
                           }}>
-                            <Typography variant="body2" fontWeight="bold" sx={{ color: 'text.primary' }}>
+                            <Typography
+                              variant="body2"
+                              sx={{
+                                fontWeight: "bold",
+                                color: 'text.primary'
+                              }}>
                               {ip}
                             </Typography>
-                            <Typography variant="caption" color="text.secondary">
+                            <Typography variant="caption" sx={{
+                              color: "text.secondary"
+                            }}>
                               Requests: {data.count} | First: {new Date(data.firstRequestTime).toLocaleTimeString()}
                             </Typography>
                           </Box>
@@ -970,7 +1043,9 @@ export default function AdminDashboard() {
                       {Object.entries(stats.countryRateLimits).length === 0 ? (
                         <Box sx={{ textAlign: 'center', py: 4 }}>
                           <PublicIcon sx={{ fontSize: 48, color: 'text.secondary', mb: 2 }} />
-                          <Typography variant="body2" color="text.secondary">
+                          <Typography variant="body2" sx={{
+                            color: "text.secondary"
+                          }}>
                             No country activity detected
                           </Typography>
                         </Box>
@@ -984,10 +1059,17 @@ export default function AdminDashboard() {
                             border: 1,
                             borderColor: 'divider'
                           }}>
-                            <Typography variant="body2" fontWeight="bold" sx={{ color: 'text.primary' }}>
+                            <Typography
+                              variant="body2"
+                              sx={{
+                                fontWeight: "bold",
+                                color: 'text.primary'
+                              }}>
                               {country}
                             </Typography>
-                            <Typography variant="caption" color="text.secondary">
+                            <Typography variant="caption" sx={{
+                              color: "text.secondary"
+                            }}>
                               Requests: {data.count} | First: {new Date(data.firstRequestTime).toLocaleTimeString()}
                             </Typography>
                           </Box>
@@ -999,7 +1081,12 @@ export default function AdminDashboard() {
               ) : (
                 <Box sx={{ textAlign: 'center', py: 4 }}>
                   <CircularProgress />
-                  <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: "text.secondary",
+                      mt: 2
+                    }}>
                     Loading statistics...
                   </Typography>
                 </Box>
@@ -1072,7 +1159,9 @@ export default function AdminDashboard() {
                     <Typography variant="h6">{option.flag}</Typography>
                     <Box>
                       <Typography variant="body1">{option.name}</Typography>
-                      <Typography variant="caption" color="text.secondary">
+                      <Typography variant="caption" sx={{
+                        color: "text.secondary"
+                      }}>
                         {option.code}
                       </Typography>
                     </Box>

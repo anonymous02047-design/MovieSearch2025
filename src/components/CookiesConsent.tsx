@@ -196,7 +196,9 @@ export default function CookiesConsent() {
           </Box>
         </Box>
 
-        <Stack direction="row" spacing={2} flexWrap="wrap">
+        <Stack direction="row" spacing={2} sx={{
+          flexWrap: "wrap"
+        }}>
           <Button
             variant="contained"
             onClick={handleAcceptAll}
@@ -252,10 +254,12 @@ export default function CookiesConsent() {
         onClose={() => setShowSettings(false)}
         maxWidth="md"
         fullWidth
-        PaperProps={{
-          sx: {
-            borderRadius: 3,
-            background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
+        slotProps={{
+          paper: {
+            sx: {
+              borderRadius: 3,
+              background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
+            }
           }
         }}
       >
@@ -272,7 +276,7 @@ export default function CookiesConsent() {
         </DialogTitle>
         
         <DialogContent>
-          <Typography variant="body1" paragraph sx={{ mb: 3 }}>
+          <Typography variant="body1" sx={{ mb: 3 }}>
             Manage your cookie preferences. You can enable or disable different types of cookies below.
           </Typography>
           

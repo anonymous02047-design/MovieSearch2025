@@ -29,7 +29,7 @@ import {
   Movie as MovieIcon,
   Person as PersonIcon,
   Tv as TvIcon,
-  Company as CompanyIcon,
+  Business as CompanyIcon,
   Collections as CollectionIcon,
   Tag as TagIcon,
   Clear as ClearIcon,
@@ -309,7 +309,9 @@ export default function EnhancedSearch() {
           secondary={
             <Box>
               {result.overview && (
-                <Typography variant="body2" color="text.secondary" noWrap>
+                <Typography variant="body2" noWrap sx={{
+                  color: "text.secondary"
+                }}>
                   {result.overview}
                 </Typography>
               )}
@@ -355,9 +357,13 @@ export default function EnhancedSearch() {
 
     if (filteredResults.length === 0) {
       return (
-        <Typography color="text.secondary" sx={{ textAlign: 'center', py: 4 }}>
-          No {mediaType} results found
-        </Typography>
+        <Typography
+          sx={{
+            color: "text.secondary",
+            textAlign: 'center',
+            py: 4
+          }}>No {mediaType}results found
+                  </Typography>
       );
     }
 
@@ -373,9 +379,13 @@ export default function EnhancedSearch() {
 
     if (results.results.length === 0) {
       return (
-        <Typography color="text.secondary" sx={{ textAlign: 'center', py: 4 }}>
-          No results found
-        </Typography>
+        <Typography
+          sx={{
+            color: "text.secondary",
+            textAlign: 'center',
+            py: 4
+          }}>No results found
+                  </Typography>
       );
     }
 
@@ -393,31 +403,33 @@ export default function EnhancedSearch() {
         placeholder="Search movies, TV shows, people, companies..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <SearchIcon />
-            </InputAdornment>
-          ),
-          endAdornment: query && (
-            <InputAdornment position="end">
-              <IconButton
-                onClick={() => {
-                  setQuery('');
-                  setResults(null);
-                  setShowResults(false);
-                }}
-                edge="end"
-              >
-                <ClearIcon />
-              </IconButton>
-            </InputAdornment>
-          ),
-        }}
         sx={{
           '& .MuiOutlinedInput-root': {
             borderRadius: 2,
           },
+        }}
+        slotProps={{
+          input: {
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon />
+              </InputAdornment>
+            ),
+            endAdornment: query && (
+              <InputAdornment position="end">
+                <IconButton
+                  onClick={() => {
+                    setQuery('');
+                    setResults(null);
+                    setShowResults(false);
+                  }}
+                  edge="end"
+                >
+                  <ClearIcon />
+                </IconButton>
+              </InputAdornment>
+            ),
+          }
         }}
       />
 
@@ -479,7 +491,9 @@ export default function EnhancedSearch() {
 
               {results.total_results > 0 && (
                 <Box sx={{ p: 2, borderTop: 1, borderColor: 'divider' }}>
-                  <Typography variant="caption" color="text.secondary">
+                  <Typography variant="caption" sx={{
+                    color: "text.secondary"
+                  }}>
                     Showing {results.results.length} of {results.total_results} results
                   </Typography>
                 </Box>

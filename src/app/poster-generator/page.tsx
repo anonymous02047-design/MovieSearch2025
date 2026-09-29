@@ -42,7 +42,9 @@ export default function PosterGeneratorPage() {
             </Grid>
             <Grid size={{ xs: 12, md: 6 }}>
               <Card sx={{ height: 500, bgcolor: 'grey.200', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Typography color="text.secondary">Poster Preview</Typography>
+                <Typography sx={{
+                  color: "text.secondary"
+                }}>Poster Preview</Typography>
               </Card>
             </Grid>
           </Grid>

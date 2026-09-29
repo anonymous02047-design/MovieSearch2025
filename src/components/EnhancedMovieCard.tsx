@@ -123,7 +123,9 @@ export default function EnhancedMovieCard({
             <Typography variant="subtitle1" component="h3" noWrap>
               {movie.title}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               {formatDate(movie.release_date)}
             </Typography>
           </Box>
@@ -134,7 +136,9 @@ export default function EnhancedMovieCard({
               size="small"
               readOnly
             />
-            <Typography variant="caption" color="text.secondary">
+            <Typography variant="caption" sx={{
+              color: "text.secondary"
+            }}>
               {movie.vote_average.toFixed(1)}
             </Typography>
           </Box>
@@ -267,23 +271,24 @@ export default function EnhancedMovieCard({
               size="small"
               readOnly
             />
-            <Typography variant="caption" color="text.secondary">
+            <Typography variant="caption" sx={{
+              color: "text.secondary"
+            }}>
               {getRatingLabel(movie.vote_average)}
             </Typography>
           </Box>
 
           <Typography
             variant="body2"
-            color="text.secondary"
             sx={{
+              color: "text.secondary",
               display: '-webkit-box',
               WebkitLineClamp: 3,
               WebkitBoxOrient: 'vertical',
               overflow: 'hidden',
               textOverflow: 'ellipsis',
-              minHeight: '3.6em',
-            }}
-          >
+              minHeight: '3.6em'
+            }}>
             {movie.overview || 'No description available.'}
           </Typography>
         </CardContent>
@@ -474,23 +479,24 @@ export default function EnhancedMovieCard({
             size="small"
             readOnly
           />
-          <Typography variant="caption" color="text.secondary">
+          <Typography variant="caption" sx={{
+            color: "text.secondary"
+          }}>
             {movie.vote_average.toFixed(1)}
           </Typography>
         </Box>
 
         <Typography
           variant="body2"
-          color="text.secondary"
           sx={{
+            color: "text.secondary",
             display: '-webkit-box',
             WebkitLineClamp: 2,
             WebkitBoxOrient: 'vertical',
             overflow: 'hidden',
             textOverflow: 'ellipsis',
-            minHeight: '2.4em',
-          }}
-        >
+            minHeight: '2.4em'
+          }}>
           {movie.overview || 'No description available.'}
         </Typography>
       </CardContent>

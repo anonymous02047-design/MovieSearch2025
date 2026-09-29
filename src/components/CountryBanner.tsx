@@ -39,11 +39,17 @@ export default function CountryBanner({ countryData, onRefresh, onDismiss }: Cou
       }}
     >
       <Box sx={{ fontSize: '2.5rem' }}>{countryData.flag}</Box>
-      <Box flex={1}>
-        <Typography variant="subtitle1" fontWeight={600}>
+      <Box sx={{
+        flex: 1
+      }}>
+        <Typography variant="subtitle1" sx={{
+          fontWeight: 600
+        }}>
           Showing content for {countryData.name}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" sx={{
+          color: "text.secondary"
+        }}>
           {countryData.region} • {countryData.languages.join(', ').toUpperCase()}
         </Typography>
       </Box>

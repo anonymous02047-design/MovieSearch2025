@@ -133,8 +133,18 @@ export default function RandomMoviePicker({ open, onClose }: RandomMoviePickerPr
   return (
     <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
       <DialogTitle>
-        <Box display="flex" justifyContent="space-between" alignItems="center">
-          <Box display="flex" alignItems="center" gap={1}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center"
+          }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: 1
+            }}>
             <DiceIcon color="primary" />
             <Typography variant="h6">Random Movie Picker</Typography>
           </Box>
@@ -146,7 +156,9 @@ export default function RandomMoviePicker({ open, onClose }: RandomMoviePickerPr
 
       <DialogContent>
         {/* Filters */}
-        <Stack spacing={2} mb={3}>
+        <Stack spacing={2} sx={{
+          mb: 3
+        }}>
           <FormControl fullWidth size="small">
             <InputLabel>Genre</InputLabel>
             <Select
@@ -196,7 +208,13 @@ export default function RandomMoviePicker({ open, onClose }: RandomMoviePickerPr
 
         {/* Loading State */}
         {loading && (
-          <Box display="flex" justifyContent="center" alignItems="center" minHeight={300}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              minHeight: 300
+            }}>
             <CircularProgress />
           </Box>
         )}
@@ -222,15 +240,30 @@ export default function RandomMoviePicker({ open, onClose }: RandomMoviePickerPr
                 {selectedMovie.title}
               </Typography>
 
-              <Box display="flex" alignItems="center" gap={1} mb={2}>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 1,
+                  mb: 2
+                }}>
                 <StarIcon sx={{ color: 'gold' }} />
                 <Typography variant="h6">{selectedMovie.vote_average.toFixed(1)}</Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" sx={{
+                  color: "text.secondary"
+                }}>
                   ({selectedMovie.vote_count.toLocaleString()} votes)
                 </Typography>
               </Box>
 
-              <Stack direction="row" spacing={1} mb={2} flexWrap="wrap" useFlexGap>
+              <Stack
+                direction="row"
+                spacing={1}
+                useFlexGap
+                sx={{
+                  mb: 2,
+                  flexWrap: "wrap"
+                }}>
                 <Chip label={formatDate(selectedMovie.release_date)} size="small" />
                 {selectedMovie.genre_ids &&
                   getGenreNames(selectedMovie.genre_ids)
@@ -240,7 +273,9 @@ export default function RandomMoviePicker({ open, onClose }: RandomMoviePickerPr
                     ))}
               </Stack>
 
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" sx={{
+                color: "text.secondary"
+              }}>
                 {selectedMovie.overview}
               </Typography>
             </CardContent>
@@ -249,12 +284,18 @@ export default function RandomMoviePicker({ open, onClose }: RandomMoviePickerPr
 
         {/* Initial State */}
         {!loading && !error && !selectedMovie && (
-          <Box textAlign="center" py={4}>
+          <Box
+            sx={{
+              textAlign: "center",
+              py: 4
+            }}>
             <DiceIcon sx={{ fontSize: 80, color: 'text.secondary', mb: 2 }} />
             <Typography variant="h6" gutterBottom>
               Ready to Discover?
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               Click the button below to find a random movie based on your preferences!
             </Typography>
           </Box>

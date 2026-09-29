@@ -129,12 +129,12 @@ export default function AdvancedSearch({ onSearch, onClear }: AdvancedSearchProp
                 getOptionLabel={(option) => option.name}
                 value={getSelectedGenres()}
                 onChange={handleGenreChange}
-                renderTags={(value, getTagProps) =>
+                renderValue={(value, getItemProps) =>
                   value.map((option, index) => (
                     <Chip
                       variant="outlined"
                       label={option.name}
-                      {...getTagProps({ index })}
+                      {...getItemProps({ index })}
                       key={option.id}
                     />
                   ))

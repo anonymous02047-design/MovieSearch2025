@@ -81,65 +81,127 @@ export default function MovieStatsDashboard({
       </Typography>
 
       {/* Quick Stats Grid */}
-      <Grid container spacing={3} mb={4}>
-        <Grid item xs={12} sm={6} md={3}>
+      <Grid container spacing={3} sx={{
+        mb: 4
+      }}>
+        <Grid
+          size={{
+            xs: 12,
+            sm: 6,
+            md: 3
+          }}>
           <Card>
             <CardContent>
-              <Box display="flex" alignItems="center" gap={1} mb={1}>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 1,
+                  mb: 1
+                }}>
                 <FavoriteIcon color="error" />
-                <Typography variant="h6" color="text.secondary">
+                <Typography variant="h6" sx={{
+                  color: "text.secondary"
+                }}>
                   Favorites
                 </Typography>
               </Box>
-              <Typography variant="h3" color="error.main">
+              <Typography variant="h3" sx={{
+                color: "error.main"
+              }}>
                 {stats.totalFavorites}
               </Typography>
             </CardContent>
           </Card>
         </Grid>
 
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid
+          size={{
+            xs: 12,
+            sm: 6,
+            md: 3
+          }}>
           <Card>
             <CardContent>
-              <Box display="flex" alignItems="center" gap={1} mb={1}>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 1,
+                  mb: 1
+                }}>
                 <BookmarkIcon color="primary" />
-                <Typography variant="h6" color="text.secondary">
+                <Typography variant="h6" sx={{
+                  color: "text.secondary"
+                }}>
                   Watchlist
                 </Typography>
               </Box>
-              <Typography variant="h3" color="primary.main">
+              <Typography variant="h3" sx={{
+                color: "primary.main"
+              }}>
                 {stats.totalWatchlist}
               </Typography>
             </CardContent>
           </Card>
         </Grid>
 
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid
+          size={{
+            xs: 12,
+            sm: 6,
+            md: 3
+          }}>
           <Card>
             <CardContent>
-              <Box display="flex" alignItems="center" gap={1} mb={1}>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 1,
+                  mb: 1
+                }}>
                 <ViewIcon color="success" />
-                <Typography variant="h6" color="text.secondary">
+                <Typography variant="h6" sx={{
+                  color: "text.secondary"
+                }}>
                   Watched
                 </Typography>
               </Box>
-              <Typography variant="h3" color="success.main">
+              <Typography variant="h3" sx={{
+                color: "success.main"
+              }}>
                 {stats.totalViewed}
               </Typography>
             </CardContent>
           </Card>
         </Grid>
 
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid
+          size={{
+            xs: 12,
+            sm: 6,
+            md: 3
+          }}>
           <Card>
             <CardContent>
-              <Box display="flex" alignItems="center" gap={1} mb={1}>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 1,
+                  mb: 1
+                }}>
                 <MovieIcon color="warning" />
-                <Typography variant="h6" color="text.secondary">
+                <Typography variant="h6" sx={{
+                  color: "text.secondary"
+                }}>
                   Notes
                 </Typography>
               </Box>
-              <Typography variant="h3" color="warning.main">
+              <Typography variant="h3" sx={{
+                color: "warning.main"
+              }}>
                 {stats.totalNotes}
               </Typography>
             </CardContent>
@@ -150,13 +212,23 @@ export default function MovieStatsDashboard({
       {/* Detailed Stats */}
       <Grid container spacing={3}>
         {/* Completion Rate */}
-        <Grid item xs={12} md={6}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 6
+          }}>
           <Card>
             <CardContent>
               <Typography variant="h6" gutterBottom>
                 Completion Rate
               </Typography>
-              <Box display="flex" alignItems="center" gap={2} mb={1}>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 2,
+                  mb: 1
+                }}>
                 <LinearProgress
                   variant="determinate"
                   value={stats.completionRate}
@@ -164,7 +236,9 @@ export default function MovieStatsDashboard({
                 />
                 <Typography variant="h6">{stats.completionRate.toFixed(0)}%</Typography>
               </Box>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" sx={{
+                color: "text.secondary"
+              }}>
                 {stats.totalCompleted} of {stats.totalViewed} movies completed
               </Typography>
             </CardContent>
@@ -172,7 +246,11 @@ export default function MovieStatsDashboard({
         </Grid>
 
         {/* View Time */}
-        <Grid item xs={12} md={6}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 6
+          }}>
           <Card>
             <CardContent>
               <Typography variant="h6" gutterBottom>
@@ -181,7 +259,9 @@ export default function MovieStatsDashboard({
               <Typography variant="h3" color="primary">
                 {stats.totalViewTimeHours}h
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" sx={{
+                color: "text.secondary"
+              }}>
                 That's {(stats.totalViewTimeHours / 24).toFixed(1)} days of entertainment!
               </Typography>
             </CardContent>
@@ -189,7 +269,11 @@ export default function MovieStatsDashboard({
         </Grid>
 
         {/* Top Genres */}
-        <Grid item xs={12} md={6}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 6
+          }}>
           <Card>
             <CardContent>
               <Typography variant="h6" gutterBottom>
@@ -198,9 +282,16 @@ export default function MovieStatsDashboard({
               <Stack spacing={1.5}>
                 {stats.topGenres.map(([genre, count]) => (
                   <Box key={genre}>
-                    <Box display="flex" justifyContent="space-between" mb={0.5}>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        mb: 0.5
+                      }}>
                       <Typography variant="body2">{genre}</Typography>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         {count} movies
                       </Typography>
                     </Box>
@@ -217,17 +308,28 @@ export default function MovieStatsDashboard({
         </Grid>
 
         {/* Personal Ratings */}
-        <Grid item xs={12} md={6}>
+        <Grid
+          size={{
+            xs: 12,
+            md: 6
+          }}>
           <Card>
             <CardContent>
               <Typography variant="h6" gutterBottom>
                 Your Average Rating
               </Typography>
-              <Typography variant="h2" color="warning.main" sx={{ mb: 1 }}>
+              <Typography
+                variant="h2"
+                sx={{
+                  color: "warning.main",
+                  mb: 1
+                }}>
                 {stats.avgRating > 0 ? stats.avgRating.toFixed(1) : 'N/A'}
                 {stats.avgRating > 0 && <Typography component="span" variant="h4"> / 10</Typography>}
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" sx={{
+                color: "text.secondary"
+              }}>
                 Based on {stats.totalNotes} rated movies
               </Typography>
             </CardContent>
@@ -236,13 +338,15 @@ export default function MovieStatsDashboard({
       </Grid>
 
       {/* Achievements */}
-      <Box mt={4}>
+      <Box sx={{
+        mt: 4
+      }}>
         <Typography variant="h5" gutterBottom>
           Achievements
         </Typography>
         <Grid container spacing={2}>
           {stats.totalViewed >= 10 && (
-            <Grid item>
+            <Grid>
               <Chip
                 label="Movie Buff (10+ watched)"
                 color="success"
@@ -251,7 +355,7 @@ export default function MovieStatsDashboard({
             </Grid>
           )}
           {stats.totalViewed >= 50 && (
-            <Grid item>
+            <Grid>
               <Chip
                 label="Cinephile (50+ watched)"
                 color="warning"
@@ -260,7 +364,7 @@ export default function MovieStatsDashboard({
             </Grid>
           )}
           {stats.totalViewed >= 100 && (
-            <Grid item>
+            <Grid>
               <Chip
                 label="Movie Master (100+ watched)"
                 color="error"
@@ -269,7 +373,7 @@ export default function MovieStatsDashboard({
             </Grid>
           )}
           {stats.totalNotes >= 20 && (
-            <Grid item>
+            <Grid>
               <Chip
                 label="Critic (20+ notes)"
                 color="primary"
@@ -278,7 +382,7 @@ export default function MovieStatsDashboard({
             </Grid>
           )}
           {stats.completionRate >= 90 && stats.totalViewed >= 10 && (
-            <Grid item>
+            <Grid>
               <Chip
                 label="Completionist (90%+ completion)"
                 color="info"

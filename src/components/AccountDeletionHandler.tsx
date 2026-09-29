@@ -158,7 +158,9 @@ export default function AccountDeletionHandler({
             <DialogTitle>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                 <CheckCircleIcon color="success" />
-                <Typography variant="h6" color="success.main">
+                <Typography variant="h6" sx={{
+                  color: "success.main"
+                }}>
                   Account Deleted
                 </Typography>
               </Box>
@@ -219,7 +221,6 @@ export default function AccountDeletionHandler({
       onClose={handleClose}
       maxWidth="sm"
       fullWidth
-      disableEscapeKeyDown={step === 'deleting'}
     >
       {renderContent()}
     </Dialog>

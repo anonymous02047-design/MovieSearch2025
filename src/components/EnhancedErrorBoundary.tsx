@@ -159,7 +159,9 @@ export default class EnhancedErrorBoundary extends Component<Props, State> {
                 <Typography variant="h4" component="h1" gutterBottom>
                   Oops! Something went wrong
                 </Typography>
-                <Typography variant="body1" color="text.secondary">
+                <Typography variant="body1" sx={{
+                  color: "text.secondary"
+                }}>
                   We're sorry, but something unexpected happened. Don't worry, our team has been notified.
                 </Typography>
               </Box>
@@ -263,7 +265,9 @@ export default class EnhancedErrorBoundary extends Component<Props, State> {
               )}
 
               <Box sx={{ mt: 3, textAlign: 'center' }}>
-                <Typography variant="caption" color="text.secondary">
+                <Typography variant="caption" sx={{
+                  color: "text.secondary"
+                }}>
                   If this problem persists, please contact our support team.
                 </Typography>
               </Box>

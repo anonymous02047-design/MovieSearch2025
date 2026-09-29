@@ -177,13 +177,17 @@ export default function TawkWidget({
               {/* Agent Info */}
               {showAgent && agent && (
                 <Box sx={{ p: 2, borderBottom: 1, borderColor: 'divider' }}>
-                  <Stack direction="row" spacing={2} alignItems="center">
+                  <Stack direction="row" spacing={2} sx={{
+                    alignItems: "center"
+                  }}>
                     <Avatar src={agent.avatar} alt={agent.name}>
                       <PersonIcon />
                     </Avatar>
                     <Box>
                       <Typography variant="subtitle2">{agent.name}</Typography>
-                      <Typography variant="caption" color="text.secondary">
+                      <Typography variant="caption" sx={{
+                        color: "text.secondary"
+                      }}>
                         {agent.title || 'Support Agent'}
                       </Typography>
                     </Box>
@@ -199,7 +203,12 @@ export default function TawkWidget({
                     <Typography variant="h6" gutterBottom>
                       {customGreeting || 'Hello! How can we help you today?'}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary" paragraph>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        color: "text.secondary",
+                        marginBottom: "16px"
+                      }}>
                       {chatStatus === 'offline' 
                         ? (customOfflineMessage || 'We are currently offline. Please leave a message and we will get back to you soon.')
                         : 'Click the button below to start a conversation with our support team.'
@@ -221,7 +230,9 @@ export default function TawkWidget({
                     <Alert severity="success" sx={{ mb: 2 }}>
                       Chat started! You can now send messages.
                     </Alert>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" sx={{
+                      color: "text.secondary"
+                    }}>
                       Chat is active. Send a message to get started.
                     </Typography>
                   </Box>
@@ -230,7 +241,9 @@ export default function TawkWidget({
 
               {/* Footer */}
               <Box sx={{ p: 2, borderTop: 1, borderColor: 'divider' }}>
-                <Stack direction="row" spacing={1} alignItems="center">
+                <Stack direction="row" spacing={1} sx={{
+                  alignItems: "center"
+                }}>
                   <IconButton size="small" disabled>
                     <AttachFileIcon />
                   </IconButton>

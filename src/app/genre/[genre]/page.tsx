@@ -150,7 +150,9 @@ export default function GenrePage() {
           <Typography variant="h4" gutterBottom>
             Genre Not Found
           </Typography>
-          <Typography variant="body1" color="text.secondary">
+          <Typography variant="body1" sx={{
+            color: "text.secondary"
+          }}>
             The requested genre does not exist.
           </Typography>
         </Box>
@@ -171,31 +173,45 @@ export default function GenrePage() {
           <Typography variant="h3" component="h1" gutterBottom className="fade-in">
             {genre.name} Movies
           </Typography>
-          <Typography variant="h6" color="text.secondary" className="fade-in stagger-1">
+          <Typography variant="h6" className="fade-in stagger-1" sx={{
+            color: "text.secondary"
+          }}>
             Discover the best {genre.name.toLowerCase()} movies and films
           </Typography>
         </Box>
 
         {/* Search and Filters */}
         <Box sx={{ mb: 4 }}>
-          <Grid container spacing={2} alignItems="center">
-            <Grid item xs={12} md={6}>
+          <Grid container spacing={2} sx={{
+            alignItems: "center"
+          }}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 6
+              }}>
               <TextField
                 fullWidth
                 placeholder={`Search ${genre.name.toLowerCase()} movies...`}
                 value={searchQuery}
                 onChange={(e) => handleSearch(e.target.value)}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <SearchIcon />
-                    </InputAdornment>
-                  ),
-                }}
                 className="fade-in stagger-2"
+                slotProps={{
+                  input: {
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <SearchIcon />
+                      </InputAdornment>
+                    ),
+                  }
+                }}
               />
             </Grid>
-            <Grid item xs={12} md={3}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 3
+              }}>
               <FormControl fullWidth>
                 <InputLabel>Sort By</InputLabel>
                 <Select
@@ -211,7 +227,11 @@ export default function GenrePage() {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={12} md={3}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 3
+              }}>
               <FormControl fullWidth>
                 <InputLabel>Year</InputLabel>
                 <Select

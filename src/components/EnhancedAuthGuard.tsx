@@ -273,7 +273,7 @@ export default function EnhancedAuthGuard({
       >
         <SecurityIcon sx={{ fontSize: 80, color: 'primary.main', mb: 2 }} />
         
-        <Typography variant="h5" color="text.primary" fontWeight={600} textAlign="center">
+        <Typography variant="h5" color="text.primary" sx={{ fontWeight: 600, textAlign: 'center' }}>
           {loadingMessage}
         </Typography>
         
@@ -283,7 +283,7 @@ export default function EnhancedAuthGuard({
             value={(checksCompleted / totalChecks) * 100}
             sx={{ height: 8, borderRadius: 4, mb: 2 }}
           />
-          <Typography variant="body2" color="text.secondary" textAlign="center">
+          <Typography variant="body2" color="text.secondary" sx={{ textAlign: 'center' }}>
             Performing security checks... {checksCompleted}/{totalChecks}
           </Typography>
         </Box>
@@ -293,9 +293,8 @@ export default function EnhancedAuthGuard({
             <Typography 
               key={check} 
               variant="caption" 
-              display="block" 
               color={passed ? 'success.main' : 'text.disabled'}
-              sx={{ my: 0.5 }}
+              sx={{ display: 'block', my: 0.5 }}
             >
               {passed ? '✓' : '○'} {check.replace(/([A-Z])/g, ' $1').trim()}
             </Typography>
@@ -331,7 +330,7 @@ export default function EnhancedAuthGuard({
             animation: redirecting ? 'pulse 2s infinite' : 'none'
           }} />
           
-          <Typography variant="h4" gutterBottom fontWeight={700} sx={{ mb: 2 }}>
+          <Typography variant="h4" gutterBottom sx={{ fontWeight: 700, mb: 2 }}>
             {redirecting ? 'Redirecting...' : 'Authentication Required'}
           </Typography>
           

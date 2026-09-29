@@ -41,7 +41,9 @@ export default function AdminPage() {
       }}
     >
       <CircularProgress />
-      <Typography variant="body1" color="text.secondary">
+      <Typography variant="body1" sx={{
+        color: "text.secondary"
+      }}>
         Redirecting to admin login...
       </Typography>
     </Box>

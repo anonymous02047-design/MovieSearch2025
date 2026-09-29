@@ -112,11 +112,24 @@ export default function AboutPage() {
             }}>
               🎬 About MovieSearch 2025
             </Typography>
-            <Typography variant="h5" color="text.secondary" sx={{ mb: 4, maxWidth: 800, mx: 'auto' }}>
+            <Typography
+              variant="h5"
+              sx={{
+                color: "text.secondary",
+                mb: 4,
+                maxWidth: 800,
+                mx: 'auto'
+              }}>
               The ultimate movie discovery platform built for movie lovers worldwide. 
               Discover, explore, and enjoy your favorite films with our comprehensive database and personalized features.
             </Typography>
-            <Stack direction="row" spacing={2} justifyContent="center" flexWrap="wrap">
+            <Stack
+              direction="row"
+              spacing={2}
+              sx={{
+                justifyContent: "center",
+                flexWrap: "wrap"
+              }}>
               <Chip label="Modern Technology" color="primary" />
               <Chip label="User-Friendly" color="secondary" />
               <Chip label="Accessibility First" color="success" />
@@ -131,7 +144,12 @@ export default function AboutPage() {
             </Typography>
             <Grid container spacing={4}>
               {stats.map((stat, index) => (
-                <Grid item xs={6} md={3} key={index}>
+                <Grid
+                  key={index}
+                  size={{
+                    xs: 6,
+                    md: 3
+                  }}>
                   <Box sx={{ textAlign: 'center' }}>
                     <Avatar sx={{ bgcolor: 'rgba(255,255,255,0.2)', width: 64, height: 64, mx: 'auto', mb: 2 }}>
                       {stat.icon}
@@ -155,7 +173,13 @@ export default function AboutPage() {
             </Typography>
             <Grid container spacing={4}>
               {features.map((feature, index) => (
-                <Grid item xs={12} sm={6} md={4} key={index}>
+                <Grid
+                  key={index}
+                  size={{
+                    xs: 12,
+                    sm: 6,
+                    md: 4
+                  }}>
                   <Card sx={{ height: '100%', transition: 'transform 0.3s ease', '&:hover': { transform: 'translateY(-4px)' } }}>
                     <CardContent sx={{ textAlign: 'center', p: 3 }}>
                       <Avatar sx={{ bgcolor: 'primary.main', width: 64, height: 64, mx: 'auto', mb: 2 }}>
@@ -164,7 +188,9 @@ export default function AboutPage() {
                       <Typography variant="h6" component="h3" gutterBottom sx={{ fontWeight: 'bold' }}>
                         {feature.title}
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         {feature.description}
                       </Typography>
                     </CardContent>
@@ -179,9 +205,17 @@ export default function AboutPage() {
             <Typography variant="h3" component="h2" gutterBottom sx={{ textAlign: 'center', mb: 6 }}>
               Our Team
             </Typography>
-            <Grid container spacing={4} justifyContent="center">
+            <Grid container spacing={4} sx={{
+              justifyContent: "center"
+            }}>
               {team.map((member, index) => (
-                <Grid item xs={12} sm={6} md={4} key={index}>
+                <Grid
+                  key={index}
+                  size={{
+                    xs: 12,
+                    sm: 6,
+                    md: 4
+                  }}>
                   <Card sx={{ textAlign: 'center', p: 3 }}>
                     <Avatar sx={{ width: 120, height: 120, mx: 'auto', mb: 2, fontSize: '3rem' }}>
                       {member.avatar}
@@ -194,10 +228,14 @@ export default function AboutPage() {
                     </Typography>
                     <Divider sx={{ my: 2 }} />
                     <Stack spacing={1}>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         📧 {member.email}
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         📱 {member.phone}
                       </Typography>
                     </Stack>
@@ -212,7 +250,14 @@ export default function AboutPage() {
             <Typography variant="h3" component="h2" gutterBottom sx={{ fontWeight: 'bold', mb: 3 }}>
               Our Mission
             </Typography>
-            <Typography variant="h6" color="text.secondary" sx={{ maxWidth: 800, mx: 'auto', lineHeight: 1.8 }}>
+            <Typography
+              variant="h6"
+              sx={{
+                color: "text.secondary",
+                maxWidth: 800,
+                mx: 'auto',
+                lineHeight: 1.8
+              }}>
               To create the most comprehensive, user-friendly, and accessible movie discovery platform that connects 
               movie lovers worldwide. We believe that everyone should have easy access to discover, explore, and enjoy 
               the magic of cinema, regardless of their background or abilities.
@@ -224,10 +269,21 @@ export default function AboutPage() {
             <Typography variant="h4" component="h2" gutterBottom sx={{ fontWeight: 'bold', mb: 3 }}>
               Get in Touch
             </Typography>
-            <Typography variant="h6" color="text.secondary" sx={{ mb: 4 }}>
+            <Typography
+              variant="h6"
+              sx={{
+                color: "text.secondary",
+                mb: 4
+              }}>
               Have questions, suggestions, or feedback? We'd love to hear from you!
             </Typography>
-            <Stack direction="row" spacing={2} justifyContent="center" flexWrap="wrap">
+            <Stack
+              direction="row"
+              spacing={2}
+              sx={{
+                justifyContent: "center",
+                flexWrap: "wrap"
+              }}>
               <Chip 
                 label="naushadnaushad7777@gmail.com" 
                 icon={<FavoriteIcon />} 
@@ -245,6 +301,6 @@ export default function AboutPage() {
             </Stack>
           </Box>
         </Container>
-      </>
+    </>
   );
 }

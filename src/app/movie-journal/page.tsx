@@ -152,10 +152,14 @@ export default function MovieJournalPage() {
                   <JournalIcon fontSize="large" />
                 </Avatar>
                 <Box>
-                  <Typography variant="h3" fontWeight={700} gutterBottom>
+                  <Typography variant="h3" gutterBottom sx={{
+                    fontWeight: 700
+                  }}>
                     Movie Journal
                   </Typography>
-                  <Typography variant="body1" color="text.secondary">
+                  <Typography variant="body1" sx={{
+                    color: "text.secondary"
+                  }}>
                     Track your thoughts and memories from every movie
                   </Typography>
                 </Box>
@@ -174,32 +178,65 @@ export default function MovieJournalPage() {
 
           {/* Stats */}
           <Grid container spacing={3} sx={{ mb: 4 }}>
-            <Grid item xs={12} sm={4}>
+            <Grid
+              size={{
+                xs: 12,
+                sm: 4
+              }}>
               <Paper elevation={2} sx={{ p: 3, textAlign: 'center' }}>
-                <Typography variant="h4" color="primary.main" fontWeight={700}>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    color: "primary.main",
+                    fontWeight: 700
+                  }}>
                   {totalMovies}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" sx={{
+                  color: "text.secondary"
+                }}>
                   Total Entries
                 </Typography>
               </Paper>
             </Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid
+              size={{
+                xs: 12,
+                sm: 4
+              }}>
               <Paper elevation={2} sx={{ p: 3, textAlign: 'center' }}>
-                <Typography variant="h4" color="warning.main" fontWeight={700}>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    color: "warning.main",
+                    fontWeight: 700
+                  }}>
                   {averageRating.toFixed(1)}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" sx={{
+                  color: "text.secondary"
+                }}>
                   Average Rating
                 </Typography>
               </Paper>
             </Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid
+              size={{
+                xs: 12,
+                sm: 4
+              }}>
               <Paper elevation={2} sx={{ p: 3, textAlign: 'center' }}>
-                <Typography variant="h4" color="info.main" fontWeight={700}>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    color: "info.main",
+                    fontWeight: 700
+                  }}>
                   {rewatchedCount}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" sx={{
+                  color: "text.secondary"
+                }}>
                   Rewatched
                 </Typography>
               </Paper>
@@ -210,10 +247,17 @@ export default function MovieJournalPage() {
           {entries.length === 0 ? (
             <Paper elevation={2} sx={{ p: 8, textAlign: 'center' }}>
               <JournalIcon sx={{ fontSize: 80, color: 'text.disabled', mb: 2 }} />
-              <Typography variant="h5" gutterBottom color="text.secondary">
+              <Typography variant="h5" gutterBottom sx={{
+                color: "text.secondary"
+              }}>
                 No Journal Entries Yet
               </Typography>
-              <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
+              <Typography
+                variant="body1"
+                sx={{
+                  color: "text.secondary",
+                  mb: 3
+                }}>
                 Start documenting your movie-watching journey
               </Typography>
               <Button
@@ -227,13 +271,15 @@ export default function MovieJournalPage() {
           ) : (
             <Grid container spacing={3}>
               {entries.map((entry) => (
-                <Grid item xs={12} key={entry.id}>
+                <Grid key={entry.id} size={12}>
                   <Card elevation={3}>
                     <CardContent>
                       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start', mb: 2 }}>
                         <Box sx={{ flex: 1 }}>
                           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1 }}>
-                            <Typography variant="h5" fontWeight={600}>
+                            <Typography variant="h5" sx={{
+                              fontWeight: 600
+                            }}>
                               {entry.movieTitle}
                             </Typography>
                             <Typography variant="h5">{entry.mood}</Typography>
@@ -244,12 +290,16 @@ export default function MovieJournalPage() {
                           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
                             <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
                               <CalendarIcon fontSize="small" color="action" />
-                              <Typography variant="body2" color="text.secondary">
+                              <Typography variant="body2" sx={{
+                                color: "text.secondary"
+                              }}>
                                 {new Date(entry.watchDate).toLocaleDateString()}
                               </Typography>
                             </Box>
                             <Rating value={entry.rating} readOnly size="small" />
-                            <Typography variant="body2" color="text.secondary">
+                            <Typography variant="body2" sx={{
+                              color: "text.secondary"
+                            }}>
                               {entry.rating}/5
                             </Typography>
                           </Box>
@@ -259,7 +309,12 @@ export default function MovieJournalPage() {
                         </IconButton>
                       </Box>
 
-                      <Typography variant="body1" color="text.primary" paragraph sx={{ mb: 2 }}>
+                      <Typography
+                        variant="body1"
+                        sx={{
+                          color: "text.primary",
+                          mb: 2
+                        }}>
                         {entry.review}
                       </Typography>
 
@@ -299,9 +354,11 @@ export default function MovieJournalPage() {
                 type="date"
                 value={newEntry.watchDate}
                 onChange={(e) => setNewEntry({ ...newEntry, watchDate: e.target.value })}
-                InputLabelProps={{ shrink: true }}
                 sx={{ mb: 2 }}
                 required
+                slotProps={{
+                  inputLabel: { shrink: true }
+                }}
               />
               <Box sx={{ mb: 2 }}>
                 <Typography variant="subtitle2" gutterBottom>

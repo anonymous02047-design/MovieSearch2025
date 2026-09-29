@@ -4,6 +4,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { CustomThemeProvider } from "@/contexts/ThemeContext";
 import ClientLayout from "@/components/ClientLayout";
 import EnhancedGoogleAnalytics from "@/components/EnhancedGoogleAnalytics";
+import { Suspense } from "react";
 import { GoogleAdsScript } from "@/components/GoogleAds";
 import GoogleReCaptchaV3 from "@/components/GoogleReCaptchaV3";
 import EnhancedTawkTo from "@/components/EnhancedTawkTo";
@@ -95,7 +96,9 @@ export default function RootLayout({
           </CustomThemeProvider>
 
           {/* Enhanced Google Analytics */}
-          <EnhancedGoogleAnalytics />
+          <Suspense fallback={null}>
+            <EnhancedGoogleAnalytics />
+          </Suspense>
           
           {/* Google Ads Script */}
           <GoogleAdsScript />

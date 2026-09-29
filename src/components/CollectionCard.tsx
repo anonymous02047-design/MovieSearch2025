@@ -75,19 +75,23 @@ export default function CollectionCard({ collection }: CollectionCardProps) {
       <CardContent>
         <Typography
           variant="h6"
-          fontWeight={600}
           sx={{
+            fontWeight: 600,
             overflow: 'hidden',
             textOverflow: 'ellipsis',
             display: '-webkit-box',
             WebkitLineClamp: 2,
-            WebkitBoxOrient: 'vertical',
-          }}
-        >
+            WebkitBoxOrient: 'vertical'
+          }}>
           {collection.name}
         </Typography>
         {collection.parts && (
-          <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+          <Typography
+            variant="body2"
+            sx={{
+              color: "text.secondary",
+              mt: 1
+            }}>
             {collection.parts.length} Movies
           </Typography>
         )}

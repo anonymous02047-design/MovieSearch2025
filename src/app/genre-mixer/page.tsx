@@ -18,7 +18,12 @@ export default function GenreMixerPage() {
             <ShuffleIcon sx={{ fontSize: 40, color: 'primary.main' }} />
             <Typography variant="h3" sx={{ fontWeight: 'bold' }}>Genre Mixer</Typography>
           </Box>
-          <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>
+          <Typography
+            variant="h6"
+            sx={{
+              color: "text.secondary",
+              mb: 3
+            }}>
             Discover unique genre combinations
           </Typography>
           <Box sx={{ mb: 3 }}>

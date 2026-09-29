@@ -269,183 +269,207 @@ function HomeContent() {
       {showWelcome && (
           <PostAuthWelcome onComplete={() => setShowWelcome(false)} />
         )}
-        
-        <Container maxWidth="xl" sx={{ py: 4 }}>
-          {/* Country Banner */}
-          {countryData && showCountryBanner && (
-            <CountryBanner 
-              countryData={countryData} 
-              onRefresh={refreshCountry}
-              onDismiss={() => setShowCountryBanner(false)}
-            />
-          )}
 
-          {/* Welcome Message */}
-          <Box sx={{ mb: 4, textAlign: 'center' }}>
-            <Typography variant="body1" component="p" gutterBottom sx={{
-              fontWeight: 'bold',
-              color: 'primary.main',
-              fontSize: '14px',
+      <Container maxWidth="xl" sx={{ py: 4 }}>
+        {/* Country Banner */}
+        {countryData && showCountryBanner && (
+          <CountryBanner 
+            countryData={countryData} 
+            onRefresh={refreshCountry}
+            onDismiss={() => setShowCountryBanner(false)}
+          />
+        )}
+
+        {/* Welcome Message */}
+        <Box sx={{ mb: 4, textAlign: 'center' }}>
+          <Typography variant="body1" component="p" gutterBottom sx={{
+            fontWeight: 'bold',
+            color: 'primary.main',
+            fontSize: '14px',
+          }}>
+            🎬 Welcome back, {user?.firstName || 'Movie Lover'}!
+          </Typography>
+          <Typography
+            variant="h6"
+            sx={{
+              color: "text.secondary",
+              mb: 3
             }}>
-              🎬 Welcome back, {user?.firstName || 'Movie Lover'}!
-            </Typography>
-            <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>
-              {searchQuery ? `Search Results for "${searchQuery}"` : 'Discover your next favorite movie or TV show'}
-            </Typography>
+            {searchQuery ? `Search Results for "${searchQuery}"` : 'Discover your next favorite movie or TV show'}
+          </Typography>
+        </Box>
+
+        {/* Continue Watching Section */}
+        <ContinueWatchingSection />
+
+        {/* Personalized Recommendations */}
+        <RecommendationsSection />
+
+        {/* Trending Section */}
+        <TrendingSection />
+
+        {/* Popular by Country Section */}
+        <PopularByCountrySection />
+
+        {/* New Releases Section */}
+        <NewReleasesSection />
+
+        {/* Content Type Switcher */}
+        <ContentTypeSwitcher 
+          value={filters.contentType}
+          onChange={(value) => updateFilter('contentType', value)}
+        />
+
+        {/* Filter Panel */}
+        <FilterPanel
+          filters={filters}
+          onFilterChange={updateFilters}
+          onReset={resetFilters}
+          availableGenres={availableGenres}
+        />
+
+        {searchQuery && (
+          <Stack direction="row" spacing={1} sx={{ mb: 2, justifyContent: 'center' }}>
+            <Chip
+              label={`${searchResults.length} results`}
+              color="primary"
+              variant="outlined"
+              sx={{ fontSize: '0.875rem', height: 32 }}
+            />
+            <Button
+              variant="outlined"
+              size="small"
+              onClick={() => {
+                setSearchQuery('');
+                setSearchResults([]);
+                loadContent();
+              }}
+              sx={{ height: 32 }}
+            >
+              Clear Search
+            </Button>
+          </Stack>
+        )}
+
+        {error && (
+          <Box sx={{ mb: 3 }}>
+            <ErrorDisplay 
+              error={error} 
+              severity="error" 
+              showRetry={isRetryable}
+              onRetry={retry}
+              dismissible={true}
+            />
           </Box>
+        )}
 
-          {/* Continue Watching Section */}
-          <ContinueWatchingSection />
-
-          {/* Personalized Recommendations */}
-          <RecommendationsSection />
-
-          {/* Trending Section */}
-          <TrendingSection />
-
-          {/* Popular by Country Section */}
-          <PopularByCountrySection />
-
-          {/* New Releases Section */}
-          <NewReleasesSection />
-
-          {/* Content Type Switcher */}
-          <ContentTypeSwitcher 
-            value={filters.contentType}
-            onChange={(value) => updateFilter('contentType', value)}
-          />
-
-          {/* Filter Panel */}
-          <FilterPanel
-            filters={filters}
-            onFilterChange={updateFilters}
-            onReset={resetFilters}
-            availableGenres={availableGenres}
-          />
-
-          {searchQuery && (
-            <Stack direction="row" spacing={1} sx={{ mb: 2, justifyContent: 'center' }}>
-              <Chip
-                label={`${searchResults.length} results`}
-                color="primary"
-                variant="outlined"
-                sx={{ fontSize: '0.875rem', height: 32 }}
-              />
-              <Button
-                variant="outlined"
-                size="small"
-                onClick={() => {
-                  setSearchQuery('');
-                  setSearchResults([]);
-                  loadContent();
-                }}
-                sx={{ height: 32 }}
-              >
-                Clear Search
-              </Button>
-            </Stack>
-          )}
-
-          {error && (
-            <Box sx={{ mb: 3 }}>
-              <ErrorDisplay 
-                error={error} 
-                severity="error" 
-                showRetry={isRetryable}
-                onRetry={retry}
-                dismissible={true}
-              />
-            </Box>
-          )}
-
-          {loading && !displayMovies.length && !displayTVShows.length ? (
-            <ResponsiveGrid columns={{ xs: 1, sm: 2, md: 3, lg: 4 }} spacing={3}>
-              {Array.from({ length: 8 }).map((_, index) => (
-                <Box key={index} sx={{ aspectRatio: '2/3' }}>
-                  <LoadingSkeleton type="card" count={1} />
-                </Box>
-              ))}
-            </ResponsiveGrid>
-          ) : (
-            <>
-              {/* Movies Section */}
-              {(filters.contentType === 'all' || filters.contentType === 'movie') && displayMovies.length > 0 && (
-                <Box sx={{ mb: 6 }}>
-                  {filters.contentType === 'all' && (
-                    <Typography variant="h5" gutterBottom fontWeight={600} sx={{ mb: 3 }}>
-                      Movies
-                    </Typography>
-                  )}
-                  <ResponsiveGrid columns={{ xs: 1, sm: 2, md: 3, lg: 4 }} spacing={3}>
-                    {displayMovies.map((movie) => (
-                      <MovieCard key={movie.id} movie={movie} />
-                    ))}
-                  </ResponsiveGrid>
-                </Box>
-              )}
-
-              {/* TV Shows Section */}
-              {(filters.contentType === 'all' || filters.contentType === 'tv') && displayTVShows.length > 0 && (
-                <Box sx={{ mb: 6 }}>
-                  {filters.contentType === 'all' && (
-                    <Typography variant="h5" gutterBottom fontWeight={600} sx={{ mb: 3 }}>
-                      TV Shows
-                    </Typography>
-                  )}
-                  <ResponsiveGrid columns={{ xs: 1, sm: 2, md: 3, lg: 4 }} spacing={3}>
-                    {displayTVShows.map((show) => (
-                      <TVShowCard key={show.id} show={show} />
-                    ))}
-                  </ResponsiveGrid>
-                </Box>
-              )}
-
-              {displayMovies.length === 0 && displayTVShows.length === 0 && !loading && (
-                <Box sx={{ textAlign: 'center', py: 8 }}>
-                  <MovieIcon sx={{ fontSize: 64, color: 'text.secondary', mb: 2, opacity: 0.5 }} />
-                  <Typography variant="h5" color="text.secondary" gutterBottom>
-                    {searchQuery ? 'No content found for your search.' : 'No content available.'}
+        {loading && !displayMovies.length && !displayTVShows.length ? (
+          <ResponsiveGrid columns={{ xs: 1, sm: 2, md: 3, lg: 4 }} spacing={3}>
+            {Array.from({ length: 8 }).map((_, index) => (
+              <Box key={index} sx={{ aspectRatio: '2/3' }}>
+                <LoadingSkeleton type="card" count={1} />
+              </Box>
+            ))}
+          </ResponsiveGrid>
+        ) : (
+          <>
+            {/* Movies Section */}
+            {(filters.contentType === 'all' || filters.contentType === 'movie') && displayMovies.length > 0 && (
+              <Box sx={{ mb: 6 }}>
+                {filters.contentType === 'all' && (
+                  <Typography
+                    variant="h5"
+                    gutterBottom
+                    sx={{
+                      fontWeight: 600,
+                      mb: 3
+                    }}>
+                    Movies
                   </Typography>
-                  <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
-                    {searchQuery ? 'Try searching with different keywords or browse popular content.' : 'Check back later for new releases.'}
+                )}
+                <ResponsiveGrid columns={{ xs: 1, sm: 2, md: 3, lg: 4 }} spacing={3}>
+                  {displayMovies.map((movie) => (
+                    <MovieCard key={movie.id} movie={movie} />
+                  ))}
+                </ResponsiveGrid>
+              </Box>
+            )}
+
+            {/* TV Shows Section */}
+            {(filters.contentType === 'all' || filters.contentType === 'tv') && displayTVShows.length > 0 && (
+              <Box sx={{ mb: 6 }}>
+                {filters.contentType === 'all' && (
+                  <Typography
+                    variant="h5"
+                    gutterBottom
+                    sx={{
+                      fontWeight: 600,
+                      mb: 3
+                    }}>
+                    TV Shows
                   </Typography>
-                  {searchQuery && (
-                    <Button
-                      variant="outlined"
-                      onClick={() => {
-                        setSearchQuery('');
-                        setSearchResults([]);
-                        loadContent();
-                      }}
-                      startIcon={<ClearIcon />}
-                    >
-                      Clear Search
-                    </Button>
-                  )}
-                </Box>
-              )}
+                )}
+                <ResponsiveGrid columns={{ xs: 1, sm: 2, md: 3, lg: 4 }} spacing={3}>
+                  {displayTVShows.map((show) => (
+                    <TVShowCard key={show.id} show={show} />
+                  ))}
+                </ResponsiveGrid>
+              </Box>
+            )}
 
-              {hasMoreContent && (displayMovies.length > 0 || displayTVShows.length > 0) && (
-                <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
-                  <RetryButton
-                    onClick={handleLoadMore}
-                    loading={loading}
-                    isRetryable={isRetryable}
-                    onRetry={retry}
-                    buttonText="Load More Content"
-                  />
-                </Box>
-              )}
-            </>
-          )}
-        </Container>
+            {displayMovies.length === 0 && displayTVShows.length === 0 && !loading && (
+              <Box sx={{ textAlign: 'center', py: 8 }}>
+                <MovieIcon sx={{ fontSize: 64, color: 'text.secondary', mb: 2, opacity: 0.5 }} />
+                <Typography variant="h5" gutterBottom sx={{
+                  color: "text.secondary"
+                }}>
+                  {searchQuery ? 'No content found for your search.' : 'No content available.'}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    color: "text.secondary",
+                    mb: 3
+                  }}>
+                  {searchQuery ? 'Try searching with different keywords or browse popular content.' : 'Check back later for new releases.'}
+                </Typography>
+                {searchQuery && (
+                  <Button
+                    variant="outlined"
+                    onClick={() => {
+                      setSearchQuery('');
+                      setSearchResults([]);
+                      loadContent();
+                    }}
+                    startIcon={<ClearIcon />}
+                  >
+                    Clear Search
+                  </Button>
+                )}
+              </Box>
+            )}
 
-        {/* Quick Actions FAB */}
-        <QuickActions />
+            {hasMoreContent && (displayMovies.length > 0 || displayTVShows.length > 0) && (
+              <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
+                <RetryButton
+                  onClick={handleLoadMore}
+                  loading={loading}
+                  isRetryable={isRetryable}
+                  onRetry={retry}
+                  buttonText="Load More Content"
+                />
+              </Box>
+            )}
+          </>
+        )}
+      </Container>
 
-        {/* Scroll to Top Button */}
-        <ScrollToTop />
-      </>
+      {/* Quick Actions FAB */}
+      <QuickActions />
+
+      {/* Scroll to Top Button */}
+      <ScrollToTop />
+    </>
   );
 }
 

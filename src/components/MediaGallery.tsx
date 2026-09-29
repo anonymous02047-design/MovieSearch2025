@@ -465,7 +465,9 @@ export default function MediaGallery({
                 {media.title || `Media ${index + 1}`}
               </Typography>
               {media.description && (
-                <Typography variant="body2" color="text.secondary" noWrap>
+                <Typography variant="body2" noWrap sx={{
+                  color: "text.secondary"
+                }}>
                   {media.description}
                 </Typography>
               )}
@@ -581,7 +583,9 @@ export default function MediaGallery({
               primary={media.title || `Media ${index + 1}`}
               secondary={
                 <Box>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" sx={{
+                    color: "text.secondary"
+                  }}>
                     {media.description}
                   </Typography>
                   <Box sx={{ display: 'flex', gap: 1, mt: 0.5 }}>
@@ -639,7 +643,9 @@ export default function MediaGallery({
         {/* Filters and Search */}
         {(showFilters || showSearch) && (
           <Box sx={{ mt: 2 }}>
-            <Stack direction="row" spacing={2} alignItems="center">
+            <Stack direction="row" spacing={2} sx={{
+              alignItems: "center"
+            }}>
               {showSearch && (
                 <Box sx={{ flex: 1 }}>
                   <input
@@ -691,7 +697,13 @@ export default function MediaGallery({
       ) : (
         <Grid container spacing={spacing}>
           {sortedItems.map((media, index) => (
-            <Grid item xs={12} sm={6} md={12 / columns} key={media.id}>
+            <Grid
+              key={media.id}
+              size={{
+                xs: 12,
+                sm: 6,
+                md: 12 / columns
+              }}>
               {renderMediaCard(media, index)}
             </Grid>
           ))}

@@ -88,7 +88,9 @@ export default function AuthRedirect({
           <Typography variant="h5" gutterBottom sx={{ fontWeight: 'bold' }}>
             Welcome back, {user.firstName || 'User'}!
           </Typography>
-          <Typography variant="body1" color="text.secondary">
+          <Typography variant="body1" sx={{
+            color: "text.secondary"
+          }}>
             Redirecting you to {fromPage}...
           </Typography>
         </Paper>
@@ -111,7 +113,12 @@ export default function AuthRedirect({
           <Typography variant="h4" component="h1" gutterBottom sx={{ fontWeight: 'bold' }}>
             Authentication Required
           </Typography>
-          <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>
+          <Typography
+            variant="h6"
+            sx={{
+              color: "text.secondary",
+              mb: 3
+            }}>
             {customMessage || `You need to sign in to access ${fromPage}`}
           </Typography>
         </Box>
@@ -169,7 +176,9 @@ export default function AuthRedirect({
         <Stack 
           direction={{ xs: 'column', sm: 'row' }} 
           spacing={2} 
-          justifyContent="center"
+          sx={{
+            justifyContent: "center"
+          }}
         >
           {showBackButton && (
             <Button
@@ -192,7 +201,9 @@ export default function AuthRedirect({
         </Stack>
 
         <Box sx={{ mt: 4, textAlign: 'center' }}>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" sx={{
+            color: "text.secondary"
+          }}>
             Don't have an account? Signing up is free and takes less than a minute!
           </Typography>
         </Box>

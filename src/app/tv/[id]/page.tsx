@@ -210,7 +210,11 @@ export default function TVShowDetailPage() {
           </Button>
 
           <Grid container spacing={4}>
-            <Grid item xs={12} md={4}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 4
+              }}>
               <Card
                 sx={{
                   aspectRatio: '2/3',
@@ -222,7 +226,11 @@ export default function TVShowDetailPage() {
               />
             </Grid>
 
-            <Grid item xs={12} md={8}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 8
+              }}>
               <Box sx={{ color: 'white' }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
                   <TvIcon sx={{ fontSize: 32 }} />
@@ -230,14 +238,18 @@ export default function TVShowDetailPage() {
                   <Chip label={show.status} variant="outlined" sx={{ color: 'white', borderColor: 'white' }} />
                 </Box>
 
-                <Typography variant="h2" component="h1" fontWeight={700} gutterBottom>
+                <Typography variant="h2" component="h1" gutterBottom sx={{
+                  fontWeight: 700
+                }}>
                   {show.name}
                 </Typography>
 
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3, flexWrap: 'wrap' }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
                     <StarIcon sx={{ color: '#ffd700' }} />
-                    <Typography variant="h5" fontWeight={600}>
+                    <Typography variant="h5" sx={{
+                      fontWeight: 600
+                    }}>
                       {rating}
                     </Typography>
                   </Box>
@@ -271,7 +283,13 @@ export default function TVShowDetailPage() {
                   ))}
                 </Box>
 
-                <Typography variant="h6" paragraph sx={{ maxWidth: 800, lineHeight: 1.8 }}>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    maxWidth: 800,
+                    lineHeight: 1.8,
+                    marginBottom: "16px"
+                  }}>
                   {show.overview}
                 </Typography>
 
@@ -349,7 +367,9 @@ export default function TVShowDetailPage() {
         {/* Cast & Crew */}
         {credits && credits.cast && credits.cast.length > 0 && (
           <Box sx={{ mb: 6 }}>
-            <Typography variant="h4" gutterBottom fontWeight={700}>
+            <Typography variant="h4" gutterBottom sx={{
+              fontWeight: 700
+            }}>
               Cast
             </Typography>
             <Box
@@ -388,10 +408,14 @@ export default function TVShowDetailPage() {
                     {person.name[0]}
                   </Avatar>
                   <CardContent>
-                    <Typography variant="subtitle2" fontWeight={600} noWrap>
+                    <Typography variant="subtitle2" noWrap sx={{
+                      fontWeight: 600
+                    }}>
                       {person.name}
                     </Typography>
-                    <Typography variant="caption" color="text.secondary" noWrap>
+                    <Typography variant="caption" noWrap sx={{
+                      color: "text.secondary"
+                    }}>
                       {person.character}
                     </Typography>
                   </CardContent>
@@ -411,7 +435,9 @@ export default function TVShowDetailPage() {
         {/* Similar TV Shows */}
         {similar.length > 0 && (
           <Box sx={{ mt: 6 }}>
-            <Typography variant="h4" gutterBottom fontWeight={700}>
+            <Typography variant="h4" gutterBottom sx={{
+              fontWeight: 700
+            }}>
               Similar TV Shows
             </Typography>
             <ResponsiveGrid columns={{ xs: 1, sm: 2, md: 3, lg: 4 }} spacing={3}>

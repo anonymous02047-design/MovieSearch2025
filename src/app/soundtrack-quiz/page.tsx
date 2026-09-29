@@ -22,7 +22,12 @@ export default function SoundtrackQuizPage() {
             <CardContent sx={{ textAlign: 'center', py: 6 }}>
               <MusicIcon sx={{ fontSize: 80, color: 'primary.main', mb: 2 }} />
               <Typography variant="h5" sx={{ mb: 2 }}>Test Your Movie Music Knowledge</Typography>
-              <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>Listen to iconic soundtracks and guess the movie!</Typography>
+              <Typography
+                variant="body1"
+                sx={{
+                  color: "text.secondary",
+                  mb: 4
+                }}>Listen to iconic soundtracks and guess the movie!</Typography>
               <Button variant="contained" size="large" startIcon={<PlayIcon />}>Start Quiz</Button>
             </CardContent>
           </Card>

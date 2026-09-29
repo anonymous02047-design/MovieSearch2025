@@ -52,18 +52,28 @@ export default function MovieAwards({
       </Typography>
 
       {/* Summary Cards */}
-      <Stack direction={{ xs: 'column', md: 'row' }} spacing={2} mb={3}>
+      <Stack direction={{ xs: 'column', md: 'row' }} spacing={2} sx={{
+        mb: 3
+      }}>
         {oscars && (oscars.nominations > 0 || oscars.wins > 0) && (
           <Card sx={{ flex: 1 }}>
             <CardContent>
-              <Box display="flex" alignItems="center" gap={1} mb={1}>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 1,
+                  mb: 1
+                }}>
                 <TrophyIcon sx={{ color: 'gold' }} />
                 <Typography variant="h6">Oscars</Typography>
               </Box>
               <Typography variant="h4" color="primary">
                 {oscars.wins}
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" sx={{
+                color: "text.secondary"
+              }}>
                 {oscars.wins === 1 ? 'Win' : 'Wins'} from {oscars.nominations}{' '}
                 {oscars.nominations === 1 ? 'nomination' : 'nominations'}
               </Typography>
@@ -74,14 +84,22 @@ export default function MovieAwards({
         {goldenGlobes && (goldenGlobes.nominations > 0 || goldenGlobes.wins > 0) && (
           <Card sx={{ flex: 1 }}>
             <CardContent>
-              <Box display="flex" alignItems="center" gap={1} mb={1}>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 1,
+                  mb: 1
+                }}>
                 <StarIcon sx={{ color: 'gold' }} />
                 <Typography variant="h6">Golden Globes</Typography>
               </Box>
               <Typography variant="h4" color="primary">
                 {goldenGlobes.wins}
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" sx={{
+                color: "text.secondary"
+              }}>
                 {goldenGlobes.wins === 1 ? 'Win' : 'Wins'} from {goldenGlobes.nominations}{' '}
                 {goldenGlobes.nominations === 1 ? 'nomination' : 'nominations'}
               </Typography>
@@ -92,14 +110,22 @@ export default function MovieAwards({
         {bafta && (bafta.nominations > 0 || bafta.wins > 0) && (
           <Card sx={{ flex: 1 }}>
             <CardContent>
-              <Box display="flex" alignItems="center" gap={1} mb={1}>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 1,
+                  mb: 1
+                }}>
                 <AwardIcon sx={{ color: 'gold' }} />
                 <Typography variant="h6">BAFTA</Typography>
               </Box>
               <Typography variant="h4" color="primary">
                 {bafta.wins}
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" sx={{
+                color: "text.secondary"
+              }}>
                 {bafta.wins === 1 ? 'Win' : 'Wins'} from {bafta.nominations}{' '}
                 {bafta.nominations === 1 ? 'nomination' : 'nominations'}
               </Typography>
@@ -119,12 +145,24 @@ export default function MovieAwards({
             {awards.map((award, index) => (
               <Card key={index} variant="outlined">
                 <CardContent>
-                  <Box display="flex" alignItems="center" justifyContent="space-between" gap={2}>
-                    <Box flex={1}>
-                      <Typography variant="subtitle1" fontWeight="bold">
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      gap: 2
+                    }}>
+                    <Box sx={{
+                      flex: 1
+                    }}>
+                      <Typography variant="subtitle1" sx={{
+                        fontWeight: "bold"
+                      }}>
                         {award.category}
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         {award.name} • {award.year}
                       </Typography>
                     </Box>
@@ -143,7 +181,13 @@ export default function MovieAwards({
 
       {/* Total Summary */}
       {totalNominations > 0 && (
-        <Box mt={3} p={2} bgcolor="primary.light" borderRadius={2}>
+        <Box
+          sx={{
+            mt: 3,
+            p: 2,
+            bgcolor: "primary.light",
+            borderRadius: 2
+          }}>
           <Typography variant="h6" align="center">
             <strong>{totalWins}</strong> {totalWins === 1 ? 'Win' : 'Wins'} from{' '}
             <strong>{totalNominations}</strong> {totalNominations === 1 ? 'Nomination' : 'Nominations'}

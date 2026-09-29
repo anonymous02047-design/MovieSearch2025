@@ -125,11 +125,15 @@ function StatsPageContent() {
           <Box sx={{ mb: 4, textAlign: 'center' }}>
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2, mb: 2 }}>
               <AnalyticsIcon sx={{ fontSize: 48, color: 'primary.main' }} />
-              <Typography variant="h3" component="h1" fontWeight={700}>
+              <Typography variant="h3" component="h1" sx={{
+                fontWeight: 700
+              }}>
                 Your Statistics
               </Typography>
             </Box>
-            <Typography variant="h6" color="text.secondary">
+            <Typography variant="h6" sx={{
+              color: "text.secondary"
+            }}>
               Track your movie and TV show journey
             </Typography>
           </Box>
@@ -137,7 +141,13 @@ function StatsPageContent() {
           {/* Stats Grid */}
           <Grid container spacing={3} sx={{ mb: 6 }}>
             {stats.map((stat, index) => (
-              <Grid item xs={12} sm={6} md={4} key={index}>
+              <Grid
+                key={index}
+                size={{
+                  xs: 12,
+                  sm: 6,
+                  md: 4
+                }}>
                 <StatsCard {...stat} />
               </Grid>
             ))}
@@ -156,7 +166,9 @@ function StatsPageContent() {
           >
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
               <TrendingIcon color="primary" sx={{ fontSize: 32 }} />
-              <Typography variant="h5" fontWeight={700}>
+              <Typography variant="h5" sx={{
+                fontWeight: 700
+              }}>
                 Recent Activity
               </Typography>
             </Box>
@@ -175,21 +187,33 @@ function StatsPageContent() {
                     }}
                   >
                     <Box>
-                      <Typography variant="subtitle1" fontWeight={600}>
+                      <Typography variant="subtitle1" sx={{
+                        fontWeight: 600
+                      }}>
                         {item.title}
                       </Typography>
-                      <Typography variant="caption" color="text.secondary">
+                      <Typography variant="caption" sx={{
+                        color: "text.secondary"
+                      }}>
                         {Math.round(item.progress)}% complete
                       </Typography>
                     </Box>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" sx={{
+                      color: "text.secondary"
+                    }}>
                       {new Date(item.lastWatched).toLocaleDateString()}
                     </Typography>
                   </Box>
                 ))}
               </Box>
             ) : (
-              <Typography variant="body1" color="text.secondary" textAlign="center" py={4}>
+              <Typography
+                variant="body1"
+                sx={{
+                  color: "text.secondary",
+                  textAlign: "center",
+                  py: 4
+                }}>
                 No recent activity. Start watching to track your progress!
               </Typography>
             )}
@@ -205,23 +229,41 @@ function StatsPageContent() {
                 : `linear-gradient(135deg, ${alpha('#9c27b0', 0.05)} 0%, ${alpha('#e91e63', 0.02)} 100%)`,
             }}
           >
-            <Typography variant="h5" fontWeight={700} gutterBottom>
+            <Typography variant="h5" gutterBottom sx={{
+              fontWeight: 700
+            }}>
               💡 Insights
             </Typography>
             <Grid container spacing={2}>
-              <Grid item xs={12} md={6}>
-                <Typography variant="body1" paragraph>
+              <Grid
+                size={{
+                  xs: 12,
+                  md: 6
+                }}>
+                <Typography variant="body1" sx={{
+                  marginBottom: "16px"
+                }}>
                   • You have <strong>{watchlist.length}</strong> items in your watchlist waiting to be discovered!
                 </Typography>
-                <Typography variant="body1" paragraph>
+                <Typography variant="body1" sx={{
+                  marginBottom: "16px"
+                }}>
                   • Your favorite content has an average rating of <strong>{averageRating}</strong> ⭐
                 </Typography>
               </Grid>
-              <Grid item xs={12} md={6}>
-                <Typography variant="body1" paragraph>
+              <Grid
+                size={{
+                  xs: 12,
+                  md: 6
+                }}>
+                <Typography variant="body1" sx={{
+                  marginBottom: "16px"
+                }}>
                   • You're currently watching <strong>{continueWatching.length}</strong> titles
                 </Typography>
-                <Typography variant="body1" paragraph>
+                <Typography variant="body1" sx={{
+                  marginBottom: "16px"
+                }}>
                   • Keep exploring to discover more amazing content! 🎬
                 </Typography>
               </Grid>

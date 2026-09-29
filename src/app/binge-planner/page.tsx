@@ -17,7 +17,9 @@ export default function BingePlannerPage() {
             <TvIcon sx={{ fontSize: 40, color: 'primary.main' }} />
             <Typography variant="h3" sx={{ fontWeight: 'bold' }}>Binge Planner</Typography>
           </Box>
-          <Typography variant="body1" color="text.secondary">Plan your movie marathons</Typography>
+          <Typography variant="body1" sx={{
+            color: "text.secondary"
+          }}>Plan your movie marathons</Typography>
         </Container>
       </Box>
     </AuthGuard>

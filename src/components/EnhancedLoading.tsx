@@ -96,13 +96,12 @@ export default function EnhancedLoading({
 
       <Typography
         variant="body1"
-        color="text.secondary"
         sx={{
+          color: "text.secondary",
           textAlign: 'center',
           maxWidth: 300,
-          animation: 'fadeIn 0.6s ease-out',
-        }}
-      >
+          animation: 'fadeIn 0.6s ease-out'
+        }}>
         {displayMessage}
       </Typography>
     </Box>

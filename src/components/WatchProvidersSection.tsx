@@ -54,7 +54,9 @@ export default function WatchProvidersSection({ providers, country = 'US' }: Wat
     >
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 3 }}>
         <StreamIcon sx={{ color: 'info.main', fontSize: 28 }} />
-        <Typography variant="h6" fontWeight={600}>
+        <Typography variant="h6" sx={{
+          fontWeight: 600
+        }}>
           Where to Watch
         </Typography>
         <Chip label={country} size="small" variant="outlined" />
@@ -62,7 +64,9 @@ export default function WatchProvidersSection({ providers, country = 'US' }: Wat
 
       {providers.flatrate && providers.flatrate.length > 0 && (
         <Box sx={{ mb: 3 }}>
-          <Typography variant="subtitle2" color="text.secondary" gutterBottom>
+          <Typography variant="subtitle2" gutterBottom sx={{
+            color: "text.secondary"
+          }}>
             Stream
           </Typography>
           <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
@@ -91,7 +95,9 @@ export default function WatchProvidersSection({ providers, country = 'US' }: Wat
 
       {providers.rent && providers.rent.length > 0 && (
         <Box sx={{ mb: 3 }}>
-          <Typography variant="subtitle2" color="text.secondary" gutterBottom>
+          <Typography variant="subtitle2" gutterBottom sx={{
+            color: "text.secondary"
+          }}>
             Rent
           </Typography>
           <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
@@ -120,7 +126,9 @@ export default function WatchProvidersSection({ providers, country = 'US' }: Wat
 
       {providers.buy && providers.buy.length > 0 && (
         <Box>
-          <Typography variant="subtitle2" color="text.secondary" gutterBottom>
+          <Typography variant="subtitle2" gutterBottom sx={{
+            color: "text.secondary"
+          }}>
             Buy
           </Typography>
           <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
@@ -147,7 +155,13 @@ export default function WatchProvidersSection({ providers, country = 'US' }: Wat
         </Box>
       )}
 
-      <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 2 }}>
+      <Typography
+        variant="caption"
+        sx={{
+          color: "text.secondary",
+          display: 'block',
+          mt: 2
+        }}>
         Streaming availability may vary by region. Data provided by JustWatch.
       </Typography>
     </Paper>

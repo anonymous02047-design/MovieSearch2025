@@ -52,7 +52,12 @@ export default function AuthRequiredMessage({
           <Typography variant="h4" component="h1" gutterBottom sx={{ fontWeight: 'bold' }}>
             {title}
           </Typography>
-          <Typography variant="body1" color="text.secondary" paragraph>
+          <Typography
+            variant="body1"
+            sx={{
+              color: "text.secondary",
+              marginBottom: "16px"
+            }}>
             {message}
           </Typography>
         </Box>
@@ -65,7 +70,9 @@ export default function AuthRequiredMessage({
           </Typography>
         </Alert>
 
-        <Stack direction="row" spacing={2} justifyContent="center">
+        <Stack direction="row" spacing={2} sx={{
+          justifyContent: "center"
+        }}>
           <Button
             variant="contained"
             size="large"
@@ -101,7 +108,13 @@ export default function AuthRequiredMessage({
           )}
         </Stack>
 
-        <Typography variant="caption" color="text.secondary" sx={{ mt: 3, display: 'block' }}>
+        <Typography
+          variant="caption"
+          sx={{
+            color: "text.secondary",
+            mt: 3,
+            display: 'block'
+          }}>
           Don't have an account? Sign up is free and takes less than a minute!
         </Typography>
       </Paper>

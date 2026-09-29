@@ -453,12 +453,14 @@ export default function AccessibilityCenter({ open, onClose }: AccessibilityCent
         onClose={onClose}
         maxWidth="lg"
         fullWidth
-        PaperProps={{
-          sx: {
-            background: 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-            maxHeight: '90vh',
-          },
+        slotProps={{
+          paper: {
+            sx: {
+              background: 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              maxHeight: '90vh',
+            },
+          }
         }}
       >
         <DialogTitle sx={{ display: 'flex', alignItems: 'center', gap: 1, color: 'white' }}>
@@ -480,7 +482,12 @@ export default function AccessibilityCenter({ open, onClose }: AccessibilityCent
 
           <Grid container spacing={3}>
             {settingCategories.map((category, index) => (
-              <Grid item xs={12} md={6} key={category.title}>
+              <Grid
+                key={category.title}
+                size={{
+                  xs: 12,
+                  md: 6
+                }}>
                 <Card sx={{ 
                   backgroundColor: 'rgba(255, 255, 255, 0.05)',
                   border: '1px solid rgba(255, 255, 255, 0.1)',

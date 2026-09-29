@@ -134,10 +134,17 @@ export default function MovieBingoPage() {
             <Avatar sx={{ bgcolor: 'primary.main', width: 72, height: 72, mx: 'auto', mb: 2 }}>
               <BingoIcon fontSize="large" />
             </Avatar>
-            <Typography variant="h3" fontWeight={700} gutterBottom>
+            <Typography variant="h3" gutterBottom sx={{
+              fontWeight: 700
+            }}>
               Movie Bingo
             </Typography>
-            <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>
+            <Typography
+              variant="h6"
+              sx={{
+                color: "text.secondary",
+                mb: 3
+              }}>
               Track your movie-watching achievements
             </Typography>
             
@@ -162,7 +169,7 @@ export default function MovieBingoPage() {
           <Paper elevation={3} sx={{ p: { xs: 2, md: 4 }, maxWidth: 800, mx: 'auto' }}>
             <Grid container spacing={1}>
               {bingoBoard.map((cell) => (
-                <Grid item xs={12 / 5} key={cell.id}>
+                <Grid key={cell.id} size={12 / 5}>
                   <Card
                     onClick={() => handleCellClick(cell.id)}
                     sx={{
@@ -219,19 +226,38 @@ export default function MovieBingoPage() {
 
           {/* Instructions */}
           <Paper elevation={2} sx={{ p: 3, mt: 4, maxWidth: 800, mx: 'auto' }}>
-            <Typography variant="h6" fontWeight={600} gutterBottom>
+            <Typography variant="h6" gutterBottom sx={{
+              fontWeight: 600
+            }}>
               How to Play
             </Typography>
-            <Typography variant="body2" color="text.secondary" paragraph>
+            <Typography
+              variant="body2"
+              sx={{
+                color: "text.secondary",
+                marginBottom: "16px"
+              }}>
               • Click on squares to mark activities you've completed
             </Typography>
-            <Typography variant="body2" color="text.secondary" paragraph>
+            <Typography
+              variant="body2"
+              sx={{
+                color: "text.secondary",
+                marginBottom: "16px"
+              }}>
               • Get BINGO by completing a full row, column, or diagonal
             </Typography>
-            <Typography variant="body2" color="text.secondary" paragraph>
+            <Typography
+              variant="body2"
+              sx={{
+                color: "text.secondary",
+                marginBottom: "16px"
+              }}>
               • The center square is a FREE SPACE
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               • Generate a new board anytime to keep the challenge fresh!
             </Typography>
           </Paper>
@@ -243,15 +269,24 @@ export default function MovieBingoPage() {
             <Avatar sx={{ bgcolor: 'success.main', width: 80, height: 80, mx: 'auto', mb: 2 }}>
               <TrophyIcon sx={{ fontSize: 50 }} />
             </Avatar>
-            <Typography variant="h4" fontWeight={700}>
+            <Typography variant="h4" sx={{
+              fontWeight: 700
+            }}>
               BINGO! 🎉
             </Typography>
           </DialogTitle>
           <DialogContent sx={{ textAlign: 'center' }}>
-            <Typography variant="h6" color="text.secondary">
+            <Typography variant="h6" sx={{
+              color: "text.secondary"
+            }}>
               Congratulations! You've completed a line!
             </Typography>
-            <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
+            <Typography
+              variant="body2"
+              sx={{
+                color: "text.secondary",
+                mt: 2
+              }}>
               Keep watching and marking off more achievements!
             </Typography>
           </DialogContent>

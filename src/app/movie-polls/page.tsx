@@ -43,7 +43,13 @@ export default function MoviePollsPage() {
                 <FormControlLabel value="dark-knight" control={<Radio />} label="The Dark Knight" />
                 <LinearProgress variant="determinate" value={20} sx={{ mb: 1 }} />
               </RadioGroup>
-              <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 2 }}>
+              <Typography
+                variant="caption"
+                sx={{
+                  color: "text.secondary",
+                  display: 'block',
+                  mt: 2
+                }}>
                 1,234 votes
               </Typography>
             </CardContent>

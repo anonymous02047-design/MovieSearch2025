@@ -279,14 +279,16 @@ export default function MediaViewer({
       maxWidth={false}
       fullWidth
       fullScreen={isFullscreen}
-      PaperProps={{
-        sx: {
-          bgcolor: 'black',
-          color: 'white',
-          m: 0,
-          maxHeight: '100vh',
-          maxWidth: '100vw',
-        },
+      slotProps={{
+        paper: {
+          sx: {
+            bgcolor: 'black',
+            color: 'white',
+            m: 0,
+            maxHeight: '100vh',
+            maxWidth: '100vw',
+          },
+        }
       }}
     >
       <DialogTitle
@@ -673,7 +675,9 @@ export default function MediaViewer({
               </Typography>
               <Stack spacing={1}>
                 <Box>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" sx={{
+                    color: "text.secondary"
+                  }}>
                     Type
                   </Typography>
                   <Typography variant="body1">
@@ -682,7 +686,9 @@ export default function MediaViewer({
                 </Box>
                 {currentMedia.width && currentMedia.height && (
                   <Box>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" sx={{
+                      color: "text.secondary"
+                    }}>
                       Dimensions
                     </Typography>
                     <Typography variant="body1">
@@ -692,7 +698,9 @@ export default function MediaViewer({
                 )}
                 {currentMedia.duration && (
                   <Box>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" sx={{
+                      color: "text.secondary"
+                    }}>
                       Duration
                     </Typography>
                     <Typography variant="body1">
@@ -702,7 +710,9 @@ export default function MediaViewer({
                 )}
                 {currentMedia.file_size && (
                   <Box>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" sx={{
+                      color: "text.secondary"
+                    }}>
                       File Size
                     </Typography>
                     <Typography variant="body1">
@@ -712,7 +722,9 @@ export default function MediaViewer({
                 )}
                 {currentMedia.format && (
                   <Box>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" sx={{
+                      color: "text.secondary"
+                    }}>
                       Format
                     </Typography>
                     <Typography variant="body1">
@@ -722,7 +734,9 @@ export default function MediaViewer({
                 )}
                 {currentMedia.tags && currentMedia.tags.length > 0 && (
                   <Box>
-                    <Typography variant="body2" color="text.secondary" gutterBottom>
+                    <Typography variant="body2" gutterBottom sx={{
+                      color: "text.secondary"
+                    }}>
                       Tags
                     </Typography>
                     <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap' }}>

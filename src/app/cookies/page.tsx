@@ -66,7 +66,13 @@ export default function CookiePolicyPage() {
             }}>
               🍪 Cookie Policy
             </Typography>
-            <Typography variant="h6" color="text.secondary" sx={{ maxWidth: 800, mx: 'auto' }}>
+            <Typography
+              variant="h6"
+              sx={{
+                color: "text.secondary",
+                maxWidth: 800,
+                mx: 'auto'
+              }}>
               This Cookie Policy explains how MovieSearch 2025 uses cookies and similar technologies when you visit our website.
             </Typography>
           </Box>
@@ -77,7 +83,9 @@ export default function CookiePolicyPage() {
               <InfoIcon color="primary" />
               What are Cookies?
             </Typography>
-            <Typography variant="body1" paragraph>
+            <Typography variant="body1" sx={{
+              marginBottom: "16px"
+            }}>
               Cookies are small text files that are placed on your computer or mobile device when you visit a website. 
               They are widely used to make websites work more efficiently and to provide information to website owners.
             </Typography>
@@ -106,7 +114,12 @@ export default function CookiePolicyPage() {
                       size="small"
                     />
                   </Box>
-                  <Typography variant="body2" color="text.secondary" paragraph>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: "text.secondary",
+                      marginBottom: "16px"
+                    }}>
                     {cookie.description}
                   </Typography>
                   <Typography variant="body2" sx={{ fontWeight: 'bold', mb: 1 }}>
@@ -131,7 +144,9 @@ export default function CookiePolicyPage() {
               <SecurityIcon color="primary" />
               Managing Your Cookie Preferences
             </Typography>
-            <Typography variant="body1" paragraph>
+            <Typography variant="body1" sx={{
+              marginBottom: "16px"
+            }}>
               You can control and manage cookies in various ways:
             </Typography>
             <List>
@@ -161,7 +176,9 @@ export default function CookiePolicyPage() {
             <Typography variant="h5" gutterBottom>
               Questions About Our Cookie Policy?
             </Typography>
-            <Typography variant="body1" color="text.secondary">
+            <Typography variant="body1" sx={{
+              color: "text.secondary"
+            }}>
               If you have any questions about our use of cookies, please contact us at{' '}
               <Typography component="span" sx={{ color: 'primary.main', fontWeight: 'bold' }}>
                 naushadnaushad7777@gmail.com
@@ -169,6 +186,6 @@ export default function CookiePolicyPage() {
             </Typography>
           </Paper>
         </Container>
-      </>
+    </>
   );
 }

@@ -192,7 +192,9 @@ export default function ErrorDisplay({
         },
       }}
       action={
-        <Stack direction="row" spacing={1} alignItems="center">
+        <Stack direction="row" spacing={1} sx={{
+          alignItems: "center"
+        }}>
           {canRetry && (
             <Tooltip title="Retry">
               <IconButton
@@ -221,7 +223,7 @@ export default function ErrorDisplay({
       <AlertTitle sx={{ fontWeight: 'bold' }}>
         {getTitle()}
       </AlertTitle>
-      
+
       <Typography variant="body2" sx={{ mb: 1 }}>
         {appError.message}
       </Typography>
@@ -253,7 +255,12 @@ export default function ErrorDisplay({
       {/* Suggestions */}
       {suggestions.length > 0 && (
         <Box sx={{ mb: 2 }}>
-          <Typography variant="body2" fontWeight="bold" sx={{ mb: 1 }}>
+          <Typography
+            variant="body2"
+            sx={{
+              fontWeight: "bold",
+              mb: 1
+            }}>
             Suggestions:
           </Typography>
           <Box component="ul" sx={{ m: 0, pl: 2 }}>

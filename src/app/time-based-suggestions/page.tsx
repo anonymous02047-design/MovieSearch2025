@@ -18,7 +18,12 @@ export default function TimeBasedSuggestionsPage() {
             <ScheduleIcon sx={{ fontSize: 40, color: 'primary.main' }} />
             <Typography variant="h3" sx={{ fontWeight: 'bold' }}>Time-Based Suggestions</Typography>
           </Box>
-          <Typography variant="h6" color="text.secondary" sx={{ mb: 4 }}>
+          <Typography
+            variant="h6"
+            sx={{
+              color: "text.secondary",
+              mb: 4
+            }}>
             Movies that fit your available time
           </Typography>
           <Grid container spacing={3}>
@@ -26,7 +31,9 @@ export default function TimeBasedSuggestionsPage() {
               <Card>
                 <CardContent>
                   <Typography variant="h6">Under 90 Minutes</Typography>
-                  <Typography color="text.secondary">Quick watches</Typography>
+                  <Typography sx={{
+                    color: "text.secondary"
+                  }}>Quick watches</Typography>
                 </CardContent>
               </Card>
             </Grid>
@@ -34,7 +41,9 @@ export default function TimeBasedSuggestionsPage() {
               <Card>
                 <CardContent>
                   <Typography variant="h6">90-120 Minutes</Typography>
-                  <Typography color="text.secondary">Standard length</Typography>
+                  <Typography sx={{
+                    color: "text.secondary"
+                  }}>Standard length</Typography>
                 </CardContent>
               </Card>
             </Grid>
@@ -42,7 +51,9 @@ export default function TimeBasedSuggestionsPage() {
               <Card>
                 <CardContent>
                   <Typography variant="h6">Over 2 Hours</Typography>
-                  <Typography color="text.secondary">Epic features</Typography>
+                  <Typography sx={{
+                    color: "text.secondary"
+                  }}>Epic features</Typography>
                 </CardContent>
               </Card>
             </Grid>

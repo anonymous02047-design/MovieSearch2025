@@ -154,24 +154,42 @@ function TrendingPageContent() {
           <Typography variant="h6" component="h3" gutterBottom noWrap>
             {movie.title}
           </Typography>
-          <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 1 }}>
+          <Stack
+            direction="row"
+            spacing={1}
+            sx={{
+              alignItems: "center",
+              mb: 1
+            }}>
             <Rating
               value={movie.vote_average / 2}
               precision={0.1}
               size="small"
               readOnly
             />
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               {movie.vote_average.toFixed(1)}
             </Typography>
           </Stack>
-          <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 1 }}>
+          <Stack
+            direction="row"
+            spacing={1}
+            sx={{
+              alignItems: "center",
+              mb: 1
+            }}>
             <CalendarIcon fontSize="small" color="action" />
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               {formatDate(movie.release_date)}
             </Typography>
           </Stack>
-          <Typography variant="body2" color="text.secondary" noWrap>
+          <Typography variant="body2" noWrap sx={{
+            color: "text.secondary"
+          }}>
             {movie.overview}
           </Typography>
         </CardContent>
@@ -204,24 +222,42 @@ function TrendingPageContent() {
           <Typography variant="h6" component="h3" gutterBottom noWrap>
             {show.name}
           </Typography>
-          <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 1 }}>
+          <Stack
+            direction="row"
+            spacing={1}
+            sx={{
+              alignItems: "center",
+              mb: 1
+            }}>
             <Rating
               value={show.vote_average / 2}
               precision={0.1}
               size="small"
               readOnly
             />
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               {show.vote_average.toFixed(1)}
             </Typography>
           </Stack>
-          <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 1 }}>
+          <Stack
+            direction="row"
+            spacing={1}
+            sx={{
+              alignItems: "center",
+              mb: 1
+            }}>
             <CalendarIcon fontSize="small" color="action" />
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               {formatDate(show.first_air_date)}
             </Typography>
           </Stack>
-          <Typography variant="body2" color="text.secondary" noWrap>
+          <Typography variant="body2" noWrap sx={{
+            color: "text.secondary"
+          }}>
             {show.overview}
           </Typography>
         </CardContent>
@@ -260,7 +296,9 @@ function TrendingPageContent() {
             color="primary"
             sx={{ mb: 1 }}
           />
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" sx={{
+            color: "text.secondary"
+          }}>
             Known for: {person.known_for?.map((item: Movie) => item.title || item.name).join(', ')}
           </Typography>
         </CardContent>
@@ -282,7 +320,13 @@ function TrendingPageContent() {
   if (loading) {
     return (
       <Container maxWidth="lg" sx={{ py: 4 }}>
-        <Box display="flex" justifyContent="center" alignItems="center" minHeight="400px">
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            minHeight: "400px"
+          }}>
           <CircularProgress />
         </Box>
       </Container>
@@ -308,7 +352,13 @@ function TrendingPageContent() {
       <Container maxWidth="lg" sx={{ py: 4 }}>
       {/* Header */}
       <Box sx={{ mb: 4 }}>
-        <Stack direction="row" alignItems="center" spacing={2} sx={{ mb: 2 }}>
+        <Stack
+          direction="row"
+          spacing={2}
+          sx={{
+            alignItems: "center",
+            mb: 2
+          }}>
           <TrendingUpIcon sx={{ fontSize: 40, color: 'primary.main' }} />
           <Typography variant="body1" component="p" sx={{
             fontSize: '14px',
@@ -318,7 +368,12 @@ function TrendingPageContent() {
             Trending
           </Typography>
         </Stack>
-        <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>
+        <Typography
+          variant="h6"
+          sx={{
+            color: "text.secondary",
+            mb: 3
+          }}>
           Discover what's popular right now in movies, TV shows, and people
         </Typography>
 
@@ -369,7 +424,12 @@ function TrendingPageContent() {
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <Box display="flex" justifyContent="center" sx={{ mt: 4 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            mt: 4
+          }}>
           <Pagination
             count={totalPages}
             page={currentPage}

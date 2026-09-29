@@ -67,7 +67,13 @@ export default function SecurityPolicyPage() {
             }}>
               🔐 Security Policy
             </Typography>
-            <Typography variant="h6" color="text.secondary" sx={{ maxWidth: 800, mx: 'auto' }}>
+            <Typography
+              variant="h6"
+              sx={{
+                color: "text.secondary",
+                maxWidth: 800,
+                mx: 'auto'
+              }}>
               Your security is our priority. Learn about our comprehensive security measures and protocols.
             </Typography>
           </Box>
@@ -77,7 +83,9 @@ export default function SecurityPolicyPage() {
             <Typography variant="h4" component="h2" gutterBottom>
               Our Security Commitment
             </Typography>
-            <Typography variant="body1" paragraph>
+            <Typography variant="body1" sx={{
+              marginBottom: "16px"
+            }}>
               At MovieSearch 2025, we implement multiple layers of security to protect your data and ensure 
               a safe browsing experience. Our security measures are designed to meet industry standards and 
               protect against various types of threats.
@@ -122,7 +130,12 @@ export default function SecurityPolicyPage() {
             <Typography variant="h5" gutterBottom>
               Report Security Issues
             </Typography>
-            <Typography variant="body1" color="text.secondary" paragraph>
+            <Typography
+              variant="body1"
+              sx={{
+                color: "text.secondary",
+                marginBottom: "16px"
+              }}>
               If you discover a security vulnerability or have concerns about our security practices, 
               please contact us immediately:
             </Typography>
@@ -136,6 +149,6 @@ export default function SecurityPolicyPage() {
             </Box>
           </Paper>
         </Container>
-      </>
+    </>
   );
 }

@@ -76,7 +76,9 @@ export default function PopularByCountrySection() {
     >
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 3, flexWrap: 'wrap' }}>
         <GlobalIcon sx={{ color: 'success.main', fontSize: 32 }} />
-        <Typography variant="h5" fontWeight={700}>
+        <Typography variant="h5" sx={{
+          fontWeight: 700
+        }}>
           Popular in {countryData.country}
         </Typography>
         <Chip
@@ -96,7 +98,9 @@ export default function PopularByCountrySection() {
         <Box>
           {movies.length > 0 && (
             <Box sx={{ mb: 4 }}>
-              <Typography variant="h6" gutterBottom fontWeight={600}>
+              <Typography variant="h6" gutterBottom sx={{
+                fontWeight: 600
+              }}>
                 Movies
               </Typography>
               <ResponsiveGrid columns={{ xs: 1, sm: 2, md: 3, lg: 4 }} spacing={3}>
@@ -109,7 +113,9 @@ export default function PopularByCountrySection() {
 
           {tvShows.length > 0 && (
             <Box>
-              <Typography variant="h6" gutterBottom fontWeight={600}>
+              <Typography variant="h6" gutterBottom sx={{
+                fontWeight: 600
+              }}>
                 TV Shows
               </Typography>
               <ResponsiveGrid columns={{ xs: 1, sm: 2, md: 3, lg: 4 }} spacing={3}>

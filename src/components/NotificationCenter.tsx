@@ -123,19 +123,23 @@ export default function NotificationCenter() {
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}
         onClose={handleClose}
-        PaperProps={{
-          sx: {
-            width: 360,
-            maxHeight: 480,
-            background: theme.palette.mode === 'dark'
-              ? 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)'
-              : 'linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%)',
-            border: `1px solid ${alpha(theme.palette.divider, 0.1)}`,
+        slotProps={{
+          paper: {
+            sx: {
+              width: 360,
+              maxHeight: 480,
+              background: theme.palette.mode === 'dark'
+                ? 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)'
+                : 'linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%)',
+              border: `1px solid ${alpha(theme.palette.divider, 0.1)}`,
+            }
           }
         }}
       >
         <Box sx={{ px: 2, py: 1.5, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Typography variant="h6" fontWeight={600}>
+          <Typography variant="h6" sx={{
+            fontWeight: 600
+          }}>
             Notifications
           </Typography>
           {notifications.length > 0 && (
@@ -153,7 +157,9 @@ export default function NotificationCenter() {
         {notifications.length === 0 ? (
           <Box sx={{ py: 4, textAlign: 'center' }}>
             <NotificationsIcon sx={{ fontSize: 48, color: 'text.secondary', opacity: 0.5, mb: 2 }} />
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               No notifications
             </Typography>
           </Box>
@@ -176,16 +182,22 @@ export default function NotificationCenter() {
                   </ListItemAvatar>
                   <ListItemText
                     primary={
-                      <Typography variant="subtitle2" fontWeight={600}>
+                      <Typography variant="subtitle2" sx={{
+                        fontWeight: 600
+                      }}>
                         {notification.title}
                       </Typography>
                     }
                     secondary={
                       <>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body2" sx={{
+                          color: "text.secondary"
+                        }}>
                           {notification.message}
                         </Typography>
-                        <Typography variant="caption" color="text.secondary">
+                        <Typography variant="caption" sx={{
+                          color: "text.secondary"
+                        }}>
                           {formatTime(notification.timestamp)}
                         </Typography>
                       </>

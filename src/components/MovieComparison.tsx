@@ -65,7 +65,12 @@ export default function MovieComparison({ open, onClose, initialMovies = [] }: M
   return (
     <Dialog open={open} onClose={onClose} maxWidth="xl" fullWidth>
       <DialogTitle>
-        <Box display="flex" justifyContent="space-between" alignItems="center">
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center"
+          }}>
           <Typography variant="h5">Compare Movies</Typography>
           <IconButton onClick={onClose} size="small">
             <CloseIcon />
@@ -81,12 +86,20 @@ export default function MovieComparison({ open, onClose, initialMovies = [] }: M
         ) : (
           <Grid container spacing={2}>
             {/* Movie Cards */}
-            <Grid item xs={12}>
+            <Grid size={12}>
               <Grid container spacing={2}>
                 {selectedMovies.map((movie) => (
-                  <Grid item xs={12} sm={6} md={3} key={movie.id}>
+                  <Grid
+                    key={movie.id}
+                    size={{
+                      xs: 12,
+                      sm: 6,
+                      md: 3
+                    }}>
                     <Card>
-                      <Box position="relative">
+                      <Box sx={{
+                        position: "relative"
+                      }}>
                         <CardMedia
                           component="img"
                           height="300"
@@ -110,7 +123,13 @@ export default function MovieComparison({ open, onClose, initialMovies = [] }: M
                       </Box>
                       <CardContent>
                         <Typography variant="h6" noWrap>{movie.title}</Typography>
-                        <Box display="flex" alignItems="center" gap={1} mt={1}>
+                        <Box
+                          sx={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 1,
+                            mt: 1
+                          }}>
                           <StarIcon sx={{ color: 'gold', fontSize: 20 }} />
                           <Typography variant="body2">
                             {movie.vote_average.toFixed(1)}
@@ -123,7 +142,12 @@ export default function MovieComparison({ open, onClose, initialMovies = [] }: M
                 
                 {/* Add Movie Card */}
                 {selectedMovies.length < maxMovies && (
-                  <Grid item xs={12} sm={6} md={3}>
+                  <Grid
+                    size={{
+                      xs: 12,
+                      sm: 6,
+                      md: 3
+                    }}>
                     <Card
                       sx={{
                         height: '100%',
@@ -137,12 +161,20 @@ export default function MovieComparison({ open, onClose, initialMovies = [] }: M
                         '&:hover': { bgcolor: 'action.hover' },
                       }}
                     >
-                      <Box textAlign="center" p={2}>
+                      <Box
+                        sx={{
+                          textAlign: "center",
+                          p: 2
+                        }}>
                         <AddIcon sx={{ fontSize: 64, color: 'primary.main' }} />
-                        <Typography variant="body1" mt={2}>
+                        <Typography variant="body1" sx={{
+                          mt: 2
+                        }}>
                           Add Movie to Compare
                         </Typography>
-                        <Typography variant="caption" color="text.secondary">
+                        <Typography variant="caption" sx={{
+                          color: "text.secondary"
+                        }}>
                           ({maxMovies - selectedMovies.length} remaining)
                         </Typography>
                       </Box>
@@ -154,7 +186,9 @@ export default function MovieComparison({ open, onClose, initialMovies = [] }: M
 
             {/* Comparison Table */}
             {selectedMovies.length >= 2 && (
-              <Grid item xs={12} mt={2}>
+              <Grid size={12} sx={{
+                mt: 2
+              }}>
                 <Typography variant="h6" gutterBottom>
                   Side-by-Side Comparison
                 </Typography>
@@ -176,12 +210,22 @@ export default function MovieComparison({ open, onClose, initialMovies = [] }: M
                 </Table>
 
                 {/* Winner Analysis */}
-                <Box mt={3} p={2} bgcolor="success.light" borderRadius={2}>
+                <Box
+                  sx={{
+                    mt: 3,
+                    p: 2,
+                    bgcolor: "success.light",
+                    borderRadius: 2
+                  }}>
                   <Typography variant="h6" gutterBottom>
                     Quick Analysis
                   </Typography>
                   <Grid container spacing={2}>
-                    <Grid item xs={12} sm={4}>
+                    <Grid
+                      size={{
+                        xs: 12,
+                        sm: 4
+                      }}>
                       <Typography variant="subtitle2">Highest Rated:</Typography>
                       <Typography variant="body1">
                         {selectedMovies.reduce((prev, curr) => 
@@ -189,7 +233,11 @@ export default function MovieComparison({ open, onClose, initialMovies = [] }: M
                         ).title}
                       </Typography>
                     </Grid>
-                    <Grid item xs={12} sm={4}>
+                    <Grid
+                      size={{
+                        xs: 12,
+                        sm: 4
+                      }}>
                       <Typography variant="subtitle2">Most Popular:</Typography>
                       <Typography variant="body1">
                         {selectedMovies.reduce((prev, curr) => 
@@ -197,7 +245,11 @@ export default function MovieComparison({ open, onClose, initialMovies = [] }: M
                         ).title}
                       </Typography>
                     </Grid>
-                    <Grid item xs={12} sm={4}>
+                    <Grid
+                      size={{
+                        xs: 12,
+                        sm: 4
+                      }}>
                       <Typography variant="subtitle2">Most Recent:</Typography>
                       <Typography variant="body1">
                         {selectedMovies.reduce((prev, curr) => 

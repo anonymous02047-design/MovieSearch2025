@@ -101,11 +101,18 @@ export default function QuickListsPage() {
                         </IconButton>
                       </Box>
                       {list.description && (
-                        <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                        <Typography
+                          variant="body2"
+                          sx={{
+                            color: "text.secondary",
+                            mb: 2
+                          }}>
                           {list.description}
                         </Typography>
                       )}
-                      <Typography variant="caption" color="text.secondary">
+                      <Typography variant="caption" sx={{
+                        color: "text.secondary"
+                      }}>
                         {list.movies?.length || 0} movies
                       </Typography>
                     </CardContent>
@@ -114,7 +121,13 @@ export default function QuickListsPage() {
               ))}
             </Grid>
           ) : (
-            <Typography variant="body1" color="text.secondary" sx={{ textAlign: 'center', py: 4 }}>
+            <Typography
+              variant="body1"
+              sx={{
+                color: "text.secondary",
+                textAlign: 'center',
+                py: 4
+              }}>
               No lists yet. Create your first list!
             </Typography>
           )}

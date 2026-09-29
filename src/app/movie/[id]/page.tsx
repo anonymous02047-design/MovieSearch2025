@@ -435,7 +435,9 @@ export default function MovieDetailsPage() {
                   <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 2 }}>
                     {movie.status && (
                       <Box>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body2" sx={{
+                          color: "text.secondary"
+                        }}>
                           Status
                         </Typography>
                         <Typography variant="body1">
@@ -446,7 +448,9 @@ export default function MovieDetailsPage() {
                     
                     {movie.original_language && (
                       <Box>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body2" sx={{
+                          color: "text.secondary"
+                        }}>
                           Language
                         </Typography>
                         <Typography variant="body1">
@@ -457,7 +461,9 @@ export default function MovieDetailsPage() {
                     
                     {movie.budget > 0 && (
                       <Box>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body2" sx={{
+                          color: "text.secondary"
+                        }}>
                           Budget
                         </Typography>
                         <Typography variant="body1">
@@ -468,7 +474,9 @@ export default function MovieDetailsPage() {
                     
                     {movie.revenue > 0 && (
                       <Box>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body2" sx={{
+                          color: "text.secondary"
+                        }}>
                           Revenue
                         </Typography>
                         <Typography variant="body1">
@@ -484,7 +492,9 @@ export default function MovieDetailsPage() {
                     <Typography variant="h6" gutterBottom>
                       Production Companies
                     </Typography>
-                    <Stack direction="row" spacing={1} flexWrap="wrap">
+                    <Stack direction="row" spacing={1} sx={{
+                      flexWrap: "wrap"
+                    }}>
                       {movie.production_companies && movie.production_companies.map((company, index) => (
                         <Chip
                           key={index}
@@ -562,7 +572,9 @@ export default function MovieDetailsPage() {
             </Typography>
             
             {reviews.length === 0 ? (
-              <Typography color="text.secondary">
+              <Typography sx={{
+                color: "text.secondary"
+              }}>
                 No reviews available for this movie.
               </Typography>
             ) : (
@@ -573,7 +585,9 @@ export default function MovieDetailsPage() {
                       <Typography variant="h6">
                         {review.author}
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         {formatDate(review.created_at)}
                       </Typography>
                     </Box>
@@ -592,7 +606,9 @@ export default function MovieDetailsPage() {
             </Typography>
             
             {videos.length === 0 ? (
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" sx={{
+                color: "text.secondary"
+              }}>
                 No videos available for this movie.
               </Typography>
             ) : (
@@ -660,7 +676,9 @@ export default function MovieDetailsPage() {
             </Typography>
             
             {!images || (images.backdrops.length === 0 && images.posters.length === 0) ? (
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" sx={{
+                color: "text.secondary"
+              }}>
                 No photos available for this movie.
               </Typography>
             ) : (
@@ -732,7 +750,9 @@ export default function MovieDetailsPage() {
                       <Typography variant="subtitle2" noWrap>
                         {similarMovie.title}
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         {similarMovie.release_date && formatDate(similarMovie.release_date)}
                       </Typography>
                     </CardContent>
@@ -752,10 +772,12 @@ export default function MovieDetailsPage() {
           }}
           maxWidth="md"
           fullWidth
-          PaperProps={{
-            sx: {
-              background: 'black',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
+          slotProps={{
+            paper: {
+              sx: {
+                background: 'black',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+              }
             }
           }}
         >

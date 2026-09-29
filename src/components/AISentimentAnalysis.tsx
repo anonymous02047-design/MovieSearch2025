@@ -147,10 +147,14 @@ export default function AISentimentAnalysis({
               {/* Confidence Score */}
               <Box>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" sx={{
+                    color: "text.secondary"
+                  }}>
                     Confidence Score
                   </Typography>
-                  <Typography variant="body2" fontWeight="bold">
+                  <Typography variant="body2" sx={{
+                    fontWeight: "bold"
+                  }}>
                     {(result.score * 100).toFixed(1)}%
                   </Typography>
                 </Box>
@@ -167,7 +171,9 @@ export default function AISentimentAnalysis({
                 <Typography variant="subtitle2" gutterBottom>
                   AI Summary
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" sx={{
+                  color: "text.secondary"
+                }}>
                   {result.summary}
                 </Typography>
               </Box>

@@ -35,7 +35,13 @@ export default function AppLoading({
         }}
       >
         {showLogo && (
-          <Stack direction="row" spacing={2} justifyContent="center" sx={{ mb: 3 }}>
+          <Stack
+            direction="row"
+            spacing={2}
+            sx={{
+              justifyContent: "center",
+              mb: 3
+            }}>
             <MovieIcon sx={{ fontSize: 48 }} />
             <StarIcon sx={{ fontSize: 48 }} />
           </Stack>

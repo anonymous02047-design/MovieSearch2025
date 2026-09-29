@@ -149,7 +149,13 @@ function BlogPageContent() {
     const formattedDate = formatDate(attrs.publishedDate);
 
     return (
-      <Grid item xs={12} md={6} lg={4} key={post.id}>
+      <Grid
+        key={post.id}
+        size={{
+          xs: 12,
+          md: 6,
+          lg: 4
+        }}>
         <Card 
           sx={{ 
             height: '100%', 
@@ -172,7 +178,13 @@ function BlogPageContent() {
             />
           )}
           <CardContent sx={{ flexGrow: 1 }}>
-            <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 2 }}>
+            <Stack
+              direction="row"
+              spacing={1}
+              sx={{
+                alignItems: "center",
+                mb: 2
+              }}>
               <Chip
                 label={attrs.category || 'Uncategorized'}
                 size="small"
@@ -196,47 +208,70 @@ function BlogPageContent() {
               {attrs.title}
             </Typography>
 
-            <Typography 
-              variant="body2" 
-              color="text.secondary" 
-              sx={{ 
+            <Typography
+              variant="body2"
+              sx={{
+                color: "text.secondary",
                 mb: 2,
                 overflow: 'hidden',
                 textOverflow: 'ellipsis',
                 display: '-webkit-box',
                 WebkitLineClamp: 3,
-                WebkitBoxOrient: 'vertical',
-              }}
-            >
+                WebkitBoxOrient: 'vertical'
+              }}>
               {attrs.excerpt || 'No excerpt available'}
             </Typography>
 
-            <Stack direction="row" spacing={2} alignItems="center" sx={{ mb: 2 }}>
-              <Stack direction="row" spacing={0.5} alignItems="center">
+            <Stack
+              direction="row"
+              spacing={2}
+              sx={{
+                alignItems: "center",
+                mb: 2
+              }}>
+              <Stack direction="row" spacing={0.5} sx={{
+                alignItems: "center"
+              }}>
                 <PersonIcon fontSize="small" color="action" />
-                <Typography variant="caption" color="text.secondary">
+                <Typography variant="caption" sx={{
+                  color: "text.secondary"
+                }}>
                   {attrs.author || 'Anonymous'}
                 </Typography>
               </Stack>
-              <Stack direction="row" spacing={0.5} alignItems="center">
+              <Stack direction="row" spacing={0.5} sx={{
+                alignItems: "center"
+              }}>
                 <CalendarIcon fontSize="small" color="action" />
-                <Typography variant="caption" color="text.secondary">
+                <Typography variant="caption" sx={{
+                  color: "text.secondary"
+                }}>
                   {formattedDate}
                 </Typography>
               </Stack>
             </Stack>
 
             {attrs.readingTime && (
-              <Stack direction="row" spacing={0.5} alignItems="center" sx={{ mb: 2 }}>
+              <Stack
+                direction="row"
+                spacing={0.5}
+                sx={{
+                  alignItems: "center",
+                  mb: 2
+                }}>
                 <AccessTimeIcon fontSize="small" color="action" />
-                <Typography variant="caption" color="text.secondary">
+                <Typography variant="caption" sx={{
+                  color: "text.secondary"
+                }}>
                   {attrs.readingTime} min read
                 </Typography>
               </Stack>
             )}
 
             {tags.length > 0 && (
-              <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
+              <Stack direction="row" spacing={1} useFlexGap sx={{
+                flexWrap: "wrap"
+              }}>
                 {tags.slice(0, 3).map((tag) => (
                   <Chip
                     key={tag}
@@ -281,9 +316,19 @@ function BlogPageContent() {
           keywords={['movie blog', 'film reviews', 'cinema news', 'movie insights']}
         />
         <Container maxWidth="lg" sx={{ py: 4 }}>
-          <Box display="flex" justifyContent="center" alignItems="center" minHeight="400px" flexDirection="column" gap={2}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              minHeight: "400px",
+              flexDirection: "column",
+              gap: 2
+            }}>
             <CircularProgress size={60} />
-            <Typography variant="h6" color="text.secondary">
+            <Typography variant="h6" sx={{
+              color: "text.secondary"
+            }}>
               Loading blog posts...
             </Typography>
           </Box>
@@ -302,13 +347,26 @@ function BlogPageContent() {
       <Container maxWidth="lg" sx={{ py: 4 }}>
         {/* Header */}
         <Box sx={{ mb: 4 }}>
-          <Stack direction="row" alignItems="center" spacing={2} sx={{ mb: 2 }}>
+          <Stack
+            direction="row"
+            spacing={2}
+            sx={{
+              alignItems: "center",
+              mb: 2
+            }}>
             <BlogIcon sx={{ fontSize: 40, color: 'primary.main' }} />
-            <Typography variant="h3" component="h1" fontWeight={700}>
+            <Typography variant="h3" component="h1" sx={{
+              fontWeight: 700
+            }}>
               Movie Blog
             </Typography>
           </Stack>
-          <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>
+          <Typography
+            variant="h6"
+            sx={{
+              color: "text.secondary",
+              mb: 3
+            }}>
             Discover insights, reviews, and behind-the-scenes stories from the world of cinema
           </Typography>
 
@@ -337,12 +395,14 @@ function BlogPageContent() {
                 placeholder="Search blog posts..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <SearchIcon />
-                    </InputAdornment>
-                  ),
+                slotProps={{
+                  input: {
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <SearchIcon />
+                      </InputAdornment>
+                    ),
+                  }
                 }}
               />
             </form>
@@ -382,7 +442,9 @@ function BlogPageContent() {
 
           {/* Results Count */}
           {totalResults > 0 && (
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               Showing {posts.length} of {totalResults} post{totalResults !== 1 ? 's' : ''}
             </Typography>
           )}
@@ -395,7 +457,12 @@ function BlogPageContent() {
             <Alert severity="warning" sx={{ mb: 2 }}>
               {error}
             </Alert>
-            <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
+            <Typography
+              variant="body1"
+              sx={{
+                color: "text.secondary",
+                mb: 3
+              }}>
               Please check your Strapi CMS setup:
             </Typography>
             <Stack spacing={1} sx={{ textAlign: 'left', maxWidth: 600, mx: 'auto' }}>
@@ -432,7 +499,12 @@ function BlogPageContent() {
 
             {/* Pagination */}
             {totalPages > 1 && (
-              <Box display="flex" justifyContent="center" sx={{ mt: 4 }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  mt: 4
+                }}>
                 <Pagination
                   count={totalPages}
                   page={currentPage}
@@ -447,12 +519,23 @@ function BlogPageContent() {
 
         {/* No Results */}
         {posts.length === 0 && !error && !loading && (
-          <Box textAlign="center" sx={{ py: 8 }}>
+          <Box
+            sx={{
+              textAlign: "center",
+              py: 8
+            }}>
             <BlogIcon sx={{ fontSize: 80, color: 'text.secondary', opacity: 0.3, mb: 2 }} />
-            <Typography variant="h5" color="text.secondary" gutterBottom>
+            <Typography variant="h5" gutterBottom sx={{
+              color: "text.secondary"
+            }}>
               No blog posts found
             </Typography>
-            <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
+            <Typography
+              variant="body2"
+              sx={{
+                color: "text.secondary",
+                mb: 3
+              }}>
               {searchQuery
                 ? 'Try a different search query'
                 : categoryFilter !== 'all'
@@ -477,28 +560,48 @@ function BlogPageContent() {
         {/* Stats (only show if posts exist) */}
         {posts.length > 0 && (
           <Box sx={{ mt: 4, p: 3, bgcolor: 'background.paper', borderRadius: 2 }}>
-            <Stack direction="row" spacing={4} justifyContent="center">
-              <Box textAlign="center">
-                <Typography variant="h4" color="primary.main">
+            <Stack direction="row" spacing={4} sx={{
+              justifyContent: "center"
+            }}>
+              <Box sx={{
+                textAlign: "center"
+              }}>
+                <Typography variant="h4" sx={{
+                  color: "primary.main"
+                }}>
                   {totalResults}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" sx={{
+                  color: "text.secondary"
+                }}>
                   Total Posts
                 </Typography>
               </Box>
-              <Box textAlign="center">
-                <Typography variant="h4" color="secondary.main">
+              <Box sx={{
+                textAlign: "center"
+              }}>
+                <Typography variant="h4" sx={{
+                  color: "secondary.main"
+                }}>
                   {categories.length}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" sx={{
+                  color: "text.secondary"
+                }}>
                   Categories
                 </Typography>
               </Box>
-              <Box textAlign="center">
-                <Typography variant="h4" color="success.main">
+              <Box sx={{
+                textAlign: "center"
+              }}>
+                <Typography variant="h4" sx={{
+                  color: "success.main"
+                }}>
                   {posts.filter(p => p.attributes.featuredImage).length}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" sx={{
+                  color: "text.secondary"
+                }}>
                   With Images
                 </Typography>
               </Box>

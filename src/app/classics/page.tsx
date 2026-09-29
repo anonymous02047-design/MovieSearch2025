@@ -286,7 +286,13 @@ function ClassicsPageContent() {
   if (loading) {
     return (
       <Container maxWidth="lg" sx={{ py: 4 }}>
-        <Box display="flex" justifyContent="center" alignItems="center" minHeight="400px">
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            minHeight: "400px"
+          }}>
           <CircularProgress />
         </Box>
       </Container>
@@ -311,13 +317,24 @@ function ClassicsPageContent() {
       <Container maxWidth="lg" sx={{ py: 4 }}>
       {/* Header */}
       <Box sx={{ mb: 4 }}>
-        <Stack direction="row" alignItems="center" spacing={2} sx={{ mb: 2 }}>
+        <Stack
+          direction="row"
+          spacing={2}
+          sx={{
+            alignItems: "center",
+            mb: 2
+          }}>
           <ClassicIcon sx={{ fontSize: 40, color: 'primary.main' }} />
           <Typography variant="h3" component="h1">
             Classic Films
           </Typography>
         </Stack>
-        <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>
+        <Typography
+          variant="h6"
+          sx={{
+            color: "text.secondary",
+            mb: 3
+          }}>
           Explore the timeless masterpieces that defined cinema and continue to inspire filmmakers today
         </Typography>
 
@@ -328,12 +345,14 @@ function ClassicsPageContent() {
             placeholder="Search classic films..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <SearchIcon />
-                </InputAdornment>
-              ),
+            slotProps={{
+              input: {
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon />
+                  </InputAdornment>
+                ),
+              }
             }}
           />
           <FormControl sx={{ minWidth: 150 }}>
@@ -371,7 +390,13 @@ function ClassicsPageContent() {
       {/* Films Grid */}
       <Grid container spacing={3}>
         {filteredFilms.map((film) => (
-          <Grid item xs={12} sm={6} md={4} key={film.id}>
+          <Grid
+            key={film.id}
+            size={{
+              xs: 12,
+              sm: 6,
+              md: 4
+            }}>
             <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
               <CardMedia
                 component="img"
@@ -385,36 +410,67 @@ function ClassicsPageContent() {
                   {film.title}
                 </Typography>
                 
-                <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 1 }}>
+                <Stack
+                  direction="row"
+                  spacing={1}
+                  sx={{
+                    alignItems: "center",
+                    mb: 1
+                  }}>
                   <Rating
                     value={film.vote_average / 2}
                     precision={0.1}
                     size="small"
                     readOnly
                   />
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" sx={{
+                    color: "text.secondary"
+                  }}>
                     {film.vote_average.toFixed(1)}
                   </Typography>
                 </Stack>
 
-                <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 2 }}>
+                <Stack
+                  direction="row"
+                  spacing={1}
+                  sx={{
+                    alignItems: "center",
+                    mb: 2
+                  }}>
                   <CalendarIcon fontSize="small" color="action" />
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" sx={{
+                    color: "text.secondary"
+                  }}>
                     {new Date(film.release_date).getFullYear()}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" sx={{
+                    color: "text.secondary"
+                  }}>
                     • {film.runtime} min
                   </Typography>
                 </Stack>
 
-                <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 2 }}>
+                <Stack
+                  direction="row"
+                  spacing={1}
+                  sx={{
+                    alignItems: "center",
+                    mb: 2
+                  }}>
                   <TheaterIcon fontSize="small" color="action" />
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" sx={{
+                    color: "text.secondary"
+                  }}>
                     {film.studio}
                   </Typography>
                 </Stack>
 
-                <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    color: "text.secondary",
+                    mb: 2
+                  }}>
                   {film.overview}
                 </Typography>
 
@@ -428,7 +484,14 @@ function ClassicsPageContent() {
                   </Typography>
                 </Box>
 
-                <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap sx={{ mb: 2 }}>
+                <Stack
+                  direction="row"
+                  spacing={1}
+                  useFlexGap
+                  sx={{
+                    flexWrap: "wrap",
+                    mb: 2
+                  }}>
                   {film.genres.slice(0, 3).map((genre) => (
                     <Chip
                       key={genre}
@@ -439,7 +502,13 @@ function ClassicsPageContent() {
                   ))}
                 </Stack>
 
-                <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 2 }}>
+                <Stack
+                  direction="row"
+                  spacing={1}
+                  sx={{
+                    alignItems: "center",
+                    mb: 2
+                  }}>
                   <Chip
                     label={film.restoration_status}
                     size="small"
@@ -447,7 +516,9 @@ function ClassicsPageContent() {
                     variant="outlined"
                   />
                   <AwardIcon fontSize="small" color="action" />
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" sx={{
+                    color: "text.secondary"
+                  }}>
                     {film.awards.length} awards
                   </Typography>
                 </Stack>
@@ -456,7 +527,9 @@ function ClassicsPageContent() {
                   <Typography variant="subtitle2" gutterBottom>
                     Available on:
                   </Typography>
-                  <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
+                  <Stack direction="row" spacing={1} useFlexGap sx={{
+                    flexWrap: "wrap"
+                  }}>
                     {film.availability.slice(0, 2).map((platform) => (
                       <Chip
                         key={platform}
@@ -493,7 +566,12 @@ function ClassicsPageContent() {
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <Box display="flex" justifyContent="center" sx={{ mt: 4 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            mt: 4
+          }}>
           <Pagination
             count={totalPages}
             page={currentPage}
@@ -506,8 +584,14 @@ function ClassicsPageContent() {
 
       {/* No Results */}
       {filteredFilms.length === 0 && (searchQuery || decadeFilter !== 'all') && (
-        <Box textAlign="center" sx={{ py: 4 }}>
-          <Typography variant="h6" color="text.secondary">
+        <Box
+          sx={{
+            textAlign: "center",
+            py: 4
+          }}>
+          <Typography variant="h6" sx={{
+            color: "text.secondary"
+          }}>
             No classic films found matching your criteria
           </Typography>
         </Box>
@@ -515,35 +599,55 @@ function ClassicsPageContent() {
 
       {/* Stats */}
       <Box sx={{ mt: 4, p: 3, bgcolor: 'background.paper', borderRadius: 2 }}>
-        <Stack direction="row" spacing={4} justifyContent="center">
-          <Box textAlign="center">
-            <Typography variant="h4" color="primary.main">
+        <Stack direction="row" spacing={4} sx={{
+          justifyContent: "center"
+        }}>
+          <Box sx={{
+            textAlign: "center"
+          }}>
+            <Typography variant="h4" sx={{
+              color: "primary.main"
+            }}>
               {filteredFilms.length}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               Classic Films
             </Typography>
           </Box>
-          <Box textAlign="center">
-            <Typography variant="h4" color="secondary.main">
+          <Box sx={{
+            textAlign: "center"
+          }}>
+            <Typography variant="h4" sx={{
+              color: "secondary.main"
+            }}>
               {new Set(filteredFilms.map(f => f.studio)).size}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               Studios
             </Typography>
           </Box>
-          <Box textAlign="center">
-            <Typography variant="h4" color="success.main">
+          <Box sx={{
+            textAlign: "center"
+          }}>
+            <Typography variant="h4" sx={{
+              color: "success.main"
+            }}>
               {filteredFilms.reduce((sum, f) => sum + f.awards.length, 0)}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               Total Awards
             </Typography>
           </Box>
         </Stack>
       </Box>
         </Container>
-      </>
+    </>
   );
 }
 

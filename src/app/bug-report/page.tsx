@@ -208,7 +208,14 @@ Reporter Email: ${formData.email || 'Not provided'}
       <Container maxWidth="lg" sx={{ py: 4 }}>
           {/* Header */}
           <Box sx={{ mb: 4, textAlign: 'center' }}>
-            <Stack direction="row" alignItems="center" justifyContent="center" spacing={2} sx={{ mb: 2 }}>
+            <Stack
+              direction="row"
+              spacing={2}
+              sx={{
+                alignItems: "center",
+                justifyContent: "center",
+                mb: 2
+              }}>
               <BugReportIcon sx={{ fontSize: 40, color: 'primary.main' }} />
               <Typography variant="body1" component="p" sx={{
                 fontWeight: 'bold',
@@ -218,7 +225,12 @@ Reporter Email: ${formData.email || 'Not provided'}
                 🐛 Bug Report
               </Typography>
             </Stack>
-            <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>
+            <Typography
+              variant="h6"
+              sx={{
+                color: "text.secondary",
+                mb: 3
+              }}>
               Help us improve MovieSearch 2025 by reporting bugs and issues
             </Typography>
           </Box>
@@ -257,7 +269,9 @@ Reporter Email: ${formData.email || 'Not provided'}
                         >
                           {severityOptions.map((option) => (
                             <MenuItem key={option.value} value={option.value}>
-                              <Stack direction="row" alignItems="center" spacing={1}>
+                              <Stack direction="row" spacing={1} sx={{
+                                alignItems: "center"
+                              }}>
                                 {getSeverityIcon(option.value)}
                                 <Typography variant="body2">{option.label}</Typography>
                               </Stack>
@@ -472,19 +486,29 @@ Reporter Email: ${formData.email || 'Not provided'}
                       📋 Reporting Guidelines
                     </Typography>
                     <Stack spacing={2}>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         • Be specific and detailed in your description
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         • Include exact steps to reproduce the issue
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         • Mention your browser and device type
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         • Include screenshots if possible
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         • Check if the issue occurs in other browsers
                       </Typography>
                     </Stack>
@@ -497,16 +521,24 @@ Reporter Email: ${formData.email || 'Not provided'}
                       ⚡ Quick Tips
                     </Typography>
                     <Stack spacing={2}>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         • Try refreshing the page first
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         • Clear your browser cache
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         • Check if you're using the latest browser version
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         • Try disabling browser extensions
                       </Typography>
                     </Stack>
@@ -519,13 +551,19 @@ Reporter Email: ${formData.email || 'Not provided'}
                       📞 Need Help?
                     </Typography>
                     <Stack spacing={2}>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{
+                        color: "text.secondary"
+                      }}>
                         For urgent issues, contact us directly:
                       </Typography>
-                      <Typography variant="body2" color="primary.main">
+                      <Typography variant="body2" sx={{
+                        color: "primary.main"
+                      }}>
                         📧 naushadalamprivate@gmail.com
                       </Typography>
-                      <Typography variant="body2" color="primary.main">
+                      <Typography variant="body2" sx={{
+                        color: "primary.main"
+                      }}>
                         📱 +91 7209752686
                       </Typography>
                     </Stack>
@@ -541,6 +579,6 @@ Reporter Email: ${formData.email || 'Not provided'}
             </Alert>
           </Snackbar>
         </Container>
-      </>
+    </>
   );
 }

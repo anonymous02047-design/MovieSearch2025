@@ -115,7 +115,9 @@ export default function CrewPage() {
           <Typography variant="h3" component="h1" gutterBottom className="fade-in">
             Crew Members
           </Typography>
-          <Typography variant="h6" color="text.secondary" className="fade-in stagger-1">
+          <Typography variant="h6" className="fade-in stagger-1" sx={{
+            color: "text.secondary"
+          }}>
             Discover talented directors, producers, writers, and other crew members
           </Typography>
         </Box>
@@ -126,15 +128,17 @@ export default function CrewPage() {
             placeholder="Search crew members..."
             value={searchQuery}
             onChange={(e) => handleSearch(e.target.value)}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <SearchIcon />
-                </InputAdornment>
-              ),
-            }}
             sx={{ maxWidth: 600, mx: 'auto' }}
             className="fade-in stagger-2"
+            slotProps={{
+              input: {
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon />
+                  </InputAdornment>
+                ),
+              }
+            }}
           />
         </Box>
 
@@ -150,7 +154,14 @@ export default function CrewPage() {
           <>
             <Grid container spacing={3}>
               {filteredCrew.map((member, index) => (
-                <Grid item xs={12} sm={6} md={4} lg={3} key={member.id}>
+                <Grid
+                  key={member.id}
+                  size={{
+                    xs: 12,
+                    sm: 6,
+                    md: 4,
+                    lg: 3
+                  }}>
                   <Card
                     className="card-hover fade-in"
                     style={{ animationDelay: `${index * 0.1}s` }}
@@ -180,13 +191,20 @@ export default function CrewPage() {
                         sx={{ mb: 1 }}
                       />
                       {member.job && (
-                        <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+                        <Typography
+                          variant="body2"
+                          sx={{
+                            color: "text.secondary",
+                            mb: 1
+                          }}>
                           {member.job}
                         </Typography>
                       )}
                       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 0.5 }}>
                         <StarIcon fontSize="small" color="warning" />
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body2" sx={{
+                          color: "text.secondary"
+                        }}>
                           {member.popularity.toFixed(1)}
                         </Typography>
                       </Box>

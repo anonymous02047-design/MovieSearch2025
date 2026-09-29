@@ -145,29 +145,6 @@ function HeroSection({ onSearch }: HeroSectionProps) {
                 placeholder="Search for movies, TV shows, actors..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <SearchIcon color="primary" />
-                    </InputAdornment>
-                  ),
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <Button
-                        type="submit"
-                        variant="contained"
-                        sx={{
-                          background: 'linear-gradient(45deg, #2196F3, #21CBF3)',
-                          '&:hover': {
-                            background: 'linear-gradient(45deg, #1976D2, #1CB5E0)',
-                          }
-                        }}
-                      >
-                        Search
-                      </Button>
-                    </InputAdornment>
-                  ),
-                }}
                 sx={{
                   '& .MuiOutlinedInput-root': {
                     '& fieldset': {
@@ -175,15 +152,43 @@ function HeroSection({ onSearch }: HeroSectionProps) {
                     },
                   },
                 }}
+                slotProps={{
+                  input: {
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <SearchIcon color="primary" />
+                      </InputAdornment>
+                    ),
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <Button
+                          type="submit"
+                          variant="contained"
+                          sx={{
+                            background: 'linear-gradient(45deg, #2196F3, #21CBF3)',
+                            '&:hover': {
+                              background: 'linear-gradient(45deg, #1976D2, #1CB5E0)',
+                            }
+                          }}
+                        >
+                          Search
+                        </Button>
+                      </InputAdornment>
+                    ),
+                  }
+                }}
               />
             </Paper>
 
             <Stack
               direction="row"
               spacing={2}
-              justifyContent="center"
-              sx={{ mt: 4, flexWrap: 'wrap', gap: 2 }}
-            >
+              sx={{
+                justifyContent: "center",
+                mt: 4,
+                flexWrap: 'wrap',
+                gap: 2
+              }}>
               <Chip
                 icon={<MovieIcon />}
                 label="Popular Movies"
@@ -247,16 +252,30 @@ function QuickStats({ stats }: QuickStatsProps) {
 
   return (
     <Container maxWidth="lg" sx={{ py: 6 }}>
-      <Typography variant="h4" component="h2" textAlign="center" gutterBottom>
+      <Typography variant="h4" component="h2" gutterBottom sx={{
+        textAlign: "center"
+      }}>
         Our Platform at a Glance
       </Typography>
-      <Typography variant="body1" color="text.secondary" textAlign="center" sx={{ mb: 4 }}>
+      <Typography
+        variant="body1"
+        sx={{
+          color: "text.secondary",
+          textAlign: "center",
+          mb: 4
+        }}>
         Join millions of movie enthusiasts discovering their next favorite film
       </Typography>
-      
+
       <Grid container spacing={3}>
         {statItems.map((item, index) => (
-          <Grid item xs={12} sm={6} md={3} key={item.label}>
+          <Grid
+            key={item.label}
+            size={{
+              xs: 12,
+              sm: 6,
+              md: 3
+            }}>
             <Slide direction="up" in timeout={800 + index * 200}>
               <Card
                 sx={{
@@ -284,7 +303,9 @@ function QuickStats({ stats }: QuickStatsProps) {
                 <Typography variant="h3" component="div" gutterBottom>
                   {item.value.toLocaleString()}
                 </Typography>
-                <Typography variant="h6" color="text.secondary">
+                <Typography variant="h6" sx={{
+                  color: "text.secondary"
+                }}>
                   {item.label}
                 </Typography>
               </Card>
@@ -378,16 +399,29 @@ function FeaturesSection({ onGetStarted }: FeaturesSectionProps) {
   return (
     <Box sx={{ py: 8, bgcolor: 'grey.50' }}>
       <Container maxWidth="lg">
-        <Typography variant="h3" component="h2" textAlign="center" gutterBottom>
+        <Typography variant="h3" component="h2" gutterBottom sx={{
+          textAlign: "center"
+        }}>
           Why Choose MovieSearch?
         </Typography>
-        <Typography variant="h6" color="text.secondary" textAlign="center" sx={{ mb: 6 }}>
+        <Typography
+          variant="h6"
+          sx={{
+            color: "text.secondary",
+            textAlign: "center",
+            mb: 6
+          }}>
           Discover the features that make us the best movie discovery platform
         </Typography>
 
         <Grid container spacing={4}>
           {features.map((feature, index) => (
-            <Grid item xs={12} md={6} key={feature.title}>
+            <Grid
+              key={feature.title}
+              size={{
+                xs: 12,
+                md: 6
+              }}>
               <Fade in timeout={800 + index * 200}>
                 <Card
                   sx={{
@@ -414,7 +448,9 @@ function FeaturesSection({ onGetStarted }: FeaturesSectionProps) {
                       <Typography variant="h5" component="h3" gutterBottom>
                         {feature.title}
                       </Typography>
-                      <Typography variant="body1" color="text.secondary">
+                      <Typography variant="body1" sx={{
+                        color: "text.secondary"
+                      }}>
                         {feature.description}
                       </Typography>
                     </Box>

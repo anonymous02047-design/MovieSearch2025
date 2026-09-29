@@ -305,17 +305,34 @@ function AwardsPageContent() {
   };
 
   const renderAwardCard = (award: Award) => (
-    <Grid item xs={12} md={6} key={award.id}>
+    <Grid
+      key={award.id}
+      size={{
+        xs: 12,
+        md: 6
+      }}>
       <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
         <CardContent sx={{ flexGrow: 1 }}>
-          <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 2 }}>
+          <Stack
+            direction="row"
+            spacing={1}
+            sx={{
+              alignItems: "center",
+              mb: 2
+            }}>
             <AwardsIcon color="primary" />
             <Typography variant="h6" component="h3">
               {award.name}
             </Typography>
           </Stack>
           
-          <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 2 }}>
+          <Stack
+            direction="row"
+            spacing={1}
+            sx={{
+              alignItems: "center",
+              mb: 2
+            }}>
             <Chip
               label={award.ceremony}
               size="small"
@@ -323,7 +340,9 @@ function AwardsPageContent() {
               variant="outlined"
             />
             <CalendarIcon fontSize="small" color="action" />
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               {award.year}
             </Typography>
           </Stack>
@@ -332,7 +351,9 @@ function AwardsPageContent() {
             <Typography variant="subtitle2" gutterBottom>
               Winner:
             </Typography>
-            <Stack direction="row" spacing={1} alignItems="center">
+            <Stack direction="row" spacing={1} sx={{
+              alignItems: "center"
+            }}>
               <Chip
                 label={award.winner.title}
                 size="small"
@@ -349,7 +370,9 @@ function AwardsPageContent() {
             <Typography variant="subtitle2" gutterBottom>
               Nominees:
             </Typography>
-            <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
+            <Stack direction="row" spacing={1} useFlexGap sx={{
+              flexWrap: "wrap"
+            }}>
               {award.nominees.slice(0, 3).map((nominee) => (
                 <Chip
                   key={nominee.id}
@@ -371,7 +394,9 @@ function AwardsPageContent() {
             </Stack>
           </Box>
 
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" sx={{
+            color: "text.secondary"
+          }}>
             {award.description}
           </Typography>
         </CardContent>
@@ -391,7 +416,13 @@ function AwardsPageContent() {
   if (loading) {
     return (
       <Container maxWidth="lg" sx={{ py: 4 }}>
-        <Box display="flex" justifyContent="center" alignItems="center" minHeight="400px">
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            minHeight: "400px"
+          }}>
           <CircularProgress />
         </Box>
       </Container>
@@ -416,13 +447,24 @@ function AwardsPageContent() {
       <Container maxWidth="lg" sx={{ py: 4 }}>
       {/* Header */}
       <Box sx={{ mb: 4 }}>
-        <Stack direction="row" alignItems="center" spacing={2} sx={{ mb: 2 }}>
+        <Stack
+          direction="row"
+          spacing={2}
+          sx={{
+            alignItems: "center",
+            mb: 2
+          }}>
           <AwardsIcon sx={{ fontSize: 40, color: 'primary.main' }} />
           <Typography variant="h3" component="h1">
             Awards & Recognition
           </Typography>
         </Stack>
-        <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>
+        <Typography
+          variant="h6"
+          sx={{
+            color: "text.secondary",
+            mb: 3
+          }}>
           Explore prestigious film awards, winners, and nominees from major ceremonies
         </Typography>
 
@@ -433,12 +475,14 @@ function AwardsPageContent() {
             placeholder="Search awards, winners, or ceremonies..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <SearchIcon />
-                </InputAdornment>
-              ),
+            slotProps={{
+              input: {
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon />
+                  </InputAdornment>
+                ),
+              }
             }}
           />
           <FormControl sx={{ minWidth: 150 }}>
@@ -510,7 +554,12 @@ function AwardsPageContent() {
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <Box display="flex" justifyContent="center" sx={{ mt: 4 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            mt: 4
+          }}>
           <Pagination
             count={totalPages}
             page={currentPage}
@@ -523,8 +572,14 @@ function AwardsPageContent() {
 
       {/* No Results */}
       {filteredAwards.length === 0 && (searchQuery || selectedYear !== 'all' || selectedCeremony !== 'all') && (
-        <Box textAlign="center" sx={{ py: 4 }}>
-          <Typography variant="h6" color="text.secondary">
+        <Box
+          sx={{
+            textAlign: "center",
+            py: 4
+          }}>
+          <Typography variant="h6" sx={{
+            color: "text.secondary"
+          }}>
             No awards found matching your criteria
           </Typography>
         </Box>
@@ -532,35 +587,55 @@ function AwardsPageContent() {
 
       {/* Stats */}
       <Box sx={{ mt: 4, p: 3, bgcolor: 'background.paper', borderRadius: 2 }}>
-        <Stack direction="row" spacing={4} justifyContent="center">
-          <Box textAlign="center">
-            <Typography variant="h4" color="primary.main">
+        <Stack direction="row" spacing={4} sx={{
+          justifyContent: "center"
+        }}>
+          <Box sx={{
+            textAlign: "center"
+          }}>
+            <Typography variant="h4" sx={{
+              color: "primary.main"
+            }}>
               {filteredAwards.length}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               Awards
             </Typography>
           </Box>
-          <Box textAlign="center">
-            <Typography variant="h4" color="secondary.main">
+          <Box sx={{
+            textAlign: "center"
+          }}>
+            <Typography variant="h4" sx={{
+              color: "secondary.main"
+            }}>
               {new Set(filteredAwards.map(a => a.ceremony)).size}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               Ceremonies
             </Typography>
           </Box>
-          <Box textAlign="center">
-            <Typography variant="h4" color="success.main">
+          <Box sx={{
+            textAlign: "center"
+          }}>
+            <Typography variant="h4" sx={{
+              color: "success.main"
+            }}>
               {new Set(filteredAwards.map(a => a.year)).size}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" sx={{
+              color: "text.secondary"
+            }}>
               Years
             </Typography>
           </Box>
         </Stack>
       </Box>
         </Container>
-      </>
+    </>
   );
 }
 

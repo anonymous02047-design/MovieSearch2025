@@ -109,8 +109,19 @@ export default function MovieReleaseCalendar({ region = 'US' }: MovieReleaseCale
   return (
     <Box>
       {/* Header */}
-      <Box display="flex" justifyContent="space-between" alignItems="center" mb={3}>
-        <Box display="flex" alignItems="center" gap={1}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          mb: 3
+        }}>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: 1
+          }}>
           <CalendarIcon color="primary" />
           <Typography variant="h5">Upcoming Releases</Typography>
         </Box>
@@ -129,7 +140,12 @@ export default function MovieReleaseCalendar({ region = 'US' }: MovieReleaseCale
 
       {/* Loading State */}
       {loading && (
-        <Box display="flex" justifyContent="center" py={4}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            py: 4
+          }}>
           <CircularProgress />
         </Box>
       )}
@@ -143,7 +159,9 @@ export default function MovieReleaseCalendar({ region = 'US' }: MovieReleaseCale
       )}
 
       {!loading && !error && Object.entries(groupedMovies).map(([month, monthMovies]) => (
-        <Box key={month} mb={4}>
+        <Box key={month} sx={{
+          mb: 4
+        }}>
           <Typography variant="h6" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <MovieIcon fontSize="small" />
             {month}
@@ -152,7 +170,14 @@ export default function MovieReleaseCalendar({ region = 'US' }: MovieReleaseCale
 
           <Grid container spacing={2}>
             {monthMovies.map((movie) => (
-              <Grid item xs={12} sm={6} md={4} lg={3} key={movie.id}>
+              <Grid
+                key={movie.id}
+                size={{
+                  xs: 12,
+                  sm: 6,
+                  md: 4,
+                  lg: 3
+                }}>
                 <Card
                   sx={{
                     cursor: 'pointer',
@@ -168,7 +193,9 @@ export default function MovieReleaseCalendar({ region = 'US' }: MovieReleaseCale
                     alt={movie.title}
                   />
                   <CardContent>
-                    <Typography variant="subtitle1" noWrap fontWeight="bold">
+                    <Typography variant="subtitle1" noWrap sx={{
+                      fontWeight: "bold"
+                    }}>
                       {movie.title}
                     </Typography>
                     <Chip
@@ -177,7 +204,12 @@ export default function MovieReleaseCalendar({ region = 'US' }: MovieReleaseCale
                       color="primary"
                       sx={{ mt: 1 }}
                     />
-                    <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        color: "text.secondary",
+                        mt: 1
+                      }}>
                       ⭐ {movie.vote_average > 0 ? movie.vote_average.toFixed(1) : 'Not rated yet'}
                     </Typography>
                   </CardContent>

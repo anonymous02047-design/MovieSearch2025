@@ -22,7 +22,12 @@ export default function MoviePersonalityPage() {
             <CardContent sx={{ textAlign: 'center', py: 6 }}>
               <PsychologyIcon sx={{ fontSize: 80, color: 'primary.main', mb: 2 }} />
               <Typography variant="h5" sx={{ mb: 2 }}>Discover Your Movie Personality</Typography>
-              <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
+              <Typography
+                variant="body1"
+                sx={{
+                  color: "text.secondary",
+                  mb: 4
+                }}>
                 Answer a few questions to find out what type of movie watcher you are!
               </Typography>
               <Button variant="contained" size="large" startIcon={<PlayIcon />}>Start Quiz</Button>

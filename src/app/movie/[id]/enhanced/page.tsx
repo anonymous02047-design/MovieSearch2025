@@ -164,7 +164,11 @@ export default function EnhancedMovieDetailsPage() {
       {/* Hero Section */}
       <Box sx={{ mb: 4 }}>
         <Grid container spacing={4}>
-          <Grid item xs={12} md={4}>
+          <Grid
+            size={{
+              xs: 12,
+              md: 4
+            }}>
             <Card sx={{ position: 'relative' }}>
               <CardMedia
                 component="img"
@@ -219,13 +223,19 @@ export default function EnhancedMovieDetailsPage() {
             </Card>
           </Grid>
 
-          <Grid item xs={12} md={8}>
+          <Grid
+            size={{
+              xs: 12,
+              md: 8
+            }}>
             <Box sx={{ mb: 3 }}>
               <Typography variant="h3" component="h1" gutterBottom>
                 {movie.title}
               </Typography>
               {movie.original_title !== movie.title && (
-                <Typography variant="h5" color="text.secondary" gutterBottom>
+                <Typography variant="h5" gutterBottom sx={{
+                  color: "text.secondary"
+                }}>
                   {movie.original_title}
                 </Typography>
               )}
@@ -238,21 +248,35 @@ export default function EnhancedMovieDetailsPage() {
 
             {/* Key Stats */}
             <Grid container spacing={2} sx={{ mb: 3 }}>
-              <Grid item xs={6} sm={3}>
+              <Grid
+                size={{
+                  xs: 6,
+                  sm: 3
+                }}>
                 <Box sx={{ textAlign: 'center' }}>
                   <Rating value={movie.vote_average / 2} precision={0.1} readOnly size="small" />
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" sx={{
+                    color: "text.secondary"
+                  }}>
                     {movie.vote_average.toFixed(1)}/10
                   </Typography>
-                  <Typography variant="caption" color="text.secondary">
+                  <Typography variant="caption" sx={{
+                    color: "text.secondary"
+                  }}>
                     {movie.vote_count.toLocaleString()} votes
                   </Typography>
                 </Box>
               </Grid>
-              <Grid item xs={6} sm={3}>
+              <Grid
+                size={{
+                  xs: 6,
+                  sm: 3
+                }}>
                 <Box sx={{ textAlign: 'center' }}>
                   <TrendingUpIcon color="primary" />
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" sx={{
+                    color: "text.secondary"
+                  }}>
                     Popularity
                   </Typography>
                   <Typography variant="h6">
@@ -260,10 +284,16 @@ export default function EnhancedMovieDetailsPage() {
                   </Typography>
                 </Box>
               </Grid>
-              <Grid item xs={6} sm={3}>
+              <Grid
+                size={{
+                  xs: 6,
+                  sm: 3
+                }}>
                 <Box sx={{ textAlign: 'center' }}>
                   <TimeIcon color="primary" />
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" sx={{
+                    color: "text.secondary"
+                  }}>
                     Runtime
                   </Typography>
                   <Typography variant="h6">
@@ -271,10 +301,16 @@ export default function EnhancedMovieDetailsPage() {
                   </Typography>
                 </Box>
               </Grid>
-              <Grid item xs={6} sm={3}>
+              <Grid
+                size={{
+                  xs: 6,
+                  sm: 3
+                }}>
                 <Box sx={{ textAlign: 'center' }}>
                   <CalendarIcon color="primary" />
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" sx={{
+                    color: "text.secondary"
+                  }}>
                     Release Date
                   </Typography>
                   <Typography variant="h6">
@@ -301,7 +337,9 @@ export default function EnhancedMovieDetailsPage() {
               <Typography variant="h6" gutterBottom>
                 Overview
               </Typography>
-              <Typography variant="body1" paragraph>
+              <Typography variant="body1" sx={{
+                marginBottom: "16px"
+              }}>
                 {movie.overview}
               </Typography>
             </Box>
@@ -355,7 +393,11 @@ export default function EnhancedMovieDetailsPage() {
         {/* Details Tab */}
         <TabPanel value={tabValue} index={0}>
           <Grid container spacing={3}>
-            <Grid item xs={12} md={6}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 6
+              }}>
               <Typography variant="h6" gutterBottom>
                 Production Details
               </Typography>
@@ -421,7 +463,11 @@ export default function EnhancedMovieDetailsPage() {
               </Box>
             </Grid>
 
-            <Grid item xs={12} md={6}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 6
+              }}>
               <Typography variant="h6" gutterBottom>
                 Spoken Languages
               </Typography>
@@ -447,7 +493,9 @@ export default function EnhancedMovieDetailsPage() {
                         {movie.belongs_to_collection.name}
                       </Typography>
                       {movie.belongs_to_collection.overview && (
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body2" sx={{
+                          color: "text.secondary"
+                        }}>
                           {movie.belongs_to_collection.overview}
                         </Typography>
                       )}
@@ -528,7 +576,11 @@ export default function EnhancedMovieDetailsPage() {
         {/* Cast & Crew Tab */}
         <TabPanel value={tabValue} index={1}>
           <Grid container spacing={3}>
-            <Grid item xs={12} md={6}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 6
+              }}>
               <Typography variant="h6" gutterBottom>
                 Cast
               </Typography>
@@ -550,7 +602,11 @@ export default function EnhancedMovieDetailsPage() {
               </List>
             </Grid>
 
-            <Grid item xs={12} md={6}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 6
+              }}>
               <Typography variant="h6" gutterBottom>
                 Crew
               </Typography>
@@ -581,7 +637,13 @@ export default function EnhancedMovieDetailsPage() {
           </Typography>
           <Grid container spacing={2} sx={{ mb: 4 }}>
             {movie.videos.slice(0, 6).map((video) => (
-              <Grid item xs={12} sm={6} md={4} key={video.id}>
+              <Grid
+                key={video.id}
+                size={{
+                  xs: 12,
+                  sm: 6,
+                  md: 4
+                }}>
                 <Card>
                   <CardMedia
                     component="img"
@@ -593,7 +655,9 @@ export default function EnhancedMovieDetailsPage() {
                     <Typography variant="subtitle2" gutterBottom>
                       {video.name}
                     </Typography>
-                    <Typography variant="caption" color="text.secondary">
+                    <Typography variant="caption" sx={{
+                      color: "text.secondary"
+                    }}>
                       {video.type} • {video.site}
                     </Typography>
                   </CardContent>
@@ -607,7 +671,13 @@ export default function EnhancedMovieDetailsPage() {
           </Typography>
           <Grid container spacing={2}>
             {movie.images.backdrops.slice(0, 12).map((image, index) => (
-              <Grid item xs={12} sm={6} md={4} key={index}>
+              <Grid
+                key={index}
+                size={{
+                  xs: 12,
+                  sm: 6,
+                  md: 4
+                }}>
                 <Card>
                   <CardMedia
                     component="img"
@@ -646,7 +716,9 @@ export default function EnhancedMovieDetailsPage() {
                         <Typography variant="body2" sx={{ mb: 1 }}>
                           {review.content}
                         </Typography>
-                        <Typography variant="caption" color="text.secondary">
+                        <Typography variant="caption" sx={{
+                          color: "text.secondary"
+                        }}>
                           {new Date(review.created_at).toLocaleDateString()}
                         </Typography>
                       </Box>
@@ -656,7 +728,9 @@ export default function EnhancedMovieDetailsPage() {
               ))}
             </List>
           ) : (
-            <Typography color="text.secondary">
+            <Typography sx={{
+              color: "text.secondary"
+            }}>
               No reviews available for this movie.
             </Typography>
           )}
@@ -669,7 +743,13 @@ export default function EnhancedMovieDetailsPage() {
           </Typography>
           <Grid container spacing={2}>
             {movie.similar_movies.slice(0, 12).map((similarMovie) => (
-              <Grid item xs={6} sm={4} md={3} key={similarMovie.id}>
+              <Grid
+                key={similarMovie.id}
+                size={{
+                  xs: 6,
+                  sm: 4,
+                  md: 3
+                }}>
                 <Card
                   sx={{ cursor: 'pointer' }}
                   onClick={() => router.push(`/movie/${similarMovie.id}/enhanced`)}
@@ -684,7 +764,9 @@ export default function EnhancedMovieDetailsPage() {
                     <Typography variant="subtitle2" noWrap>
                       {similarMovie.title}
                     </Typography>
-                    <Typography variant="caption" color="text.secondary">
+                    <Typography variant="caption" sx={{
+                      color: "text.secondary"
+                    }}>
                       {new Date(similarMovie.release_date).getFullYear()}
                     </Typography>
                   </CardContent>
@@ -697,7 +779,11 @@ export default function EnhancedMovieDetailsPage() {
         {/* Additional Info Tab */}
         <TabPanel value={tabValue} index={5}>
           <Grid container spacing={3}>
-            <Grid item xs={12} md={6}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 6
+              }}>
               <Accordion>
                 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                   <Typography variant="h6">Alternative Titles</Typography>
@@ -735,13 +821,19 @@ export default function EnhancedMovieDetailsPage() {
               </Accordion>
             </Grid>
 
-            <Grid item xs={12} md={6}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 6
+              }}>
               <Accordion>
                 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                   <Typography variant="h6">Watch Providers</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Typography color="text.secondary">
+                  <Typography sx={{
+                    color: "text.secondary"
+                  }}>
                     Watch provider information will be displayed here when available.
                   </Typography>
                 </AccordionDetails>

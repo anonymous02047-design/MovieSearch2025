@@ -23,13 +23,17 @@ export default function ScriptsLibraryPage() {
               <TextField
                 fullWidth
                 placeholder="Search for movie scripts..."
-                InputProps={{
-                  startAdornment: (<InputAdornment position="start"><SearchIcon /></InputAdornment>),
+                slotProps={{
+                  input: {
+                    startAdornment: (<InputAdornment position="start"><SearchIcon /></InputAdornment>),
+                  }
                 }}
               />
             </CardContent>
           </Card>
-          <Typography color="text.secondary">Access and read your favorite movie scripts!</Typography>
+          <Typography sx={{
+            color: "text.secondary"
+          }}>Access and read your favorite movie scripts!</Typography>
         </Container>
       </Box>
     </AuthGuard>

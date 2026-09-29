@@ -61,7 +61,9 @@ export default function NewReleasesSection() {
     >
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 3 }}>
         <NewIcon sx={{ color: 'warning.main', fontSize: 32 }} />
-        <Typography variant="h5" fontWeight={700}>
+        <Typography variant="h5" sx={{
+          fontWeight: 700
+        }}>
           New Releases
         </Typography>
         <Chip label="Updated Daily" size="small" color="warning" variant="outlined" />
@@ -79,7 +81,9 @@ export default function NewReleasesSection() {
             <Box sx={{ mb: 4 }}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
                 <NewIcon color="warning" />
-                <Typography variant="h6" fontWeight={600}>
+                <Typography variant="h6" sx={{
+                  fontWeight: 600
+                }}>
                   Now Playing in Theaters
                 </Typography>
               </Box>
@@ -95,7 +99,9 @@ export default function NewReleasesSection() {
             <Box>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
                 <ScheduleIcon color="warning" />
-                <Typography variant="h6" fontWeight={600}>
+                <Typography variant="h6" sx={{
+                  fontWeight: 600
+                }}>
                   Coming Soon
                 </Typography>
               </Box>

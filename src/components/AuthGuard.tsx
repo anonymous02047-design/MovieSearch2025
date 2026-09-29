@@ -89,10 +89,20 @@ export default function AuthGuard({
         }}
       >
         <CircularProgress size={60} thickness={4} sx={{ color: 'primary.main' }} />
-        <Typography variant="h6" color="text.secondary" fontWeight={500}>
+        <Typography
+          variant="h6"
+          sx={{
+            color: "text.secondary",
+            fontWeight: 500
+          }}>
           {loadingMessage}
         </Typography>
-        <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+        <Typography
+          variant="body2"
+          sx={{
+            color: "text.secondary",
+            mt: 1
+          }}>
           This will only take a moment...
         </Typography>
       </Box>
@@ -116,7 +126,13 @@ export default function AuthGuard({
         >
           <LockIcon sx={{ fontSize: 80, mb: 3, opacity: 0.9, animation: 'pulse 2s infinite' }} />
           
-          <Typography variant="h4" gutterBottom fontWeight={700} sx={{ mb: 2 }}>
+          <Typography
+            variant="h4"
+            gutterBottom
+            sx={{
+              fontWeight: 700,
+              mb: 2
+            }}>
             {redirecting ? 'Redirecting...' : 'Authentication Required'}
           </Typography>
           

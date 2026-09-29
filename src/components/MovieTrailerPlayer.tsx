@@ -96,15 +96,22 @@ export default function MovieTrailerPlayer({ open, onClose, movieId, movieTitle 
       onClose={onClose}
       maxWidth="md"
       fullWidth
-      PaperProps={{
-        sx: {
-          bgcolor: 'black',
-          color: 'white',
-        },
+      slotProps={{
+        paper: {
+          sx: {
+            bgcolor: 'black',
+            color: 'white',
+          },
+        }
       }}
     >
       <DialogTitle>
-        <Box display="flex" justifyContent="space-between" alignItems="center">
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center"
+          }}>
           <Typography variant="h6">{movieTitle} - Trailers</Typography>
           <IconButton onClick={onClose} sx={{ color: 'white' }}>
             <CloseIcon />
@@ -114,7 +121,13 @@ export default function MovieTrailerPlayer({ open, onClose, movieId, movieTitle 
 
       <DialogContent>
         {loading && (
-          <Box display="flex" justifyContent="center" alignItems="center" minHeight={400}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              minHeight: 400
+            }}>
             <CircularProgress />
           </Box>
         )}
@@ -161,7 +174,13 @@ export default function MovieTrailerPlayer({ open, onClose, movieId, movieTitle 
             </Box>
 
             {/* Video Title and Type */}
-            <Box display="flex" alignItems="center" gap={1} mb={2}>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: 1,
+                mb: 2
+              }}>
               <Typography variant="subtitle1">{selectedVideo.name}</Typography>
               <Chip
                 label={selectedVideo.type}

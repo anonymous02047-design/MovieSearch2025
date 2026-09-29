@@ -34,7 +34,9 @@ export default function WatchTogetherPage() {
               <Card>
                 <CardContent>
                   <Typography variant="h6" sx={{ mb: 2 }}>Active Sessions</Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" sx={{
+                    color: "text.secondary"
+                  }}>
                     No active watch sessions. Create one to watch movies with friends!
                   </Typography>
                 </CardContent>
